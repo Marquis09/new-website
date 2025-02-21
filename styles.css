@@ -1,0 +1,237 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #f0f4f8; /* Light background (default) */
+    color: #333; /* Dark text for readability */
+}
+
+/* Light Theme (default) */
+.bg-light {
+    background-color: #f0f4f8; /* Light background */
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #1a1a1a !important; /* Dark background */
+    color: #fff !important; /* Light text for dark mode */
+}
+
+.dark-mode .card {
+    background-color: #333; /* Dark background for cards */
+    color: #fff !important; /* Light text for cards */
+}
+
+.dark-mode .card-body {
+    color: #fff !important; /* Ensure text in card body is also light */
+}
+
+/* Hero Section */
+#hero {
+    background-color: #e9ecef;
+    padding: 50px 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode #hero {
+    background-color: #333 !important; /* Dark background for hero section */
+    color: #fff !important; /* Light text for hero section */
+}
+
+/* Navigation Bar Styles */
+#navbar {
+    background-color: #007bff; /* Bright blue background */
+    transition: background-color 0.3s;
+}
+
+#navbar a {
+    color: #ffffff !important; /* White text for contrast */
+    font-weight: bold; /* Bold text for better visibility */
+}
+
+#navbar a:hover {
+    color: #d4d4d4 !important; /* Light gray text on hover for better visibility */
+}
+
+#navbar .navbar-toggler {
+    border-color: #ffffff; /* White border for the toggler button */
+}
+
+#navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Dark Mode Navbar */
+.dark-mode #navbar {
+    background-color: #444 !important; /* Dark background for navbar in dark mode */
+}
+
+.dark-mode #navbar a {
+    color: #fff !important; /* White navbar text in dark mode */
+}
+
+.dark-mode #navbar .navbar-toggler {
+    border-color: #333 !important; /* Dark border for the toggler button */
+}
+
+/* About Section */
+#about {
+    background-color: #f0f4f8; /* Light background */
+    padding: 50px 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode #about {
+    background-color: #444 !important; /* Dark background for about section in dark mode */
+    color: #fff !important; /* Light text for about section */
+}
+
+/* Add Margins or Padding for Separation */
+#navbar, #hero, #about {
+    margin-bottom: 20px; /* Adds space between sections */
+}
+
+/* Navbar Active Link Style */
+.navbar-nav .nav-link.active {
+    color: #fff; /* White text */
+    background-color: #409bfd; /* Bright blue background */
+    border-radius: 5px; /* Rounded corners for a button-like appearance */
+    padding: 5px 10px; /* Padding for spacing */
+}
+
+/* Project Gallery */
+.project-gallery .card {
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.project-gallery .card img {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+/* Hover Effects */
+.project-item, .testimonial-item {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-item:hover, .testimonial-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal */
+.modal-content {
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px; /* Rounded corners for modal */
+    padding: 20px; /* Padding inside the modal */
+}
+
+.dark-mode .modal-content {
+    background-color: #333 !important; /* Dark background for modal */
+    color: #fff !important; /* Light text for modal */
+}
+
+/* Modal Image */
+.modal-body img {
+    width: 100%; /* Ensure the image fills the width of the modal */
+    border-radius: 5px; /* Rounded corners for the image */
+    margin-bottom: 15px; /* Space between image and description */
+}
+
+/* Modal Close Button */
+.modal-header .btn-close {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+.modal-header .btn-close:hover {
+    color: #007bff; /* Highlight close button on hover */
+}
+
+/* Testimonials Section */
+#testimonials .card {
+    margin-bottom: 20px;
+    max-width: 800px; /* Limit width of testimonials */
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode #testimonials .card {
+    background-color: #444 !important; /* Dark background for testimonials */
+    color: #fff !important; /* Light text for testimonials */
+}
+
+.dark-mode .carousel-control-prev-icon,
+.dark-mode .carousel-control-next-icon {
+    filter: invert(1); /* Light arrows in dark mode */
+}
+
+/* Contact Form */
+#contact-form input,
+#contact-form textarea {
+    border-radius: 8px;
+    border-color: #ccc; /* Light border color */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: #3498db; /* Focus border color */
+}
+
+.dark-mode #contact-form input,
+.dark-mode #contact-form textarea {
+    background-color: #444 !important; /* Dark input background */
+    color: #fff !important; /* Light text for dark mode */
+    border-color: #666 !important; /* Dark border color */
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50; /* Matching footer background */
+    color: #fff;
+    padding: 20px;
+}
+
+.dark-mode footer {
+    background-color: #333 !important; /* Dark footer */
+    color: #fff !important; /* Light text for dark footer */
+}
+
+/* Image Hover Effect */
+#munichImage {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#munichImage:hover {
+    transform: scale(1.1); /* Slightly enlarges the image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow on hover */
+}
+
+/* Dark Mode Image Hover */
+.dark-mode #munichImage:hover {
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Brightened shadow in dark mode */
+}
+
+/* Added styles for clickable image with animation */
+.clickable-img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+.clickable-img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Dark Mode Modal Image */
+.dark-mode .modal-body img {
+    border-radius: 5px;
+}
+
+/* Ensure any additional dark mode changes or overrides are handled correctly */

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Marquis Orchard - Portfolio</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../my-portfolio/styles.css">
+    </head>    
+<body class="bg-light">
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" style="display: none;">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+   <!-- Dark Mode Toggle -->
+<div class="d-flex justify-content-end p-4">
+    <button id="darkModeButton" class="btn btn-outline-primary" aria-label="Toggle Dark Mode">
+        <span id="darkModeIcon">🌙</span> Toggle Dark Mode
+    </button>
+</div>
+
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../my-portfolio/homepage.html">Marquis Orchard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../my-portfolio/homepage.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../my-portfolio/projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../my-portfolio/contacts.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Marquis Orchard</h1>
+            <p>Web & UX Design Student | Creating User-Centered Digital Experiences</p>
+            <div class="d-flex justify-content-center">
+                <a href="https://www.linkedin.com/in/marquis-orchard-8285b2302" class="btn btn-primary mx-2" target="_blank">LinkedIn</a>
+                <a href="mailto:Marquisorchard95@yahoo.com" class="btn btn-outline-primary mx-2">Email</a>
+                <a href="../my-portfolio/Marquis Orchard Entry-level Chronological.doc" download class="btn btn-outline-secondary mx-2">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container py-5" id="about">
+        <h2 class="text-center mb-4">About Me</h2>
+        <p class="lead">My name is Marquis Orchard, and I am a passionate web and UX design student with a keen interest in creating user-friendly and visually appealing digital experiences. My goal is to help businesses design websites and applications that are intuitive, engaging, and meet the needs of their users.</p>
+        <p>With expertise in tools like Figma, HTML, CSS, and UX research, I have been able to craft designs that prioritize usability. Whether it’s prototyping, front-end development, or user testing, I am always looking to expand my skills and create solutions that make a difference.</p>
+    </section>
+
+   <!-- Project Gallery with Filters -->
+<section class="container py-5" id="projects">
+    <h2 class="text-center mb-4">My Projects</h2>
+    <div class="d-flex justify-content-center mb-3">
+        <button class="btn btn-outline-primary mx-2 filter-button" data-filter="all">All</button>
+        <button class="btn btn-outline-primary mx-2 filter-button" data-filter="Figma">Figma</button>
+        <button class="btn btn-outline-primary mx-2 filter-button" data-filter="HTML">HTML</button>
+        <button class="btn btn-outline-primary mx-2 filter-button" data-filter="UX Research">UX Research</button>
+    </div>
+    <div class="row project-gallery">
+        <!-- Project 1 -->
+        <div class="col-md-4 project-item Figma">
+            <div class="card hover-shadow-lg" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Figma Project: Munich Website project" data-description="This project aims to offer tourists a comprehensive guide to Munich's top attractions, historical landmarks, and cultural significance, making it easier for visitors to explore the city's rich heritage and vibrant atmosphere.">
+                <img src="../my-portfolio/properties/img/munuch-cards.png" class="card-img-top" alt="Munich Website project">
+                <div class="card-body">
+                    <h5 class="card-title">Munich Website</h5>
+                    <p class="card-text">HTML, CSS, Bootstrap, UX Design</p>
+                </div>
+            </div>    
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-md-4 project-item HTML">
+            <div class="card hover-shadow-lg" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="HTML Project: Personal Portfolio" data-description="I built a responsive personal portfolio website using HTML, CSS, and JavaScript. The portfolio showcases my skills, past work, and provides an easy way for potential employers to contact me. The site is fully responsive and optimized for both desktop and mobile users.">
+                <img src="../my-portfolio/properties/img/picture-symbol-icon-vector.jpg" class="card-img-top" alt="Portfolio Project">
+                <div class="card-body">
+                    <h5 class="card-title">Personal Portfolio</h5>
+                    <p class="card-text">HTML, CSS, JavaScript</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-md-4 project-item HTML">
+            <div class="card hover-shadow-lg" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="HTML Project: E-commerce Website" data-description="This project involved developing a fully functional e-commerce website using HTML, CSS, and JavaScript. The website features a clean and modern design, responsive layout, and various interactive elements to enhance the user experience.">
+                <img src="../my-portfolio/properties/img/picture-symbol-icon-vector.jpg" class="card-img-top" alt="E-commerce Website">
+                <div class="card-body">
+                    <h5 class="card-title">E-commerce Website</h5>
+                    <p class="card-text">HTML, CSS, JavaScript</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Study Modal (Updated) -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel">Project Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Project Introduction</h4>
+                <p id="projectIntroduction">This project involved creating a responsive personal portfolio website to showcase skills and past work. It was built using HTML, CSS, and JavaScript.</p>
+                
+                <h4>Design Process</h4>
+                <p id="designProcess">The design process began with creating wireframes in Figma, followed by designing the website layout and user interface, ensuring a mobile-first approach. Feedback from peers was gathered throughout the process.</p>
+                
+                <h4>Resources</h4>
+                <p id="resources">Tools used include Figma for wireframing, Adobe Photoshop for asset creation, and Sublime Text for coding. Extensive online research on best practices for portfolio sites was also conducted.</p>
+                
+                <h4>Code Implementation</h4>
+                <p id="codeImplementation">The website was coded using HTML for structure, CSS for styling, and JavaScript for interactive elements such as form validation and smooth scrolling. It is fully responsive, adapting seamlessly across devices.</p>
+                
+                <h4>Conclusion</h4>
+                <p id="conclusion">The final result was a visually appealing and highly functional portfolio that demonstrates my front-end development skills and showcases my work effectively.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<section class="container py-5" id="testimonials">
+    <h2 class="text-center mb-4">Testimonials</h2>
+    <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card testimonial-item hover-shadow-lg mb-3 mx-auto" style="max-width: 800px;" data-bs-toggle="modal" data-bs-target="#testimonialModal" data-title="Jane Doe, Tech Corp" data-description="Marquis is an incredible designer! His work is always top-notch.">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>"Marquis is an incredible designer! His work is always top-notch."</p>
+                            <footer class="blockquote-footer">Jane Doe, <cite title="Company">Tech Corp</cite></footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card testimonial-item hover-shadow-lg mb-3 mx-auto" style="max-width: 800px;" data-bs-toggle="modal" data-bs-target="#testimonialModal" data-title="John Smith, Design Studio" data-description="Working with Marquis has been a game-changer for our business. Highly recommend!">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>"Working with Marquis has been a game-changer for our business. Highly recommend!"</p>
+                            <footer class="blockquote-footer">John Smith, <cite title="Company">Design Studio</cite></footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<!-- Testimonial Modal -->
+<div class="modal fade" id="testimonialModal" tabindex="-1" aria-labelledby="testimonialModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="testimonialModalLabel">Testimonial Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Testimonial description goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+    <p>&copy; 2025 Marquis Orchard. All rights reserved. | <a href="mailto:marquisorchard95@yahoo.com">Contact Me</a></p>
+</footer>
+
+<!-- Bootstrap JS and Custom JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../my-portfolio/Jsscript.js"></script>
+</body>
+</html>
