@@ -6,6 +6,30 @@
     <title>Munich Travel Guide - Web & UX Case Study</title>
     <link href="../new-website/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* CSS to make the images same size with a more suitable height */
+        .card-img-top {
+            width: 100%;
+            height: 400px; /* Increased height for better visual balance */
+            object-fit: cover; /* Ensures images maintain aspect ratio */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+
+        .clickable-img {
+            cursor: pointer;
+        }
+
+        /* Specific size for the wireframe image */
+        .wireframe-img {
+            width: 80%; /* Make the wireframe image smaller */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 auto; /* Center the image */
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar with Back Button and Dark Mode Toggle -->
@@ -73,7 +97,7 @@
         <h3>2. Wireframing & Prototyping</h3>
         <p>After gathering feedback, I created wireframes and prototypes to outline the website’s layout. The focus was to ensure easy navigation and logical categorization of content, such as major tourist attractions, events, food and dining, and local culture. These wireframes helped visualize the site before diving into detailed design and development.</p>
         <a href="../new-website/properties/img/Munich city wireframes.jpg" target="_blank">
-            <img src="../new-website/properties/img/Munich city wireframes.jpg" class="card-img-top clickable-img" alt="Munich Website Wireframes">
+            <img src="../new-website/properties/img/Munich city wireframes.jpg" class="card-img-top clickable-img wireframe-img" alt="Munich Website Wireframes">
             <div class="card-body">
                 <h3>Wireframes</h3>
             </div>
