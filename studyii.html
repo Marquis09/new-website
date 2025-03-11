@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Class Heroes Website Redesign - Web & UX Case Study</title>
+    <link href="../new-website/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* CSS to make the images same size with a more suitable height */
+        .card-img-top {
+            width: 100%;
+            height: 400px; /* Increased height for better visual balance */
+            object-fit: cover; /* Ensures images maintain aspect ratio */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+
+        .clickable-img {
+            cursor: pointer;
+        }
+
+        /* Specific size for the wireframe image */
+        .wireframe-img {
+            width: 80%; /* Make the wireframe image smaller */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 auto; /* Center the image */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar with Back Button and Dark Mode Toggle -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="btn btn-secondary" id="backButton" onclick="window.history.back();">
+                ← Back
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button id="darkModeButton" class="btn btn-secondary dark-mode-toggle">
+                            🌙 Toggle Dark Mode
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="bg-dark text-white p-5 text-center">
+        <h1>Working Class Heroes Website Redesign - Web & UX Case Study</h1>
+        <p>Improving the User Experience & Mobile Usability for a Seamless Shopping Journey</p>
+    </header>
+
+    <!-- Problem Section -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Problem</h2>
+        <p>The original Working Class Heroes website had several usability and design flaws:</p>
+        <ul>
+            <li>Lack of clear navigation and confusing homepage design.</li>
+            <li>Missing footer with important links like contact and social media.</li>
+            <li>Poor search functionality without error prevention or suggestive prompts.</li>
+            <li>Inconsistent layout, particularly with product availability and checkout process.</li>
+        </ul>
+        <p>These issues created friction in the user's journey, making it harder to browse and shop efficiently.</p>
+    </section>
+
+    <!-- Design Goals Section -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Design Goals</h2>
+        <p>The primary goal of the redesign was to improve the overall user experience, making the website more intuitive and efficient for users:</p>
+        <ul>
+            <li>Improve homepage navigation by adding clear sections and a welcoming introduction.</li>
+            <li>Make the website mobile-responsive for on-the-go users.</li>
+            <li>Incorporate a clear and functional search bar with error prevention and suggestion prompts.</li>
+            <li>Revamp product pages by adding real-time stock availability and improving checkout processes.</li>
+        </ul>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Design Solutions</h2>
+        
+        <!-- Solution 1: Improved Homepage Design -->
+        <h3>Solution 1: Improved Homepage Design</h3>
+        <p>To address the problem of a cluttered homepage, I introduced a carousel for the images, along with a welcoming introduction to guide users.</p>
+        <br>
+        <img src="../new-website/properties/img/studyiia.jpg" class="card-img-top" alt="Working Class Heroes Redesign Homepage">
+        <br>
+        <br>
+        <p>The carousel allowed for a cleaner design, offering the user a chance to view various categories without overwhelming them with too much imagery at once.</p>
+        
+        <!-- Solution 2: Enhanced Search Functionality -->
+        <h3>Solution 2: Enhanced Search Functionality</h3>
+        <p>The search functionality was enhanced to include error prevention and suggestive prompts, ensuring users could easily find what they were looking for without frustration.</p>
+        <br>
+        <img src="../new-website/properties/img/studyiib.jpg" class="card-img-top" alt="Improved Search Bar">
+        <br>
+        <br>
+        <!-- Solution 3: Product Page Improvements -->
+        <h3>Solution 3: Product Page Improvements</h3>
+        <p>I revamped the product pages by adding stock availability before selecting the size, providing users with clearer information.</p>
+        <br>
+        <img src="../new-website/properties/img/studyiic.jpg" class="card-img-top" alt="Redesigned Product Page">
+        <br>
+        <br>
+        <!-- Solution 4: Streamlined Checkout Process -->
+        <h3>Solution 4: Streamlined Checkout Process</h3>
+        <p>I simplified the checkout process by removing redundant pop-up windows and consolidating all checkout information into one page.</p>
+        <br>
+        <img src="../new-website/properties/img/studyiid.jpg" class="card-img-top" alt="Improved Checkout Flow">
+        <br>
+    </section>
+
+    <!-- Before and After Section -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Before and After</h2>
+        <p>Here’s a comparison of the original website versus the redesigned version:</p>
+
+        <h3>Before</h3>
+        <img src="../new-website/properties/img/studyiie.jpg" class="card-img-top" alt="Old Homepage Design">
+        <br>
+        <br>
+        <h3>After</h3>
+        <img src="../new-website/properties/img/studyiia.jpg" class="card-img-top" alt="New Homepage Design">
+    </section>
+
+    <!-- Final Thoughts Section -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Final Thoughts</h2>
+        <p>This redesign was a valuable experience, as it allowed me to tackle real-world usability issues and improve the overall shopping experience. Moving forward, I plan to continue refining the site with more dynamic features, like personalized recommendations and integrated customer reviews.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2025 Working Class Heroes | All Rights Reserved</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="../new-website/Jsscript.js"></script>
+</body>
+</html>
