@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMU TV Website - Web Development & UX Case Study</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../new-website/styles.css">
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="btn btn-secondary" id="backButton" onclick="window.history.back();">
+                ← Back
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button id="darkModeButton" class="btn btn-secondary dark-mode-toggle">
+                            🌙 Toggle Dark Mode
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-dark text-white text-center p-5">
+        <h1>MMU TV Website - Web Development & UX Case Study</h1>
+        <p>Building a Creative Platform for the MMU Community</p>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Introduction</h2>
+        <p>The MMU TV website was created as a platform to showcase creative projects from Manchester Metropolitan University (MMU) students and staff. The goal of the website was to make it easy for users to explore videos, sign up, and engage with the MMU community.</p>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Challenges</h2>
+        <p>When starting this project, there were several challenges to overcome, including:</p>
+        <ul>
+            <li>Lack of a clear, modern layout for displaying content.</li>
+            <li>Ensuring the website was mobile-friendly and accessible.</li>
+            <li>Creating a simple but functional search feature for video content.</li>
+            <li>Developing an intuitive user experience that caters to both students and staff.</li>
+        </ul>
+    </section>
+
+    <!-- Design Goals -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Design Goals</h2>
+        <p>The primary objectives for the website redesign were:</p>
+        <ul>
+            <li>Build a responsive, mobile-first design for easy access on all devices.</li>
+            <li>Develop an intuitive navigation system that allows users to quickly find and view videos.</li>
+            <li>Ensure the website meets accessibility standards for users with disabilities.</li>
+            <li>Create visually appealing and engaging content sections to showcase MMU’s creative work.</li>
+        </ul>
+    </section>
+
+    <!-- Development Process -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Development Process</h2>
+        <p>The website was built using HTML5, CSS3, and the Bootstrap framework for responsive design. Below are the key steps taken during development:</p>
+
+        <!-- Homepage Design -->
+        <h3>Homepage Design</h3>
+        <p>The homepage features a full-width hero image, a brief introduction, and a section highlighting featured videos. The layout is simple, with easy navigation to key pages like "Categories" and "Sign Up".</p>
+        <br>
+        <img src="../new-website/properties/img/mmua.jpg" class="card-img-top" alt="MMU TV Homepage Design">
+        <br><br>
+
+        <!-- Mobile Responsiveness -->
+        <h3>Mobile Responsiveness</h3>
+        <p>One of the main focuses was to make the site fully responsive. By utilizing Bootstrap’s grid system, the website automatically adjusts for devices of any size, ensuring a seamless experience on phones, tablets, and desktops.</p>
+        <br>
+        <img src="../new-website/properties/img/mmub.jpg" class="card-img-top" alt="Mobile View of MMU TV Website">
+        <br><br>
+
+        <!-- Search Functionality -->
+        <h3>Search Functionality</h3>
+        <p>To enhance user experience, I implemented a simple search bar that suggests results as users type. This feature makes it easier to find specific videos and categories.</p>
+        <br>
+        <img src="../new-website/properties/img/mmuc.jpg" class="card-img-top" alt="Search Bar on MMU TV">
+        <br><br>
+
+        <!-- Sign-Up Page Design -->
+        <h3>Sign-Up Page</h3>
+        <p>The Sign-Up page allows users to register easily with a form designed for simplicity. The page also includes social media links to encourage users to connect and stay updated on MMU TV's latest content.</p>
+        <br>
+        <img src="../new-website/properties/img/mmud.jpg" class="card-img-top" alt="Sign-Up Page Design">
+        <br><br>
+    </section>
+
+    <!-- Link to the Live Website -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Visit the Live Website</h2>
+        <p>Explore the MMU TV website that was created as a showcase for MMU’s creative projects. Click the  below to visit the live site:</p>
+        <br>
+        <img src="../new-website/properties/img/mmue.jpg" class="card-img-top" alt="MMU Website">
+        <div class="card-body">
+            <br>
+            <a href="https://marquis09.github.io/mmu-tv/" class="btn btn-primary">Visit MY MMU TV Website</a>
+        </div>
+    </section>
+
+    <!-- Final Thoughts -->
+    <section class="container mt-5" style="max-width: 900px;">
+        <h2>Final Thoughts</h2>
+        <p>This project was an exciting opportunity to apply my front-end development skills and create a user-centric website that serves the MMU community. With responsive design, accessibility, and simple navigation, the MMU TV website provides a seamless and engaging experience for users across all devices. Going forward, I plan to enhance the website with additional features like video playlists, user accounts, and more dynamic interactions.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 MMU TV | All Rights Reserved</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
