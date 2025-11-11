@@ -147,6 +147,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+      
+        // You can adjust these numbers to tune how far it “drops”
+        const maxDrop = 300; 
+        const drop = Math.min(scrollY, maxDrop);
+      
+        const web = document.getElementById("spider-web");
+        const spider = document.getElementById("spider");
+      
+        web.style.height = drop + "px";
+        spider.style.transform = `translateY(${drop}px)`;
+      });
+      
+
     // Automatic form submission on Enter key press (optional feature)
     contactForm.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
