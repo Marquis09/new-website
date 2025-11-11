@@ -35,7 +35,7 @@
                         <a class="nav-link active" href="../new-website/index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link" href="#projects">Projects</a> <!-- Anchor Link for Projects -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../new-website/contacts.html">Contact</a>
@@ -69,14 +69,15 @@
         </div>
     </section>
 
-    <!-- Project Gallery -->
+    <!-- Project Gallery with Filters -->
     <section class="container py-5" id="projects">
         <h2 class="text-center mb-4">Recent Projects</h2>
         <div class="d-flex justify-content-center mb-3">
-            <a href="../new-website/projects.html" class="btn btn-primary">View ALL Projects</a>
+                <a href="../new-website/projects.html" class="btn btn-primary">View ALL Projects</a>
+            </a>
         </div>
         <div class="row project-gallery justify-content-center">
-
+            <!-- Project 1 -->
             <div class="col-md-4 project-item Figma mb-4">
                 <div class="card hover-shadow-lg">
                     <img src="../new-website/properties/img/munuch-cards.png" class="card-img-top" alt="Munich Website">
@@ -84,40 +85,62 @@
                         <h5 class="card-title">Munich Website</h5>
                         <p class="card-text">HTML, CSS, Bootstrap, UX Design</p>
                         <br>
-                        <a href="../new-website/study.html" class="btn btn-primary">View Case Study</a>
+                        <a href="../new-website/study.html" class="btn btn-primary">View Case Study</a> <!-- Link to Case Study -->
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4 project-item HTML mb-4">
-                <div class="card hover-shadow-lg">
-                    <img src="../new-website/properties/img/heropng.png" class="card-img-top" alt="Portfolio Project">
-                    <div class="card-body">
-                        <h5 class="card-title">Working Class Heroes Website Redesign</h5>
-                        <p class="card-text">HTML, CSS, JavaScript</p>
-                        <br>
-                        <a href="../new-website/studyii.html" class="btn btn-primary">View Case Study</a>
-                    </div>
+          <!-- Project 2 -->
+          <div class="col-md-4 project-item HTML mb-4">
+            <div class="card hover-shadow-lg">
+                <img src="../new-website/properties/img/heropng.png" class="card-img-top" alt="Portfolio Project">
+                <div class="card-body">
+                    <h5 class="card-title">Working Class Heroes Website Redesign</h5>
+                    <p class="card-text">HTML, CSS, JavaScript</p>
+                    <br>
+                    <a href="../new-website/studyii.html" class="btn btn-primary">View Case Study</a> <!-- Link to Case Study -->
                 </div>
             </div>
-
-        </div>
+        </div>        
     </section>
 
-    <!-- Spider -->
-    <div class="spider-wrapper" aria-hidden="true">
-        <div class="spider-line" id="spiderLine"></div>
-        <div class="spider" id="spider">
-            <svg viewBox="0 0 64 64">
-                <circle cx="32" cy="36" r="10" fill="currentColor"/>
-                <circle cx="32" cy="24" r="7" fill="currentColor"/>
-                <path d="M12 30 l14 4 M12 38 l14 0 M12 46 l14 -4
-                         M52 30 l-14 4 M52 38 l-14 0 M52 46 l-14 -4"
-                      stroke="currentColor" stroke-width="3" fill="none"
-                      stroke-linecap="round"/>
-            </svg>
+    <!-- Testimonials Section (Carousel) -->
+    <section class="container py-5" id="testimonials">
+        <h2 class="text-center mb-4">Testimonials</h2>
+        <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Testimonial 1 -->
+                <div class="carousel-item active">
+                    <div class="card mx-auto" style="max-width: 800px;">
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>"Marquis is an incredible designer! His work is always top-notch."</p>
+                                <footer class="blockquote-footer">Jane Doe, <cite title="Company">Tech Corp</cite></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="carousel-item">
+                    <div class="card mx-auto" style="max-width: 800px;">
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>"Working with Marquis has been a game-changer for our business. Highly recommend!"</p>
+                                <footer class="blockquote-footer">John Smith, <cite title="Company">Design Studio</cite></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer class="text-center py-4">
