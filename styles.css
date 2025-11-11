@@ -7,31 +7,6 @@ body {
     background-color: #f0f4f8; /* Light background (default) */
     color: #333; /* Dark text for readability */
 }
-#spider-container {
-    position: fixed;
-    top: 0;
-    left: 50px; /* change position as needed */
-    pointer-events: none; /* so it doesn't block clicks */
-  }
-  
-  #spider-web {
-    width: 2px;
-    background: #ccc;
-    height: 0;
-    margin: 0 auto;
-    transition: height 0.2s ease-out;
-  }
-  
-  #spider {
-    width: 30px;
-    height: 30px;
-    background: black;
-    border-radius: 50%;
-    margin: 0 auto;
-    transform: translateY(0);
-    transition: transform 0.2s ease-out;
-  }
-  
 
 /* Light Theme (default) */
 .bg-light {
