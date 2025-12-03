@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working in a Digital World: Professional Portfolio Reflection</title>
+    <link href="../new-website/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* [ ... Existing CSS Styles ... ] */
+        #section-background {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            background-image: url('../new-website/properties/img/Bmxing.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15; 
+        }
+
+        #hero {
+             background-color: #212529 !important; 
+             color: white !important;
+        }
+
+        footer {
+             background-color: #212529 !important; 
+             color: white !important;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 400px; 
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-img-top:hover {
+            transform: scale(1.05);
+        }
+
+        .diagram-img {
+            height: auto !important;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+            border: 1px solid #ddd; 
+            padding: 10px;
+        }
+
+        .wireframe-img {
+            width: 95%; 
+            margin: 0 auto; 
+            display: block; 
+        }
+        
+        .project-hero-image {
+            max-height: 500px;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .clickable-img {
+            cursor: pointer;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+            transition-delay: 0.1s; 
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="btn btn-secondary" id="backButton" onclick="window.history.back();">
+                ← Back to Portfolio
+            </button>
+            <button id="darkModeButton" class="btn btn-secondary dark-mode-toggle ms-auto">
+                🌙 Toggle Dark Mode
+            </button>
+        </div>
+    </nav>
+
+    <div id="section-background"></div>
+
+    <header id="hero" class="bg-dark text-white p-5 text-center">
+        <div class="container fade-in" style="max-width: 900px;">
+            <h1>Working in a Digital World: Professional Portfolio Reflection</h1>
+            <p class="lead">A Critical Reflection on the Strategic, Technical, and Iterative Process of Creating a High-Fidelity UX/Front-End Portfolio.</p>
+        </div>
+    </header>
+
+    <section class="container mt-5 mb-5" style="max-width: 1100px;">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card p-3 shadow-sm fade-in">
+                    <h3 class="card-title text-primary" style="font-size: 1.5rem; font-weight: bold;">Project Details</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>My Role:</strong> UX Designer, Front-End Developer (Self-Directed)</li>
+                        <li class="list-group-item"><strong>Duration:</strong> 6 Weeks (Module Timeframe)</li>
+                        <li class="list-group-item"><strong>Primary Tools:</strong> VS Code, HTML5, CSS3 (Bootstrap 5), JavaScript, "GITHUB"</li>
+                        <li class="list-group-item"><strong>Target:</strong> Junior UX Designer / Front-End Developer Internship</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="fade-in"> 
+                    
+                    <h2>1. Research & Strategic Context 🎯</h2>
+                    
+                    <p class="lead">My primary goal was to create a portfolio that not only looked professional but also demonstrated the core skills required for a Junior UX/Front-End role. This strategy was my compass throughout the development process.</p>
+
+                    <h3 class="text-secondary">Industry Alignment & Career Goals</h3>
+                    <p>I started by analyzing job descriptions for my target role. This validated my decision to hand-code the site using "CLEAN HTML/CSS/JS", as proving my technical competence in "FRONT-END DEVELOPMENT" is just as crucial as showcasing my "UX PROCESS". I knew a template or website builder would not achieve this level of technical proof, making the code itself a vital deliverable.</p>
+
+                    <h3 class="text-secondary">Information Architecture & Planning</h3>
+                    <p>I defined the "INFORMATION ARCHITECTURE (IA)" and layout using "ITERATIVE SKETCHES" and a formal "SITEMAP" before starting the development. This allowed me to continuously test the flow of the five-page structure (`index`, `projects`, `case study`, `contacts`, `journal`) against the user's expected journey (an employer's recruitment journey). Prioritizing a "MOBILE FIRST" foundation from the start ensured structural integrity across all devices.</p>
+
+                    <div class="row mt-5">
+                        <div class="col-md-6 mb-4 text-center fade-in">
+                            <h4>UX Process Methodology</h4>
+                            <p class="text-muted">The cyclical process guiding all design and development iterations.</p>
+                            <img src="../new-website/properties/reflection img/cycle.png" class="img-fluid clickable-img diagram-img" alt="UX Process Diagram: Discover, Define, Design, Implement, Test cycle.">
+
+                        </div>
+                        
+                        <div class="col-md-6 mb-4 text-center fade-in">
+                            <h4>Information Architecture (Sitemap)</h4>
+                            <p class="text-muted">Defining the logical structure and flow between the five core pages.</p>
+                            <img src="../new-website/properties/reflection img/userflow.png" class="img-fluid clickable-img diagram-img" alt="Sitemap diagram showing the structure of the portfolio website.">
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-secondary">Strategic Change </h3>
+                    <p>A key strategic decision was restructuring the site post-initial draft to integrate the "CORE OFFERINGS (SKILLS SUMMARY) section immediately after the hero banner. This critical adjustment ensures my core technical value proposition is communicated within the employer's crucial "FIVE-SECOND SCAN TIME", dramatically improving the site's effectiveness as a marketing tool.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="container mt-5 fade-in" style="max-width: 900px;">
+
+        <h2>2. Code-Based Design Execution 💻</h2>
+
+        <h3 class="text-secondary">Visual Communication & Design System</h3>
+        <p>My creative concept—inspired by the juxtaposition of "PRECISE ENGENEERING" and "SMOOTH FLOW"—was documented in a "BASIC DESIGN SYSTEM" and then translated into CSS. This system defined the visual rationale for all elements, ensuring consistency across all pages.</p>
+
+        <div class="row mt-4 mb-4">
+            <div class="col-12 text-center fade-in">
+                <h4>Core Design System Assets (Typography & Colour)</h4>
+                <p class="text-muted">A summary of the visual foundation derived from the 'Precision & Flow' concept.</p>
+                <img src="https://via.placeholder.com/800x200?text=Placeholder+Design+System+Swatch" class="img-fluid clickable-img diagram-img" alt="Design system swatch showing Bebas Neue, Roboto Mono, and the primary colour palette.">
+            </div>
+        </div>
+        
+        <h3 class="text-secondary">Dynamic CSS Interactions (Flow)</h3>
+        <p>To implement the "FLOWING/GRITTY" dynamic experience, I used advanced CSS transformations, directly addressing the creative brief:</p>
+        <ul>
+            <li>Link Flow Effect: All primary links utilize a `transform: scaleX(0)` pseudo-element with a smooth `transition` to create a signature underline that flows left-to-right on hover.</li>
+            <li>Project Card Movement: Project cards employ a `transform: scale(1.05) rotate(0.5deg)` on hover, adding a dynamic, tactile lift and movement.</li>
+            <li>Dark Mode: The persistent "DARK MODE TOGGLE" was implemented using JavaScript's `localStorage` and the `body.dark-mode` CSS class, ensuring high accessibility and an alternative visual theme.</li>
+        </ul>
+
+    </section>
+
+    <hr>
+
+    <section class="container mt-5 fade-in" style="max-width: 900px;">
+
+        <h2>3. Critical Reflection & Iterative Development (LO3) 🔄</h2>
+
+        <p class="lead">The final stage required critical self-reflection, incorporating feedback, and making specific, rigorous changes to the codebase and functionality.</p>
+
+        <h3 class="text-secondary">Functional Rigour & Problem-Solving</h3>
+        <p>A key technical challenge was ensuring reliable communication through the contact form. I chose to move beyond simple client-side JavaScript validation by integrating **Formspree** (for robust backend processing) and a dedicated **JavaScript Fetch API** handler. This achieved asynchronous submission with a custom loading spinner, demonstrating my capability to integrate third-party services for professional-grade functionality.</p>
+
+        <h3 class="text-secondary">Feedback-Driven Iteration</h3>
+        <p>Following self-review and peer critique, the most critical design change focused on "NAVIGATIONAL CLARITY" and "VISUAL STRUCTURE":</p>
+        
+        <blockquote class="blockquote border-start border-3 border-secondary ps-3">
+            <p class="mb-0">"The navigation links lacked clear signposting and did not integrate well with the aggressive visual theme."</p>
+        </blockquote>
+        
+        <h3 class="text-secondary">Final Changes Implemented</h3>
+        <p>In response, I implemented the following adjustments to improve the "COMMUNICATION (VISUAL)" score:</p>
+        <ul>
+            <li>Navigation Refinement: The primary navigation links were "RESTYLED AS PROMINENT BUTTONS" (solid Secondary Grey/Primary Blue) to improve discoverability and better match the structural, engineered aesthetic.</li>
+            <li>Code Quality: I performed a final review to confirm adherence to semantic HTML5 standards and focused on isolating functional logic (JavaScript) from presentation (CSS), improving "CODE MAINTAINABILITY" and separating concerns—a critical professional skill.</li>
+        </ul>
+
+        <h3 class="text-secondary">Conclusion on Learning</h3>
+        <p>This project demonstrated the necessity of the "SYNERGY BETWEEN STRATEGIC DESIGN AND TECHNICAL EXECUSION". My most valuable takeaway is the importance of "CODE MAINTAINABILITY" and the power of iterative development. Moving forward, I will dedicate more time to pre-code wireframing and will look to explore CSS pre-processors to manage complex styles more efficiently and professionally in future projects.</p>
+
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>&copy; 2025 Professional Portfolio Reflection</p>
+    </footer>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Full View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" class="img-fluid" alt="Zoomed Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- JAVASCRIPT FOR FADE UP ANIMATION (FROM TEMPLATE) ---
+        const faders = document.querySelectorAll('.fade-in');
+
+        const appearOptions = {
+            rootMargin: "0px 0px -10% 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // --- Bootstrap and custom scripts should be linked below ---
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="../new-website/Jsscript.js"></script> 
+</body>
+</html>

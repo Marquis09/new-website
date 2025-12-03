@@ -1,12 +1,48 @@
+/* --- NEW FONT IMPORTS (Option 1: Bebas Neue & Roboto Mono) --- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@400;700&display=swap');
+
 /* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* UPDATED: Roboto Mono for a unique, technical, and structural feel */
+    font-family: 'Roboto Mono', monospace;
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
     background-color: #f0f4f8; /* Light background (default) */
     color: #333; /* Dark text for readability */
 }
+
+/* NEW: Personalized Link Flow Effect (Movement & Flow) */
+a {
+    color: #007bff; /* Keeps the standard link color */
+    text-decoration: none; /* Remove default underline */
+    position: relative;
+    /* Smooth transition for text color */
+    transition: color 0.3s ease-in-out; 
+}
+
+a:hover {
+    color: #0056b3; /* Slightly darker on hover for feedback */
+}
+
+/* Link Underline Effect */
+a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px; /* Thickness of the line */
+    bottom: 0;
+    left: 0;
+    background-color: #007bff; /* Uses the accent color for the line */
+    transform: scaleX(0); /* Hidden by default */
+    transform-origin: bottom left; /* Starts the animation from the left */
+    transition: transform 0.3s ease-out;
+}
+
+a:hover:after {
+    transform: scaleX(1); /* Expands left-to-right on hover (The 'Flow') */
+}
+
 
 /* Light Theme (default) */
 .bg-light {
@@ -20,13 +56,28 @@ body {
 }
 
 .dark-mode .card {
-    background-color: #333; /* Dark background for cards */
-    color: #fff !important; /* Light text for cards */
+    /* Subtle shadow and border radius adjustment for structure */
+    background-color: #333; 
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 5px; 
 }
 
 .dark-mode .card-body {
     color: #fff !important; /* Ensure text in card body is also light */
 }
+
+/* FIX: Dark Mode Link Color (for body content) */
+.dark-mode a {
+    color: #409bfd; /* A lighter, bright blue accent color for dark mode */
+}
+.dark-mode a:hover {
+    color: #8bbfff; /* Even lighter on hover */
+}
+.dark-mode a:after {
+    background-color: #409bfd; /* Use the accent color for the animated underline */
+}
+
 
 /* Hero Section */
 #hero {
@@ -34,6 +85,8 @@ body {
     padding: 60px 0;
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
+    /* Defined structure with a light shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .dark-mode #hero {
@@ -83,11 +136,13 @@ section {
     margin-bottom: 40px; /* Consistent spacing between sections */
 }
 
-/* Section Title Styles */
+/* Section Title Styles - UPDATED TO BEBAS NEUE FOR POP */
 h2, h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px; /* Ensure there's consistent spacing before titles */
+    font-family: 'Bebas Neue', sans-serif; /* Sturdy, bold font */
+    font-size: 2.8rem; /* Larger size for impact */
+    font-weight: 400; /* Bebas Neue is already heavy at 400 */
+    letter-spacing: 2px; /* Added spacing for a modern look */
+    margin-bottom: 20px; 
 }
 
 h2 {
@@ -103,11 +158,16 @@ h3 {
     background-color: #f0f4f8; /* Light background */
     padding: 50px 0;
     transition: background-color 0.3s, color 0.3s;
+    /* Add a visible, structural border */
+    border: 1px solid #ccc; 
+    border-radius: 5px; /* Subtle rounding */
+    margin-top: 20px;
 }
 
 .dark-mode #about {
     background-color: #444 !important; /* Dark background for about section in dark mode */
     color: #fff !important; /* Light text for about section */
+    border: 1px solid #666; /* Light border in dark mode */
 }
 
 /* Navbar Active Link Style */
@@ -122,6 +182,10 @@ h3 {
 .project-gallery .card {
     margin-bottom: 20px;
     transition: transform 0.3s;
+    /* Defined structural borders and shadow */
+    border: 1px solid #ddd;
+    border-radius: 4px; /* Less rounded corners */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08); 
 }
 
 .project-gallery .card img {
@@ -129,14 +193,15 @@ h3 {
     object-fit: cover;
 }
 
-/* Hover Effects */
+/* Hover Effects - DYNAMIC MOVEMENT */
 .project-item, .testimonial-item {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project-item:hover, .testimonial-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Lift and slight dynamic rotation for 'flow'/'trick' feel */
+    transform: scale(1.05) rotate(0.5deg); 
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
 /* Modal */
@@ -176,11 +241,16 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     transition: background-color 0.3s, color 0.3s;
+    /* Defined structure */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .dark-mode #testimonials .card {
     background-color: #444 !important; /* Dark background for testimonials */
     color: #fff !important; /* Light text for testimonials */
+    border: 1px solid #666;
 }
 
 .dark-mode .carousel-control-prev-icon,
@@ -191,7 +261,8 @@ h3 {
 /* Contact Form */
 #contact-form input,
 #contact-form textarea {
-    border-radius: 8px;
+    /* Slightly reduced border radius for grit */
+    border-radius: 44px;
     border-color: #ccc; /* Light border color */
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     padding: 12px 15px; /* Padding inside inputs */
@@ -225,14 +296,15 @@ footer {
     color: #fff !important; /* Light text for dark footer */
 }
 
-/* Image Hover Effect */
+/* Image Hover Effect - Applying the same dynamic movement */
 #munichImage {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #munichImage:hover {
-    transform: scale(1.1); /* Slightly enlarges the image */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow on hover */
+    /* Dynamic movement */
+    transform: scale(1.1) rotate(-0.5deg); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
 }
 
 /* Dark Mode Image Hover */
@@ -247,7 +319,7 @@ footer {
 }
 
 .clickable-img:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
+    transform: scale(1.1) rotate(0.5deg); /* Dynamic movement */
 }
 
 /* Dark Mode Modal Image */
@@ -269,4 +341,130 @@ footer {
     z-index: 9999;
 }
 
-/* Ensure any additional dark mode changes or overrides are handled correctly */
+/* --- DEDICATED NARROW CONTAINER (NEW) --- */
+/* Used only for the "About Me" content to restrict its width */
+.container-narrow {
+    max-width: 950px; /* Base narrow width */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* For screens larger than 1200px, constrain the narrow container more */
+@media (min-width: 1200px) {
+    .container-narrow {
+        max-width: 850px;
+    }
+}
+
+/* --- NAVIGATION BAR STYLING FOR BUTTON LOOK (Moved from HTML) --- */
+
+/* 1. Base button style: Solid Secondary Gray Button for non-active links and brand */
+.navbar .nav-link:not(.active), 
+.navbar-brand { 
+    padding: 8px 12px;
+    margin: 0 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-weight: 600; 
+    
+    /* Grey button look */
+    background-color: #6c757d !important;
+    color: white !important;
+    border: 1px solid #6c757d !important; 
+}
+
+/* 2. Active state: Primary Blue button (for "Home" link) */
+.navbar .nav-link.active {
+    padding: 8px 15px; /* Adjusted padding to match button size */
+    margin: 0 5px;
+    border-radius: 8px;
+    font-weight: 600; 
+
+    background-color: #0d6efd !important;
+    color: white !important;
+    border-color: #0d6efd !important;
+}
+
+/* 3. Hover state: Darker gray background for non-active links/brand */
+.navbar .nav-link:not(.active):hover,
+.navbar-brand:hover {
+    background-color: #5a6268 !important; /* Darker secondary on hover */
+    color: white !important; 
+}
+
+/* 4. Ensure the dark mode button uses the grey button style */
+#darkModeButton {
+    color: white; 
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    font-weight: 600; 
+    /* Match the size and margins of the other nav links */
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+/* 5. Toggler icon fix for light background */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23343a40' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3csvg%3e") !important;
+}
+
+/* --- DARK MODE OVERRIDES (For consistent button look in dark mode) --- */
+
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link:not(.active),
+body.dark-mode #darkModeButton {
+    /* Adjust grey button color for dark background */
+    background-color: #495057 !important;
+    border-color: #495057 !important;
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .nav-link.active {
+    /* Active blue button remains blue in dark mode */
+    background-color: #0d6efd !important; 
+    border-color: #0d6efd !important;
+}
+
+body.dark-mode .navbar .nav-link:not(.active):hover,
+body.dark-mode .navbar-brand:hover {
+    background-color: #5a6268 !important; 
+}
+
+/* Add a background to the overall dark mode body */
+body.dark-mode {
+    background-color: #212529 !important; 
+    color: #f8f9fa !important;
+}
+body.dark-mode .bg-dark {
+    background-color: #343a40 !important;
+}
+
+/* Updated: Style for the hero section background color */
+#hero {
+    background-color: #363A42 !important; /* The color from your image */
+    color: white !important; /* Ensure text is white for contrast */
+}
+
+/* New: Style for the profile image (kept for continuity) */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover;
+    margin-bottom: 1.5rem; /* Space below the image */
+    border: 5px solid white; /* Optional: adds a white border */
+}
+
+/* Typing cursor style for animation (kept for continuity) */
+.typing::after {
+    content: '|';
+    display: inline-block;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
