@@ -15,25 +15,27 @@
     <style>
         /* --- NAVIGATION BAR STYLING (Standardized for Button Look) --- */
         /* NOTE: Many of these were moved to styles.css for consistency, 
-           but kept here for quick referencing the button look overrides. */
+            but kept here for quick referencing the button look overrides. */
 
         .navbar .nav-link:not(.active), 
         .navbar-brand { 
-            padding: 10px 14px;
-            margin: 0 6px;
+            padding: 8px 12px;
+            margin: 0 4px;
             border-radius: 8px;
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
             font-weight: 600; 
+            font-size: 0.95rem;
             background-color: #6c757d !important;
             color: white !important;
             border: 1px solid #6c757d !important; 
         }
 
         .navbar .nav-link.active {
-            padding: 10px 14px;
-            margin: 0 6px;
+            padding: 8px 12px;
+            margin: 0 4px;
             border-radius: 8px;
             font-weight: 600; 
+            font-size: 0.95rem;
             background-color: #0d6efd !important;
             color: white !important;
             border-color: #0d6efd !important;
@@ -50,7 +52,8 @@
             background-color: #6c757d !important;
             border-color: #6c757d !important;
             font-weight: 600; 
-            padding: 10px 14px;
+            font-size: 0.9rem;
+            padding: 8px 12px;
             border-radius: 8px;
         }
         
@@ -59,8 +62,8 @@
         }
 
         .navbar {
-            padding-top: 1rem !important; 
-            padding-bottom: 1rem !important; 
+            padding-top: 0.75rem !important; 
+            padding-bottom: 0.75rem !important; 
         }
         
         /* --- DARK MODE OVERRIDES --- */
@@ -93,8 +96,10 @@
         
         /* Hero Section Styling (RESTORED ORIGINAL DARK BACKGROUND) */
         #hero {
-            background-color: #363A42 !important; /* Restored original color */
+            background-color: #363A42 !important; 
             color: white !important; 
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
         }
         body.dark-mode #hero {
             background-color: #363A42 !important; 
@@ -103,10 +108,12 @@
         
         /* Services Section (My Core Offerings - Needs explicit background to block fixed image) */
         #services {
-            background-color: #f1f1f1 !important; /* Explicit light mode background */
+            background-color: #f1f1f1 !important; 
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
         }
         body.dark-mode #services {
-            background-color: #2d3137 !important; /* A slightly lighter dark background */
+            background-color: #2d3137 !important; 
         }
 
         /* Footer (Needs explicit background to block fixed image) */
@@ -116,29 +123,26 @@
 
         /* --- FIXED BACKGROUND FOR CUSTOM SECTIONS --- */
         #section-background {
-            position: fixed; /* Keep it in the viewport regardless of scroll */
+            position: fixed; 
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Pushes the background element behind all content */
+            z-index: -1; 
             
-            /* !! REPLACE 'path/to/your/image.jpg' WITH YOUR ACTUAL IMAGE PATH !! */
             background-image: url('../new-website/properties/img/Bmxing.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
-            /* Adjust this opacity value (0.0 to 1.0) to control visibility */
             opacity: 0.15; 
         }
 
         .profile-image {
-            width: 150px;
-            height: 150px;
+            width: 130px; 
+            height: 130px;
             border-radius: 50%; 
             object-fit: cover;
-            margin-bottom: 1.5rem; 
+            margin-bottom: 1rem; 
             border: 5px solid white; 
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
             transition: transform 0.3s ease;
@@ -165,6 +169,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             z-index: 10;
             position: relative; 
+            padding: 1.25rem !important; 
         }
         .about-feature-card:hover {
             transform: translateY(-10px) rotate(-1deg);
@@ -175,6 +180,7 @@
             border: none !important; 
             position: relative;
             overflow: hidden;
+            padding: 1.75rem !important; 
         }
 
         .service-card:hover {
@@ -191,12 +197,35 @@
             background-color: #343a40 !important;
         }
         
-        /* FIX: Custom container for the About Me section to limit max width */
+        /* Project Card Size Reduction */
+        .project-item .card {
+            max-width: 340px; /* Limits the horizontal sprawl */
+            margin: 0 auto;
+        }
+        .project-item .card-body {
+            padding: 1.25rem; /* Tighter inner spacing */
+        }
+        .project-item .card-title {
+            font-size: 1.15rem;
+        }
+
+        /* Testimonials Size Reduction */
+        #testimonials .card {
+            max-width: 650px !important; /* Reduced from 800px */
+            border-radius: 12px;
+        }
+        #testimonials .blockquote p {
+            font-size: 1.1rem;
+        }
+
         #about .custom-narrow-container {
-            /* Adjusted to 750px for a slightly wider, but still contained look */
             max-width: 750px; 
             margin: 0 auto;
         }
+
+        h1.display-5 { font-size: 2.5rem; }
+        h2.display-5 { font-size: 2.2rem; }
+        .fs-4 { font-size: 1.25rem !important; } 
     </style>
 </head>
 <body class="bg-light">
@@ -233,10 +262,10 @@
     
     <div id="section-background"></div>
     
-    <section id="hero" class="text-center py-5" data-aos="fade-up">
+    <section id="hero" class="text-center" data-aos="fade-up">
         <div class="container">
             <img 
-                src="https://placehold.co/150x150/ffffff/363A42?text=M.O." 
+                src="../new-website/properties/img/me.png" 
                 alt="Marquis Orchard Profile Picture Placeholder" 
                 class="profile-image mb-4"
                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/000?text=Profile';"
@@ -272,7 +301,7 @@
                             src="../new-website/properties/img/skate.png" 
                             alt="Skateboard element representing BMX and Skate background" 
                             class="mb-3 rounded w-100" 
-                            style="max-width: 150px; height: auto;"
+                            style="max-width: 120px; height: auto;"
                         >
                         
                         <p class="fw-bold text-secondary mb-0 fs-5 mt-2">Precision & Execution</p>
@@ -289,27 +318,27 @@
             <h2 class="text-center mb-5 display-6 fw-light">My Core Offerings </h2> 
             <div class="row text-center justify-content-center">
                 
-                <div class="col-lg-3 col-md-4 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4"> 
                     <div class="p-4 rounded shadow-sm h-100 service-card bg-white">
-                        <i class="ri-bar-chart-box-fill ri-3x mb-3" style="color: #6c757d;"></i> 
+                        <i class="ri-bar-chart-box-fill ri-2x mb-3" style="color: #6c757d;"></i> 
                         <h4 class="mb-3">Research & Strategy</h4>
-                        <p class="text-muted">Conducting user research, analyzing data, and defining clear strategies and information architectures (IA).</p>
+                        <p class="text-muted small">Conducting user research, analyzing data, and defining clear strategies and information architectures (IA).</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-4 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <div class="p-4 rounded shadow-sm h-100 service-card bg-white">
-                        <i class="ri-magic-line ri-3x mb-3" style="color: #007bff;"></i>
+                        <i class="ri-magic-line ri-2x mb-3" style="color: #007bff;"></i>
                         <h4 class="mb-3">Design & Prototyping</h4>
-                        <p class="text-muted">Creating wireframes, high-fidelity mockups, and interactive prototypes for seamless user journeys.</p>
+                        <p class="text-muted small">Creating wireframes, high-fidelity mockups, and interactive prototypes for seamless user journeys.</p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-4 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <div class="p-4 rounded shadow-sm h-100 service-card bg-white">
-                        <i class="ri-code-s-slash-line ri-3x mb-3" style="color: #28a745;"></i>
+                        <i class="ri-code-s-slash-line ri-2x mb-3" style="color: #28a745;"></i>
                         <h4 class="mb-3">Development & Usability</h4>
-                        <p class="text-muted">Implementing designs with clean HTML/CSS code and conducting testing to ensure cross-device performance.</p>
+                        <p class="text-muted small">Implementing designs with clean HTML/CSS code and conducting testing to ensure cross-device performance.</p>
                     </div>
                 </div>
 
@@ -323,30 +352,32 @@
             <a href="../new-website/projects.html" class="btn btn-primary">View ALL Projects</a>
         </div>
         <div class="row project-gallery justify-content-center">
+
+                <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
+                <div class="card shadow w-100">
+                    <img src="../new-website/properties/hartshill img/comingsoon.png" class="card-img-top" alt="Munich Website Concept">
+                    <div class="card-body">
+                        <h5 class="card-title">Hartshill Bible Church Redesign</h5>
+                        <p class="card-text text-muted small">A digital rebrand focusing on information architecture and user flow.</p>
+                        <a href="#" class="btn btn-primary mt-auto">Loading...</a>
+                    </div>
+                </div>
+            </div>
+            
             
            <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
                 <div class="card shadow w-100">
                     <img src="../new-website/properties/img/Bmxing.png" class="card-img-top" alt="Munich Website Concept">
                     <div class="card-body">
                         <h5 class="card-title">Module Reflection Journal</h5>
-                        <p class="card-text text-muted">My Potfolio - Working in a Digital World/ Progression and thinking - Marquis Orchard.</p>
+                        <p class="card-text text-muted small">My Portfolio - Working in a Digital World progression and thinking.</p>
+                        <br>
+                        <br>
                         <a href="../new-website/Reflective case study.html" class="btn btn-primary mt-auto">View Case Study</a>
                     </div>
                 </div>
             </div>
            
-            
-            <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
-                <div class="card shadow w-100">
-                    <img src="../new-website/properties/img/munuch-cards.png" class="card-img-top" alt="Munich Website Concept">
-                    <div class="card-body">
-                        <h5 class="card-title">Munich Website Redesign</h5>
-                        <p class="card-text text-muted">A deep dive into "INFORMATION ARCHITECTURE" and responsive web development.</p>
-                        <a href="../new-website/study.html" class="btn btn-primary mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>
-            
         </div>
     </section>
     
@@ -356,8 +387,8 @@
             <div class="carousel-inner">
                 
                 <div class="carousel-item active">
-                    <div class="card mx-auto" style="max-width: 800px;">
-                        <div class="card-body">
+                    <div class="card mx-auto shadow-sm">
+                        <div class="card-body py-4">
                             <blockquote class="blockquote mb-0">
                                 <p>"Marquis is an incredible designer! His work is always top-notch."</p>
                                 <footer class="blockquote-footer">Jane Doe, <cite title="Company">Tech Corp</cite></footer>
@@ -367,14 +398,11 @@
                 </div>
                 
                 <div class="carousel-item">
-                    <div class="card mx-auto" style="max-width: 800px;">
-                        <div class="card-body">
+                    <div class="card mx-auto shadow-sm">
+                        <div class="card-body py-4">
                             <blockquote class="blockquote mb-0">
-                                <p>"See, I am doing a new thing!
-                                    Now it springs up; do you not perceive it?
-                                I am making a way in the wilderness
-                                    and streams in the wasteland."</p>
-                                <footer class="blockquote-footer">Isaiah 43:19, <cite title="Company">GOD</cite></footer>
+                                <p>"See, I am doing a new thing! Now it springs up; do you not perceive it? I am making a way in the wilderness and streams in the wasteland"</p>
+                                <footer class="blockquote-footer">Isaiah 43:19, <cite title="Source">GOD</cite></footer>
                             </blockquote>
                         </div>
                     </div>
@@ -402,22 +430,13 @@
     <script>
         AOS.init();
 
-        // --- Typing Effect Logic for Hero Tagline with Expanding Binary Field (Hacker Effect) ---
-        
         const textToType = "Web & UX Design Student | Creating User-Centered Digital Experiences";
         const typingElement = document.getElementById('typing-text');
         
-        // Variables for the effect
-        let resolvedIndex = 0; // The index up to which characters are resolved and fixed
-        const glitchCycleSpeed = 10; // milliseconds per cycle (Fast flicker speed)
-        const typingSpeed = 100; // milliseconds per character (Speed at which the resolved text advances)
+        let resolvedIndex = 0; 
+        const glitchCycleSpeed = 10; 
+        const typingSpeed = 100; 
 
-
-        /**
-         * Generates a string of random 0s and 1s of a specified length.
-         * @param {number} length - The desired length of the binary string.
-         * @returns {string} - The random binary string.
-         */
         function generateBinaryString(length) {
             let binaryString = '';
             for (let i = 0; i < length; i++) {
@@ -426,65 +445,39 @@
             return binaryString;
         }
 
-        /**
-         * Simulates the rapid "typing" of the text with a growing binary field.
-         */
         function decodeText() {
             if (resolvedIndex < textToType.length) {
-                
-                // 1. Get the resolved, permanent part of the string
                 const permanentText = textToType.substring(0, resolvedIndex);
-                
-                // 2. Determine the length of the binary field (the remaining unresolved text)
                 const binaryLength = textToType.length - resolvedIndex;
-                
-                // 3. Generate the random binary noise for the remaining length
                 const binaryField = generateBinaryString(binaryLength);
-
-                // 4. Combine and display the full string
                 typingElement.textContent = permanentText + binaryField;
-
-                // 5. Increment the resolved index to fix the next character
                 resolvedIndex++;
-
-                // 6. Loop the next character resolution after a short delay (typingSpeed)
                 setTimeout(decodeText, typingSpeed);
                 
-                // --- Nested Flicker Function for Visual Effect ---
-                // This function rapidly cycles the binary field to make it look active.
                 let flickerCount = 0;
                 const maxFlicker = 5; 
 
                 function flicker() {
                     if (flickerCount < maxFlicker && resolvedIndex < textToType.length) {
-                        // Re-calculate and display the text with new random binary field
                         const currentBinaryLength = textToType.length - resolvedIndex;
                         const currentBinaryField = generateBinaryString(currentBinaryLength);
-                        
                         typingElement.textContent = textToType.substring(0, resolvedIndex) + currentBinaryField;
-                        
                         flickerCount++;
                         setTimeout(flicker, glitchCycleSpeed);
                     }
                 }
-
-                // Start the rapid flicker for visual effect before the next character resolves
                 flicker();
-
             } else {
-                // Text is complete, ensure the final correct text is displayed
                 typingElement.textContent = textToType;
                 typingElement.classList.remove('typing');
             }
         }
 
-        // Start the decoding effect when the window loads
         window.onload = function() {
             if (typingElement) {
                 decodeText();
             }
         }
     </script>
-
 </body>
 </html>

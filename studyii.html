@@ -6,102 +6,125 @@
     <title>Working Class Heroes Website Redesign - UX Case Study</title>
     <link href="../new-website/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* --- FIXED BACKGROUND FOR CUSTOM SECTIONS (ADDED) --- */
+        /* --- FIXED BACKGROUND --- */
         #section-background {
             position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; 
-            
-            /* !! REPLACE 'path/to/your/new/image.jpg' WITH YOUR ACTUAL IMAGE PATH !! */
             background-image: url('../new-website/properties/img/Bmxing.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
-            /* Adjust this opacity value (0.0 to 1.0) to control visibility */
             opacity: 0.15; 
         }
 
-        /* Ensure Header blocks the fixed background image */
         #hero {
-             background-color: #212529 !important; /* Ensure bg-dark remains opaque */
+             background-color: #212529 !important; 
              color: white !important;
         }
 
-        /* Ensure Footer blocks the fixed background image */
         footer {
-             background-color: #212529 !important; /* Ensure bg-dark remains opaque */
+             background-color: #212529 !important; 
              color: white !important;
         }
 
-        /* Specific CSS for this case study */
-        .card-img-top {
-            width: 100%;
+        /* --- COMPACT BROWSER MOCKUP --- */
+        .browser-container {
+            max-width: 750px;
+            margin: 30px auto;
+        }
+
+        .browser-mockup {
+            border-top: 20px solid #333;
+            border-left: 2px solid #333;
+            border-right: 2px solid #333;
+            border-bottom: 2px solid #333;
+            border-radius: 10px;
+            position: relative;
             height: 400px; 
-            object-fit: cover;
-            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+            background: white;
         }
 
-        .card-img-top:hover {
-            transform: scale(1.05);
+        .browser-mockup::before {
+            content: '';
+            position: absolute;
+            top: -14px; left: 12px;
+            width: 6px; height: 6px;
+            background: #ff5f56;
+            border-radius: 50%;
+            box-shadow: 12px 0 0 #ffbd2e, 24px 0 0 #27c93f;
+            z-index: 10;
         }
 
+        .browser-mockup img {
+            width: 100%;
+            height: auto;
+            transition: transform 8s ease-in-out;
+        }
+
+        .browser-mockup:hover img {
+            transform: translateY(-50%); /* Scrolling effect for e-commerce height */
+        }
+
+        .overlay-link {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(33, 37, 41, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            color: white;
+            z-index: 5;
+        }
+
+        .browser-mockup:hover .overlay-link { opacity: 1; }
+
+        .launch-btn {
+            background: #fff;
+            color: #212529;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- DIAGRAM & UI STYLES --- */
         .diagram-img {
-            /* Override for wireframes/sitemaps - ensures diagrams fit */
             height: auto !important;
             object-fit: contain;
             transition: transform 0.3s ease-in-out;
             border: 1px solid #ddd;
             padding: 10px;
+            background: white;
         }
 
-        .wireframe-img {
-            width: 95%; 
-            margin: 0 auto; 
-            display: block; 
-        }
-        
-        /* Ensures the title image fits nicely above the CTA */
-        .project-hero-image {
-            max-height: 500px;
-            object-fit: contain; 
-            margin-bottom: 30px;
-            border-radius: 8px;
-        }
+        .clickable-img { cursor: pointer; }
+        .clickable-img:hover { transform: scale(1.02); }
 
-        .clickable-img {
-            cursor: pointer;
-        }
-
-        /* --- FADE UP ANIMATION STYLES (New) --- */
+        /* --- FADE UP ANIMATION --- */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
-            transition-delay: 0.1s; /* Slight delay for staggered effect */
         }
 
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* --- END FADE UP ANIMATION STYLES --- */
+        .fade-in.appear { opacity: 1; transform: translateY(0); }
+
+        body.dark-mode .card { background-color: #2c3034; color: white; border-color: #444; }
+        body.dark-mode .list-group-item { background-color: transparent; color: #ddd; }
     </style>
 </head>
 <body>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <button class="btn btn-secondary" id="backButton" onclick="window.history.back();">
-                ← Back to Portfolio
-            </button>
-            <button id="darkModeButton" class="btn btn-secondary dark-mode-toggle ms-auto">
-                🌙 Toggle Dark Mode
-            </button>
+            <button class="btn btn-secondary" id="backButton" onclick="window.history.back();">← Back to Portfolio</button>
+            <button id="darkModeButton" class="btn btn-secondary dark-mode-toggle ms-auto">🌙 Toggle Dark Mode</button>
         </div>
     </nav>
 
@@ -134,15 +157,14 @@
                     <p>The original Working Class Heroes e-commerce website suffered from significant "USABILITY AND DESIGN FLAWS" that created friction for users trying to browse and purchase products. The main issues were a cluttered navigation, poor mobile adaptability, and inconsistencies in the checkout process.</p>
                     <p><strong>The Challenge:</strong> To perform a targeted redesign focused on modernizing the aesthetic, simplifying the information architecture, and creating a "SEAMLESS, MOBILE-FIRST SHOPPING EXPERIENCE" to increase conversion rates and customer satisfaction.</p>
                     
-                    <div class="text-center mt-4 fade-in">
-                        <p class="lead text-muted">A look at the redesigned homepage concept:</p>
-                        <a href="../new-website/properties/img/studyiia.jpg" target="_blank" class="text-decoration-none">
-                            <img src="../new-website/properties/img/studyiia.jpg" class="project-hero-image img-fluid shadow-lg clickable-img" alt="Redesigned Homepage Concept Screenshot">
-                            <br>
-                            <button class="btn btn-primary btn-lg mt-3" style="font-size: 1.25rem;">
-                                👀 View Full Redesign Mockups
-                            </button>
-                        </a>
+                    <div class="browser-container">
+                        <p class="lead text-muted text-center">A look at the redesigned homepage concept:</p>
+                        <div class="browser-mockup">
+                            <img src="../new-website/properties/img/studyiia.jpg" alt="Redesigned Homepage Concept Screenshot">
+                            <a href="../new-website/properties/img/studyiia.jpg" target="_blank" class="overlay-link">
+                                <div class="launch-btn">👀 View Full Mockup</div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -192,14 +214,12 @@
                     <p>Conducted a heuristic evaluation to identify violations of usability principles, highlighting the severe navigation and "ERROR-PREVENTION" issues.</p>
                 </div>
             </div>
-            
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm p-3 fade-in">
                     <h3 style="font-size: 1.3rem;">Wireframing Focus</h3>
                     <p>Designed low-fidelity wireframes, focusing on decluttering the homepage and ensuring the core shopping flow worked flawlessly on "MOBILE VIEWPORTS".</p>
                 </div>
             </div>
-
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm p-3 fade-in">
                     <h3 style="font-size: 1.3rem;">Visual Design & Prototyping</h3>
@@ -222,9 +242,7 @@
                     <p>Replaced the busy, static homepage with a clean layout utilizing a "CAROUSEL" for key product categories. This provides a welcoming introduction without overwhelming the user upon arrival.</p>
                 </div>
                 <div class="col-md-6 text-center">
-                    <a href="../new-website/properties/img/studyiia.jpg" target="_blank">
-                        <img src="../new-website/properties/img/studyiia.jpg" class="img-fluid clickable-img diagram-img" alt="Improved Homepage Design">
-                    </a>
+                    <img src="../new-website/properties/img/studyiia.jpg" class="img-fluid clickable-img diagram-img" alt="Improved Homepage Design">
                     <p class="mt-2 text-muted">Redesigned Homepage</p>
                 </div>
             </div>
@@ -235,9 +253,7 @@
                     <p>Introduced a clear, functional search bar with "SUGGESTIVE PROMPTS" and better "ERROR PREVENTION" to quickly guide users to products, reducing the number of 'no result' pages.</p>
                 </div>
                 <div class="col-md-6 text-center order-md-1">
-                    <a href="../new-website/properties/img/studyiib.jpg" target="_blank">
-                        <img src="../new-website/properties/img/studyiib.jpg" class="img-fluid clickable-img diagram-img" alt="Enhanced Search Bar">
-                    </a>
+                    <img src="../new-website/properties/img/studyiib.jpg" class="img-fluid clickable-img diagram-img" alt="Enhanced Search Bar">
                     <p class="mt-2 text-muted">Enhanced Search Bar</p>
                 </div>
             </div>
@@ -248,9 +264,7 @@
                     <p>Revamped product pages to display "REAL-TIME STOCK AVAILABILITY" clearly *before* the user selects a size, preventing frustration and unnecessary clicks for out-of-stock items.</p>
                 </div>
                 <div class="col-md-6 text-center">
-                    <a href="../new-website/properties/img/studyiic.jpg" target="_blank">
-                        <img src="../new-website/properties/img/studyiic.jpg" class="img-fluid clickable-img diagram-img" alt="Redesigned Product Page">
-                    </a>
+                    <img src="../new-website/properties/img/studyiic.jpg" class="img-fluid clickable-img diagram-img" alt="Redesigned Product Page">
                     <p class="mt-2 text-muted">Product Detail Page</p>
                 </div>
             </div>
@@ -261,9 +275,7 @@
                     <p>Simplified the purchasing journey by "CONSOLIDATING ALL CHECKOUT INFORMATION" onto a single, clear page, removing redundant pop-up windows and reducing cognitive load.</p>
                 </div>
                 <div class="col-md-6 text-center order-md-1">
-                    <a href="../new-website/properties/img/studyiid.jpg" target="_blank">
-                        <img src="../new-website/properties/img/studyiid.jpg" class="img-fluid clickable-img diagram-img" alt="Improved Checkout Flow">
-                    </a>
+                    <img src="../new-website/properties/img/studyiid.jpg" class="img-fluid clickable-img diagram-img" alt="Improved Checkout Flow">
                     <p class="mt-2 text-muted">Streamlined Checkout</p>
                 </div>
             </div>
@@ -276,22 +288,16 @@
         <h2>5. Before and After</h2>
         <p>A visual comparison of the original website versus the redesigned version, showcasing the move to a cleaner aesthetic:</p>
 
-        <h3 class="text-muted">Visual Comparison: Before & After</h3>
         <div class="row mt-4">
             <div class="col-md-6 text-center fade-in">
                 <h4>Before (Original Design)</h4>
-                <a href="../new-website/properties/img/studyiie.jpg" target="_blank">
-                    <img src="../new-website/properties/img/studyiie.jpg" class="img-fluid clickable-img diagram-img" alt="Original Homepage Design (Before)">
-                </a>
+                <img src="../new-website/properties/img/studyiie.jpg" class="img-fluid clickable-img diagram-img" alt="Original Design">
             </div>
             <div class="col-md-6 text-center fade-in">
                 <h4>After (Redesigned Concept)</h4>
-                <a href="../new-website/properties/img/studyiia.jpg" target="_blank">
-                    <img src="../new-website/properties/img/studyiia.jpg" class="img-fluid clickable-img diagram-img" alt="New Homepage Design (After)">
-                </a>
+                <img src="../new-website/properties/img/studyiia.jpg" class="img-fluid clickable-img diagram-img" alt="New Design">
             </div>
         </div>
-        
     </section>
 
     <hr>
@@ -307,61 +313,27 @@
             <li>Refinement: Continue refining the site with more dynamic features, like personalized recommendations.</li>
         </ul>
 
-        <br>
- <div class="container">
-          <div class="d-flex justify-content-center mb-3">
-            <a href="../new-website/projects.html" class="btn btn-primary">Back to Projects</a>
+        <div class="d-flex justify-content-center py-5">
+            <a href="../new-website/projects.html" class="btn btn-primary px-4">Back to Projects</a>
         </div>
-        <br>
     </section>
 
-    <footer class="bg-dark text-white text-center py-4 mt-5">
-        <p>&copy; 2025 Working Class Heroes Redesign Case Study</p>
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2026 Working Class Heroes Redesign Case Study</p>
     </footer>
 
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">Full View</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="modalImage" src="" class="img-fluid" alt="Zoomed Image">
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // --- JAVASCRIPT FOR FADE UP ANIMATION ---
         const faders = document.querySelectorAll('.fade-in');
-
-        const appearOptions = {
-            // Margin triggers the animation 10% before the element is fully in view
-            rootMargin: "0px 0px -10% 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        const appearOnScroll = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // When the element is intersecting (in view), add the 'appear' class
                     entry.target.classList.add('appear');
-                    // Stop observing the element once it has appeared
-                    observer.unobserve(entry.target);
                 }
             });
-        }, appearOptions);
-
-        // Loop through all elements with the 'fade-in' class and start observing them
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
-
-        // --- Original Scripts (moved to the end) ---
+        }, { rootMargin: "0px 0px -10% 0px" });
+        faders.forEach(fader => appearOnScroll.observe(fader));
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="../new-website/Jsscript.js"></script>
 </body>
 </html>

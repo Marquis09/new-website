@@ -7,216 +7,173 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../new-website/styles.css">
     <style>
-        /* --- FIXED BACKGROUND FOR CUSTOM SECTIONS (ADDED) --- */
+        /* --- UPDATED: BACKGROUND BOX TO MATCH GALLERY SIZE --- */
         #section-background {
-            position: fixed; /* Keep it in the viewport regardless of scroll */
+            position: fixed; 
             top: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%); 
             width: 100%;
+            max-width: 1100px; 
             height: 100%;
-            z-index: -1; /* Pushes the background element behind all content */
-            
-            /* !! REPLACE 'path/to/your/image.jpg' WITH YOUR ACTUAL IMAGE PATH !! */
+            z-index: -1; 
             background-image: url('../new-website/properties/img/Bmxing.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
-            /* Adjust this opacity value (0.0 to 1.0) to control visibility */
             opacity: 0.15; 
+            border-left: 1px solid rgba(0,0,0,0.05);
+            border-right: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Specific Styles for the Project Gallery to ensure cards are even */
+        /* --- GALLERY & BOX STYLES --- */
+        .project-gallery {
+            max-width: 1100px; 
+            margin: 0 auto;    
+            padding: 0 20px;   
+        }
+
         .card {
+            border: none; /* Cleaner look */
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%; /* Important: ensures card fills its column */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+            height: 100%; 
+            max-width: 300px; 
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9); /* Makes text pop against background */
         }
+        
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
+
         .card-img-top {
             width: 100%;
-            height: 250px; /* Consistent height for all images */
+            height: 160px; 
             object-fit: cover;
+            transition: 0.4s ease;
         }
+
+        .card:hover .card-img-top {
+            filter: contrast(1.1);
+        }
+
         .card-body {
-            padding: 1.5rem;
+            padding: 1.25rem; 
             display: flex; 
             flex-direction: column;
-            min-height: 200px; /* Gives minimum size for content area */
+            min-height: 160px; 
         }
+
         .card-title {
-             min-height: 3rem; /* Ensures consistent space for titles, preventing shifting */
+             font-size: 1.1rem; 
+             min-height: 2.8rem; 
+             font-weight: 800;
+             color: #212529;
         }
+
         .card-text {
-            flex-grow: 1; /* Pushes the button to the bottom for perfect alignment */
+            font-size: 0.85rem; 
+            flex-grow: 1; 
+            line-height: 1.5;
         }
         
-        /* FIX: Ensure Hero and Footer block the fixed background image */
+        /* --- HERO READABILITY FIX (MATCHES REFLECTION) --- */
         .hero-section {
-            /* Using a dark background for the hero for contrast */
-            background-color: #343a40 !important; /* Kept your dark color and added !important */
+            background: linear-gradient(rgba(33, 37, 41, 0.8), rgba(33, 37, 41, 0.8)), #343a40 !important; 
             color: white;
+            padding: 80px 20px !important;
+            border-bottom: 4px solid #0d6efd;
+        }
+
+        .hero-section h1 {
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-section .lead {
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        /* Ensure Footer is opaque (ADDED) */
         footer {
              background-color: #212529 !important;
-             color: white !important; /* Ensure text is white */
-        }
-
-        /* --- NAVIGATION BAR STYLING FOR BUTTON LOOK (User Requested) --- */
-        
-        /* 1. Default links and BRAND look like the user's desired solid gray button (Secondary style) */
-        .navbar .nav-link,
-        .navbar-brand { /* ADDED .navbar-brand here */
-            padding: 8px 12px;
-            margin: 0 5px;
-            border-radius: 8px;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-            font-weight: 600; 
-            
-            /* Default look: Solid Secondary Gray Button (The style the user liked) */
-            background-color: #6c757d !important; /* Secondary color background */
-            color: white !important; /* White text for contrast */
-            border: 1px solid #6c757d !important; 
-        }
-
-        /* 2. Hover state: Slightly darker gray background */
-        .navbar .nav-link:hover,
-        .navbar-brand:hover { /* ADDED .navbar-brand:hover here */
-            background-color: #5a6268 !important; /* Darker secondary on hover */
-            color: white !important; 
-        }
-
-        /* 3. Active state: Use primary blue for high visibility of current page */
-        .navbar .nav-link.active {
-            background-color: #0d6efd !important; /* Primary color background */
-            color: white !important; /* White text for contrast */
-            border-color: #0d6efd !important;
-        }
-
-        /* Updated: Changed toggler icon to dark gray for visibility on light/white navbar */
-        .navbar-toggler-icon {
-            /* Dark gray SVG icon */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23343a40' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%e3%80%89%3csvg%3e") !important;
-        }
-        
-        /* --- DARK MODE READABILITY OVERRIDES --- */
-        
-        body.dark-mode {
-            background-color: #212529 !important; /* Dark background */
-            color: #f8f9fa !important; /* Light default text */
-        }
-        body.dark-mode .bg-light {
-            background-color: #212529 !important; /* Ensure light utility class switches */
-        }
-
-        /* Navigation Bar in Dark Mode */
-        body.dark-mode #navbar {
-            background-color: #212529 !important; 
-            border-color: #495057 !important;
-        }
-        
-        /* Dark Mode overrides for the new button-style links and BRAND (keep consistent) */
-        body.dark-mode .navbar .nav-link,
-        body.dark-mode .navbar-brand { /* ADDED .navbar-brand here */
-            background-color: #6c757d !important; 
-            color: white !important; 
-            border-color: #6c757d !important;
-        }
-
-        body.dark-mode .navbar .nav-link:hover,
-        body.dark-mode .navbar-brand:hover { /* ADDED .navbar-brand:hover here */
-            background-color: #5a6268 !important; 
-            color: white !important;
-        }
-
-        /* Active link remains primary blue in dark mode */
-        body.dark-mode .nav-link.active {
-            background-color: #0d6efd !important; 
-            color: white !important;
-            border-color: #0d6efd !important;
-        }
-
-        /* Muted text should be light grey on dark background (Fixes unreadable text) */
-        body.dark-mode .text-muted {
-            color: #adb5bd !important;
-        }
-
-        /* Card and Footer backgrounds in dark mode */
-        body.dark-mode .card,
-        body.dark-mode footer {
-            background-color: #343a40 !important;
-            border-color: #495057 !important;
-        }
-        
-        /* Dark Mode Toggle button (must be visible) */
-        /* Styling for the new btn-secondary/dark-mode-toggle button */
-        #darkModeButton {
-            color: white; /* White text for light mode button (same as nav links) */
-            background-color: #6c757d !important;
-            border-color: #6c757d !important;
-            font-weight: 600; 
-        }
-        body.dark-mode #darkModeButton {
-            background-color: #343a40 !important;
-            border-color: #adb5bd !important;
-            color: #adb5bd !important;
-        }
-        
-        /* Case study buttons (must be visible) */
-        body.dark-mode .btn-primary {
-             background-color: #0d6efd !important; /* Keep primary blue */
-             border-color: #0d6efd !important;
              color: white !important; 
         }
 
-        /* --- CUSTOM CSS FOR MAXIMUM RIGHT ALIGNMENT --- */
-        /* Custom separation for the dark mode button on desktop (Pushes it further right) */
-        @media (min-width: 992px) {
-            #darkModeButton {
-                /* This is only for aesthetics, as justify-content-end already does the heavy lifting */
-                margin-left: 1rem !important; 
-            }
+        /* NAVIGATION BAR */
+        .navbar .nav-link,
+        .navbar-brand { 
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600; 
+            background-color: #6c757d !important; 
+            color: white !important; 
+            border: 1px solid #6c757d !important; 
+        }
+
+        .navbar .nav-link:hover { 
+            background-color: #0d6efd !important; 
+            border-color: #0d6efd !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar .nav-link.active {
+            background-color: #0d6efd !important; 
+            color: white !important; 
+            border-color: #0d6efd !important;
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+        }
+
+        /* DARK MODE */
+        body.dark-mode {
+            background-color: #1a1d20 !important; 
+            color: #f8f9fa !important; 
+        }
+
+        body.dark-mode .card {
+            background-color: #2b3035 !important;
+            border: 1px solid #3d4246 !important;
+        }
+
+        body.dark-mode .card-title { color: white; }
+        body.dark-mode .card-text { color: #adb5bd !important; }
+
+        #darkModeButton {
+            color: white; 
+            background-color: #6c757d !important;
+            border-color: #6c757d !important;
+            font-weight: 600; 
         }
     </style>
 </head>
 <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="navbar">
-        <div class="container-fluid"> <a class="navbar-brand" href="../new-website/index.html">Marquis Orchard</a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container-fluid"> 
+            <a class="navbar-brand" href="../new-website/index.html">Marquis Orchard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> 
-                
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../new-website/index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../new-website/projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../new-website/contacts.html">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../new-website/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../new-website/projects.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../new-website/contacts.html">Contact</a></li>
                 </ul>
-                <button id="darkModeButton" class="btn btn-secondary dark-mode-toggle ms-3" aria-label="Toggle Dark Mode">
-                    🌙 Toggle Dark Mode
-                </button>
+                <button id="darkModeButton" class="btn btn-secondary ms-3">🌙 Toggle Dark Mode</button>
             </div>
         </div>
     </nav>
 
     <div id="section-background"></div>
 
-    <header class="hero-section text-center p-5 mb-5 shadow-sm">
+    <header class="hero-section text-center shadow-sm">
         <div class="container">
             <h1 class="display-4">UX & Development Portfolio</h1>
             <p class="lead">Welcome to the Projects Page, showcasing my work in "USER EXPERIENCE", web development, and "FRONT-END DESIGN".</p>
@@ -224,7 +181,10 @@
     </header>
 
     <section class="container py-3" id="projects">
-        <h2 class="text-center mb-5">Selected Case Studies</h2>
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Selected Case Studies</h2>
+            <div class="mx-auto" style="width: 50px; height: 3px; background: #0d6efd; margin-top: -10px;"></div>
+        </div>
         
         <div class="d-flex justify-content-center mb-5">
             <p class="text-muted text-center" style="max-width: 600px;">
@@ -232,56 +192,68 @@
             </p>
         </div>
         
-        <div class="row project-gallery justify-content-center">
+        <div class="row project-gallery justify-content-center g-4">
 
-             <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
-                <div class="card shadow w-100">
-                    <img src="../new-website/properties/img/Bmxing.png" class="card-img-top" alt="Munich Website Concept">
+            <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
+                <div class="card shadow-sm w-100">
+                    <img src="../new-website/properties/hartshill img/comingsoon.png" class="card-img-top" alt="Hartshill Bible Church">
+                    <div class="card-body">
+                        <h5 class="card-title">Hartshill Bible Church Redesign</h5>
+                        <p class="card-text text-muted">A comprehensive digital rebrand and "Bento-Style" rebuild, focusing on information architecture and user flow.</p>
+                        <a href="#" class="btn btn-primary btn-sm mt-auto">loading...</a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
+                <div class="card shadow-sm w-100">
+                    <img src="../new-website/properties/img/Bmxing.png" class="card-img-top" alt="Reflection Journal">
                     <div class="card-body">
                         <h5 class="card-title">Module Reflection Journal</h5>
                         <p class="card-text text-muted">My Potfolio: Working in a Digital World - Marquis Orchard.</p>
-                        <a href="../new-website/Reflective case study.html" class="btn btn-primary mt-auto">View Case Study</a>
+                        <a href="../new-website/Reflective case study.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
                     </div>
                 </div>
             </div>
         
-            <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
-                <div class="card shadow w-100">
-                    <img src="../new-website/properties/img/munuch-cards.png" class="card-img-top" alt="Munich Website Concept">
+            <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
+                <div class="card shadow-sm w-100">
+                    <img src="../new-website/properties/img/munuch-cards.png" class="card-img-top" alt="Munich Website">
                     <div class="card-body">
                         <h5 class="card-title">Munich Website Redesign</h5>
                         <p class="card-text text-muted">A deep dive into "INFORMATION ARCHITECTURE" and responsive web development.</p>
-                        <a href="../new-website/study.html" class="btn btn-primary mt-auto">View Case Study</a>
+                        <a href="../new-website/study.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4 project-item HTML mb-4 d-flex">
-                <div class="card shadow w-100">
-                    <img src="../new-website/properties/img/heropng.png" class="card-img-top" alt="Working Class Heroes E-commerce Site">
+            <div class="col-12 col-md-6 col-lg-4 project-item HTML d-flex">
+                <div class="card shadow-sm w-100">
+                    <img src="../new-website/properties/img/heropng.png" class="card-img-top" alt="E-commerce Site">
                     <div class="card-body">
                         <h5 class="card-title">Working Class Heroes E-commerce Redesign</h5>
                         <p class="card-text text-muted">Focus on "MOBILE-FIRST UX" and improving the checkout conversion funnel.</p>
-                        <a href="../new-website/studyii.html" class="btn btn-primary mt-auto">View Case Study</a>
+                        <a href="../new-website/studyii.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
                     </div>
                 </div>
             </div>      
             
-            <div class="col-12 col-md-6 col-lg-4 project-item HTML mb-4 d-flex">
-                <div class="card shadow w-100">
-                    <img src="../new-website/properties/img/mmupng.gif" class="card-img-top" alt="MMU TV Website Platform">
+            <div class="col-12 col-md-6 col-lg-4 project-item HTML d-flex">
+                <div class="card shadow-sm w-100">
+                    <img src="../new-website/properties/img/mmupng.gif" class="card-img-top" alt="MMU TV">
                     <div class="card-body">
                         <h5 class="card-title">MMU TV Community Platform</h5>
                         <p class="card-text text-muted">Full-stack front-end development of a "COMMUNITY MEDIA HUB".</p>
-                        <a href="../new-website/studyiii.html" class="btn btn-primary mt-auto">View Case Study</a>
+                        <a href="../new-website/studyiii.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
                     </div>
                 </div>
             </div>      
         </div>
     </section>
 
-    <footer class="text-center py-4 mt-5 border-top" id="footer">
-        <p>&copy; 2025 Marquis Orchard. All rights reserved. | <a href="mailto:marquisorchard95@yahoo.com">Contact Me</a></p>
+    <footer class="text-center py-5 mt-5 border-top" id="footer">
+        <p class="mb-1">&copy; 2026 Marquis Orchard. All rights reserved.</p>
+        <p><a href="mailto:marquisorchard95@yahoo.com" class="text-decoration-none">Contact Me: marquisorchard23@gmail.com</a></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

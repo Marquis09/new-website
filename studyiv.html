@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hartshill Bible Church - UX Case Study</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../new-website/styles.css">
+    <style>
+        /* --- FIXED BACKGROUND --- */
+        #section-background {
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; 
+            background-image: url('../new-website/properties/img/Bmxing.png'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15; 
+        }
+
+        #hero {
+             background-color: #1B4332 !important; 
+             color: white !important;
+        }
+
+        footer {
+             background-color: #1B4332 !important; 
+             color: white !important;
+        }
+        
+        .card-img-top {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .card-img-top:hover { transform: scale(1.03); }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        }
+
+        .fade-in.appear { opacity: 1; transform: translateY(0); }
+
+        .clickable-img { cursor: pointer; }
+        
+        .ux-pill {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #dcfce7;
+            color: #166534;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* --- COMPACT BROWSER MOCKUP --- */
+        .browser-container {
+            max-width: 650px; /* Reduced width to keep it compact */
+            margin: 0 auto;
+        }
+
+        .browser-mockup {
+            border-top: 20px solid #333; /* Thinner top bar */
+            border-left: 2px solid #333;
+            border-right: 2px solid #333;
+            border-bottom: 2px solid #333;
+            border-radius: 10px;
+            position: relative;
+            height: 350px; /* Controlled height so it isn't too big */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            background: #fff;
+        }
+
+        /* Browser Dots */
+        .browser-mockup::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 10px;
+            width: 6px;
+            height: 6px;
+            background: #ff5f56;
+            border-radius: 50%;
+            box-shadow: 12px 0 0 #ffbd2e, 24px 0 0 #27c93f;
+            z-index: 10;
+        }
+
+        /* Scrolling Image Effect */
+        .browser-mockup img {
+            width: 100%;
+            height: auto;
+            transition: transform 6s ease-in-out; /* Smooth scroll on hover */
+        }
+
+        .browser-mockup:hover img {
+            transform: translateY(-50%); /* Adjust based on image length */
+        }
+
+        .overlay-link {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(27, 67, 50, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            z-index: 5;
+        }
+
+        .browser-mockup:hover .overlay-link {
+            opacity: 1;
+        }
+
+        .launch-btn {
+            background: #fff;
+            color: #1B4332;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Dark Mode adjustments */
+        body.dark-mode .card, body.dark-mode .table { background-color: #2c3034; color: white; border-color: #444; }
+        body.dark-mode .list-group-item { background-color: transparent; color: #ddd; }
+        body.dark-mode .table-light { background-color: #3d4246; color: white; }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <button class="btn btn-secondary" onclick="window.history.back();">← Back to Projects</button>
+            <button id="darkModeButton" class="btn btn-secondary ms-auto">🌙 Toggle Dark Mode</button>
+        </div>
+    </nav>
+    
+    <div id="section-background"></div>
+
+    <header id="hero" class="p-5 text-center shadow">
+        <div class="container fade-in" style="max-width: 900px;">
+            <h1>Hartshill Bible Church Redesign - UX Case Study</h1>
+            <p class="lead">From a text-dense archive to a welcoming community hub: A study in <strong>Information Architecture</strong> and <strong>Modern Bento Design</strong>.</p>
+        </div>
+    </header>
+
+    <section class="container mt-5 mb-5" style="max-width: 1100px;">
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card p-3 shadow-sm fade-in">
+                    <h3 class="card-title text-success" style="font-size: 1.5rem; font-weight: bold;">Project Details</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>My Role:</strong> Lead UX/UI Designer</li>
+                        <li class="list-group-item"><strong>Tools:</strong> Figma, Bootstrap, JS</li>
+                        <li class="list-group-item"><strong>Key Feature:</strong> Google Maps API Integration</li>
+                        <li class="list-group-item mt-2">
+                            <a href="../new-website/index.html" class="btn btn-success w-100 btn-sm">View Live Site</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="fade-in">
+                    <h2>1. The Narrative: Bridging the Digital & Physical</h2>
+                    <p>The original website functioned as a static digital archive—a repository for church policies and legal documents. While deep in information, it lacked <strong>Utility</strong>. It served the existing congregation but created a barrier for new visitors who needed to know one thing: <em>"How do I get there?"</em></p>
+                    
+                    <div class="card border-0 shadow-sm mt-4 overflow-hidden">
+                        <div class="card-header bg-dark text-white p-3">
+                            <h5 class="mb-0">The Digital Evolution Audit</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th class="text-danger">Legacy State</th>
+                                        <th class="text-success">Improved Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Navigation</strong></td>
+                                        <td>Text-heavy menus with deep nesting.</td>
+                                        <td><strong>Bento Tiles:</strong> Instant visual recognition.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Location Info</strong></td>
+                                        <td>Plain text address (hard to copy/paste).</td>
+                                        <td><strong>Live Maps Integration:</strong> One-click navigation.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mobile UX</strong></td>
+                                        <td>Static; required "Pinch-to-Zoom."</td>
+                                        <td><strong>Responsive:</strong> 12-column fluid grid.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-5 fade-in" style="max-width: 900px;">
+        <span class="ux-pill">User Centered Design</span>
+        <h2>2. Target Audience & User Needs</h2>
+        <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+                <div class="p-4 bg-white rounded shadow-sm h-100 border-start border-success border-4">
+                    <h5>Target User: The Visitor</h5>
+                    <p class="small text-muted">"I'm driving there now and need the GPS location quickly."</p>
+                    <p class="small"><strong>UX Solution:</strong> High-visibility "Plan Your Visit" page with a direct clickable Google Maps link to eliminate friction.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="p-4 bg-white rounded shadow-sm h-100 border-start border-primary border-4">
+                    <h5>Target User: The Member</h5>
+                    <p class="small text-muted">"I want to listen back to last week's teaching."</p>
+                    <p class="small"><strong>UX Solution:</strong> Direct access to a sermon archive card with clear audio-visual cues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="container mt-5" style="max-width: 900px;">
+        <div class="fade-in">
+            <h2>3. Key Design Solutions</h2>
+            <p>I shifted the focus from 'hosting text' to 'guiding users' through visual storytelling and functional tools.</p>
+        </div>
+
+        <div class="row mt-5 align-items-center fade-in">
+            <div class="col-md-6">
+                <h3 class="text-success">Solution 1: Bento Grid IA</h3>
+                <p>By implementing a <strong>Bento Box logic</strong>, I reduced the "Interaction Cost." Users no longer have to dig through menus; instead, the church’s core ministries are presented as equal, scannable priorities.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../new-website/properties/hartshill img/Bendoboxes.png" class="img-fluid clickable-img card-img-top shadow" alt="Bento Architecture">
+            </div>
+        </div>
+
+        <div class="row mt-5 align-items-center fade-in">
+            <div class="col-md-6 text-center order-md-2">
+                <h3 class="text-success">Solution 2: Brand & Accessibility</h3>
+                <p>I introduced a "Nature-Inspired" palette. Deep greens symbolize growth, while soft creams provide <strong>high legibility</strong> for older demographics, meeting accessibility standards (WCAG).</p>
+            </div>
+            <div class="col-md-6 text-center order-md-1">
+                <img src="../new-website/properties/hartshill img/brandcolors.png" class="img-fluid clickable-img card-img-top shadow" alt="Color Palette">
+            </div>
+        </div>
+
+        <div class="row mt-5 align-items-center fade-in">
+            <div class="col-md-6">
+                <h3 class="text-success">Solution 3: The "Plan Your Visit" Funnel</h3>
+                <p>To bridge the gap between digital browsing and physical visiting, I designed a dedicated "Plan Your Visit" landing page. The centerpiece is a <strong>one-click Google Maps integration</strong>, allowing mobile users to launch GPS navigation directly from the browser.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../new-website/properties/hartshill img/map.png" class="img-fluid clickable-img card-img-top shadow" alt="Google Maps Integration">
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-5 py-4 fade-in text-center">
+        <span class="ux-pill">Live Preview</span>
+        <h3 class="mb-3">Explore the Transformation</h3>
+        <p class="text-muted mb-4 small">Hover to scroll the preview, click to launch the live site.</p>
+        
+        <div class="browser-container">
+            <div class="browser-mockup">
+                <img src="../new-website/properties/hartshill img/landing.png" alt="Website Preview">
+                <a href="../new-website/index.html" target="_blank" class="overlay-link">
+                    <span class="launch-btn">Launch Live Site 🚀</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-5 fade-in" style="max-width: 900px;">
+        <hr>
+        <h2>4. Technical Reflection</h2>
+        <p>This project was an exercise in <strong>Utility-First Design</strong>. The biggest improvement was cleaning up the "Wall of Text" and replacing it with actionable tools like external links and scannable grids.</p>
+
+        <h3 class="text-muted mt-4">Future Iterations</h3>
+        <ul>
+            <li><strong>Live API:</strong> Moving from a static map link to a dynamic embedded Google Maps API.</li>
+            <li><strong>RSVP Form:</strong> A simple Javascript-based contact form for new visitors.</li>
+        </ul>
+
+        <div class="d-flex justify-content-center gap-3 py-5">
+            <a href="../new-website/projects.html" class="btn btn-outline-success px-4 shadow-sm">Back to Projects</a>
+        </div>
+    </section>
+
+    <footer class="text-center py-4">
+        <p>&copy; 2026 Marquis Orchard | Hartshill Bible Church UX Case Study</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, { rootMargin: "0px 0px -10% 0px" });
+        faders.forEach(fader => appearOnScroll.observe(fader));
+    </script>
+    <script src="../new-website/Jsscript.js"></script>
+</body>
+</html>
