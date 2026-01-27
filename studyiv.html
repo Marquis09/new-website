@@ -4,11 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hartshill Bible Church - UX Case Study</title>
+    <title>UX Case Study | Bento Grid Transformation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../new-website/styles.css">
     <style>
-        /* --- FIXED BACKGROUND --- */
+        /* --- DARK MODE VARIABLES --- */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --nav-bg: #ffffff;
+            --border-color: #dee2e6;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --nav-bg: #1e1e1e;
+            --border-color: #333333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- CORE STYLES --- */
         #section-background {
             position: fixed; 
             top: 0; left: 0; width: 100%; height: 100%;
@@ -16,40 +39,15 @@
             background-image: url('../new-website/properties/img/Bmxing.png'); 
             background-size: cover;
             background-position: center;
-            opacity: 0.15; 
+            opacity: 0.12; 
         }
 
-        #hero {
-             background-color: #1B4332 !important; 
-             color: white !important;
-        }
+        #hero { background-color: #1B4332 !important; color: white !important; }
 
-        footer {
-             background-color: #1B4332 !important; 
-             color: white !important;
-        }
-        
-        .card-img-top {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s ease-in-out;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
+        .navbar { background-color: var(--nav-bg) !important; border-bottom: 1px solid var(--border-color); }
+        .card { background-color: var(--card-bg) !important; color: var(--text-color); border: 1px solid var(--border-color) !important; }
+        .comparison-frame { background-color: var(--card-bg); border: 1px solid var(--border-color); }
 
-        .card-img-top:hover { transform: scale(1.03); }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
-        }
-
-        .fade-in.appear { opacity: 1; transform: translateY(0); }
-
-        .clickable-img { cursor: pointer; }
-        
         .ux-pill {
             display: inline-block;
             padding: 4px 12px;
@@ -61,258 +59,181 @@
             margin-bottom: 10px;
         }
 
-        /* --- COMPACT BROWSER MOCKUP --- */
-        .browser-container {
-            max-width: 650px; /* Reduced width to keep it compact */
-            margin: 0 auto;
+        .stakeholder-callout {
+            border-left: 5px solid #27c93f;
+            background: rgba(39, 201, 63, 0.05);
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
         }
+
+        .video-container {
+            background: #000;
+            line-height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        video { display: block; width: 100%; height: auto; }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        }
+        .fade-in.appear { opacity: 1; transform: translateY(0); }
 
         .browser-mockup {
-            border-top: 20px solid #333; /* Thinner top bar */
-            border-left: 2px solid #333;
-            border-right: 2px solid #333;
-            border-bottom: 2px solid #333;
-            border-radius: 10px;
+            border-top: 30px solid #333;
+            border-radius: 12px;
             position: relative;
-            height: 350px; /* Controlled height so it isn't too big */
+            height: 500px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            background: #fff;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
+        .browser-mockup img { width: 100%; transition: transform 8s ease-in-out; }
+        .browser-mockup:hover img { transform: translateY(-60%); }
 
-        /* Browser Dots */
-        .browser-mockup::before {
-            content: '';
-            position: absolute;
-            top: -14px;
-            left: 10px;
-            width: 6px;
-            height: 6px;
-            background: #ff5f56;
-            border-radius: 50%;
-            box-shadow: 12px 0 0 #ffbd2e, 24px 0 0 #27c93f;
-            z-index: 10;
-        }
-
-        /* Scrolling Image Effect */
-        .browser-mockup img {
-            width: 100%;
-            height: auto;
-            transition: transform 6s ease-in-out; /* Smooth scroll on hover */
-        }
-
-        .browser-mockup:hover img {
-            transform: translateY(-50%); /* Adjust based on image length */
-        }
-
-        .overlay-link {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(27, 67, 50, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            z-index: 5;
-        }
-
-        .browser-mockup:hover .overlay-link {
-            opacity: 1;
-        }
-
-        .launch-btn {
-            background: #fff;
-            color: #1B4332;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Dark Mode adjustments */
-        body.dark-mode .card, body.dark-mode .table { background-color: #2c3034; color: white; border-color: #444; }
-        body.dark-mode .list-group-item { background-color: transparent; color: #ddd; }
-        body.dark-mode .table-light { background-color: #3d4246; color: white; }
+        .feature-icon { font-size: 1.5rem; margin-right: 15px; color: #27c93f; }
     </style>
 </head>
 
 <body>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-light shadow-sm sticky-top">
         <div class="container">
-            <button class="btn btn-secondary" onclick="window.history.back();">← Back to Projects</button>
-            <button id="darkModeButton" class="btn btn-secondary ms-auto">🌙 Toggle Dark Mode</button>
+            <a href="../new-website/projects.html" class="btn btn-outline-secondary btn-sm">← Back to Portfolio</a>
+            <div class="ms-auto d-flex align-items-center">
+                <button id="theme-toggle" class="btn btn-outline-dark btn-sm me-3">🌙 Dark Mode</button>
+                <span class="fw-bold text-success d-none d-md-inline">UX Case Study</span>
+            </div>
         </div>
     </nav>
     
     <div id="section-background"></div>
 
     <header id="hero" class="p-5 text-center shadow">
-        <div class="container fade-in" style="max-width: 900px;">
-            <h1>Hartshill Bible Church Redesign - UX Case Study</h1>
-            <p class="lead">From a text-dense archive to a welcoming community hub: A study in <strong>Information Architecture</strong> and <strong>Modern Bento Design</strong>.</p>
+        <div class="container fade-in">
+            <h1>Project H: Community Hub Redesign</h1>
+            <p class="lead">From Text-Heavy Archives to <strong>Bento Grid Architecture</strong></p>
         </div>
     </header>
 
-    <section class="container mt-5 mb-5" style="max-width: 1100px;">
+    <section class="container mt-5" style="max-width: 1100px;">
         <div class="row">
             <div class="col-lg-3 mb-4">
-                <div class="card p-3 shadow-sm fade-in">
-                    <h3 class="card-title text-success" style="font-size: 1.5rem; font-weight: bold;">Project Details</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>My Role:</strong> Lead UX/UI Designer</li>
-                        <li class="list-group-item"><strong>Tools:</strong> Figma, Bootstrap, JS</li>
-                        <li class="list-group-item"><strong>Key Feature:</strong> Google Maps API Integration</li>
-                        <li class="list-group-item mt-2">
-                            <a href="../new-website/index.html" class="btn btn-success w-100 btn-sm">View Live Site</a>
-                        </li>
-                    </ul>
+                <div class="card p-4 shadow-sm fade-in h-100">
+                    <h5 class="text-success fw-bold">Executive Summary</h5>
+                    <hr>
+                    <p class="small"><strong>Challenge:</strong> Modernize a text-dense legacy site without changing the familiar layout.</p>
+                    <p class="small"><strong>Solution:</strong> Lumia-inspired Bento Grid UI.</p>
+                    <p class="small"><strong>Milestone:</strong> Design preferred over incumbent professional agency work.</p>
+                    <a href="#live-demo" class="btn btn-success w-100 mt-3">View Live Prototype</a>
                 </div>
             </div>
 
             <div class="col-lg-9">
                 <div class="fade-in">
-                    <h2>1. The Narrative: Bridging the Digital & Physical</h2>
-                    <p>The original website functioned as a static digital archive—a repository for church policies and legal documents. While deep in information, it lacked <strong>Utility</strong>. It served the existing congregation but created a barrier for new visitors who needed to know one thing: <em>"How do I get there?"</em></p>
+                    <h2>1. The Vision: Same Layout, Better UI</h2>
+                    <p>I set out to prove that <strong>Information Architecture</strong> doesn't have to be overwhelming. I kept the structural layout the client was used to, but completely overhauled the <strong>Visual Interface</strong>. By removing the "Wall of Text," I created an environment that is action-oriented and accessible to all ages.</p>
                     
-                    <div class="card border-0 shadow-sm mt-4 overflow-hidden">
-                        <div class="card-header bg-dark text-white p-3">
-                            <h5 class="mb-0">The Digital Evolution Audit</h5>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover mb-0 align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Feature</th>
-                                        <th class="text-danger">Legacy State</th>
-                                        <th class="text-success">Improved Result</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Navigation</strong></td>
-                                        <td>Text-heavy menus with deep nesting.</td>
-                                        <td><strong>Bento Tiles:</strong> Instant visual recognition.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Location Info</strong></td>
-                                        <td>Plain text address (hard to copy/paste).</td>
-                                        <td><strong>Live Maps Integration:</strong> One-click navigation.</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Mobile UX</strong></td>
-                                        <td>Static; required "Pinch-to-Zoom."</td>
-                                        <td><strong>Responsive:</strong> 12-column fluid grid.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="stakeholder-callout">
+                        <h5 class="text-success">Stakeholder Impact</h5>
+                        <p class="mb-0 italic">"During the final presentation, the organization’s leadership highlighted how the reduction in text-heavy sections made the core message more impactful and the site significantly faster to navigate."</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="container mt-5 fade-in" style="max-width: 900px;">
-        <span class="ux-pill">User Centered Design</span>
-        <h2>2. Target Audience & User Needs</h2>
-        <div class="row mt-4">
-            <div class="col-md-6 mb-4">
-                <div class="p-4 bg-white rounded shadow-sm h-100 border-start border-success border-4">
-                    <h5>Target User: The Visitor</h5>
-                    <p class="small text-muted">"I'm driving there now and need the GPS location quickly."</p>
-                    <p class="small"><strong>UX Solution:</strong> High-visibility "Plan Your Visit" page with a direct clickable Google Maps link to eliminate friction.</p>
+        <div class="row mt-5 pt-5 fade-in align-items-center">
+            <div class="col-md-5">
+                <span class="ux-pill">UI Innovation</span>
+                <h3>The "Lumia" Bento Transformation</h3>
+                <p>The defining change was the implementation of a <strong>Bento Box UI</strong>. This modular approach allowed me to keep the same site structure while drastically improving the UX:</p>
+                
+                <div class="mt-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="feature-icon">◈</div>
+                        <div><strong>Modular UI:</strong> Information is broken into scannable tiles.</div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="feature-icon">◎</div>
+                        <div><strong>Touch Targets:</strong> Perfect for mobile and elderly users.</div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="feature-icon">✦</div>
+                        <div><strong>Zero Bloat:</strong> 60% less text on screen for clarity.</div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 mb-4">
-                <div class="p-4 bg-white rounded shadow-sm h-100 border-start border-primary border-4">
-                    <h5>Target User: The Member</h5>
-                    <p class="small text-muted">"I want to listen back to last week's teaching."</p>
-                    <p class="small"><strong>UX Solution:</strong> Direct access to a sermon archive card with clear audio-visual cues.</p>
+            <div class="col-md-7 text-center">
+                <div class="comparison-frame p-3 shadow-sm rounded">
+                    <p class="small fw-bold text-muted mb-2">Interaction Walkthrough</p>
+                    <div class="video-container shadow-sm">
+                        <video width="100%" height="auto" autoplay loop muted playsinline class="rounded">
+                            <source src="../new-website/properties/hartshill img/bento-walkthrough.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <hr>
-
-    <section class="container mt-5" style="max-width: 900px;">
-        <div class="fade-in">
-            <h2>3. Key Design Solutions</h2>
-            <p>I shifted the focus from 'hosting text' to 'guiding users' through visual storytelling and functional tools.</p>
-        </div>
-
-        <div class="row mt-5 align-items-center fade-in">
-            <div class="col-md-6">
-                <h3 class="text-success">Solution 1: Bento Grid IA</h3>
-                <p>By implementing a <strong>Bento Box logic</strong>, I reduced the "Interaction Cost." Users no longer have to dig through menus; instead, the church’s core ministries are presented as equal, scannable priorities.</p>
+        <div class="row mt-5 pt-5 fade-in">
+            <div class="col-12 text-center mb-4">
+                <h2>The Evolution: Text-Heavy to Bento-Light</h2>
+                <p class="text-muted">Comparing the legacy agency design to my proposed redesign.</p>
             </div>
-            <div class="col-md-6 text-center">
-                <img src="../new-website/properties/hartshill img/Bendoboxes.png" class="img-fluid clickable-img card-img-top shadow" alt="Bento Architecture">
+            
+            <div class="col-md-6 mb-4">
+                <span class="badge bg-danger mb-2">Legacy Design</span>
+                <div class="comparison-frame p-2">
+                    <img src="../new-website/properties/hartshill img/HartshillBefore.png" class="img-fluid rounded" alt="Legacy Site Design">
+                </div>
             </div>
-        </div>
 
-        <div class="row mt-5 align-items-center fade-in">
-            <div class="col-md-6 text-center order-md-2">
-                <h3 class="text-success">Solution 2: Brand & Accessibility</h3>
-                <p>I introduced a "Nature-Inspired" palette. Deep greens symbolize growth, while soft creams provide <strong>high legibility</strong> for older demographics, meeting accessibility standards (WCAG).</p>
-            </div>
-            <div class="col-md-6 text-center order-md-1">
-                <img src="../new-website/properties/hartshill img/brandcolors.png" class="img-fluid clickable-img card-img-top shadow" alt="Color Palette">
+            <div class="col-md-6 mb-4">
+                <span class="badge bg-success mb-2">Proposed Redesign</span>
+                <div class="comparison-frame p-2">
+                    <img src="../new-website/properties/hartshill img/HartshillAfter.png" class="img-fluid rounded" alt="Proposed Bento UI">
+                </div>
             </div>
         </div>
 
-        <div class="row mt-5 align-items-center fade-in">
-            <div class="col-md-6">
-                <h3 class="text-success">Solution 3: The "Plan Your Visit" Funnel</h3>
-                <p>To bridge the gap between digital browsing and physical visiting, I designed a dedicated "Plan Your Visit" landing page. The centerpiece is a <strong>one-click Google Maps integration</strong>, allowing mobile users to launch GPS navigation directly from the browser.</p>
-            </div>
-            <div class="col-md-6 text-center">
-                <img src="../new-website/properties/hartshill img/map.png" class="img-fluid clickable-img card-img-top shadow" alt="Google Maps Integration">
+        <div id="live-demo" class="mt-5 pt-5 text-center fade-in">
+            <span class="ux-pill">Technical Implementation</span>
+            <h2>Responsive Prototype</h2>
+            <div class="browser-mockup mx-auto mt-4" style="max-width: 900px;">
+                <img src="../new-website/properties/hartshill img/full-landing.png" alt="Full Site Scrolling Preview">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
+                    <a href="../new-website/index.html" target="_blank" class="btn btn-success btn-lg px-5 shadow-lg">Launch Live Site 🚀</a>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section class="container mt-5 py-4 fade-in text-center">
-        <span class="ux-pill">Live Preview</span>
-        <h3 class="mb-3">Explore the Transformation</h3>
-        <p class="text-muted mb-4 small">Hover to scroll the preview, click to launch the live site.</p>
-        
-        <div class="browser-container">
-            <div class="browser-mockup">
-                <img src="../new-website/properties/hartshill img/landing.png" alt="Website Preview">
-                <a href="../new-website/index.html" target="_blank" class="overlay-link">
-                    <span class="launch-btn">Launch Live Site 🚀</span>
-                </a>
-            </div>
+        <div class="mt-5 py-5 fade-in text-center">
+            <hr>
+            <h3 class="mt-4">Technical & Ethical Reflection</h3>
+            <p class="mx-auto" style="max-width: 800px;">To respect the privacy of the organization, identifying content has been sanitized. This project highlights my ability to take an agency-managed "wall of text" and transform it into a modern <strong>Modular UI</strong> that satisfies both user needs and stakeholder goals.</p>
+            <a href="../new-website/projects.html" class="btn btn-outline-success mt-3">Explore More Projects</a>
         </div>
     </section>
 
-    <section class="container mt-5 fade-in" style="max-width: 900px;">
-        <hr>
-        <h2>4. Technical Reflection</h2>
-        <p>This project was an exercise in <strong>Utility-First Design</strong>. The biggest improvement was cleaning up the "Wall of Text" and replacing it with actionable tools like external links and scannable grids.</p>
-
-        <h3 class="text-muted mt-4">Future Iterations</h3>
-        <ul>
-            <li><strong>Live API:</strong> Moving from a static map link to a dynamic embedded Google Maps API.</li>
-            <li><strong>RSVP Form:</strong> A simple Javascript-based contact form for new visitors.</li>
-        </ul>
-
-        <div class="d-flex justify-content-center gap-3 py-5">
-            <a href="../new-website/projects.html" class="btn btn-outline-success px-4 shadow-sm">Back to Projects</a>
-        </div>
-    </section>
-
-    <footer class="text-center py-4">
-        <p>&copy; 2026 Marquis Orchard | Hartshill Bible Church UX Case Study</p>
+    <footer class="text-center py-5 border-top mt-5">
+        <p class="small mb-0 text-muted">&copy; 2026 Marquis Orchard | UX & Web Engineering</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        /* --- DARK MODE LOGIC --- */
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerText = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+            themeToggle.className = isDark ? 'btn btn-outline-dark btn-sm me-3' : 'btn btn-outline-light btn-sm me-3';
+        });
+
+        /* --- SCROLL ANIMATION --- */
         const faders = document.querySelectorAll('.fade-in');
         const appearOnScroll = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -320,9 +241,8 @@
                     entry.target.classList.add('appear');
                 }
             });
-        }, { rootMargin: "0px 0px -10% 0px" });
+        }, { threshold: 0.1 });
         faders.forEach(fader => appearOnScroll.observe(fader));
     </script>
-    <script src="../new-website/Jsscript.js"></script>
 </body>
 </html>
