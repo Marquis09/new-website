@@ -93,6 +93,13 @@
         body.dark-mode .bg-dark {
             background-color: #343a40 !important;
         }
+
+        /* Fixed Section Heading visibility for Dark Mode */
+        body.dark-mode h2,
+        body.dark-mode h4,
+        body.dark-mode h5 {
+            color: #ffffff !important;
+        }
         
         /* Hero Section Styling (RESTORED ORIGINAL DARK BACKGROUND) */
         #hero {
@@ -165,6 +172,7 @@
 
         /* --- NEW SECTION STYLES --- */
         .about-feature-card {
+            background-color: #f8f9fa; /* Moved inline light style here */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             z-index: 10;
@@ -197,6 +205,19 @@
             background-color: #343a40 !important;
         }
         
+        body.dark-mode .card {
+            background-color: #2b3035 !important;
+            border: 1px solid #3d4246 !important;
+        }
+        body.dark-mode .card-text,
+        body.dark-mode .text-muted,
+        body.dark-mode .blockquote-footer {
+            color: #adb5bd !important;
+        }
+        body.dark-mode .blockquote p {
+            color: #ffffff !important;
+        }
+
         /* Project Card Size Reduction */
         .project-item .card {
             max-width: 340px; /* Limits the horizontal sprawl */
@@ -265,7 +286,7 @@
     <section id="hero" class="text-center" data-aos="fade-up">
         <div class="container">
             <img 
-                src="../new-website/properties/img/me.png" 
+                src="../new-website/properties/img/newdp.jpeg" 
                 alt="Marquis Orchard Profile Picture Placeholder" 
                 class="profile-image mb-4"
                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/000?text=Profile';"
@@ -291,19 +312,16 @@
                     <p class="fs-6">Hello! I’m Marquis Orchard.</p> 
                     <p class="fs-6"> My approach to design and development is rooted in strong foundations (my faith) and the pursuit of flawless execution (my background in BMX/Skate).</p>
                     <p class="fs-6">I am a UX professional who combines strategic planning, front-end development skills (HTML/CSS), and visual design to create intuitive, engaging, and polished user experiences that work flawlessly across all devices.</p>
-
                 </div>
                 
                 <div class="col-lg-5 col-md-5 text-center">
-                    <div class="p-4 rounded shadow-lg d-inline-block about-feature-card" style="background-color: #f8f9fa;">
-                        
+                    <div class="p-4 rounded shadow-lg d-inline-block about-feature-card">
                         <img 
                             src="../new-website/properties/img/skate.png" 
                             alt="Skateboard element representing BMX and Skate background" 
                             class="mb-3 rounded w-100" 
                             style="max-width: 120px; height: auto;"
                         >
-                        
                         <p class="fw-bold text-secondary mb-0 fs-5 mt-2">Precision & Execution</p>
                         <p class="text-muted small mb-0">Inspired by BMX/Skate discipline.</p>
                     </div>
@@ -353,27 +371,24 @@
         </div>
         <div class="row project-gallery justify-content-center">
 
-                <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
+            <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
+                <div class="card shadow w-100">
+                    <img src="../new-website/properties/vtuber/stellacover.png" class="card-img-top" alt="Project Coward VTuber Hub Layout">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Coward: Interactive ARG Interface</h5>
+                        <p class="card-text text-muted small">An interactive horror site using shifting layouts and dynamic code to drive the story.</p>
+                        <a href="../new-website/studyv.html" class="btn btn-primary mt-auto">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
                 <div class="card shadow w-100">
                     <img src="../new-website/properties/img/Hartshill.png" class="card-img-top" alt="Munich Website Concept">
                     <div class="card-body">
                         <h5 class="card-title">Hartshill Bible Church Redesign</h5>
                         <p class="card-text text-muted small">A digital rebrand focusing on information architecture and user flow.</p>
                         <a href="../new-website/studyiv.html" class="btn btn-primary mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>
-            
-            
-           <div class="col-12 col-md-6 col-lg-4 project-item Figma mb-4 d-flex">
-                <div class="card shadow w-100">
-                    <img src="../new-website/properties/img/Bmxing.png" class="card-img-top" alt="Munich Website Concept">
-                    <div class="card-body">
-                        <h5 class="card-title">Module Reflection Journal</h5>
-                        <p class="card-text text-muted small">My Portfolio - Working in a Digital World progression and thinking.</p>
-                        <br>
-                        <br>
-                        <a href="../new-website/Reflective case study.html" class="btn btn-primary mt-auto">View Case Study</a>
                     </div>
                 </div>
             </div>
@@ -407,6 +422,42 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Testimonial 1: From the Lead Artist regarding UI Translation -->
+                <div class="carousel-item">
+                    <div class="card mx-auto shadow-sm">
+                        <div class="card-body py-4">
+                            <blockquote class="blockquote mb-0">
+                                <p>"Marquis perfectly translated my static designs into interactive code. He beautifully brought the dual-state UI shift to life after clicking record."</p>
+                                <footer class="blockquote-footer">Isabella, <cite title="Role">Lead 2D Artist</cite></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2: From the Lead Writer regarding the ARG Mechanics -->
+                <div class="carousel-item">
+                    <div class="card mx-auto shadow-sm">
+                        <div class="card-body py-4">
+                            <blockquote class="blockquote mb-0">
+                                <p>"The code became an active storyteller. The password portal gate and glitch-decay logic built the precise psychological tension our script needed."</p>
+                                <footer class="blockquote-footer">Sam, <cite title="Role">Lead Writer & Streamer</cite></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3: From the PR Manager regarding Project Flexibility -->
+                <div class="carousel-item">
+                    <div class="card mx-auto shadow-sm">
+                        <div class="card-body py-4">
+                            <blockquote class="blockquote mb-0">
+                                <p>"When social media platforms blocked our assets, Marquis saved the project. He rapidly adapted the site to host the experience entirely on-platform."</p>
+                                <footer class="blockquote-footer">Mike, <cite title="Role">PR & Project Manager</cite></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
@@ -421,7 +472,7 @@
     </section>
     
     <footer class="text-center py-4 bg-dark text-white border-top">
-        <p>&copy; 2025 Marquis Orchard. All rights reserved.</p>
+        <p>&copy; 2026 Marquis Orchard. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

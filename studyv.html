@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Case Study | Interactive ARG Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../new-website/styles.css">
+    <style>
+        /* --- DARK MODE VARIABLES --- */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --nav-bg: #ffffff;
+            --border-color: #dee2e6;
+            --text-muted: #6c757d;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0b0c10;
+            --text-color: #e0e0e0;
+            --card-bg: #1f2833;
+            --nav-bg: #1f2833;
+            --border-color: #45a29e;
+            --text-muted: #a9b7c6;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- CORE STYLES --- */
+       
+         #section-background {
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; 
+            background-image: url('../new-website/properties/img/Bmxing.png'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; 
+        }
+
+        #hero { background-color: #311e3b !important; color: white !important; }
+
+        .navbar { background-color: var(--nav-bg) !important; border-bottom: 1px solid var(--border-color); }
+        .card { background-color: var(--card-bg) !important; color: var(--text-color); border: 1px solid var(--border-color) !important; }
+        .comparison-frame { background-color: var(--card-bg); border: 1px solid var(--border-color); }
+
+        .ux-pill {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #fce7f3;
+            color: #9d174d;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stakeholder-callout {
+            border-left: 5px solid #a21caf;
+            background: rgba(162, 28, 175, 0.04);
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .video-container {
+            background: #000;
+            line-height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        video { display: block; width: 100%; height: auto; }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        }
+        .fade-in.appear { opacity: 1; transform: translateY(0); }
+
+        .browser-mockup {
+            border-top: 30px solid #333;
+            border-radius: 12px;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        .browser-mockup img { width: 100%; transition: transform 8s ease-in-out; }
+        .browser-mockup:hover img { transform: translateY(-50%); }
+
+        .feature-icon { font-size: 1.5rem; margin-right: 15px; color: #a21caf; }
+        
+        .readable-text { max-width: 750px; }
+        .text-custom-muted { color: var(--text-muted); }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light shadow-sm sticky-top">
+        <div class="container">
+            <a href="../new-website/projects.html" class="btn btn-outline-secondary btn-sm">← Back to Portfolio</a>
+            <div class="ms-auto d-flex align-items-center">
+                <button id="theme-toggle" class="btn btn-outline-dark btn-sm me-3">🌙 Dark Mode</button>
+                <span class="fw-bold text-magenta d-none d-md-inline" style="color: #a21caf;">UX Case Study</span>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="section-background"></div>
+
+    <header id="hero" class="p-5 text-center shadow">
+        <div class="container fade-in">
+            <h1>Project Coward: Interactive ARG Interface</h1>
+            <p class="lead">From Wholesome Community Portal to <strong>Glitch-Driven Psychological Horror</strong></p>
+        </div>
+    </header>
+
+    <section class="container mt-5" style="max-width: 1100px;">
+        <div class="row">
+            <!-- Left Sidebar Meta Column -->
+            <div class="col-lg-4 mb-4">
+                <div class="card p-4 shadow-sm fade-in sticky-lg-top" style="top: 90px; z-index: 1;">
+                    <h5 class="fw-bold style-heading" style="color: #a21caf;">Executive Summary</h5>
+                    <hr>
+                    <p class="small"><strong>Challenge:</strong> Build an immersive web terminal for an Alternate Reality Game that bridges web infrastructure with live external platforms like Twitter, Reddit, and Instagram.</p>
+                    <p class="small"><strong>Solution:</strong> An integrated digital ecosystem using dynamic state mutation scripting, secure portal verification, and cross-platform hyperlinks to weaponize user tracking behavior.</p>
+                    
+                    <h5 class="fw-bold style-heading mt-4 small text-uppercase tracking-wider" style="color: #a21caf;">Project Metadata</h5>
+                    <hr class="mt-1">
+                    <div class="row g-2 small mb-3">
+                        <div class="col-5" id="meta-label"><strong>My Role:</strong></div>
+                        <div class="col-7 text-custom-muted">Lead Web & UI Developer</div>
+                        
+                        <div class="col-5"><strong>Team Size:</strong></div>
+                        <div class="col-7 text-custom-muted">6 (Engineering, Visual Arts, Narrative, PR)</div>
+                        
+                        <div class="col-5"><strong>Duration:</strong></div>
+                        <div class="col-7 text-custom-muted">CoLabs 4 Campaign Launch</div>
+                        
+                        <div class="col-5"><strong>Stack:</strong></div>
+                        <div class="col-7 text-custom-muted">HTML5, CSS3, JavaScript (ES6+)</div>
+                    </div>
+
+                    <a href="https://marquis09.github.io/vtuber/" target="_blank" class="btn btn-dark w-100 mt-2" style="background-color: #311e3b; border: none;">View Live Hub</a>
+                </div>
+            </div>
+
+            <!-- Right Main Content Column -->
+            <div class="col-lg-8">
+                <div class="fade-in mb-5">
+                    <h2>1. The Vision: Immersive Environmental Storytelling</h2>
+                    <p class="readable-text">For the multi-layered psychological horror ARG <em>"Coward"</em>, my core mission was to construct an operational central hub called "VTuber Nexus" for the fictional streamer Stella, Guardian of Moths. Rather than building an isolated sandbox layout, I wanted the code to act as a porous narrative web. By tying our native UI directly to active external pipelines on <strong>Twitter, Reddit, and Instagram</strong>, the application functions as an interconnected maze that rewards analytical user tracking and blurs the lines between reality and fiction.</p>
+                    
+                    <div class="stakeholder-callout readable-text">
+                        <h4 class="h5 fw-bold" style="color: #a21caf; letter-spacing: 0.5px;">Cross-Functional Collaboration</h4>
+                        <p class="small text-custom-muted mb-3">To ensure our code paradigms and design assets moved smoothly across external platform environments, I worked heavily across disciplines:</p>
+                        <ul class="small ps-3 mb-0" style="list-style-type: square;">
+                            <li class="mb-2"><strong>Bridging Design & Code:</strong> Partnered closely with our 2D Lead Artist, Isabella, to optimize and slice custom assets, banner art, and UI stickers for use on both our native interface and our external social channel skins.</li>
+                            <li class="mb-2"><strong>Cross-Platform Infrastructure:</strong> Managed hyperlinking frameworks and deep-linking hooks with our Writing Lead, Sam, and PR Lead, Mike, ensuring clues uncovered on Reddit and Instagram navigated users cleanly back into our secure system terminal.</li>
+                            <li><strong>Unified Storytelling Pipeline:</strong> Synthesized multimedia fragments, including creepy environmental render files from our 3D Specialist, Kirsty, into a responsive grid capable of handling variable cross-origin referrals.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Dual State -->
+        <div class="row mt-4 pt-4 fade-in align-items-center">
+            <div class="col-md-5">
+                <span class="ux-pill">Interactive Engineering</span>
+                <h3>The Dual-State Architecture</h3>
+                <p>The entire web space is engineered around progressive psychological tension, requiring technical problem-solving to dynamically transform native layouts and handle outgoing platform pathways:</p>
+                
+                <div class="mt-4">
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="feature-icon">🔒</div>
+                        <div><strong>The Portal Gate:</strong> A secure frontend authentication dashboard panel. Requiring specific hardcoded system credentials (<code>admin</code> / <code>password123</code>), it rewards players who discover administrative codes hidden inside live social media threads.</div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="feature-icon">🔴</div>
+                        <div><strong>The Record Trigger:</strong> Hitting the 'Record' interaction interface directly displays the dynamic glitch effects on screen, operating as our narrative pivot point to instantly break down structural styles.</div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="feature-icon">⚡</div>
+                        <div><strong>Dynamic Theme Degradation:</strong> Utilizing client-side JavaScript DOM overrides, dynamic merchandise pricing alterations, and corrupted image swaps to simulate a platform undergoing total data corruption after the glitch event fires.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 text-center mt-4 mt-md-0">
+                <div class="comparison-frame p-3 shadow-sm rounded">
+                    <p class="small fw-bold text-muted mb-2">The Cozy Hub Interface</p>
+                    <div class="shadow-sm">
+                        <img src="../new-website/properties/vtuber/stella1.png" class="img-fluid rounded" alt="Wholesome Community Grid View">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: The Evolution -->
+        <div class="row mt-5 pt-5 fade-in">
+            <div class="col-12 text-center mb-4">
+                <h2>The Evolution: System Stability to Total Corruption</h2>
+                <p class="text-muted mx-auto readable-text">A comparative technical breakdown demonstrating how the interface architecture distorts instantly following user interaction triggers.</p>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <span class="badge bg-secondary mb-2">Stable Environment</span>
+                <div class="comparison-frame p-2 rounded shadow-sm">
+                    <img src="../new-website/properties/vtuber/vtuberbefore.png" class="img-fluid rounded" alt="Cozy Portal Hub Layout">
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <span class="badge bg-danger mb-2">Glitch Layout Mutation</span>
+                <div class="comparison-frame p-2 rounded shadow-sm">
+                    <img src="../new-website/properties/vtuber/vtuberafter.png" class="img-fluid rounded" alt="Corrupted Grid State View">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Testing Grounds -->
+        <div id="live-demo" class="mt-5 pt-5 text-center fade-in">
+            <span class="ux-pill">Live Prototype & Mechanics</span>
+            <h2>Responsive Testing Grounds</h2>
+            <div class="browser-mockup mx-auto mt-4" style="max-width: 900px;">
+                <img src="../new-website/properties/vtuber/vtuberlogin.png" alt="Merchandise Page Asset View">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
+                    <a href="https://marquis09.github.io/vtuber/" target="_blank" class="btn btn-danger btn-lg px-5 shadow-lg" style="background-color: #a21caf; border: none;">Launch Live Hub 🚀</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: STAR Structured Adaptability Section -->
+        <div class="mt-5 py-5 fade-in">
+            <hr>
+            <div class="text-center mb-4">
+                <span class="ux-pill">Agile Problem Solving</span>
+                <h3 class="mt-2">Technical Challenges & Team Adaptability</h3>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <h5>The Challenge (Situation)</h5>
+                            <p class="text-custom-muted small">Our digital storytelling roadmap called for deep structural dependencies across live channels on Twitter, Reddit, and Instagram. However, right before launch, our custom automated character feed was unexpectedly flagged and shadowbanned by Twitter's safety algorithms due to its high-velocity fictional activity. This sudden break in the external chain threatened to isolate our central web hub and fracture the game's progression loop.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Our Team Pivot (Action)</h5>
+                            <p class="text-custom-muted small">Moving rapidly to safeguard our live launch window, I quickly re-engineered the website routing map. I adjusted the outbound channel directories to re-weight traffic toward our active Reddit and Instagram nodes, while simultaneously baking simulated fallbacks and dynamic string replacement protocols into the frontend code to keep the story fluid even if a user hit an algorithmically restricted dead-end.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>The Impact (Result)</h5>
+                            <p class="text-custom-muted small">This rapid infrastructure optimization successfully protected our cross-media UX. It kept players moving fluidly through our live external platforms, prevented dead links from breaking immersion, and allowed our group to launch a highly successful, cross-origin alternate reality game right on schedule.</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="../new-website/projects.html" class="btn btn-outline-dark mt-2">Explore More Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-5 border-top mt-5">
+        <p class="small mb-0 text-muted">&copy; 2026 Marquis Orchard | UX & Web Engineering</p>
+    </footer>
+
+    <script>
+        /* --- DARK MODE LOGIC --- */
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerText = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+            themeToggle.className = isDark ? 'btn btn-outline-dark btn-sm me-3' : 'btn btn-outline-light btn-sm me-3';
+        });
+
+        /* --- SCROLL ANIMATION --- */
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, { threshold: 0.1 });
+        faders.forEach(fader => appearOnScroll.observe(fader));
+    </script>
+</body>
+</html>

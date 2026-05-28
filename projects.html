@@ -41,7 +41,7 @@
             height: 100%; 
             max-width: 300px; 
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9); /* Makes text pop against background */
+            background-color: rgba(255, 255, 255, 0.9); /* Replaced 'background' shortcut with background-color */
         }
         
         .card:hover {
@@ -130,25 +130,41 @@
             box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
         }
 
-        /* DARK MODE */
+        /* --- FIXED DARK MODE READABILITY OVERRIDES --- */
         body.dark-mode {
             background-color: #1a1d20 !important; 
             color: #f8f9fa !important; 
         }
 
         body.dark-mode .card {
-            background-color: #2b3035 !important;
+            background-color: #2b3035 !important; /* Overrides the white transparency cleanly */
             border: 1px solid #3d4246 !important;
         }
 
-        body.dark-mode .card-title { color: white; }
-        body.dark-mode .card-text { color: #adb5bd !important; }
+        body.dark-mode .card-title { 
+            color: #ffffff !important; 
+        }
+
+        body.dark-mode .card-text,
+        body.dark-mode .text-muted { 
+            color: #adb5bd !important; 
+        }
+
+        body.dark-mode h2 {
+            color: #ffffff !important;
+        }
 
         #darkModeButton {
             color: white; 
             background-color: #6c757d !important;
             border-color: #6c757d !important;
             font-weight: 600; 
+        }
+
+        body.dark-mode #darkModeButton {
+            background-color: #343a40 !important;
+            border-color: #adb5bd !important;
+            color: #adb5bd !important;
         }
     </style>
 </head>
@@ -193,6 +209,17 @@
         </div>
         
         <div class="row project-gallery justify-content-center g-4">
+
+            <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
+                <div class="card shadow-sm w-100">
+                    <img src="../new-website/properties/vtuber/stellacover.png" class="card-img-top" alt="Project Coward VTuber Hub Layout">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Coward: Interactive ARG Interface</h5>
+                        <p class="card-text text-muted">An immersive psychological horror hub built using custom UI layout mutations and dynamic code blocks to drive user-driven storytelling.</p>
+                        <a href="../new-website/studyv.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
                 <div class="card shadow-sm w-100">
