@@ -15,6 +15,9 @@
             --card-bg: #ffffff;
             --nav-bg: #ffffff;
             --border-color: #dee2e6;
+            --text-muted: #6c757d;
+            --accent-green: #166534;
+            --callout-bg: rgba(39, 201, 63, 0.05);
         }
 
         [data-theme="dark"] {
@@ -23,6 +26,9 @@
             --card-bg: #1e1e1e;
             --nav-bg: #1e1e1e;
             --border-color: #333333;
+            --text-muted: #a9b7c6;
+            --accent-green: #4ade80; /* Brighter, high-contrast green for dark backgrounds */
+            --callout-bg: rgba(74, 222, 128, 0.08);
         }
 
         body {
@@ -39,14 +45,17 @@
             background-image: url('../new-website/properties/img/Bmxing.png'); 
             background-size: cover;
             background-position: center;
-            opacity: 0.12; 
+            opacity: 0.04; 
         }
 
         #hero { background-color: #1B4332 !important; color: white !important; }
 
         .navbar { background-color: var(--nav-bg) !important; border-bottom: 1px solid var(--border-color); }
         .card { background-color: var(--card-bg) !important; color: var(--text-color); border: 1px solid var(--border-color) !important; }
-        .comparison-frame { background-color: var(--card-bg); border: 1px solid var(--border-color); }
+        .comparison-frame { background-color: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); }
+
+        /* Accessible Accent Green Mapping */
+        .text-success-custom { color: var(--accent-green) !important; font-weight: 700; }
 
         .ux-pill {
             display: inline-block;
@@ -57,14 +66,21 @@
             font-size: 0.8rem;
             font-weight: 700;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="dark"] .ux-pill {
+            background: #166534;
+            color: #dcfce7;
         }
 
         .stakeholder-callout {
-            border-left: 5px solid #27c93f;
-            background: rgba(39, 201, 63, 0.05);
+            border-left: 5px solid var(--accent-green);
+            background: var(--callout-bg);
             padding: 25px;
             border-radius: 0 10px 10px 0;
             margin: 20px 0;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .video-container {
@@ -94,17 +110,23 @@
         .browser-mockup img { width: 100%; transition: transform 8s ease-in-out; }
         .browser-mockup:hover img { transform: translateY(-60%); }
 
-        .feature-icon { font-size: 1.5rem; margin-right: 15px; color: #27c93f; }
+        .feature-icon { font-size: 1.5rem; margin-right: 15px; color: var(--accent-green); }
+        
+        /* Custom Overrides to target stubborn nested utility text elements */
+        .text-custom-muted { color: var(--text-muted) !important; }
+        .card p, .card h5, .card strong { color: var(--text-color); }
+        .card h5.text-success-custom { color: var(--accent-green) !important; }
+        hr { color: var(--border-color); opacity: 0.6; }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-light shadow-sm sticky-top">
         <div class="container">
-            <a href="../new-website/projects.html" class="btn btn-outline-secondary btn-sm">← Back to Portfolio</a>
+            <a id="back-portfolio-btn" href="../new-website/projects.html" class="btn btn-outline-dark btn-sm">← Back to Portfolio</a>
             <div class="ms-auto d-flex align-items-center">
                 <button id="theme-toggle" class="btn btn-outline-dark btn-sm me-3">🌙 Dark Mode</button>
-                <span class="fw-bold text-success d-none d-md-inline">UX Case Study</span>
+                <span class="text-success-custom d-none d-md-inline">UX Case Study</span>
             </div>
         </div>
     </nav>
@@ -122,7 +144,7 @@
         <div class="row">
             <div class="col-lg-3 mb-4">
                 <div class="card p-4 shadow-sm fade-in h-100">
-                    <h5 class="text-success fw-bold">Executive Summary</h5>
+                    <h5 class="text-success-custom">Executive Summary</h5>
                     <hr>
                     <p class="small"><strong>Challenge:</strong> Modernize a text-dense legacy site without changing the familiar layout.</p>
                     <p class="small"><strong>Solution:</strong> Lumia-inspired Bento Grid UI.</p>
@@ -137,8 +159,8 @@
                     <p>I set out to prove that <strong>Information Architecture</strong> doesn't have to be overwhelming. I kept the structural layout the client was used to, but completely overhauled the <strong>Visual Interface</strong>. By removing the "Wall of Text," I created an environment that is action-oriented and accessible to all ages.</p>
                     
                     <div class="stakeholder-callout">
-                        <h5 class="text-success">Stakeholder Impact</h5>
-                        <p class="mb-0 italic">"During the final presentation, the organization’s leadership highlighted how the reduction in text-heavy sections made the core message more impactful and the site significantly faster to navigate."</p>
+                        <h5 class="text-success-custom">Stakeholder Impact</h5>
+                        <p class="mb-0 fst-italic" style="color: var(--text-color);">"During the final presentation, the organization’s leadership highlighted how the reduction in text-heavy sections made the core message more impactful and the site significantly faster to navigate."</p>
                     </div>
                 </div>
             </div>
@@ -167,7 +189,7 @@
             </div>
             <div class="col-md-7 text-center">
                 <div class="comparison-frame p-3 shadow-sm rounded">
-                    <p class="small fw-bold text-muted mb-2">Interaction Walkthrough</p>
+                    <p class="small fw-bold text-custom-muted mb-2">Interaction Walkthrough</p>
                     <div class="video-container shadow-sm">
                         <video width="100%" height="auto" autoplay loop muted playsinline class="rounded">
                             <source src="../new-website/properties/hartshill img/bento-walkthrough.mp4" type="video/mp4">
@@ -180,7 +202,7 @@
         <div class="row mt-5 pt-5 fade-in">
             <div class="col-12 text-center mb-4">
                 <h2>The Evolution: Text-Heavy to Bento-Light</h2>
-                <p class="text-muted">Comparing the legacy agency design to my proposed redesign.</p>
+                <p class="text-custom-muted">Comparing the legacy agency design to my proposed redesign.</p>
             </div>
             
             <div class="col-md-6 mb-4">
@@ -212,7 +234,7 @@
         <div class="mt-5 py-5 fade-in text-center">
             <hr>
             <h3 class="mt-4">Technical & Ethical Reflection</h3>
-            <p class="mx-auto" style="max-width: 800px;">To respect the privacy of the organization, identifying content has been sanitized. This project highlights my ability to take an agency-managed "wall of text" and transform it into a modern <strong>Modular UI</strong> that satisfies both user needs and stakeholder goals.</p>
+            <p class="mx-auto text-custom-muted" style="max-width: 800px;">To respect the privacy of the organization, identifying content has been sanitized. This project highlights my ability to take an agency-managed "wall of text" and transform it into a modern <strong>Modular UI</strong> that satisfies both user needs and stakeholder goals.</p>
             <a href="../new-website/projects.html" class="btn btn-outline-success mt-3">Explore More Projects</a>
         </div>
     </section>
@@ -224,13 +246,21 @@
     <script>
         /* --- DARK MODE LOGIC --- */
         const themeToggle = document.getElementById('theme-toggle');
+        const backBtn = document.getElementById('back-portfolio-btn');
         const body = document.body;
 
         themeToggle.addEventListener('click', () => {
             const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            const nextState = isDark ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', nextState);
+            
+            // Dynamic text updates
             themeToggle.innerText = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+            
+            // Dynamic Bootstrap context color class replacements to protect visibility
             themeToggle.className = isDark ? 'btn btn-outline-dark btn-sm me-3' : 'btn btn-outline-light btn-sm me-3';
+            backBtn.className = isDark ? 'btn btn-outline-dark btn-sm' : 'btn btn-outline-light btn-sm';
         });
 
         /* --- SCROLL ANIMATION --- */
