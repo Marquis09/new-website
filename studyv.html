@@ -1,302 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX Case Study | Interactive ARG Interface</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../new-website/styles.css">
+    <title>Project_Coward_Case_Study.txt - Notepad</title>
+    <link href="../new-website/styles.css" rel="stylesheet">
     <style>
-        /* --- DARK MODE VARIABLES --- */
-        :root {
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
-            --card-bg: #ffffff;
-            --nav-bg: #ffffff;
-            --border-color: #dee2e6;
-            --text-muted: #6c757d;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #0b0c10;
-            --text-color: #e0e0e0;
-            --card-bg: #1f2833;
-            --nav-bg: #1f2833;
-            --border-color: #45a29e;
-            --text-muted: #a9b7c6;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #008080;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
         }
 
-        /* --- CORE STYLES --- */
-       
-         #section-background {
-            position: fixed; 
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; 
-            background-image: url('../new-website/properties/img/Bmxing.png'); 
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1; 
+        .win95-maximized-workspace {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            background: #cbd0d4;
+            padding: 4px;
+            z-index: 999;
         }
 
-        #hero { background-color: #311e3b !important; color: white !important; }
-
-        .navbar { background-color: var(--nav-bg) !important; border-bottom: 1px solid var(--border-color); }
-        .card { background-color: var(--card-bg) !important; color: var(--text-color); border: 1px solid var(--border-color) !important; }
-        .comparison-frame { background-color: var(--card-bg); border: 1px solid var(--border-color); }
-
-        .ux-pill {
-            display: inline-block;
-            padding: 4px 12px;
-            background: #fce7f3;
-            color: #9d174d;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .win95-main-body {
+            flex: 1;
+            background: #fff;
+            border: 2px inset #fff;
+            overflow-y: auto;
+            color: #000;
+            padding: 0;
         }
 
-        .stakeholder-callout {
-            border-left: 5px solid #a21caf;
-            background: rgba(162, 28, 175, 0.04);
-            padding: 25px;
-            border-radius: 0 10px 10px 0;
+        .document-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .meta-sidebar-95 {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 1px 1px 0 #000;
+        }
+
+        .meta-list-95 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .meta-list-95 li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #cbd0d4;
+            font-size: 14px;
+        }
+
+        .meta-list-95 li:last-child {
+            border-bottom: none;
+        }
+
+        .system-row-95 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .system-col-6 {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .classic-quote-95 {
+            background: #ffffe0;
+            border-left: 4px solid #808080;
+            padding: 15px 20px;
             margin: 20px 0;
+            font-style: italic;
         }
 
-        .video-container {
-            background: #000;
-            line-height: 0;
-            border-radius: 8px;
-            overflow: hidden;
+        .image-preview-frame {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 15px;
+            margin: 25px 0;
+            text-align: center;
         }
 
-        video { display: block; width: 100%; height: auto; }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        .image-preview-frame img,
+        .image-preview-frame video {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #808080;
+            display: block;
+            margin: 0 auto 10px auto;
         }
-        .fade-in.appear { opacity: 1; transform: translateY(0); }
 
-        .browser-mockup {
-            border-top: 30px solid #333;
-            border-radius: 12px;
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        .artifact-grid-95 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
-        .browser-mockup img { width: 100%; transition: transform 8s ease-in-out; }
-        .browser-mockup:hover img { transform: translateY(-50%); }
 
-        .feature-icon { font-size: 1.5rem; margin-right: 15px; color: #a21caf; }
-        
-        .readable-text { max-width: 750px; }
-        .text-custom-muted { color: var(--text-muted); }
+        .artifact-card-95 {
+            background: #f0f0f0;
+            border: 1px solid #808080;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .artifact-card-95 img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border: 1px solid #808080;
+            background: #fff;
+            margin-bottom: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #000;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 35px;
+            border-bottom: 2px solid #cbd0d4;
+            padding-bottom: 6px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            line-height: 1.6;
+            font-size: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #808080;
+            border-bottom: 1px solid #fff;
+            margin: 30px 0;
+        }
     </style>
 </head>
-
 <body>
-    <nav class="navbar navbar-light shadow-sm sticky-top">
-        <div class="container">
-            <a href="../new-website/projects.html" class="btn btn-outline-secondary btn-sm">← Back to Portfolio</a>
-            <div class="ms-auto d-flex align-items-center">
-                <button id="theme-toggle" class="btn btn-outline-dark btn-sm me-3">🌙 Dark Mode</button>
-                <span class="fw-bold text-magenta d-none d-md-inline" style="color: #a21caf;">UX Case Study</span>
-            </div>
+
+<div class="binary-layer" id="binaryLayer"></div>
+<div class="noise-overlay"></div>
+
+<header class="win95-taskbar" style="position: fixed; top: 0; left: 0; right: 0; height: 40px; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4px; background: #cbd0d4; border-bottom: 2px solid #808080;">
+    <div class="taskbar-tasks" style="display: flex; align-items: center; flex: 1;">
+        <div class="win95-task-tab active" style="display: flex; align-items: center; background: #fff; border: 2px inset #fff; padding: 2px 12px; font-size: 12px; height: 24px; font-weight: bold; box-shadow: 1px 1px 0 #000;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="icon">
+            Project_Coward_Case_Study.txt
         </div>
-    </nav>
-    
-    <div id="section-background"></div>
+    </div>
+    <div class="win95-system-tray" style="display: flex; align-items: center; background: #cbd0d4; border: 2px inset #fff; padding: 2px 8px; font-size: 12px; height: 24px; box-shadow: 1px 1px 0 #000;">
+        <span id="win95-clock">16:35 PM</span>
+    </div>
+</header>
 
-    <header id="hero" class="p-5 text-center shadow">
-        <div class="container fade-in">
-            <h1>Project Coward: Interactive ARG Interface</h1>
-            <p class="lead">From Wholesome Community Portal to <strong>Glitch-Driven Psychological Horror</strong></p>
+<div class="win95-maximized-workspace">
+    <div class="window-titlebar" style="cursor: default; display: flex; align-items: center; justify-content: space-between; background: #000080; color: #fff; padding: 3px 6px; font-weight: bold; font-size: 13px;">
+        <div class="title-text" style="display: flex; align-items: center;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="">
+            Project_Coward_Case_Study.txt - Notepad
         </div>
-    </header>
-
-    <section class="container mt-5" style="max-width: 1100px;">
-        <div class="row">
-            <!-- Left Sidebar Meta Column -->
-            <div class="col-lg-4 mb-4">
-                <div class="card p-4 shadow-sm fade-in sticky-lg-top" style="top: 90px; z-index: 1;">
-                    <h5 class="fw-bold style-heading" style="color: #a21caf;">Executive Summary</h5>
-                    <hr>
-                    <p class="small"><strong>Challenge:</strong> Build an immersive web terminal for an Alternate Reality Game that bridges web infrastructure with live external platforms like Twitter, Reddit, and Instagram.</p>
-                    <p class="small"><strong>Solution:</strong> An integrated digital ecosystem using dynamic state mutation scripting, secure portal verification, and cross-platform hyperlinks to weaponize user tracking behavior.</p>
-                    
-                    <h5 class="fw-bold style-heading mt-4 small text-uppercase tracking-wider" style="color: #a21caf;">Project Metadata</h5>
-                    <hr class="mt-1">
-                    <div class="row g-2 small mb-3">
-                        <div class="col-5" id="meta-label"><strong>My Role:</strong></div>
-                        <div class="col-7 text-custom-muted">Lead Web & UI Developer</div>
-                        
-                        <div class="col-5"><strong>Team Size:</strong></div>
-                        <div class="col-7 text-custom-muted">6 (Engineering, Visual Arts, Narrative, PR)</div>
-                        
-                        <div class="col-5"><strong>Duration:</strong></div>
-                        <div class="col-7 text-custom-muted">CoLabs 4 Campaign Launch</div>
-                        
-                        <div class="col-5"><strong>Stack:</strong></div>
-                        <div class="col-7 text-custom-muted">HTML5, CSS3, JavaScript (ES6+)</div>
-                    </div>
-
-                    <a href="https://marquis09.github.io/vtuber/" target="_blank" class="btn btn-dark w-100 mt-2" style="background-color: #311e3b; border: none;">View Live Hub</a>
-                </div>
-            </div>
-
-            <!-- Right Main Content Column -->
-            <div class="col-lg-8">
-                <div class="fade-in mb-5">
-                    <h2>1. The Vision: Immersive Environmental Storytelling</h2>
-                    <p class="readable-text">For the multi-layered psychological horror ARG <em>"Coward"</em>, my core mission was to construct an operational central hub called "VTuber Nexus" for the fictional streamer Stella, Guardian of Moths. Rather than building an isolated sandbox layout, I wanted the code to act as a porous narrative web. By tying our native UI directly to active external pipelines on <strong>Twitter, Reddit, and Instagram</strong>, the application functions as an interconnected maze that rewards analytical user tracking and blurs the lines between reality and fiction.</p>
-                    
-                    <div class="stakeholder-callout readable-text">
-                        <h4 class="h5 fw-bold" style="color: #a21caf; letter-spacing: 0.5px;">Cross-Functional Collaboration</h4>
-                        <p class="small text-custom-muted mb-3">To ensure our code paradigms and design assets moved smoothly across external platform environments, I worked heavily across disciplines:</p>
-                        <ul class="small ps-3 mb-0" style="list-style-type: square;">
-                            <li class="mb-2"><strong>Bridging Design & Code:</strong> Partnered closely with our 2D Lead Artist, Isabella, to optimize and slice custom assets, banner art, and UI stickers for use on both our native interface and our external social channel skins.</li>
-                            <li class="mb-2"><strong>Cross-Platform Infrastructure:</strong> Managed hyperlinking frameworks and deep-linking hooks with our Writing Lead, Sam, and PR Lead, Mike, ensuring clues uncovered on Reddit and Instagram navigated users cleanly back into our secure system terminal.</li>
-                            <li><strong>Unified Storytelling Pipeline:</strong> Synthesized multimedia fragments, including creepy environmental render files from our 3D Specialist, Kirsty, into a responsive grid capable of handling variable cross-origin referrals.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="window-controls">
+            <button class="win-btn" onclick="window.location.href='index.html';" title="Close Document & Return to Projects Window" style="font-weight: bold; font-size: 11px; padding: 1px 6px; background: #cbd0d4; border: 1px solid #fff; box-shadow: 1px 1px 0 #000; cursor: pointer; color: #000;">X</button>
         </div>
+    </div>
 
-        <!-- Section 2: Dual State -->
-        <div class="row mt-4 pt-4 fade-in align-items-center">
-            <div class="col-md-5">
-                <span class="ux-pill">Interactive Engineering</span>
-                <h3>The Dual-State Architecture</h3>
-                <p>The entire web space is engineered around progressive psychological tension, requiring technical problem-solving to dynamically transform native layouts and handle outgoing platform pathways:</p>
-                
-                <div class="mt-4">
-                    <div class="d-flex align-items-start mb-3">
-                        <div class="feature-icon">🔒</div>
-                        <div><strong>The Portal Gate:</strong> A secure frontend authentication dashboard panel. Requiring specific hardcoded system credentials (<code>admin</code> / <code>password123</code>), it rewards players who discover administrative codes hidden inside live social media threads.</div>
-                    </div>
-                    <div class="d-flex align-items-start mb-3">
-                        <div class="feature-icon">🔴</div>
-                        <div><strong>The Record Trigger:</strong> Hitting the 'Record' interaction interface directly displays the dynamic glitch effects on screen, operating as our narrative pivot point to instantly break down structural styles.</div>
-                    </div>
-                    <div class="d-flex align-items-start">
-                        <div class="feature-icon">⚡</div>
-                        <div><strong>Dynamic Theme Degradation:</strong> Utilizing client-side JavaScript DOM overrides, dynamic merchandise pricing alterations, and corrupted image swaps to simulate a platform undergoing total data corruption after the glitch event fires.</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-7 text-center mt-4 mt-md-0">
-                <div class="comparison-frame p-3 shadow-sm rounded">
-                    <p class="small fw-bold text-muted mb-2">The Cozy Hub Interface</p>
-                    <div class="shadow-sm">
-                        <img src="../new-website/properties/vtuber/stella1.png" class="img-fluid rounded" alt="Wholesome Community Grid View">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="win95-main-body">
+        <div class="document-container">
 
-        <!-- Section 3: The Evolution -->
-        <div class="row mt-5 pt-5 fade-in">
-            <div class="col-12 text-center mb-4">
-                <h2>The Evolution: System Stability to Total Corruption</h2>
-                <p class="text-muted mx-auto readable-text">A comparative technical breakdown demonstrating how the interface architecture distorts instantly following user interaction triggers.</p>
+            <!-- HEADER -->
+            <div style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 30px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
+                <h1 style="font-size: 2.2rem; margin: 0; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px; color: #fff;">
+                    Project Coward: Interactive ARG Interface
+                </h1>
+                <p style="margin: 8px 0 0 0; color: #cbd0d4; font-size: 15px;">
+                    From Wholesome Community Portal to Glitch-Driven Psychological Horror
+                </p>
             </div>
-            
-            <div class="col-md-6 mb-4">
-                <span class="badge bg-secondary mb-2">Stable Environment</span>
-                <div class="comparison-frame p-2 rounded shadow-sm">
-                    <img src="../new-website/properties/vtuber/vtuberbefore.png" class="img-fluid rounded" alt="Cozy Portal Hub Layout">
+
+            <!-- EXECUTIVE SUMMARY -->
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
+                <ul class="meta-list-95">
+                    <li><strong>Challenge:</strong> Build an immersive web terminal for an Alternate Reality Game that bridges web infrastructure with live external platforms like Twitter, Reddit, and Instagram.</li>
+                    <li><strong>Solution:</strong> An integrated digital ecosystem using dynamic state mutation scripting, secure portal verification, and cross-platform hyperlinks to weaponize user tracking behavior.</li>
+                </ul>
+            </div>
+
+            <!-- PROJECT METADATA -->
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Project Metadata</h3>
+                <ul class="meta-list-95">
+                    <li><strong>My Role:</strong> Lead Web & UI Developer</li>
+                    <li><strong>Team Size:</strong> 6 (Engineering, Visual Arts, Narrative, PR)</li>
+                    <li><strong>Duration:</strong> CoLabs 4 Campaign Launch</li>
+                    <li><strong>Stack:</strong> HTML5, CSS3, JavaScript (ES6+)</li>
+                </ul>
+                <div style="margin-top: 15px;">
+                    <a href="https://marquis09.github.io/vtuber/" target="_blank" class="win95-link-btn" style="display: inline-block; padding: 6px 14px; text-decoration: none; font-weight: bold;">
+                        View Live Hub
+                    </a>
                 </div>
             </div>
 
-            <div class="col-md-6 mb-4">
-                <span class="badge bg-danger mb-2">Glitch Layout Mutation</span>
-                <div class="comparison-frame p-2 rounded shadow-sm">
-                    <img src="../new-website/properties/vtuber/vtuberafter.png" class="img-fluid rounded" alt="Corrupted Grid State View">
-                </div>
-            </div>
-        </div>
+            <!-- SECTION 1 -->
+            <h2>1. The Vision: Immersive Environmental Storytelling</h2>
+            <p>For the multi-layered psychological horror ARG <em>"Coward"</em>, my core mission was to construct an operational central hub called "VTuber Nexus" for the fictional streamer Stella, Guardian of Moths. Rather than building an isolated sandbox layout, I wanted the code to act as a porous narrative web. By tying our native UI directly to active external pipelines on <strong>Twitter, Reddit, and Instagram</strong>, the application functions as an interconnected maze that rewards analytical user tracking and blurs the lines between reality and fiction.</p>
 
-        <!-- Section 4: Testing Grounds -->
-        <div id="live-demo" class="mt-5 pt-5 text-center fade-in">
-            <span class="ux-pill">Live Prototype & Mechanics</span>
-            <h2>Responsive Testing Grounds</h2>
-            <div class="browser-mockup mx-auto mt-4" style="max-width: 900px;">
-                <img src="../new-website/properties/vtuber/vtuberlogin.png" alt="Merchandise Page Asset View">
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
-                    <a href="https://marquis09.github.io/vtuber/" target="_blank" class="btn btn-danger btn-lg px-5 shadow-lg" style="background-color: #a21caf; border: none;">Launch Live Hub 🚀</a>
-                </div>
+            <div class="classic-quote-95">
+                <p style="margin: 0;">
+                    To ensure our code paradigms and design assets moved smoothly across external platform environments, I worked heavily across disciplines: bridging design and code with our 2D Lead Artist, managing cross-platform infrastructure with Writing and PR leads, and synthesizing multimedia fragments into a responsive grid capable of handling variable cross-origin referrals.
+                </p>
             </div>
-        </div>
 
-        <!-- Section 5: STAR Structured Adaptability Section -->
-        <div class="mt-5 py-5 fade-in">
             <hr>
-            <div class="text-center mb-4">
-                <span class="ux-pill">Agile Problem Solving</span>
-                <h3 class="mt-2">Technical Challenges & Team Adaptability</h3>
-            </div>
-            
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8">
-                    <div class="row g-4">
-                        <div class="col-12">
-                            <h5>The Challenge (Situation)</h5>
-                            <p class="text-custom-muted small">Our digital storytelling roadmap called for deep structural dependencies across live channels on Twitter, Reddit, and Instagram. However, right before launch, our custom automated character feed was unexpectedly flagged and shadowbanned by Twitter's safety algorithms due to its high-velocity fictional activity. This sudden break in the external chain threatened to isolate our central web hub and fracture the game's progression loop.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h5>Our Team Pivot (Action)</h5>
-                            <p class="text-custom-muted small">Moving rapidly to safeguard our live launch window, I quickly re-engineered the website routing map. I adjusted the outbound channel directories to re-weight traffic toward our active Reddit and Instagram nodes, while simultaneously baking simulated fallbacks and dynamic string replacement protocols into the frontend code to keep the story fluid even if a user hit an algorithmically restricted dead-end.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h5>The Impact (Result)</h5>
-                            <p class="text-custom-muted small">This rapid infrastructure optimization successfully protected our cross-media UX. It kept players moving fluidly through our live external platforms, prevented dead links from breaking immersion, and allowed our group to launch a highly successful, cross-origin alternate reality game right on schedule.</p>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <a href="../new-website/projects.html" class="btn btn-outline-dark mt-2">Explore More Projects</a>
+
+            <!-- SECTION 2 -->
+            <h2>2. Interactive Engineering: The Dual-State Architecture</h2>
+            <p>The entire web space is engineered around progressive psychological tension, requiring technical problem-solving to dynamically transform native layouts and handle outgoing platform pathways:</p>
+
+            <div class="system-row-95">
+                <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
+                    <ul>
+                        <li><strong>The Portal Gate:</strong> A secure frontend authentication dashboard panel. Requiring specific hardcoded system credentials (<code>admin</code> / <code>password123</code>), it rewards players who discover administrative codes hidden inside live social media threads.</li>
+                        <li><strong>The Record Trigger:</strong> Hitting the 'Record' interaction interface directly displays the dynamic glitch effects on screen, operating as our narrative pivot point to instantly break down structural styles.</li>
+                        <li><strong>Dynamic Theme Degradation:</strong> Utilizing client-side JavaScript DOM overrides, dynamic merchandise pricing alterations, and corrupted image swaps to simulate a platform undergoing total data corruption after the glitch event fires.</li>
+                    </ul>
+                </div>
+                <div class="system-col-6">
+                    <div class="image-preview-frame">
+                        <p style="font-weight:bold;">The Cozy Hub Interface</p>
+                        <img src="../new-website/properties/vtuber/stella1.png" alt="Wholesome Community Grid View">
                     </div>
                 </div>
             </div>
+
+            <hr>
+
+            <!-- SECTION 3 -->
+            <h2>3. The Evolution: System Stability to Total Corruption</h2>
+            <p class="text-muted">A comparative technical breakdown demonstrating how the interface architecture distorts instantly following user interaction triggers.</p>
+
+            <div class="artifact-grid-95">
+                <div class="artifact-card-95">
+                    <h4>Stable Environment</h4>
+                    <img src="../new-website/properties/vtuber/vtuberbefore.png" alt="Cozy Portal Hub Layout">
+                </div>
+                <div class="artifact-card-95">
+                    <h4>Glitch Layout Mutation</h4>
+                    <img src="../new-website/properties/vtuber/vtuberafter.png" alt="Corrupted Grid State View">
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- SECTION 4 -->
+            <h2>4. Responsive Testing Grounds: Live Prototype & Mechanics</h2>
+            <div class="image-preview-frame" style="max-width: 500px; margin: 0 auto;">
+                <img src="../new-website/properties/vtuber/vtuberlogin.png" alt="Merchandise Page Asset View">
+                <div style="padding: 5px 0;">
+                    <a href="https://marquis09.github.io/vtuber/" target="_blank" class="win95-link-btn" style="text-decoration: none; font-size: 13px; display: inline-block; padding: 4px 12px;">
+                        Launch Live Hub 🚀
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- SECTION 5 -->
+            <h2>5. Technical Challenges & Team Adaptability</h2>
+            <p>Our digital storytelling roadmap called for deep structural dependencies across live channels on Twitter, Reddit, and Instagram. However, right before launch, our custom automated character feed was unexpectedly flagged and shadowbanned by Twitter's safety algorithms due to its high-velocity fictional activity. This sudden break in the external chain threatened to isolate our central web hub and fracture the game's progression loop.</p>
+
+            <div class="system-row-95">
+                <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="color:#000080; font-size:1.1rem; margin-bottom:6px;">Our Team Pivot (Action)</h3>
+                    <p style="margin:0; font-size:14px;">
+                        Moving rapidly to safeguard our live launch window, I quickly re-engineered the website routing map. I adjusted the outbound channel directories to re-weight traffic toward our active Reddit and Instagram nodes, while simultaneously baking simulated fallbacks and dynamic string replacement protocols into the frontend code to keep the story fluid even if a user hit an algorithmically restricted dead-end.
+                    </p>
+                </div>
+                <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="color:#000080; font-size:1.1rem; margin-bottom:6px;">The Impact (Result)</h3>
+                    <p style="margin:0; font-size:14px;">
+                        This rapid infrastructure optimization successfully protected our cross-media UX. It kept players moving fluidly through our live external platforms, prevented dead links from breaking immersion, and allowed our group to launch a highly successful, cross-origin alternate reality game right on schedule.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
+                <button class="win95-link-btn" onclick="window.location.href='projects.html';" style="font-size: 13px; padding: 6px 24px; font-weight: bold; cursor: pointer;">
+                    Explore More Projects
+                </button>
+                <p style="font-size:13px; color:#555; margin-top:15px;">© 2026 Marquis Orchard | UX & Web Engineering</p>
+            </div>
+
         </div>
-    </section>
+    </div>
+</div>
 
-    <footer class="text-center py-5 border-top mt-5">
-        <p class="small mb-0 text-muted">&copy; 2026 Marquis Orchard | UX & Web Engineering</p>
-    </footer>
-
-    <script>
-        /* --- DARK MODE LOGIC --- */
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        themeToggle.addEventListener('click', () => {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeToggle.innerText = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
-            themeToggle.className = isDark ? 'btn btn-outline-dark btn-sm me-3' : 'btn btn-outline-light btn-sm me-3';
-        });
-
-        /* --- SCROLL ANIMATION --- */
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOnScroll = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('appear');
-                }
-            });
-        }, { threshold: 0.1 });
-        faders.forEach(fader => appearOnScroll.observe(fader));
-    </script>
+<script src="../new-website/Jsscript.js"></script>
 </body>
 </html>

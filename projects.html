@@ -1,289 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Marquis Orchard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../new-website/styles.css">
-    <style>
-        /* --- UPDATED: BACKGROUND BOX TO MATCH GALLERY SIZE --- */
-        #section-background {
-            position: fixed; 
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%); 
-            width: 100%;
-            max-width: 1100px; 
-            height: 100%;
-            z-index: -1; 
-            background-image: url('../new-website/properties/img/Bmxing.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15; 
-            border-left: 1px solid rgba(0,0,0,0.05);
-            border-right: 1px solid rgba(0,0,0,0.05);
-        }
+<meta charset="UTF-8">
+<title>Case Studies Directory - Windows 98 Explorer</title>
 
-        /* --- GALLERY & BOX STYLES --- */
-        .project-gallery {
-            max-width: 1100px; 
-            margin: 0 auto;    
-            padding: 0 20px;   
-        }
+<style>
+    body {
+        margin: 0;
+        background: #c0c0c0;
+        font-family: "MS Sans Serif", Arial;
+    }
 
-        .card {
-            border: none; /* Cleaner look */
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-            height: 100%; 
-            max-width: 300px; 
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.9); /* Replaced 'background' shortcut with background-color */
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
+    /* FULLSCREEN WINDOW */
+    .win98-window {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #c0c0c0;
+        border: 2px solid #fff;
+        box-shadow: inset -2px -2px #808080, inset 2px 2px #fff;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .card-img-top {
-            width: 100%;
-            height: 160px; 
-            object-fit: cover;
-            transition: 0.4s ease;
-        }
+    /* TITLE BAR */
+    .titlebar {
+        background: #000080;
+        color: #fff;
+        padding: 3px 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        font-size: 13px;
+    }
 
-        .card:hover .card-img-top {
-            filter: contrast(1.1);
-        }
+    .title-left {
+        display: flex;
+        align-items: center;
+    }
 
-        .card-body {
-            padding: 1.25rem; 
-            display: flex; 
-            flex-direction: column;
-            min-height: 160px; 
-        }
+    .title-left img {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+    }
 
-        .card-title {
-             font-size: 1.1rem; 
-             min-height: 2.8rem; 
-             font-weight: 800;
-             color: #212529;
-        }
+    .title-buttons button {
+        background: #c0c0c0;
+        border: 2px solid #fff;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
+        font-size: 12px;
+        font-weight: bold;
+        width: 24px;
+        height: 20px;
+        cursor: pointer;
+        margin-left: 4px;
+    }
 
-        .card-text {
-            font-size: 0.85rem; 
-            flex-grow: 1; 
-            line-height: 1.5;
-        }
-        
-        /* --- HERO READABILITY FIX (MATCHES REFLECTION) --- */
-        .hero-section {
-            background: linear-gradient(rgba(33, 37, 41, 0.8), rgba(33, 37, 41, 0.8)), #343a40 !important; 
-            color: white;
-            padding: 80px 20px !important;
-            border-bottom: 4px solid #0d6efd;
-        }
+    /* MAIN AREA */
+    .main-area {
+        flex: 1;
+        background: #fff;
+        border: 2px inset #fff;
+        padding: 20px;
+        overflow-y: auto;
+    }
 
-        .hero-section h1 {
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+    /* FOLDER GRID */
+    .folder-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+    }
 
-        .hero-section .lead {
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        footer {
-             background-color: #212529 !important;
-             color: white !important; 
-        }
+    .folder {
+        text-align: center;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    }
 
-        /* NAVIGATION BAR */
-        .navbar .nav-link,
-        .navbar-brand { 
-            padding: 8px 16px;
-            margin: 0 5px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 600; 
-            background-color: #6c757d !important; 
-            color: white !important; 
-            border: 1px solid #6c757d !important; 
-        }
+    .folder img {
+        width: 64px;
+        height: 64px;
+        image-rendering: pixelated;
+        margin-bottom: 8px;
+    }
 
-        .navbar .nav-link:hover { 
-            background-color: #0d6efd !important; 
-            border-color: #0d6efd !important;
-            transform: translateY(-2px);
-        }
+    .folder-title {
+        font-size: 14px;
+        font-weight: bold;
+    }
+</style>
 
-        .navbar .nav-link.active {
-            background-color: #0d6efd !important; 
-            color: white !important; 
-            border-color: #0d6efd !important;
-            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
-        }
+<script>
+    function closeWindow() {
+        window.location.href = "index.html";
+    }
+</script>
 
-        /* --- FIXED DARK MODE READABILITY OVERRIDES --- */
-        body.dark-mode {
-            background-color: #1a1d20 !important; 
-            color: #f8f9fa !important; 
-        }
-
-        body.dark-mode .card {
-            background-color: #2b3035 !important; /* Overrides the white transparency cleanly */
-            border: 1px solid #3d4246 !important;
-        }
-
-        body.dark-mode .card-title { 
-            color: #ffffff !important; 
-        }
-
-        body.dark-mode .card-text,
-        body.dark-mode .text-muted { 
-            color: #adb5bd !important; 
-        }
-
-        body.dark-mode h2 {
-            color: #ffffff !important;
-        }
-
-        #darkModeButton {
-            color: white; 
-            background-color: #6c757d !important;
-            border-color: #6c757d !important;
-            font-weight: 600; 
-        }
-
-        body.dark-mode #darkModeButton {
-            background-color: #343a40 !important;
-            border-color: #adb5bd !important;
-            color: #adb5bd !important;
-        }
-    </style>
 </head>
-<body class="bg-light">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="navbar">
-        <div class="container-fluid"> 
-            <a class="navbar-brand" href="../new-website/index.html">Marquis Orchard</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> 
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="../new-website/index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../new-website/projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../new-website/contacts.html">Contact</a></li>
-                </ul>
-                <button id="darkModeButton" class="btn btn-secondary ms-3">🌙 Toggle Dark Mode</button>
-            </div>
+<!-- FULLSCREEN WINDOW -->
+<div class="win98-window">
+
+    <!-- TITLE BAR -->
+    <div class="titlebar">
+        <div class="title-left">
+            <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
+            Case Studies Directory
         </div>
-    </nav>
 
-    <div id="section-background"></div>
-
-    <header class="hero-section text-center shadow-sm">
-        <div class="container">
-            <h1 class="display-4">UX & Development Portfolio</h1>
-            <p class="lead">Welcome to the Projects Page, showcasing my work in "USER EXPERIENCE", web development, and "FRONT-END DESIGN".</p>
+        <div class="title-buttons">
+            <button onclick="closeWindow()">X</button>
         </div>
-    </header>
+    </div>
 
-    <section class="container py-3" id="projects">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">Selected Case Studies</h2>
-            <div class="mx-auto" style="width: 50px; height: 3px; background: #0d6efd; margin-top: -10px;"></div>
+    <!-- MAIN CONTENT -->
+    <div class="main-area">
+        <h2>All Case Studies</h2>
+        <p>Below are all UX/UI and development case studies. Click a folder to open the full case study.</p>
+
+        <div class="folder-grid">
+
+            <a class="folder" href="study.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
+                <div class="folder-title">Hartshill Bible Church</div>
+            </a>
+
+            <a class="folder" href="studyii.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
+                <div class="folder-title">Project Coward</div>
+            </a>
+
+            <a class="folder" href="studyiii.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
+                <div class="folder-title">Munich Travel Guide</div>
+            </a>
+
+            <a class="folder" href="studyiv.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
+                <div class="folder-title">Working Class Heroes</div>
+            </a>
+
+            <a class="folder" href="studyv.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
+                <div class="folder-title">MMU TV Platform</div>
+            </a>
+
         </div>
-        
-        <div class="d-flex justify-content-center mb-5">
-            <p class="text-muted text-center" style="max-width: 600px;">
-                I apply the Design Thinking Process to solve real-world problems, delivering results from Figma mockups to production code (HTML/CSS/JS).
-            </p>
-        </div>
-        
-        <div class="row project-gallery justify-content-center g-4">
+    </div>
+</div>
 
-            <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
-                <div class="card shadow-sm w-100">
-                    <img src="../new-website/properties/vtuber/stellacover.png" class="card-img-top" alt="Project Coward VTuber Hub Layout">
-                    <div class="card-body">
-                        <h5 class="card-title">Project Coward: Interactive ARG Interface</h5>
-                        <p class="card-text text-muted">An immersive psychological horror hub built using custom UI layout mutations and dynamic code blocks to drive user-driven storytelling.</p>
-                        <a href="../new-website/studyv.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
-                <div class="card shadow-sm w-100">
-                    <img src="../new-website/properties/img/Hartshill.png" class="card-img-top" alt="Hartshill Bible Church">
-                    <div class="card-body">
-                        <h5 class="card-title">Hartshill Bible Church Redesign</h5>
-                        <p class="card-text text-muted">A comprehensive digital rebrand and "Bento-Style" rebuild, focusing on information architecture and user flow.</p>
-                        <a href="../new-website/studyiv.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>
-
-             <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
-                <div class="card shadow-sm w-100">
-                    <img src="../new-website/properties/img/Bmxing.png" class="card-img-top" alt="Reflection Journal">
-                    <div class="card-body">
-                        <h5 class="card-title">Module Reflection Journal</h5>
-                        <p class="card-text text-muted">My Potfolio: Working in a Digital World - Marquis Orchard.</p>
-                        <a href="../new-website/Reflective case study.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="col-12 col-md-6 col-lg-4 project-item Figma d-flex">
-                <div class="card shadow-sm w-100">
-                    <img src="../new-website/properties/img/munuch-cards.png" class="card-img-top" alt="Munich Website">
-                    <div class="card-body">
-                        <h5 class="card-title">Munich Website Redesign</h5>
-                        <p class="card-text text-muted">A deep dive into "INFORMATION ARCHITECTURE" and responsive web development.</p>
-                        <a href="../new-website/study.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 project-item HTML d-flex">
-                <div class="card shadow-sm w-100">
-                    <img src="../new-website/properties/img/heropng.png" class="card-img-top" alt="E-commerce Site">
-                    <div class="card-body">
-                        <h5 class="card-title">Working Class Heroes E-commerce Redesign</h5>
-                        <p class="card-text text-muted">Focus on "MOBILE-FIRST UX" and improving the checkout conversion funnel.</p>
-                        <a href="../new-website/studyii.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>      
-            
-            <div class="col-12 col-md-6 col-lg-4 project-item HTML d-flex">
-                <div class="card shadow-sm w-100">
-                    <img src="../new-website/properties/img/mmupng.gif" class="card-img-top" alt="MMU TV">
-                    <div class="card-body">
-                        <h5 class="card-title">MMU TV Community Platform</h5>
-                        <p class="card-text text-muted">Full-stack front-end development of a "COMMUNITY MEDIA HUB".</p>
-                        <a href="../new-website/studyiii.html" class="btn btn-primary btn-sm mt-auto">View Case Study</a>
-                    </div>
-                </div>
-            </div>      
-        </div>
-    </section>
-
-    <footer class="text-center py-5 mt-5 border-top" id="footer">
-        <p class="mb-1">&copy; 2026 Marquis Orchard. All rights reserved.</p>
-        <p><a href="mailto:marquisorchard95@yahoo.com" class="text-decoration-none">Contact Me: marquisorchard23@gmail.com</a></p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../new-website/Jsscript.js"></script> 
 </body>
 </html>

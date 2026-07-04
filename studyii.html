@@ -3,337 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Working Class Heroes Website Redesign - UX Case Study</title>
+    <title>WCH_Redesign_Case_Study.txt - Notepad</title>
     <link href="../new-website/styles.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* --- FIXED BACKGROUND --- */
-        #section-background {
-            position: fixed; 
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; 
-            background-image: url('../new-website/properties/img/Bmxing.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15; 
-        }
-
-        #hero {
-             background-color: #212529 !important; 
-             color: white !important;
-        }
-
-        footer {
-             background-color: #212529 !important; 
-             color: white !important;
-        }
-
-        /* --- COMPACT BROWSER MOCKUP --- */
-        .browser-container {
-            max-width: 750px;
-            margin: 30px auto;
-        }
-
-        .browser-mockup {
-            border-top: 20px solid #333;
-            border-left: 2px solid #333;
-            border-right: 2px solid #333;
-            border-bottom: 2px solid #333;
-            border-radius: 10px;
-            position: relative;
-            height: 400px; 
+        body {
+            background-color: #008080;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             overflow: hidden;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
-            background: white;
         }
 
-        .browser-mockup::before {
-            content: '';
-            position: absolute;
-            top: -14px; left: 12px;
-            width: 6px; height: 6px;
-            background: #ff5f56;
-            border-radius: 50%;
-            box-shadow: 12px 0 0 #ffbd2e, 24px 0 0 #27c93f;
-            z-index: 10;
-        }
-
-        .browser-mockup img {
-            width: 100%;
-            height: auto;
-            transition: transform 8s ease-in-out;
-        }
-
-        .browser-mockup:hover img {
-            transform: translateY(-50%); /* Scrolling effect for e-commerce height */
-        }
-
-        .overlay-link {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(33, 37, 41, 0.7);
+        .win95-maximized-workspace {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            bottom: 0;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            text-decoration: none;
-            color: white;
-            z-index: 5;
+            flex-direction: column;
+            background: #cbd0d4;
+            padding: 4px;
+            z-index: 999;
         }
 
-        .browser-mockup:hover .overlay-link { opacity: 1; }
-
-        .launch-btn {
+        .win95-main-body {
+            flex: 1;
             background: #fff;
-            color: #212529;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 2px inset #fff;
+            overflow-y: auto;
+            color: #000;
+            padding: 0;
         }
 
-        /* --- DIAGRAM & UI STYLES --- */
-        .diagram-img {
-            height: auto !important;
-            object-fit: contain;
-            transition: transform 0.3s ease-in-out;
-            border: 1px solid #ddd;
+        .document-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .meta-sidebar-95 {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 1px 1px 0 #000;
+        }
+
+        .meta-list-95 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .meta-list-95 li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #cbd0d4;
+            font-size: 14px;
+        }
+
+        .meta-list-95 li:last-child {
+            border-bottom: none;
+        }
+
+        .system-row-95 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .system-col-6 {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .classic-quote-95 {
+            background: #ffffe0;
+            border-left: 4px solid #808080;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .image-preview-frame {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .image-preview-frame img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #808080;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        .artifact-grid-95 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .artifact-card-95 {
+            background: #f0f0f0;
+            border: 1px solid #808080;
             padding: 10px;
-            background: white;
+            text-align: center;
         }
 
-        .clickable-img { cursor: pointer; }
-        .clickable-img:hover { transform: scale(1.02); }
-
-        /* --- FADE UP ANIMATION --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        .artifact-card-95 img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border: 1px solid #808080;
+            background: #fff;
+            margin-bottom: 8px;
         }
 
-        .fade-in.appear { opacity: 1; transform: translateY(0); }
+        h1, h2, h3, h4 {
+            color: #000;
+            margin-top: 0;
+        }
 
-        body.dark-mode .card { background-color: #2c3034; color: white; border-color: #444; }
-        body.dark-mode .list-group-item { background-color: transparent; color: #ddd; }
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 35px;
+            border-bottom: 2px solid #cbd0d4;
+            padding-bottom: 6px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            line-height: 1.6;
+            font-size: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #808080;
+            border-bottom: 1px solid #fff;
+            margin: 30px 0;
+        }
     </style>
 </head>
 <body>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <button class="btn btn-secondary" id="backButton" onclick="window.history.back();">← Back to Portfolio</button>
-            <button id="darkModeButton" class="btn btn-secondary dark-mode-toggle ms-auto">🌙 Toggle Dark Mode</button>
+
+<div class="binary-layer" id="binaryLayer"></div>
+<div class="noise-overlay"></div>
+
+<header class="win95-taskbar" style="position: fixed; top: 0; left: 0; right: 0; height: 40px; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4px; background: #cbd0d4; border-bottom: 2px solid #808080;">
+    <div class="taskbar-tasks" style="display: flex; align-items: center; flex: 1;">
+        <div class="win95-task-tab active" style="display: flex; align-items: center; background: #fff; border: 2px inset #fff; padding: 2px 12px; font-size: 12px; height: 24px; font-weight: bold; box-shadow: 1px 1px 0 #000;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="icon">
+            WCH_Redesign_Case_Study.txt
         </div>
-    </nav>
+    </div>
+    <div class="win95-system-tray" style="display: flex; align-items: center; background: #cbd0d4; border: 2px inset #fff; padding: 2px 8px; font-size: 12px; height: 24px; box-shadow: 1px 1px 0 #000;">
+        <span id="win95-clock">16:35 PM</span>
+    </div>
+</header>
 
-    <div id="section-background"></div>
-
-    <header id="hero" class="bg-dark text-white p-5 text-center">
-        <div class="container fade-in" style="max-width: 900px;">
-            <h1>Working Class Heroes Website Redesign - UX Case Study</h1>
-            <p class="lead">Improving the User Experience and Mobile Usability for a "SEAMLESS SHOPPING JOURNEY".</p>
+<div class="win95-maximized-workspace">
+    <div class="window-titlebar" style="cursor: default; display: flex; align-items: center; justify-content: space-between; background: #000080; color: #fff; padding: 3px 6px; font-weight: bold; font-size: 13px;">
+        <div class="title-text" style="display: flex; align-items: center;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="">
+            WCH_Redesign_Case_Study.txt - Notepad
         </div>
-    </header>
+        <div class="window-controls">
+            <button class="win-btn" onclick="window.location.href='index.html';" title="Close Document & Return to Projects Window" style="font-weight: bold; font-size: 11px; padding: 1px 6px; background: #cbd0d4; border: 1px solid #fff; box-shadow: 1px 1px 0 #000; cursor: pointer; color: #000;">X</button>
+        </div>
+    </div>
 
-    <section class="container mt-5 mb-5" style="max-width: 1100px;">
-        <div class="row">
-            <div class="col-lg-3 mb-4">
-                <div class="card p-3 shadow-sm fade-in">
-                    <h3 class="card-title text-primary" style="font-size: 1.5rem; font-weight: bold;">Project Details</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>My Role:</strong> UX/UI Designer</li>
-                        <li class="list-group-item"><strong>Duration:</strong> 4 Weeks</li>
-                        <li class="list-group-item"><strong>Tools:</strong> Figma, Adobe Photoshop, HTML, CSS (Bootstrap)</li>
-                        <li class="list-group-item"><strong>Project Type:</strong> "E-COMMERCE REDESIGN"</li>
+    <div class="win95-main-body">
+        <div class="document-container">
+
+            <!-- HEADER -->
+            <div style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 30px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
+                <h1 style="font-size: 2.2rem; margin: 0; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px; color: #fff;">
+                    Working Class Heroes Website Redesign - UX Case Study
+                </h1>
+                <p style="margin: 8px 0 0 0; color: #cbd0d4; font-size: 15px;">
+                    Improving the User Experience and Mobile Usability for a "SEAMLESS SHOPPING JOURNEY".
+                </p>
+            </div>
+
+            <!-- EXECUTIVE SUMMARY -->
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
+                <ul class="meta-list-95">
+                    <li><strong>Overview:</strong> Targeted redesign of an e-commerce site suffering from usability and design flaws.</li>
+                    <li><strong>Challenge:</strong> Modernize the aesthetic, simplify information architecture, and create a seamless, mobile-first shopping experience.</li>
+                    <li><strong>Outcome:</strong> Clearer navigation, improved mobile usability, and streamlined checkout flow to reduce friction.</li>
+                </ul>
+            </div>
+
+            <!-- PROJECT DETAILS -->
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Project Details</h3>
+                <ul class="meta-list-95">
+                    <li><strong>My Role:</strong> UX/UI Designer</li>
+                    <li><strong>Duration:</strong> 4 Weeks</li>
+                    <li><strong>Tools:</strong> Figma, Adobe Photoshop, HTML, CSS (Bootstrap)</li>
+                    <li><strong>Project Type:</strong> "E-COMMERCE REDESIGN"</li>
+                </ul>
+            </div>
+
+            <!-- SECTION 1 -->
+            <h2>1. Project Summary & The Challenge</h2>
+            <p>The original Working Class Heroes e-commerce website suffered from significant "USABILITY AND DESIGN FLAWS" that created friction for users trying to browse and purchase products. The main issues were a cluttered navigation, poor mobile adaptability, and inconsistencies in the checkout process.</p>
+            <p><strong>The Challenge:</strong> To perform a targeted redesign focused on modernizing the aesthetic, simplifying the information architecture, and creating a "SEAMLESS, MOBILE-FIRST SHOPPING EXPERIENCE" to increase conversion rates and customer satisfaction.</p>
+
+            <div class="image-preview-frame" style="max-width: 500px; margin: 0 auto;">
+                <img src="../new-website/properties/img/studyiie.jpg" alt="Original Design">
+                <div style="padding: 5px 0;">
+                    <a href="../new-website/properties/img/studyiia.jpg" target="_blank" class="win95-link-btn" style="text-decoration: none; font-size: 13px; display: inline-block; padding: 4px 12px;">
+                        👀 View Full Redesigned Homepage Mockup
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- SECTION 2 -->
+            <h2>2. Problem Statement & Design Goals</h2>
+            <p>User analysis revealed that the website's technical and structural shortcomings directly impacted customer abandonment rates.</p>
+
+            <div class="system-row-95">
+                <div class="system-col-6" style="background:#ffe0e0; border:1px solid #ff8080; padding:15px; box-shadow:1px 1px 0 #808080;">
+                    <h3 style="color:#a00000; font-size:1.2rem; margin-bottom:10px;">The Core Pain Points</h3>
+                    <ul>
+                        <li>Cluttered UI: Lack of clear navigation and "CONFUSING HOMEPAGE DESIGN".</li>
+                        <li>Mobile Frustration: Poor mobile responsiveness for "ON-THE-GO USERS".</li>
+                        <li>Checkout Friction: Inconsistent layout, particularly with product availability and "STREAMLINED CHECKOUT PROCESS".</li>
+                        <li>Missing Essentials: Missing footer with important links like contact and social media.</li>
+                    </ul>
+                </div>
+                <div class="system-col-6" style="background:#e0ffe0; border:1px solid #80ff80; padding:15px; box-shadow:1px 1px 0 #808080;">
+                    <h3 style="color:#00a000; font-size:1.2rem; margin-bottom:10px;">Success Metrics (Goals)</h3>
+                    <ul>
+                        <li>Navigation: Improve homepage by adding clear sections and a welcoming introduction.</li>
+                        <li>Responsiveness: Make the website "MOBILE-RESPONSIVE" for on-the-go users.</li>
+                        <li>Usability: Incorporate a functional search bar with error prevention and "SUGGESTION PROMPTS".</li>
+                        <li>Conversion: Revamp product pages by adding "REAL-TIME STOCK AVAILABILITY".</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-lg-9">
-                <div class="fade-in">
-                    <h2>1. Project Summary & The Challenge</h2>
-                    <p>The original Working Class Heroes e-commerce website suffered from significant "USABILITY AND DESIGN FLAWS" that created friction for users trying to browse and purchase products. The main issues were a cluttered navigation, poor mobile adaptability, and inconsistencies in the checkout process.</p>
-                    <p><strong>The Challenge:</strong> To perform a targeted redesign focused on modernizing the aesthetic, simplifying the information architecture, and creating a "SEAMLESS, MOBILE-FIRST SHOPPING EXPERIENCE" to increase conversion rates and customer satisfaction.</p>
-                    
-                    <div class="browser-container">
-                        <p class="lead text-muted text-center">A look at the redesigned homepage concept:</p>
-                        <div class="browser-mockup">
-                            <img src="../new-website/properties/img/studyiia.jpg" alt="Redesigned Homepage Concept Screenshot">
-                            <a href="../new-website/properties/img/studyiia.jpg" target="_blank" class="overlay-link">
-                                <div class="launch-btn">👀 View Full Mockup</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <hr>
 
-    <hr>
-
-    <section class="container mt-5 fade-in" style="max-width: 900px;">
-        <h2>2. Problem Statement & Design Goals</h2>
-        <p>User analysis revealed that the website's technical and structural shortcomings directly impacted customer abandonment rates.</p>
-        
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <h3 class="text-danger">The Core Pain Points</h3>
-                <ul>
-                    <li>Cluttered UI: Lack of clear navigation and "CONFUSING HOMEPAGE DESIGN".</li>
-                    <li>Mobile Frustration: Poor mobile responsiveness for "ON-THE-GO USERS".</li>
-                    <li>Checkout Friction: Inconsistent layout, particularly with product availability and "STREAMLINED CHECKOUT PROCESS".</li>
-                    <li>Missing Essentials: Missing footer with important links like contact and social media.</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <h3 class="text-success">Success Metrics (Goals)</h3>
-                <ul>
-                    <li>Navigation: Improve homepage by adding clear sections and a welcoming introduction.</li>
-                    <li>Responsiveness: Make the website "MOBILE-RESPONSIVE" for on-the-go users.</li>
-                    <li>Usability: Incorporate a functional search bar with error prevention and "SUGGESTION PROMPTS".</li>
-                    <li>Conversion: Revamp product pages by adding "REAL-TIME STOCK AVAILABILITY".</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <hr>
-
-    <section class="container mt-5" style="max-width: 900px;">
-        <div class="fade-in">
+            <!-- SECTION 3 -->
             <h2>3. Design Process: Analysis and Ideation</h2>
             <p>The redesign followed a user-centered approach, prioritizing "INFORMATION ARCHITECTURE" and mobile adaptability.</p>
-        </div>
 
-        <div class="row mt-4">
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm p-3 fade-in">
-                    <h3 style="font-size: 1.3rem;">Heuristic Review</h3>
-                    <p>Conducted a heuristic evaluation to identify violations of usability principles, highlighting the severe navigation and "ERROR-PREVENTION" issues.</p>
+            <div class="system-row-95">
+                <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="font-size:1.1rem; color:#000080; margin-bottom:8px;">Heuristic Review</h3>
+                    <p style="margin:0; font-size:14px;">Conducted a heuristic evaluation to identify violations of usability principles, highlighting the severe navigation and "ERROR-PREVENTION" issues.</p>
+                </div>
+                <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="font-size:1.1rem; color:#000080; margin-bottom:8px;">Wireframing Focus</h3>
+                    <p style="margin:0; font-size:14px;">Designed low-fidelity wireframes, focusing on decluttering the homepage and ensuring the core shopping flow worked flawlessly on "MOBILE VIEWPORTS".</p>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm p-3 fade-in">
-                    <h3 style="font-size: 1.3rem;">Wireframing Focus</h3>
-                    <p>Designed low-fidelity wireframes, focusing on decluttering the homepage and ensuring the core shopping flow worked flawlessly on "MOBILE VIEWPORTS".</p>
+
+            <div class="system-row-95">
+                <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="font-size:1.1rem; color:#000080; margin-bottom:8px;">Visual Design & Prototyping</h3>
+                    <p style="margin:0; font-size:14px;">Developed high-fidelity prototypes incorporating modern e-commerce visual standards, including clearer product imagery and "STREAMLINED TYPOGRAPHY".</p>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm p-3 fade-in">
-                    <h3 style="font-size: 1.3rem;">Visual Design & Prototyping</h3>
-                    <p>Developed high-fidelity prototypes incorporating modern e-commerce visual standards, including clearer product imagery and "STREAMLINED TYPOGRAPHY".</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <hr>
+            <hr>
 
-    <section class="container mt-5" style="max-width: 900px;">
-        <div class="fade-in">
+            <!-- SECTION 4 -->
             <h2>4. Key Design Solutions Implemented</h2>
             <p>The redesign focused on four critical areas to alleviate user pain and drive conversion:</p>
 
-            <div class="row mt-5 align-items-center fade-in">
-                <div class="col-md-6">
-                    <h3 class="text-primary">Solution 1: Clean Homepage & Carousel</h3>
-                    <p>Replaced the busy, static homepage with a clean layout utilizing a "CAROUSEL" for key product categories. This provides a welcoming introduction without overwhelming the user upon arrival.</p>
+            <div class="artifact-grid-95">
+                <div class="artifact-card-95">
+                    <h4>Solution 1: Clean Homepage & Carousel</h4>
+                    <img src="../new-website/properties/img/studyiia.jpg" alt="Improved Homepage Design">
+                    <p style="font-size:13px; margin-top:6px;">Redesigned Homepage</p>
                 </div>
-                <div class="col-md-6 text-center">
-                    <img src="../new-website/properties/img/studyiia.jpg" class="img-fluid clickable-img diagram-img" alt="Improved Homepage Design">
-                    <p class="mt-2 text-muted">Redesigned Homepage</p>
+                <div class="artifact-card-95">
+                    <h4>Solution 2: Predictive Search & Error Prevention</h4>
+                    <img src="../new-website/properties/img/studyiib.jpg" alt="Enhanced Search Bar">
+                    <p style="font-size:13px; margin-top:6px;">Enhanced Search Bar</p>
                 </div>
-            </div>
-
-            <div class="row mt-5 align-items-center fade-in">
-                <div class="col-md-6 text-center order-md-2">
-                    <h3 class="text-primary">Solution 2: Predictive Search & Error Prevention</h3>
-                    <p>Introduced a clear, functional search bar with "SUGGESTIVE PROMPTS" and better "ERROR PREVENTION" to quickly guide users to products, reducing the number of 'no result' pages.</p>
+                <div class="artifact-card-95">
+                    <h4>Solution 3: Clear Product Availability</h4>
+                    <img src="../new-website/properties/img/studyiic.jpg" alt="Redesigned Product Page">
+                    <p style="font-size:13px; margin-top:6px;">Product Detail Page</p>
                 </div>
-                <div class="col-md-6 text-center order-md-1">
-                    <img src="../new-website/properties/img/studyiib.jpg" class="img-fluid clickable-img diagram-img" alt="Enhanced Search Bar">
-                    <p class="mt-2 text-muted">Enhanced Search Bar</p>
-                </div>
-            </div>
-
-            <div class="row mt-5 align-items-center fade-in">
-                <div class="col-md-6">
-                    <h3 class="text-primary">Solution 3: Clear Product Availability</h3>
-                    <p>Revamped product pages to display "REAL-TIME STOCK AVAILABILITY" clearly *before* the user selects a size, preventing frustration and unnecessary clicks for out-of-stock items.</p>
-                </div>
-                <div class="col-md-6 text-center">
-                    <img src="../new-website/properties/img/studyiic.jpg" class="img-fluid clickable-img diagram-img" alt="Redesigned Product Page">
-                    <p class="mt-2 text-muted">Product Detail Page</p>
+                <div class="artifact-card-95">
+                    <h4>Solution 4: Single-Page Checkout Flow</h4>
+                    <img src="../new-website/properties/img/studyiid.jpg" alt="Improved Checkout Flow">
+                    <p style="font-size:13px; margin-top:6px;">Streamlined Checkout</p>
                 </div>
             </div>
 
-            <div class="row mt-5 align-items-center fade-in">
-                <div class="col-md-6 text-center order-md-2">
-                    <h3 class="text-primary">Solution 4: Single-Page Checkout Flow</h3>
-                    <p>Simplified the purchasing journey by "CONSOLIDATING ALL CHECKOUT INFORMATION" onto a single, clear page, removing redundant pop-up windows and reducing cognitive load.</p>
+            <hr>
+
+            <!-- SECTION 5 -->
+            <h2>5. Before and After</h2>
+            <p>A visual comparison of the original website versus the redesigned version, showcasing the move to a cleaner aesthetic:</p>
+
+            <div class="artifact-grid-95">
+                <div class="artifact-card-95">
+                    <h4>Before (Original Design)</h4>
+                    <img src="../new-website/properties/img/studyiie.jpg" alt="Original Design">
                 </div>
-                <div class="col-md-6 text-center order-md-1">
-                    <img src="../new-website/properties/img/studyiid.jpg" class="img-fluid clickable-img diagram-img" alt="Improved Checkout Flow">
-                    <p class="mt-2 text-muted">Streamlined Checkout</p>
+                <div class="artifact-card-95">
+                    <h4>After (Redesigned Concept)</h4>
+                    <img src="../new-website/properties/img/studyiia.jpg" alt="New Design">
                 </div>
             </div>
+
+            <hr>
+
+            <!-- SECTION 6 -->
+            <h2>6. Final Thoughts & Future Steps</h2>
+            <p>This redesign was a valuable experience, as it allowed me to tackle real-world usability issues and improve the overall shopping experience.</p>
+
+            <h3 style="font-size: 1.1rem; color: #808080; margin-top: 20px; margin-bottom: 8px;">Future Steps</h3>
+            <ul>
+                <li>A/B Testing: Conduct usability tests on the redesigned checkout flow to "VALIDATE THE REDUCTION IN FRICTION".</li>
+                <li>Dynamic Features: Integrate personalized recommendations and "INTEGRATED CUSTOMER REVIEWS".</li>
+                <li>Refinement: Continue refining the site with more dynamic features, like personalized recommendations.</li>
+            </ul>
+
+            <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
+                <button class="win95-link-btn" onclick="window.location.href='index.html';" style="font-size: 13px; padding: 6px 24px; font-weight: bold; cursor: pointer;">
+                    Close Case Study
+                </button>
+                <p style="font-size:13px; color:#555; margin-top:15px;">© 2026 Working Class Heroes Redesign Case Study</p>
+            </div>
+
         </div>
-    </section>
+    </div>
+</div>
 
-    <hr>
-    
-    <section class="container mt-5 fade-in" style="max-width: 900px;">
-        <h2>5. Before and After</h2>
-        <p>A visual comparison of the original website versus the redesigned version, showcasing the move to a cleaner aesthetic:</p>
-
-        <div class="row mt-4">
-            <div class="col-md-6 text-center fade-in">
-                <h4>Before (Original Design)</h4>
-                <img src="../new-website/properties/img/studyiie.jpg" class="img-fluid clickable-img diagram-img" alt="Original Design">
-            </div>
-            <div class="col-md-6 text-center fade-in">
-                <h4>After (Redesigned Concept)</h4>
-                <img src="../new-website/properties/img/studyiia.jpg" class="img-fluid clickable-img diagram-img" alt="New Design">
-            </div>
-        </div>
-    </section>
-
-    <hr>
-
-    <section class="container mt-5 fade-in" style="max-width: 900px;">
-        <h2>6. Final Thoughts & Future Steps</h2>
-        <p>This redesign was a valuable experience, as it allowed me to tackle real-world usability issues and improve the overall shopping experience.</p>
-        
-        <h3 class="text-muted mt-4">Future Steps</h3>
-        <ul>
-            <li>A/B Testing: Conduct usability tests on the redesigned checkout flow to "VALIDATE THE REDUCTION IN FRICTION".</li>
-            <li>Dynamic Features: Integrate personalized recommendations and "INTEGRATED CUSTOMER REVIEWS".</li>
-            <li>Refinement: Continue refining the site with more dynamic features, like personalized recommendations.</li>
-        </ul>
-
-        <div class="d-flex justify-content-center py-5">
-            <a href="../new-website/projects.html" class="btn btn-primary px-4">Back to Projects</a>
-        </div>
-    </section>
-
-    <footer class="bg-dark text-white text-center py-4">
-        <p>&copy; 2026 Working Class Heroes Redesign Case Study</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOnScroll = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('appear');
-                }
-            });
-        }, { rootMargin: "0px 0px -10% 0px" });
-        faders.forEach(fader => appearOnScroll.observe(fader));
-    </script>
-    <script src="../new-website/Jsscript.js"></script>
+<script src="../new-website/Jsscript.js"></script>
 </body>
 </html>

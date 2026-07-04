@@ -1,112 +1,233 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const body = document.body;
-    const navbar = document.getElementById("navbar");
+    // DOM Element Selectors
+    const binaryLayer = document.getElementById("binaryLayer");
+    const typingText = document.getElementById("typing-text");
     const darkModeButton = document.getElementById("darkModeButton");
-    
-    // --- 1. Dark Mode Toggle & Persistence ---
-    
-    // Function to set Dark Mode state and save preference
-    const setDarkMode = (isDark) => {
-        // Update Body/Navbar classes
-        body.classList.toggle("dark-mode", isDark);
-        navbar.classList.toggle("navbar-dark", isDark);
-        // Toggle background classes for the navbar (Bootstrap 5)
-        navbar.classList.toggle("navbar-light", !isDark); // Reset light if dark
-        navbar.classList.toggle("bg-light", !isDark);     // Set light background if light mode
-        navbar.classList.toggle("bg-dark", isDark);       // Set dark background if dark mode
-        
-        // Update Button Text
-        darkModeButton.innerHTML = isDark ? "☀️ Toggle Light Mode" : "🌙 Toggle Dark Mode";
 
-        // Save Preference
-        localStorage.setItem("darkModeEnabled", isDark);
+    // Windows 95 Specific Selectors
+    const win95StartBtn = document.getElementById("win95StartBtn");
+    const win95StartMenu = document.getElementById("win95StartMenu");
+    const win95Clock = document.getElementById("win95-clock");
+
+    /* ==========================================================================
+       1. BINARY BACKGROUND
+       ========================================================================== */
+    function generateBinary() {
+        if (!binaryLayer) return;
+
+        const charWidth = 8.4;
+        const charHeight = 16.8;
+
+        const columns = Math.ceil(window.innerWidth / charWidth);
+        const rows = Math.ceil(window.innerHeight / charHeight);
+
+        const totalCharacters = columns * rows;
+
+        let output = "";
+        for (let i = 0; i < totalCharacters; i++) {
+            output += Math.random() > 0.5 ? "1" : "0";
+
+            if (i > 0 && i % columns === 0) {
+                output += "\n";
+            }
+        }
+        binaryLayer.textContent = output;
+    }
+
+    generateBinary();
+    setInterval(generateBinary, 1500);
+    window.addEventListener("resize", generateBinary);
+
+    /* ==========================================================================
+       2. TYPING ENGINE
+       ========================================================================== */
+    const textToType = "Junior UX/UI Designer | Frontend Systems | Interaction Logic";
+    let textIndex = 0;
+
+    function type() {
+        if (typingText && textIndex < textToType.length) {
+            typingText.textContent += textToType.charAt(textIndex);
+            textIndex++;
+            setTimeout(type, 50);
+        }
+    }
+
+    if (typingText) {
+        typingText.textContent = "";
+        type();
+    }
+
+    /* ==========================================================================
+       3. THEME TOGGLE
+       ========================================================================== */
+    const savedTheme = localStorage.getItem("system-theme");
+    const userPrefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+
+    if (savedTheme === "light" || (!savedTheme && userPrefersLight)) {
+        document.documentElement.setAttribute("data-theme", "light");
+        if (darkModeButton) darkModeButton.textContent = "Mode: Light";
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        if (darkModeButton) darkModeButton.textContent = "Mode: Dark";
+    }
+
+    if (darkModeButton) {
+        darkModeButton.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+
+            if (currentTheme === "dark") {
+                document.documentElement.setAttribute("data-theme", "light");
+                darkModeButton.textContent = "Mode: Light";
+                localStorage.setItem("system-theme", "light");
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                darkModeButton.textContent = "Mode: Dark";
+                localStorage.setItem("system-theme", "dark");
+            }
+        });
+    }
+
+    /* ==========================================================================
+       4. WINDOW SYSTEM + ROUTING (FIXED)
+       ========================================================================== */
+
+    let globalZIndex = 100;
+
+    // External routing table
+    const windowRoutes = {
+        "all-projects-win": "projects.html" // even though the window is gone, routing stays safe
     };
 
-    // Load saved preference or system preference on page load
-    if (darkModeButton) {
-        const savedDarkMode = localStorage.getItem("darkModeEnabled");
-        
-        // Check local storage, or fall back to system preference
-        const initialIsDark = (savedDarkMode === "true" || 
-                              (savedDarkMode === null && window.matchMedia('(prefers-color-scheme: dark)').matches));
-
-        setDarkMode(initialIsDark);
-
-        // Click Listener
-        darkModeButton.addEventListener("click", () => {
-            const isDark = !body.classList.contains("dark-mode");
-            setDarkMode(isDark);
-        });
+    function bringToFront(windowElement) {
+        globalZIndex++;
+        windowElement.style.zIndex = globalZIndex;
     }
 
-    // --- 2. Open Modal for Images ---
-    const modalElement = document.getElementById('imageModal');
-    
-    // Check if the modal HTML exists on the page
-    if (modalElement) {
-        const modal = new bootstrap.Modal(modalElement);
-        const modalImage = document.getElementById("modalImage");
+    // ⭐ SAFE VERSION — prevents crashes when a window doesn't exist
+    window.openWindow = function (windowId) {
+        if (!windowId) return;
 
-        document.querySelectorAll('.clickable-img').forEach(image => {
-            image.addEventListener('click', (e) => {
-                e.preventDefault(); // Stop the parent <a> tag from opening a new window
-                
-                // Get the URL from the parent <a> tag's href attribute
-                const anchor = image.closest('a');
-                if (anchor) {
-                    modalImage.src = anchor.href;
-                    modal.show();
-                }
-            });
-        });
+        windowId = windowId.trim();
 
-        // Close Modal When Clicked Outside (Ensures clicking the backdrop works)
-        modalElement.addEventListener('click', (e) => {
-            if (e.target === modalElement) {
-                modal.hide();
-            }
-        });
-    }
+        // External navigation
+        if (windowRoutes[windowId]) {
+            window.location.href = windowRoutes[windowId];
+            return;
+        }
 
+        const win = document.getElementById(windowId);
 
-    // --- 3. Contact Form Submission & Validation (If you still have a contact form) ---
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name.trim() && email.trim() && message.trim()) {
-                alert("Thank you for your message! We'll get back to you shortly.");
-                contactForm.reset();
-            } else {
-                alert("Please fill in all fields before submitting.");
-            }
-        });
+        // ⭐ Prevent JS crash
+        if (!win) {
+            console.warn("Window not found:", windowId);
+            return;
+        }
 
-        // Form validation on blur
-        document.querySelectorAll('form input, form textarea').forEach(element => {
-            element.addEventListener('blur', () => {
-                if (element.value.trim() === '') element.classList.add('is-invalid');
-                else element.classList.remove('is-invalid');
-            });
-        });
-    }
+        win.classList.remove("hidden-window");
+        bringToFront(win);
+    };
 
-    // --- 4. Smooth Scroll for Anchor Links ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        });
+    window.closeWindow = function (windowId) {
+        const win = document.getElementById(windowId);
+        if (win) {
+            win.classList.add("hidden-window");
+            win.classList.remove("maximized");
+        }
+    };
+
+    window.maximizeWindow = function (windowId) {
+        const win = document.getElementById(windowId);
+        if (win) {
+            win.classList.toggle("maximized");
+        }
+    };
+
+    document.querySelectorAll('.win95-window').forEach(win => {
+        win.addEventListener('mousedown', () => bringToFront(win));
     });
 
-    // --- 5. Loading Spinner ---
-    const spinner = document.getElementById('loading-spinner');
-    // Hide the spinner once the page content has loaded
-    window.addEventListener('load', () => {
-        if (spinner) spinner.style.display = 'none';
+    /* ==========================================================================
+       5. START MENU (FIXED)
+       ========================================================================== */
+
+    if (win95StartBtn && win95StartMenu) {
+
+        win95StartBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            win95StartMenu.classList.toggle("hidden");
+            win95StartBtn.classList.toggle("pressed");
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!win95StartMenu.contains(e.target) && e.target !== win95StartBtn) {
+                win95StartMenu.classList.add("hidden");
+                win95StartBtn.classList.remove("pressed");
+            }
+        });
+
+        win95StartMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", (e) => {
+
+                const targetHref = link.getAttribute("href");
+
+                if (targetHref && targetHref.startsWith("#")) {
+
+                    const cleanId = targetHref.replace("#", "").trim();
+
+                    const targetWindow = document.getElementById(cleanId);
+
+                    if (targetWindow) {
+                        e.preventDefault();
+                        openWindow(cleanId);
+                    } else {
+                        console.warn("Start Menu window not found:", cleanId);
+                    }
+                }
+
+                win95StartMenu.classList.add("hidden");
+                win95StartBtn.classList.remove("pressed");
+            });
+        });
+    }
+
+    /* ==========================================================================
+       6. CLOCK
+       ========================================================================== */
+
+    function updateWin95Clock() {
+        if (!win95Clock) return;
+        const now = new Date();
+        win95Clock.textContent = now.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
+    setInterval(updateWin95Clock, 1000);
+    updateWin95Clock();
+
+    /* ==========================================================================
+       7. SMOOTH SCROLL
+       ========================================================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            const targetID = this.getAttribute("href");
+
+            if (targetID === "#" || !targetID.startsWith("#")) return;
+
+            if (document.getElementById(targetID.replace("#", "") + "-win")) return;
+
+            const targetElement = document.querySelector(targetID);
+
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
     });
 });

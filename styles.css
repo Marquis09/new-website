@@ -1,470 +1,651 @@
-/* --- NEW FONT IMPORTS (Option 1: Bebas Neue & Roboto Mono) --- */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@400;700&display=swap');
+/* ===== THEME SETUP FOR DYNAMIC TOGGLE ===== */
+:root {
+    --bg-color: #0b0f14;
+    --text-color: white;
+    --border-color: rgba(255, 255, 255, 0.2);
+}
 
-/* General Styles */
+[data-theme="light"] {
+    --bg-color: #f4f7f6;
+    --text-color: #121820;
+    --border-color: rgba(0, 0, 0, 0.15);
+}
+
 body {
-    /* UPDATED: Roboto Mono for a unique, technical, and structural feel */
-    font-family: 'Roboto Mono', monospace;
     margin: 0;
-    padding: 0;
-    transition: background-color 0.3s, color 0.3s;
-    background-color: #f0f4f8; /* Light background (default) */
-    color: #333; /* Dark text for readability */
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* NEW: Personalized Link Flow Effect (Movement & Flow) */
-a {
-    color: #007bff; /* Keeps the standard link color */
-    text-decoration: none; /* Remove default underline */
+/* ===== BINARY BACKGROUND: UPDATED FOR FULL SCREEN INFINITE WRAP ===== */
+.binary-layer {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    opacity: 0.08;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;       /* Allows code to naturally wrap down at edge limits */
+    word-break: break-all;       /* Prevents single lines from overflowing off screen width */
+    overflow: hidden;            /* Restricts scrolling bars from appearing due to text growth */
+    pointer-events: none;
+    line-height: 1.2;
+}
+
+/* Subtle noise overlay */
+.noise-overlay {
+    position: fixed;
+    inset: 0;
+    background: url("https://www.transparenttextures.com/patterns/noise.png");
+    opacity: 0.05;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== SECTIONS AS STATES ===== */
+.state {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    /* Smooth transition for text color */
-    transition: color 0.3s ease-in-out; 
+    z-index: 2;
+    padding: 80px 20px;
+    box-sizing: border-box;
 }
 
-a:hover {
-    color: #0056b3; /* Slightly darker on hover for feedback */
-}
-
-/* Link Underline Effect */
-a:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 3px; /* Thickness of the line */
-    bottom: 0;
-    left: 0;
-    background-color: #007bff; /* Uses the accent color for the line */
-    transform: scaleX(0); /* Hidden by default */
-    transform-origin: bottom left; /* Starts the animation from the left */
-    transition: transform 0.3s ease-out;
-}
-
-a:hover:after {
-    transform: scaleX(1); /* Expands left-to-right on hover (The 'Flow') */
-}
-
-
-/* Light Theme (default) */
-.bg-light {
-    background-color: #f0f4f8; /* Light background */
-}
-
-/* Dark mode styles */
-.dark-mode {
-    background-color: #1a1a1a !important; /* Dark background */
-    color: #fff !important; /* Light text for dark mode */
-}
-
-.dark-mode .card {
-    /* Subtle shadow and border radius adjustment for structure */
-    background-color: #333; 
-    color: #fff !important;
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    border-radius: 5px; 
-}
-
-.dark-mode .card-body {
-    color: #fff !important; /* Ensure text in card body is also light */
-}
-
-/* FIX: Dark Mode Link Color (for body content) */
-.dark-mode a {
-    color: #409bfd; /* A lighter, bright blue accent color for dark mode */
-}
-.dark-mode a:hover {
-    color: #8bbfff; /* Even lighter on hover */
-}
-.dark-mode a:after {
-    background-color: #409bfd; /* Use the accent color for the animated underline */
-}
-
-
-/* Hero Section */
-#hero {
-    background-color: #e9ecef;
-    padding: 60px 0;
+.center {
     text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-    /* Defined structure with a light shadow */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.dark-mode #hero {
-    background-color: #333 !important; /* Dark background for hero section */
-    color: #fff !important; /* Light text for hero section */
+/* ===== HERO ===== */
+.glitch-name {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 3px;
 }
 
-/* Navigation Bar Styles */
-#navbar {
-    background-color: #007bff; /* Bright blue background */
-    padding: 15px 0;
-    transition: background-color 0.3s;
+.typing {
+    margin-top: 15px;
+    font-family: monospace;
+    opacity: 0.8;
 }
 
-#navbar a {
-    color: #ffffff !important; /* White text for contrast */
-    font-weight: bold; /* Bold text for better visibility */
+.sub {
+    margin-top: 10px;
+    opacity: 0.6;
 }
 
-#navbar a:hover {
-    color: #d4d4d4 !important; /* Light gray text on hover for better visibility */
+.cta a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    text-decoration: none;
 }
 
-#navbar .navbar-toggler {
-    border-color: #ffffff; /* White border for the toggler button */
-}
-
-#navbar .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-/* Dark Mode Navbar */
-.dark-mode #navbar {
-    background-color: #444 !important; /* Dark background for navbar in dark mode */
-}
-
-.dark-mode #navbar a {
-    color: #fff !important; /* White navbar text in dark mode */
-}
-
-.dark-mode #navbar .navbar-toggler {
-    border-color: #333 !important; /* Dark border for the toggler button */
-}
-
-/* Sections */
-section {
-    margin-bottom: 40px; /* Consistent spacing between sections */
-}
-
-/* Section Title Styles - UPDATED TO BEBAS NEUE FOR POP */
-h2, h3 {
-    font-family: 'Bebas Neue', sans-serif; /* Sturdy, bold font */
-    font-size: 2.8rem; /* Larger size for impact */
-    font-weight: 400; /* Bebas Neue is already heavy at 400 */
-    letter-spacing: 2px; /* Added spacing for a modern look */
-    margin-bottom: 20px; 
+/* ===== CONTENT ===== */
+.content {
+    max-width: 800px;
 }
 
 h2 {
-    color: #333;
-}
-
-h3 {
-    color: #555;
-}
-
-/* About Section */
-#about {
-    background-color: #f0f4f8; /* Light background */
-    padding: 50px 0;
-    transition: background-color 0.3s, color 0.3s;
-    /* Add a visible, structural border */
-    border: 1px solid #ccc; 
-    border-radius: 5px; /* Subtle rounding */
-    margin-top: 20px;
-}
-
-.dark-mode #about {
-    background-color: #444 !important; /* Dark background for about section in dark mode */
-    color: #fff !important; /* Light text for about section */
-    border: 1px solid #666; /* Light border in dark mode */
-}
-
-/* Navbar Active Link Style */
-.navbar-nav .nav-link.active {
-    color: #fff; /* White text */
-    background-color: #409bfd; /* Bright blue background */
-    border-radius: 5px; /* Rounded corners for a button-like appearance */
-    padding: 8px 15px; /* Padding for spacing */
-}
-
-/* Project Gallery */
-.project-gallery .card {
+    letter-spacing: 2px;
     margin-bottom: 20px;
-    transition: transform 0.3s;
-    /* Defined structural borders and shadow */
-    border: 1px solid #ddd;
-    border-radius: 4px; /* Less rounded corners */
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08); 
 }
 
-.project-gallery .card img {
-    max-height: 300px;
-    object-fit: cover;
+.system-card {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
 }
 
-/* Hover Effects - DYNAMIC MOVEMENT */
-.project-item, .testimonial-item {
-    transition: transform 0.3s, box-shadow 0.3s;
+/* ===== PROJECTS ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.project-item:hover, .testimonial-item:hover {
-    /* Lift and slight dynamic rotation for 'flow'/'trick' feel */
-    transform: scale(1.05) rotate(0.5deg); 
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+.card {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: 0.3s;
 }
 
-/* Modal */
-.modal-content {
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 8px; /* Rounded corners for modal */
-    padding: 25px; /* Padding inside the modal */
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--text-color);
 }
 
-.dark-mode .modal-content {
-    background-color: #333 !important; /* Dark background for modal */
-    color: #fff !important; /* Light text for modal */
+/* ===== FAITH SECTION ===== */
+.faith .verse {
+    font-size: 1.4rem;
+    opacity: 0.9;
 }
 
-/* Modal Image */
-.modal-body img {
-    width: 100%; /* Ensure the image fills the width of the modal */
-    border-radius: 5px; /* Rounded corners for the image */
-    margin-bottom: 20px; /* Space between image and description */
+.faith .ref {
+    margin-top: 10px;
+    opacity: 0.6;
 }
 
-/* Modal Close Button */
-.modal-header .btn-close {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-}
-
-.modal-header .btn-close:hover {
-    color: #007bff; /* Highlight close button on hover */
-}
-
-/* Testimonials Section */
-#testimonials .card {
-    margin-bottom: 30px;
-    max-width: 900px; /* Limit width of testimonials */
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.3s, color 0.3s;
-    /* Defined structure */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.dark-mode #testimonials .card {
-    background-color: #444 !important; /* Dark background for testimonials */
-    color: #fff !important; /* Light text for testimonials */
-    border: 1px solid #666;
-}
-
-.dark-mode .carousel-control-prev-icon,
-.dark-mode .carousel-control-next-icon {
-    filter: invert(1); /* Light arrows in dark mode */
-}
-
-/* Contact Form */
-#contact-form input,
-#contact-form textarea {
-    /* Slightly reduced border radius for grit */
-    border-radius: 44px;
-    border-color: #ccc; /* Light border color */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    padding: 12px 15px; /* Padding inside inputs */
-    width: 100%; /* Ensure full-width for better readability */
-    margin-bottom: 20px; /* Space between input fields */
-}
-
-#contact-form input:focus,
-#contact-form textarea:focus {
-    outline: none;
-    border-color: #3498db; /* Focus border color */
-}
-
-.dark-mode #contact-form input,
-.dark-mode #contact-form textarea {
-    background-color: #444 !important; /* Dark input background */
-    color: #fff !important; /* Light text for dark mode */
-    border-color: #666 !important; /* Dark border color */
-}
-
-/* Footer */
-footer {
-    background-color: #2c3e50; /* Matching footer background */
-    color: #fff;
-    padding: 30px 20px; /* Spacing for footer */
-    text-align: center;
-}
-
-.dark-mode footer {
-    background-color: #333 !important; /* Dark footer */
-    color: #fff !important; /* Light text for dark footer */
-}
-
-/* Image Hover Effect - Applying the same dynamic movement */
-#munichImage {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#munichImage:hover {
-    /* Dynamic movement */
-    transform: scale(1.1) rotate(-0.5deg); 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-}
-
-/* Dark Mode Image Hover */
-.dark-mode #munichImage:hover {
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Brightened shadow in dark mode */
-}
-
-/* Added styles for clickable image with animation */
-.clickable-img {
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
-}
-
-.clickable-img:hover {
-    transform: scale(1.1) rotate(0.5deg); /* Dynamic movement */
-}
-
-/* Dark Mode Modal Image */
-.dark-mode .modal-body img {
-    border-radius: 5px;
-}
-
-/* Loading Spinner Styles */
-#loading-spinner {
+/* ==========================================================================
+   WINDOWS 95 NAVIGATION INTERFACE (SCALED & RENDER OPTIMIZED)
+   ========================================================================== */
+.win95-taskbar {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.8);
+    height: 36px; /* Optimized layout presence */
+    background: #c0c0c0;
+    border-bottom: 2px solid #fff;
+    box-shadow: 0 1px 0 #808080, 0 2px 0 #000;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 6px;
+    z-index: 100;
+    font-family: 'Tahoma', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Classic 3D Outset Start Button */
+.win95-start-button {
+    height: 28px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
+}
+
+.win95-start-button strong {
+    text-decoration: underline; 
+}
+
+.win95-start-button:active, .win95-start-button.pressed {
+    border-color: #808080 #fff #fff #808080;
+    padding: 4px 8px 0px 12px;
+}
+
+.win95-logo { 
+    margin-right: 6px; 
+    width: 16px;
+    height: 16px;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated; /* Ensures native shell graphics render crystal clear */
+}
+
+/* Active running task tab block */
+.taskbar-tasks { 
+    flex-grow: 1; 
+    padding-left: 12px; 
+}
+
+.win95-task-tab {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    font-size: 12px;
+    padding: 2px 12px;
+    color: #000;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.win95-task-tab.active {
+    border-color: #808080 #fff #fff #808080;
+    background: #e0e0e0;
+    box-shadow: inset 1px 1px 0 #000;
+}
+
+/* Inset 3D System Tray */
+.win95-system-tray {
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 12px;
+    background: #c0c0c0;
+    color: #000;
+    box-sizing: border-box;
+}
+
+#darkModeButton {
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    font-size: 11px;
+    margin-right: 10px;
+    cursor: pointer;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 6px;
+}
+
+#darkModeButton:active {
+    border-color: #808080 #fff #fff #808080;
+}
+
+/* MAIN START MENU CONTAINER */
+.win95-start-menu {
+    position: absolute;
+    top: 34px;
+    left: 2px;
+    width: 230px; /* Widened layout frame to eliminate system element compression */
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    display: flex;
+    box-shadow: 2px 2px 0 #000;
+    z-index: 110;
+    box-sizing: border-box;
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+/* Iconic Windows 95 Sidebar Brand Banner */
+.win95-sidebar {
+    background: linear-gradient(to top, #000080 0%, #1084d0 100%);
+    width: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+    color: #c0c0c0;
+    box-sizing: border-box;
+}
+
+.win95-sidebar span {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.win95-sidebar span strong {
+    color: #fff;
+}
+
+/* List Formatting */
+.win95-menu-list {
+    list-style: none;
+    padding: 3px;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.win95-menu-list li { 
+    position: relative; 
+}
+
+.win95-menu-list a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px; /* Enhanced hit-target padding bounds */
+    color: #000 !important;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Tahoma', Arial, sans-serif;
+}
+
+.win95-menu-list a:hover {
+    background: #000080;
+    color: #fff !important;
+}
+
+/* Sharp Rendering Rules for Shell32 Pixel Graphics */
+.item-icon { 
+    margin-right: 12px; 
+    width: 18px;
+    height: 18px;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    object-fit: contain;
+}
+
+.arrow { 
+    margin-left: auto; 
+    font-size: 9px; 
+}
+
+/* CASCADING SUBMENU LOGIC */
+.win95-submenu {
+    display: none;
+    position: absolute;
+    left: calc(100% - 2px);
+    top: -2px;
+    width: 210px; /* Proportionally expanded cascading container frame */
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    list-style: none;
+    padding: 3px;
+    margin: 0;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.has-submenu:hover .win95-submenu { 
+    display: block; 
+}
+
+.win95-menu-list .menu-separator {
+    height: 1px;
+    background: #808080;
+    border-bottom: 1px solid #fff;
+    margin: 5px 2px;
+}
+
+/* ==========================================================================
+   VIRTUAL RETRO DESKTOP WORKSPACE ARCHITECTURE
+   ========================================================================== */
+.desktop-workspace {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 60vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.central-align {
     justify-content: center;
     align-items: center;
-    z-index: 9999;
 }
 
-/* --- DEDICATED NARROW CONTAINER (NEW) --- */
-/* Used only for the "About Me" content to restrict its width */
-.container-narrow {
-    max-width: 950px; /* Base narrow width */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+/* Iconic grid layout architecture for digital screens */
+.desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 25px;
+    width: 60%;
 }
 
-/* For screens larger than 1200px, constrain the narrow container more */
-@media (min-width: 1200px) {
-    .container-narrow {
-        max-width: 850px;
+.desktop-grid.single-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Individual interactive shortcuts layout configuration */
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px 5px;
+    border: 1px solid transparent;
+    background: none;
+    transition: all 0.1s ease;
+}
+
+/* Classic dotted selection tracking frame when item is focused/hovered */
+.desktop-icon:hover {
+    background-color: rgba(0, 0, 128, 0.12);
+    border: 1px dotted var(--text-color);
+}
+
+.icon-sprite {
+    font-size: 32px;
+    margin-bottom: 8px;
+    user-select: none;
+}
+
+.icon-image {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    object-fit: contain;
+}
+
+.icon-label {
+    font-size: 11px;
+    font-family: 'Tahoma', Arial, sans-serif;
+    color: var(--text-color);
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+/* Classic Solid Retro Widget Panel Container */
+.desktop-sticky-note {
+    width: 35%;
+    background: #c0c0c0;
+    color: #000 !important;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    box-shadow: 2px 2px 0 #000;
+    padding: 20px;
+    font-family: 'Tahoma', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.desktop-sticky-note h3 {
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 2px solid #808080;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+.desktop-sticky-note p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+}
+
+/* Visual adaptations for layout variation structures */
+.large-display {
+    max-width: 600px;
+    cursor: default;
+}
+.large-display:hover {
+    background: none;
+    border-color: transparent;
+}
+
+.scroll-pulse {
+    font-size: 54px;
+    animation: bounceRetro 3.5s infinite ease-in-out;
+    display: inline-block;
+}
+
+@keyframes bounceRetro {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* Responsive configurations for small mobile displays */
+@media (max-width: 768px) {
+    .desktop-workspace {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 30px;
+    }
+    .desktop-grid {
+        width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+        grid-gap: 15px;
+    }
+    .desktop-sticky-note {
+        width: 100%;
     }
 }
 
-/* --- NAVIGATION BAR STYLING FOR BUTTON LOOK (Moved from HTML) --- */
-
-/* 1. Base button style: Solid Secondary Gray Button for non-active links and brand */
-.navbar .nav-link:not(.active), 
-.navbar-brand { 
-    padding: 8px 12px;
-    margin: 0 5px;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    font-weight: 600; 
-    
-    /* Grey button look */
-    background-color: #6c757d !important;
-    color: white !important;
-    border: 1px solid #6c757d !important; 
+/* Window Base Layout */
+.win95-window {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    width: 450px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
 }
 
-/* 2. Active state: Primary Blue button (for "Home" link) */
-.navbar .nav-link.active {
-    padding: 8px 15px; /* Adjusted padding to match button size */
-    margin: 0 5px;
-    border-radius: 8px;
-    font-weight: 600; 
-
-    background-color: #0d6efd !important;
-    color: white !important;
-    border-color: #0d6efd !important;
+.hidden-window {
+    display: none !important;
 }
 
-/* 3. Hover state: Darker gray background for non-active links/brand */
-.navbar .nav-link:not(.active):hover,
-.navbar-brand:hover {
-    background-color: #5a6268 !important; /* Darker secondary on hover */
-    color: white !important; 
+/* Maximize State Toggle Class */
+.win95-window.maximized {
+    top: 36px !important; /* Locks below taskbar */
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100vh - 36px) !important;
 }
 
-/* 4. Ensure the dark mode button uses the grey button style */
-#darkModeButton {
-    color: white; 
-    background-color: #6c757d !important;
-    border-color: #6c757d !important;
-    font-weight: 600; 
-    /* Match the size and margins of the other nav links */
-    padding: 8px 12px;
-    border-radius: 8px;
+/* Classic Titlebar Blue Gradient - BUFFED FOR EDGE SPACING CLOSURES */
+.window-titlebar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 4px 8px; /* Added slight horizontal inset padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    box-sizing: border-box; /* Forces safe sizing calculation limits */
 }
 
-/* 5. Toggler icon fix for light background */
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23343a40' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3csvg%3e") !important;
+.window-controls {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-shrink: 0; /* Prevents action control buttons from shifting sizes */
 }
 
-/* --- DARK MODE OVERRIDES (For consistent button look in dark mode) --- */
-
-body.dark-mode .navbar-brand,
-body.dark-mode .nav-link:not(.active),
-body.dark-mode #darkModeButton {
-    /* Adjust grey button color for dark background */
-    background-color: #495057 !important;
-    border-color: #495057 !important;
-    color: #f8f9fa !important;
+.win-btn {
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #fff #808080 #808080 #fff;
+    font-size: 10px;
+    padding: 1px 4px;
+    cursor: pointer;
+    color: #000;
 }
 
-body.dark-mode .nav-link.active {
-    /* Active blue button remains blue in dark mode */
-    background-color: #0d6efd !important; 
-    border-color: #0d6efd !important;
+.win-btn:active {
+    border-color: #808080 #fff #fff #808080;
 }
 
-body.dark-mode .navbar .nav-link:not(.active):hover,
-body.dark-mode .navbar-brand:hover {
-    background-color: #5a6268 !important; 
+.window-body {
+    padding: 15px;
+    color: #000;
+    background: #fff;
+    margin: 4px;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+/* Custom CSS mechanics for the dual-state frame */
+#all-projects-win:not(.maximized) {
+    width: 460px;
+    height: 520px;
 }
 
-/* Add a background to the overall dark mode body */
-body.dark-mode {
-    background-color: #212529 !important; 
-    color: #f8f9fa !important;
-}
-body.dark-mode .bg-dark {
-    background-color: #343a40 !important;
+#all-projects-win:not(.maximized) .window-body {
+    height: calc(100% - 40px);
+    overflow-y: auto;
 }
 
-/* Updated: Style for the hero section background color */
-#hero {
-    background-color: #363A42 !important; /* The color from your image */
-    color: white !important; /* Ensure text is white for contrast */
+#all-projects-win:not(.maximized) .extra-project {
+    display: none !important;
 }
 
-/* New: Style for the profile image (kept for continuity) */
-.profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Makes the image circular */
+#all-projects-win.maximized .projects-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    padding-top: 10px;
+}
+
+#all-projects-win.maximized .extra-project {
+    display: flex !important;
+}
+
+/* Base Win95 content cards structures */
+.system-card {
+    background: #fff;
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.system-card img {
+    width: 100%;
+    height: 130px;
     object-fit: cover;
-    margin-bottom: 1.5rem; /* Space below the image */
-    border: 5px solid white; /* Optional: adds a white border */
+    border: 1px solid #808080;
 }
 
-/* Typing cursor style for animation (kept for continuity) */
-.typing::after {
-    content: '|';
+.card-content h5 {
+    margin: 4px 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card-content p {
+    font-size: 11px;
+    color: #404040;
+    margin-bottom: 8px;
+}
+
+.win95-link-btn {
     display: inline-block;
-    animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    background: #c0c0c0;
+    color: #000 !important;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    align-self: flex-start;
 }
