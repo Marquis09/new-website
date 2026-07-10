@@ -13,30 +13,33 @@ document.addEventListener("DOMContentLoaded", () => {
        1. BINARY BACKGROUND
        ========================================================================== */
     function generateBinary() {
-        if (!binaryLayer) return;
+    if (!binaryLayer) return;
 
-        const charWidth = 8.4;
-        const charHeight = 16.8;
+    const charWidth = 8.4;
+    const charHeight = 16.8;
 
-        const columns = Math.ceil(window.innerWidth / charWidth);
-        const rows = Math.ceil(window.innerHeight / charHeight);
+    const columns = Math.ceil(window.innerWidth / charWidth);
+    const rows = Math.ceil(window.innerHeight / charHeight);
 
-        const totalCharacters = columns * rows;
+    const totalCharacters = columns * rows;
 
-        let output = "";
-        for (let i = 0; i < totalCharacters; i++) {
-            output += Math.random() > 0.5 ? "1" : "0";
+    let output = "";
+    for (let i = 0; i < totalCharacters; i++) {
+        output += Math.random() > 0.5 ? "1" : "0";
 
-            if (i > 0 && i % columns === 0) {
-                output += "\n";
-            }
+        if ((i + 1) % columns === 0) {
+            output += "\n";
         }
-        binaryLayer.textContent = output;
     }
 
+    binaryLayer.textContent = output;
+}
+
+
     generateBinary();
-    setInterval(generateBinary, 1500);
+    setInterval(generateBinary, 2500);
     window.addEventListener("resize", generateBinary);
+    
 
     /* ==========================================================================
        2. TYPING ENGINE

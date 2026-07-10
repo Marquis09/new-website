@@ -20,19 +20,20 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+
 /* ===== BINARY BACKGROUND: UPDATED FOR FULL SCREEN INFINITE WRAP ===== */
 .binary-layer {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 0;
+    z-index: -9999;
     opacity: 0.08;
     font-family: monospace;
     font-size: 14px;
-    white-space: pre-wrap;       /* Allows code to naturally wrap down at edge limits */
-    word-break: break-all;       /* Prevents single lines from overflowing off screen width */
-    overflow: hidden;            /* Restricts scrolling bars from appearing due to text growth */
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow: hidden;
     pointer-events: none;
     line-height: 1.2;
 }
@@ -57,6 +58,7 @@ body {
     z-index: 2;
     padding: 80px 20px;
     box-sizing: border-box;
+   
 }
 
 .center {
@@ -377,6 +379,7 @@ h2 {
     align-items: flex-start;
     justify-content: space-between;
     box-sizing: border-box;
+     background: transparent;
 }
 
 .central-align {
@@ -649,3 +652,4 @@ h2 {
     border-color: #fff #808080 #808080 #fff;
     align-self: flex-start;
 }
+
