@@ -652,4 +652,19 @@ h2 {
     border-color: #fff #808080 #808080 #fff;
     align-self: flex-start;
 }
+#binaryPatch {
+    position: fixed;
+    top: 0;
+    right: -120px;     /* ⭐ pushes patch further right */
+    width: 207px;      /* ⭐ wider to fill the missing area */
+    height: 100vh;
+    z-index: -9998;
+    opacity: 0.08;
+    pointer-events: none;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.2;
+}
 

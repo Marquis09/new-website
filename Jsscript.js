@@ -41,6 +41,30 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", generateBinary);
     
 
+    const binaryPatch = document.getElementById("binaryPatch");
+
+function generateBinaryPatch() {
+    const charWidth = 8.4;
+    const charHeight = 16.8;
+
+    const patchWidth = binaryPatch.offsetWidth;
+    const columns = Math.ceil(patchWidth / charWidth);
+    const rows = Math.ceil(window.innerHeight / charHeight);
+
+    let output = "";
+    for (let i = 0; i < columns * rows; i++) {
+        output += Math.random() > 0.5 ? "1" : "0";
+        if ((i + 1) % columns === 0) output += "\n";
+    }
+
+    binaryPatch.textContent = output;
+}
+
+generateBinaryPatch();
+setInterval(generateBinaryPatch, 2500);
+window.addEventListener("resize", generateBinaryPatch);
+
+
     /* ==========================================================================
        2. TYPING ENGINE
        ========================================================================== */
