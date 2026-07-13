@@ -8,11 +8,11 @@ Welcome to my portfolio platform. This responsive web application showcases my a
 ## 📱 Visual Overview & Interface Design
 
 ### Desktop Homepage Experience
-![Desktop Mockup]( ../new-website/all-screenshots/Home darkmode.png )
+![Desktop Mockup](all-screenshots/home-darkmode.png)
 *The responsive hero workspace designed for optimal visual hierarchy and clear navigation pathways.*
 
 ### Mobile Responsive Layouts
-![Mobile Views Mockup](all-screenshots/YOUR_MOBILE_IMAGE_NAME.png)
+![Mobile Views Mockup](all-screenshots/home-mobile-view.png)
 *A mobile-first adaptive interface ensuring seamless readability across all display breakpoints.*
 
 ---
