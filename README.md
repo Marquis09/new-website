@@ -12,7 +12,7 @@ Welcome to my portfolio platform. This responsive web application showcases my a
 *The responsive hero workspace designed for optimal visual hierarchy and clear navigation pathways.*
 
 ### Mobile Responsive Layouts
-![Mobile Views Mockup](all-screenshots/home-mobile-view.png)
+![Mobile Views Mockup](all-screenshots/home-mobile-darkmode-view.png)
 *A mobile-first adaptive interface ensuring seamless readability across all display breakpoints.*
 
 ---
