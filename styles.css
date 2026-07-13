@@ -655,9 +655,9 @@ h2 {
 #binaryPatch {
     position: fixed;
     top: 0;
-    right: 0;           /* ⭐ Anchor it perfectly to the right edge */
-    width: 15vw;        /* ⭐ Use viewport width (vw) so it scales with screen size */
-    min-width: 150px;   /* ⭐ Ensure it never gets too thin on smaller screens */
+    right: -4px;        /* 🌟 Nudged back slightly so characters don't get sliced in half */
+    width: calc(7vw + 4px); /* 🌟 Adjusted to match the new right offset */
+    min-width: 96px;    /* 🌟 Adjusted to match (92px + 4px) */
     height: 100vh;
     z-index: -9998;
     opacity: 0.08;
@@ -667,6 +667,6 @@ h2 {
     white-space: pre-wrap;
     word-break: break-all;
     line-height: 1.2;
-    text-align: right;  /* ⭐ Keeps the binary text aligned to the right edge */
-    overflow: hidden;   /* ⭐ Prevents any accidental horizontal scrollbars */
+    text-align: right; 
+    overflow: hidden;   
 }
