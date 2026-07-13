@@ -656,7 +656,7 @@ h2 {
     position: fixed;
     top: 0;
     right: -120px;     /* ⭐ pushes patch further right */
-    width: 210px;      /* ⭐ wider to fill the missing area */
+    width: 208px;      /* ⭐ wider to fill the missing area */
     height: 100vh;
     z-index: -9998;
     opacity: 0.08;
