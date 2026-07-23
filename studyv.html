@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project_Coward_Case_Study.txt - Notepad</title>
     <link href="../new-website/styles.css" rel="stylesheet">
+
     <style>
         body {
             background-color: #008080;
@@ -41,6 +42,27 @@
             margin: 0 auto;
             padding: 40px 20px;
             box-sizing: border-box;
+        }
+
+        /* PROCESS INDEX BAR */
+        .process-index-bar {
+            background: #e0e0e0;
+            border: 2px inset #fff;
+            padding: 10px 14px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            box-shadow: 1px 1px 0 #000;
+        }
+
+        .process-index-bar a {
+            color: #0000aa;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 6px;
+        }
+
+        .process-index-bar a:hover {
+            text-decoration: underline;
         }
 
         .meta-sidebar-95 {
@@ -95,8 +117,7 @@
             text-align: center;
         }
 
-        .image-preview-frame img,
-        .image-preview-frame video {
+        .image-preview-frame img {
             max-width: 100%;
             height: auto;
             border: 1px solid #808080;
@@ -161,8 +182,13 @@
             border-bottom: 1px solid #fff;
             margin: 30px 0;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
+
 <body>
 
 <div class="binary-layer" id="binaryLayer"></div>
@@ -186,15 +212,14 @@
             <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="">
             Project_Coward_Case_Study.txt - Notepad
         </div>
-         <div class="window-controls" style="display: flex; align-items: center; gap: 4px;">
-
-    <button class="win95-link-btn"
-            onclick="window.location.href='projects.html';"
-            title="Return to Projects"
-            style="font-size:11px; padding:2px 8px; font-weight:bold; cursor:pointer;">
-        X
-    </button>
-</div>
+        <div class="window-controls" style="display: flex; align-items: center; gap: 4px;">
+            <button class="win95-link-btn"
+                    onclick="window.location.href='projects.html';"
+                    title="Return to Projects"
+                    style="font-size:11px; padding:2px 8px; font-weight:bold; cursor:pointer;">
+                X
+            </button>
+        </div>
     </div>
 
     <div class="win95-main-body">
@@ -210,12 +235,36 @@
                 </p>
             </div>
 
+            <!-- BACKGROUND -->
+            <h2 id="section-background">Background</h2>
+            <div class="classic-quote-95">
+                <p style="margin: 0;">
+                  Project Coward began as a collaborative Alternate Reality Game (ARG) experiment exploring digital personas, cyberbullying, and psychological horror through the lens of a fictional Vtuber influencer. The central hub (the VTuber Nexus) served as the entry point for players, beginning as a wholesome, inviting space before gradually degrading into a corrupted, glitch-filled environment that mirrored the character’s emotional deterioration.  
+            </div>
+
+            <p>
+                My role centered on designing and engineering this dual-state interface, ensuring that every visual shift, glitch effect, and narrative beat aligned with the psychological arc of the character. The website needed to feel alive, responsive to player actions, connected to external platforms, and capable of evolving in real time.
+            </p>
+
+
+            <!-- PROCESS INDEX BAR -->
+            <div class="process-index-bar">
+                <strong>Process Index:</strong>
+                <a href="#section-vision">1. The Vision</a> |
+                <a href="#section-engineering">2. Interactive Engineering</a> |
+                <a href="#section-evolution">3. Evolution</a> |
+                <a href="#section-prototype">4. Prototype</a> |
+                <a href="#section-testing">5. Testing</a> |
+                <a href="#section-challenges">6. Technical Challenges</a> |
+                <a href="#section-reflection">7. Reflection</a>
+            </div>
+
             <!-- EXECUTIVE SUMMARY -->
             <div class="meta-sidebar-95">
                 <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
                 <ul class="meta-list-95">
-                    <li><strong>Challenge:</strong> Build an immersive web terminal for an Alternate Reality Game that bridges web infrastructure with live external platforms like Twitter, Reddit, and Instagram.</li>
-                    <li><strong>Solution:</strong> An integrated digital ecosystem using dynamic state mutation scripting, secure portal verification, and cross-platform hyperlinks to weaponize user tracking behavior.</li>
+                    <li><strong>Challenge:</strong> Build an immersive web terminal for an ARG that bridges web infrastructure with live external platforms.</li>
+                    <li><strong>Solution:</strong> A dual-state interface using dynamic DOM mutation, secure portal verification, and cross-platform narrative integration.</li>
                 </ul>
             </div>
 
@@ -236,8 +285,20 @@
             </div>
 
             <!-- SECTION 1 -->
-            <h2>1. The Vision: Immersive Environmental Storytelling</h2>
-            <p>For the multi-layered psychological horror ARG <em>"Coward"</em>, my core mission was to construct an operational central hub called "VTuber Nexus" for the fictional streamer Stella, Guardian of Moths. Rather than building an isolated sandbox layout, I wanted the code to act as a porous narrative web. By tying our native UI directly to active external pipelines on <strong>Twitter, Reddit, and Instagram</strong>, the application functions as an interconnected maze that rewards analytical user tracking and blurs the lines between reality and fiction.</p>
+            <h2 id="section-vision">1. The Vision: Immersive Environmental Storytelling</h2>
+            <p>
+                The VTuber Nexus was designed to feel like a living environment, a space that evolved alongside the narrative. The wholesome aesthetic of the early interface represented Stella’s innocence and approachability, while the later corrupted state reflected her psychological unraveling under cyberbullying pressure.
+            </p>
+
+            <!-- MOODBOARD -->
+            <div class="image-preview-frame" style="margin-top: 10px;">
+                <p style="font-weight:bold; margin-bottom: 5px;">Moodboard (Inspiration)</p>
+                <img src="../new-website/properties/vtuber/moodboard.png" alt="Moodboard Inspiration">
+            </div>
+
+            <p>
+                This transformation wasn’t just visual; it was emotional. Every glitch, distortion, and UI breakdown was engineered to reinforce the narrative themes of identity erosion and digital vulnerability.
+            </p>
 
             <div class="classic-quote-95">
                 <p style="margin: 0;">
@@ -248,15 +309,17 @@
             <hr>
 
             <!-- SECTION 2 -->
-            <h2>2. Interactive Engineering: The Dual-State Architecture</h2>
-            <p>The entire web space is engineered around progressive psychological tension, requiring technical problem-solving to dynamically transform native layouts and handle outgoing platform pathways:</p>
+            <h2 id="section-engineering">2. Interactive Engineering: The Dual-State Architecture</h2>
+            <p>
+                The interface was built around a dual-state architecture: a stable, wholesome environment and a corrupted, horror-driven counterpart. This required careful engineering to ensure seamless transitions triggered by user interactions.
+            </p>
 
             <div class="system-row-95">
                 <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
                     <ul>
-                        <li><strong>The Portal Gate:</strong> A secure frontend authentication dashboard panel. Requiring specific hardcoded system credentials (<code>admin</code> / <code>password123</code>), it rewards players who discover administrative codes hidden inside live social media threads.</li>
-                        <li><strong>The Record Trigger:</strong> Hitting the 'Record' interaction interface directly displays the dynamic glitch effects on screen, operating as our narrative pivot point to instantly break down structural styles.</li>
-                        <li><strong>Dynamic Theme Degradation:</strong> Utilizing client-side JavaScript DOM overrides, dynamic merchandise pricing alterations, and corrupted image swaps to simulate a platform undergoing total data corruption after the glitch event fires.</li>
+                        <li><strong>The Portal Gate:</strong> A secure login system using hardcoded credentials (<code>admin</code> / <code>password123</code>) discovered through narrative breadcrumbs.</li>
+                        <li><strong>The Record Trigger:</strong> A UI interaction that initiates glitch effects, marking the transition into the horror phase.</li>
+                        <li><strong>Dynamic Theme Degradation:</strong> DOM overrides, corrupted image swaps, and altered merchandise pricing simulate psychological collapse.</li>
                     </ul>
                 </div>
                 <div class="system-col-6">
@@ -270,8 +333,10 @@
             <hr>
 
             <!-- SECTION 3 -->
-            <h2>3. The Evolution: System Stability to Total Corruption</h2>
-            <p class="text-muted">A comparative technical breakdown demonstrating how the interface architecture distorts instantly following user interaction triggers.</p>
+            <h2 id="section-evolution">3. The Evolution: System Stability to Total Corruption</h2>
+            <p>
+                The interface’s transformation was designed to be immediate and unsettling. Once triggered, the wholesome layout collapses into a corrupted state, visually representing Stella’s psychological breakdown.
+            </p>
 
             <div class="artifact-grid-95">
                 <div class="artifact-card-95">
@@ -287,9 +352,13 @@
             <hr>
 
             <!-- SECTION 4 -->
-            <h2>4. Responsive Testing Grounds: Live Prototype & Mechanics</h2>
+            <h2 id="section-prototype">4. Responsive Testing Grounds: Live Prototype & Mechanics</h2>
+            <p>
+                The prototype served as both a narrative device and a functional testing ground. Players interacted with the login system, explored the wholesome hub, and triggered the glitch event, experiencing the psychological shift firsthand.
+            </p>
+
             <div class="image-preview-frame" style="max-width: 500px; margin: 0 auto;">
-                <img src="../new-website/properties/vtuber/vtuberlogin.png" alt="Merchandise Page Asset View">
+                <img src="../new-website/properties/vtuber/vtuberlogin.png" alt="Login Page">
                 <div style="padding: 5px 0;">
                     <a href="https://marquis09.github.io/vtuber/" target="_blank" class="win95-link-btn" style="text-decoration: none; font-size: 13px; display: inline-block; padding: 4px 12px;">
                         Launch Live Hub 🚀
@@ -300,23 +369,51 @@
             <hr>
 
             <!-- SECTION 5 -->
-            <h2>5. Technical Challenges & Team Adaptability</h2>
-            <p>Our digital storytelling roadmap called for deep structural dependencies across live channels on Twitter, Reddit, and Instagram. However, right before launch, our custom automated character feed was unexpectedly flagged and shadowbanned by Twitter's safety algorithms due to its high-velocity fictional activity. This sudden break in the external chain threatened to isolate our central web hub and fracture the game's progression loop.</p>
+            <h2 id="section-testing">5. Testing</h2>
+            <p>
+                Testing validated that players naturally explored interactive elements and discovered hidden triggers without explicit guidance. This confirmed that the environmental storytelling approach was intuitive and effective.
+            </p>
 
-            <div class="system-row-95">
+            <hr>
+
+            <!-- SECTION 6 -->
+            <h2 id="section-challenges">6. Technical Challenges & Team Adaptability</h2>
+            <p>
+                A major challenge emerged when Twitter’s safety algorithms shadowbanned our automated character feed due to high-velocity fictional activity. This threatened to break the ARG’s cross-platform progression loop.
+            </p>
+
+                      <div class="system-row-95">
                 <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
                     <h3 style="color:#000080; font-size:1.1rem; margin-bottom:6px;">Our Team Pivot (Action)</h3>
                     <p style="margin:0; font-size:14px;">
-                        Moving rapidly to safeguard our live launch window, I quickly re-engineered the website routing map. I adjusted the outbound channel directories to re-weight traffic toward our active Reddit and Instagram nodes, while simultaneously baking simulated fallbacks and dynamic string replacement protocols into the frontend code to keep the story fluid even if a user hit an algorithmically restricted dead-end.
+                        To safeguard the launch window, I re-engineered the routing map, re-weighting traffic toward active Reddit and Instagram nodes. I also implemented dynamic fallback protocols and string replacement in the frontend to keep the story fluid even when users encountered restricted or broken links.
                     </p>
                 </div>
                 <div class="system-col-6" style="background:#f0f0f0; border:1px solid #808080; padding:15px; box-shadow:1px 1px 0 #000;">
                     <h3 style="color:#000080; font-size:1.1rem; margin-bottom:6px;">The Impact (Result)</h3>
                     <p style="margin:0; font-size:14px;">
-                        This rapid infrastructure optimization successfully protected our cross-media UX. It kept players moving fluidly through our live external platforms, prevented dead links from breaking immersion, and allowed our group to launch a highly successful, cross-origin alternate reality game right on schedule.
+                        This rapid infrastructure optimization protected the cross-media experience. Players continued to move fluidly through live external platforms, dead links were minimized, and the ARG’s illusion remained intact. The campaign launched on schedule with a stable, responsive hub at its core.
                     </p>
                 </div>
             </div>
+
+            <hr>
+
+            <!-- SECTION 7 -->
+            <h2 id="section-reflection">7. Reflection</h2>
+
+            <div class="classic-quote-95">
+                <p style="margin: 0;">
+            <p>
+                Adapting the project in real time, from a planned edited final video to a live stream reveal, highlighted the importance of flexibility in collaborative media design. The live stream format allowed us to preserve the core narrative impact while enhancing the sense of real-time immersion and unpredictability.
+            </p>
+            <p>
+                The website, glitch effects, and livestream environment worked together to convey themes of online hate, mental health deterioration, and digital personas. This project reinforced how interactive media, when carefully engineered, can make psychological horror feel grounded rather than sensational.
+            </p>
+            <p>
+                Collaborating with the team, combining research on Vtubers and cyberbullying, environment design, and AI in games taught me how to integrate diverse disciplines into a cohesive interactive experience. In future projects, I plan to build on these skills in real-time storytelling, media integration, and UX-driven narrative design.
+            </p>
+             </div>
 
             <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
                 <button class="win95-link-btn"
@@ -333,3 +430,5 @@
 <script src="../new-website/Jsscript.js"></script>
 </body>
 </html>
+
+            
