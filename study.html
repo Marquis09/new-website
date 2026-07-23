@@ -68,26 +68,6 @@
             border-bottom: none;
         }
 
-        .system-row-95 {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .system-col-6 {
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .classic-quote-95 {
-            background: #ffffe0;
-            border-left: 4px solid #808080;
-            padding: 15px 20px;
-            margin: 20px 0;
-            font-style: italic;
-        }
-
         .highlight-box-95 {
             background: #fff8c4;
             border: 2px inset #fff;
@@ -95,80 +75,6 @@
             margin: 20px 0;
             box-shadow: 1px 1px 0 #000;
             font-size: 14px;
-        }
-
-        .image-preview-frame {
-            background: #f0f0f0;
-            border: 2px inset #fff;
-            padding: 15px;
-            margin: 25px 0;
-            text-align: center;
-        }
-
-        .image-preview-frame img {
-            max-width: 65%;
-            height: auto;
-            border: 1px solid #808080;
-            display: block;
-            margin: 0 auto 10px auto;
-        }
-
-        .artifact-grid-95 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .artifact-card-95 {
-            background: #f0f0f0;
-            border: 1px solid #808080;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .artifact-card-95 img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border: 1px solid #808080;
-            background: #fff;
-            margin-bottom: 8px;
-        }
-
-        h1, h2, h3, h4 {
-            color: #000;
-            margin-top: 0;
-        }
-
-        h2 {
-            font-size: 1.6rem;
-            margin-top: 50px;
-            border-bottom: 2px solid #cbd0d4;
-            padding-bottom: 6px;
-        }
-
-        p {
-            line-height: 1.6;
-            font-size: 15px;
-            margin-bottom: 16px;
-        }
-
-        ul {
-            line-height: 1.6;
-            font-size: 15px;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #808080;
-            border-bottom: 1px solid #fff;
-            margin: 40px 0;
         }
 
         .process-index-bar {
@@ -194,6 +100,44 @@
         html {
             scroll-behavior: smooth;
         }
+ /* Container */
+.artifact-grid-95 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* small, even spacing */
+    margin-top: 20px;
+}
+
+/* Each card becomes a fixed box */
+.artifact-card-95 {
+    width: 260px;        /* all boxes same width */
+    height: 340px;       /* all boxes same height */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    background: #f0f0f0; /* optional Win95 background */
+    border: 2px inset #fff;
+}
+
+/* Images inside cards */
+.artifact-card-95 img {
+    width: 240px;        /* consistent image size */
+    height: 240px;       /* forces uniform box shape */
+    object-fit: cover;   /* crops nicely if needed */
+    border: 1px solid #808080;
+    display: block;
+    margin: 0 auto;
+}
+ .classic-quote-95 {
+            background: #ffffe0;
+            border-left: 4px solid #808080;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+
     </style>
 </head>
 
@@ -245,50 +189,39 @@
                 </p>
             </div>
 
-            <!-- PROJECT DETAILS -->
-            <div class="meta-sidebar-95">
-                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Project Details</h3>
-                <ul class="meta-list-95">
-                    <li><strong>My Role:</strong> UX Designer, Web Developer</li>
-                    <li><strong>Duration:</strong> 6 Weeks</li>
-                    <li><strong>Tools:</strong> Figma, VS Code, HTML, CSS (Bootstrap), JavaScript</li>
-                    <li><strong>Project Type:</strong> Personal Project / Academic</li>
-                </ul>
-                <div style="margin-top: 15px;">
-                    <a href="https://marquis09.github.io/narrative-website-marquis/" target="_blank" class="win95-link-btn" style="display: inline-block; padding: 6px 14px; text-decoration: none; font-weight: bold;">
-                        View Live Site
-                    </a>
-                </div>
-            </div>
+            <!-- PROCESS OVERVIEW -->
+<h2 id="overview">📁 1. Process Overview</h2>
 
-            <!-- PROCESS INDEX BAR -->
+            <!-- UPDATED PROCESS INDEX BAR -->
             <div class="process-index-bar">
                 <strong>Process Index:</strong>
-                <a href="#overview">1. Background</a> |
-                <a href="#hypothesis">2. Hypothesis</a> |
-                <a href="#audience">3. Target Audience</a> |
-                <a href="#research">4. Primary Research</a> |
-                <a href="#personas">5. Personas</a> |
-                <a href="#painpoints">6. Pain Points</a> |
-                <a href="#process">7. Design Process</a> |
-                <a href="#artifacts">8. Artifacts</a> |
-                <a href="#final-design">9. Final Design</a> |
-                <a href="#outcomes">10. Outcomes</a> |
-                <a href="#reflection">11. Reflection</a>
+                <a href="#background">Background</a> |
+                <a href="#research">Research</a> |
+                <a href="#personas">Personas</a> |
+                <a href="#methodology">UX Methodology</a> |
+                <a href="#painpoints">Pain Points</a> |
+                <a href="#process">Design Process</a> |
+                <a href="#artifacts">Artifacts</a> |
+                <a href="#final-design">Final Design</a> |
+                <a href="#outcomes">Outcomes</a> |
+                <a href="#reflection">Reflection</a> |
+                <a href="#learnings">Key Learnings</a>
             </div>
-<!-- 1. BACKGROUND -->
-<h2 id="overview">1. Background</h2>
 
-<p>Munich is one of Europe’s most visited cities, yet tourists often rely on scattered blogs, outdated travel sites, and inconsistent recommendations. During my own visit to Munich during Oktoberfest, I experienced this fragmentation firsthand — essential information was spread across multiple sources, many of which were not mobile-friendly.</p>
+            <!-- 2. BACKGROUND -->
+            <h2 id="background">📁 2. Background</h2>
+            <p>Munich is one of Europe’s most visited cities, yet tourists often rely on scattered blogs, outdated travel sites, and inconsistent recommendations. During my own visit to Munich during Oktoberfest, I experienced this fragmentation firsthand — essential information was spread across multiple sources, many of which were not mobile-friendly.</p>
 
-<div class="highlight-box-95">
-    <strong>Core Problem:</strong> Tourists waste time switching between unreliable sources instead of enjoying the city.
-</div>
+            <div class="highlight-box-95">
+                <strong>⚠ Core Problem:</strong> Tourists waste time switching between unreliable sources instead of enjoying the city.
+            </div>
 
-<p>This project began with a simple question: <strong>Why isn’t there a single, reliable, mobile-first guide that consolidates Munich’s history, events, architecture, and nature into one place?</strong></p>
+            <p>This project began with a simple question: <strong>Why isn’t there a single, reliable, mobile-first guide that consolidates Munich’s history, events, architecture, and nature into one place?</strong></p>
 
-<div class="image-preview-frame">
-    <img src="../new-website/properties/img/munuch-link.png" alt="Munich Website Screenshot">
+               <div class="image-preview-frame">
+    <img src="../new-website/properties/img/munuch-link.png" 
+         alt="Munich Website Screenshot"
+         style="width: 750px; height: auto; border:1px solid #808080;">
     <div style="padding: 5px 0;">
         <a href="https://marquis09.github.io/narrative-website-marquis/" target="_blank"
            class="win95-link-btn" style="text-decoration:none; font-size:13px; padding:4px 12px;">
@@ -297,79 +230,50 @@
     </div>
 </div>
 
-<hr>
 
-<!-- 2. HYPOTHESIS -->
-<h2 id="hypothesis">2. Hypothesis</h2>
+            <hr>
 
-<div class="highlight-box-95">
-    <strong>Hypothesis:</strong> Tourists struggle to plan and navigate Munich efficiently because essential information is fragmented across multiple websites, many of which lack mobile optimization.
-</div>
+            <!-- 3. RESEARCH -->
+            <h2 id="research">🔍 3. Research</h2>
 
-<p>If this hypothesis is correct, then a centralized, mobile-first guide should:</p>
+            <p>To validate the hypothesis, I conducted informal user research with 10 participants who had previously traveled to Germany or planned to. I asked them:</p>
 
-<ul>
-    <li>Reduce planning time</li>
-    <li>Improve confidence in trip decisions</li>
-    <li>Increase engagement with local attractions</li>
-    <li>Provide a smoother on-the-go experience</li>
-</ul>
+            <ul>
+                <li>How do you normally plan a trip?</li>
+                <li>What frustrates you about travel websites?</li>
+                <li>What information do you look for first?</li>
+                <li>Do you trust unofficial travel blogs?</li>
+                <li>Would you use a single consolidated guide?</li>
+            </ul>
 
-<hr>
+            <h3 style="margin-top:20px;">Key Findings</h3>
 
-<!-- 3. TARGET AUDIENCE -->
-<h2 id="audience">3. Target Audience</h2>
+            <div class="highlight-box-95">
+                <strong>⚠ Insight:</strong> 8 out of 10 users preferred a single website that consolidates all essential information.
+            </div>
 
-<p>Although the site is designed for all visitors, three groups emerged as the most relevant during early research:</p>
+            <ul>
+                <li>Users disliked switching between multiple tabs to compare information.</li>
+                <li>Many travel sites were <strong>not mobile-friendly</strong>, making them difficult to use on-the-go.</li>
+                <li>Users wanted <strong>clear categories</strong> (History, Events, Architecture, Nature).</li>
+                <li>Older users struggled with dense text and preferred visual layouts.</li>
+                <li>Younger users wanted quick access to events, nightlife, and transport.</li>
+            </ul>
 
-<ul>
-    <li><strong>Sustainability‑minded travelers:</strong> Visitors who value cultural preservation and responsible tourism.</li>
-    <li><strong>Event‑focused travelers:</strong> Younger visitors attending Oktoberfest or seasonal events who need fast, mobile-friendly information.</li>
-    <li><strong>Families and older tourists:</strong> Users who prefer clear navigation, readable text, and structured itineraries.</li>
-</ul>
+            <hr>
 
-<hr>
+           <!-- 4. PERSONAS -->
+<h2 id="personas">👥 4. Personas</h2>
 
-<!-- 4. PRIMARY RESEARCH -->
-<h2 id="research">4. Primary Research</h2>
-
-<p>To validate the hypothesis, I conducted informal user research with 10 participants who had previously traveled to Germany or planned to. I asked them:</p>
-
-<ul>
-    <li>How do you normally plan a trip?</li>
-    <li>What frustrates you about travel websites?</li>
-    <li>What information do you look for first?</li>
-    <li>Do you trust unofficial travel blogs?</li>
-    <li>Would you use a single consolidated guide?</li>
-</ul>
-
-<h3 style="margin-top:20px;">Key Findings</h3>
-
-<div class="highlight-box-95">
-    <strong>Insight:</strong> 8 out of 10 users preferred a single website that consolidates all essential information.
-</div>
-
-<ul>
-    <li>Users disliked switching between multiple tabs to compare information.</li>
-    <li>Many travel sites were <strong>not mobile-friendly</strong>, making them difficult to use on-the-go.</li>
-    <li>Users wanted <strong>clear categories</strong> (History, Events, Architecture, Nature).</li>
-    <li>Older users struggled with dense text and preferred visual layouts.</li>
-    <li>Younger users wanted quick access to events, nightlife, and transport.</li>
-</ul>
-
-<hr>
-
-<h2 id="personas">5. Personas</h2>
-
-<div class="system-row-95">
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:20px;">
 
     <!-- Persona 1 -->
-    <div class="persona-card-95" style="
+    <div style="
         background:#f0f0f0;
         border:2px inset #fff;
         padding:20px;
         flex:1;
-        min-width:280px;
+        min-width:300px;
         box-shadow:1px 1px 0 #000;
     ">
         <div style="display:flex; align-items:center; margin-bottom:12px;">
@@ -404,12 +308,12 @@
     </div>
 
     <!-- Persona 2 -->
-    <div class="persona-card-95" style="
+    <div style="
         background:#f0f0f0;
         border:2px inset #fff;
         padding:20px;
         flex:1;
-        min-width:280px;
+        min-width:300px;
         box-shadow:1px 1px 0 #000;
     ">
         <div style="display:flex; align-items:center; margin-bottom:12px;">
@@ -445,87 +349,157 @@
 
 </div>
 
+            <br>
+            <hr>
 
-<hr>
+            <!-- 5. UX METHODOLOGY & DESIGN REASONING -->
+            <h2 id="methodology">🧭 5. UX Methodology & Design Reasoning</h2>
 
-<!-- 6. PAIN POINTS -->
-<h2 id="painpoints">6. Pain Points Identified</h2>
+            <p>Although this project did not begin with formal moodboards or style tiles, the design was guided by a clear UX methodology. Every decision—from layout to navigation—was grounded in user needs, accessibility, and practical constraints.</p>
 
-<ul>
-    <li><strong>Information Fragmentation:</strong> Users had to jump between multiple websites to find basic details.</li>
-    <li><strong>Poor Mobile Optimization:</strong> Many travel sites were cluttered, slow, or unreadable on mobile.</li>
-    <li><strong>Unclear Navigation:</strong> Users struggled to find what they needed quickly.</li>
-    <li><strong>Lack of Trustworthy Sources:</strong> Blogs and unofficial guides felt unreliable or outdated.</li>
-</ul>
+            <div class="highlight-box-95">
+                <strong>⚠ Design Approach:</strong> A hybrid UX workflow combining problem framing, user insights, information architecture, and iterative refinement.
+            </div>
 
-<hr>
+            <h3 style="color:#000080; margin-top:25px;">Problem Framing</h3>
+            <p>Tourists visiting Munich often rely on scattered, inconsistent sources of information. This fragmentation creates friction, slows down planning, and reduces confidence in trip decisions. The core design challenge was to consolidate essential information into a single, mobile-first platform.</p>
 
-<!-- 7. DESIGN PROCESS -->
-<h2 id="process">7. Design Process</h2>
+            <h3 style="color:#000080; margin-top:25px;">User Groups</h3>
+            <p>Three primary user groups shaped the design direction:</p>
+            <ul>
+                <li><strong>Student & young adult travelers:</strong> Fast, mobile-friendly access to events and nightlife.</li>
+                <li><strong>Cultural tourists:</strong> Clear navigation, readable text, and structured itineraries.</li>
+                <li><strong>Families & older visitors:</strong> Trustworthy information and simple, predictable layouts.</li>
+            </ul>
 
-<p>The design process followed a structured UX workflow: <strong>Discover → Define → Prototype → Test</strong>.  
-To make this clear and scannable, each phase is broken down into its core activities.</p>
+            <h3 style="color:#000080; margin-top:25px;">Design Goals</h3>
+            <ul>
+                <li><strong>Responsiveness:</strong> Ensure seamless mobile use for tourists navigating on-the-go.</li>
+                <li><strong>Simplicity:</strong> Reduce cognitive load with clean layouts and clear categories.</li>
+                <li><strong>Accessibility:</strong> Prioritize readable typography and strong colour contrast.</li>
+                <li><strong>Clarity:</strong> Make essential information instantly visible and easy to scan.</li>
+            </ul>
 
-<!-- PROCESS TIMELINE -->
-<div style="display:flex; flex-direction:column; gap:20px; margin-top:25px;">
+            <h3 style="color:#000080; margin-top:25px;">Information Architecture</h3>
+            <p>The site’s structure was intentionally simple, focusing on three core areas:</p>
+            <ul>
+                <li><strong>Explore:</strong> History, architecture, nature, breweries, museums.</li>
+                <li><strong>Search:</strong> Quick filtering for events and attractions.</li>
+                <li><strong>Plan:</strong> Sign-up flow and future personalised dashboards.</li>
+            </ul>
 
-    <!-- DISCOVER -->
-    <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
-        <h3 style="margin-top:0; color:#000080;">🔍 Discover</h3>
-        <p style="margin-bottom:10px; font-size:14px;">
-            Understanding the landscape and identifying user frustrations.
-        </p>
-        <ul style="margin:0; padding-left:20px;">
-            <li>Competitive analysis of existing Munich travel sites</li>
-            <li>User interviews and informal surveys</li>
-            <li>Identification of core pain points</li>
-        </ul>
-    </div>
+            <div class="highlight-box-95">
+                <strong>⚠ IA Insight:</strong> Users preferred clear categories over dense text or long scrolling pages.
+            </div>
 
-    <!-- DEFINE -->
-    <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
-        <h3 style="margin-top:0; color:#000080;">🧭 Define</h3>
-        <p style="margin-bottom:10px; font-size:14px;">
-            Structuring insights into clear design direction.
-        </p>
-        <ul style="margin:0; padding-left:20px;">
-            <li>Creation of sitemap (physical + digital)</li>
-            <li>Development of personas</li>
-            <li>Moodboard to establish visual direction</li>
-            <li>Prioritization of mobile-first design</li>
-        </ul>
-    </div>
+            <h3 style="color:#000080; margin-top:25px;">Design Reasoning</h3>
+            <p>Bootstrap was chosen not only for speed but for consistency. Its grid system ensured predictable behaviour across devices, while its components reduced development overhead and allowed more focus on UX decisions rather than raw styling.</p>
 
-    <!-- PROTOTYPE -->
-    <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
-        <h3 style="margin-top:0; color:#000080;">🛠️ Prototype</h3>
-        <p style="margin-bottom:10px; font-size:14px;">
-            Transforming ideas into tangible, testable layouts.
-        </p>
-        <ul style="margin:0; padding-left:20px;">
-            <li>Paper wireframes</li>
-            <li>Figma low-fidelity wireframes</li>
-            <li>High-fidelity Bootstrap prototype</li>
-            <li>Iterative layout testing with real content</li>
-        </ul>
-    </div>
+            <ul>
+                <li>Bootstrap guaranteed mobile responsiveness.</li>
+                <li>Clean layouts reduced friction and improved readability.</li>
+                <li>Video thumbnails and images were prioritized to reduce text density.</li>
+                <li>Navigation was simplified to match user expectations.</li>
+            </ul>
 
-    <!-- WHY BOOTSTRAP -->
-    <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
-        <h3 style="margin-top:0; color:#000080;">💡 Why Bootstrap?</h3>
-        <p style="margin-bottom:0; font-size:14px;">
-            Bootstrap ensured consistent responsiveness, faster prototyping, reliable mobile behavior, and clean, predictable grid layouts.
-        </p>
-    </div>
+            <h3 style="color:#000080; margin-top:25px;">Iteration & Refinement</h3>
+            <p>Throughout development, I refined the layout based on informal feedback from peers:</p>
+            <ul>
+                <li>Homepage sections were reorganized to reduce scrolling.</li>
+                <li>Search functionality was simplified for clarity.</li>
+                <li>Sign-up flow was streamlined to reduce friction.</li>
+            </ul>
 
-</div>
+            <div class="highlight-box-95">
+                <strong>⚠ Iteration Insight:</strong> Small layout adjustments significantly improved user confidence and navigation speed.
+            </div>
 
+            <h3 style="color:#000080; margin-top:25px;">Reflection on Methodology</h3>
+            <p>This project strengthened my ability to combine UX principles with practical front-end development. If expanded, I would incorporate real-time event APIs, multilingual support, interactive maps, personalised dashboards, and formal usability testing to deepen the UX maturity of the platform.</p>
 
-<hr>
-<!-- 8. ARTIFACTS -->
-<h2 id="artifacts">8. Key Design Artifacts</h2>
+            <hr>
+            <!-- 6. PAIN POINTS -->
+            <h2 id="painpoints">⚠ 6. Pain Points Identified</h2>
 
-<p>These artifacts represent the evolution of the Munich Travel Guide from early ideation to final execution.</p>
+            <ul>
+                <li><strong>Information Fragmentation:</strong> Users had to jump between multiple websites to find basic details.</li>
+                <li><strong>Poor Mobile Optimization:</strong> Many travel sites were cluttered, slow, or unreadable on mobile.</li>
+                <li><strong>Unclear Navigation:</strong> Users struggled to find what they needed quickly.</li>
+                <li><strong>Lack of Trustworthy Sources:</strong> Blogs and unofficial guides felt unreliable or outdated.</li>
+            </ul>
+
+            <div class="highlight-box-95">
+                <strong>⚠ Key Insight:</strong> Fragmentation and poor mobile design were the biggest contributors to user frustration.
+            </div>
+
+            <hr>
+
+            <!-- 7. DESIGN PROCESS -->
+            <h2 id="process">🛠️ 7. Design Process</h2>
+
+            <p>The design process followed a structured UX workflow: <strong>Discover → Define → Prototype → Test</strong>.  
+            Each phase is broken down into its core activities.</p>
+
+            <!-- PROCESS TIMELINE -->
+            <div style="display:flex; flex-direction:column; gap:20px; margin-top:25px;">
+
+                <!-- DISCOVER -->
+                <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="margin-top:0; color:#000080;">🔍 Discover</h3>
+                    <p style="margin-bottom:10px; font-size:14px;">
+                        Understanding the landscape and identifying user frustrations.
+                    </p>
+                    <ul style="margin:0; padding-left:20px;">
+                        <li>Competitive analysis of existing Munich travel sites</li>
+                        <li>User interviews and informal surveys</li>
+                        <li>Identification of core pain points</li>
+                    </ul>
+                </div>
+
+                <!-- DEFINE -->
+                <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="margin-top:0; color:#000080;">🧭 Define</h3>
+                    <p style="margin-bottom:10px; font-size:14px;">
+                        Structuring insights into clear design direction.
+                    </p>
+                    <ul style="margin:0; padding-left:20px;">
+                        <li>Creation of sitemap (physical + digital)</li>
+                        <li>Development of personas</li>
+                        <li>Prioritization of mobile-first design</li>
+                    </ul>
+                </div>
+
+                <!-- PROTOTYPE -->
+                <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="margin-top:0; color:#000080;">🛠️ Prototype</h3>
+                    <p style="margin-bottom:10px; font-size:14px;">
+                        Transforming ideas into tangible, testable layouts.
+                    </p>
+                    <ul style="margin:0; padding-left:20px;">
+                        <li>Paper wireframes</li>
+                        <li>Low-fidelity digital wireframes</li>
+                        <li>High-fidelity Bootstrap prototype</li>
+                        <li>Iterative layout testing with real content</li>
+                    </ul>
+                </div>
+
+                <!-- WHY BOOTSTRAP -->
+                <div style="background:#f0f0f0; border:2px inset #fff; padding:18px; box-shadow:1px 1px 0 #000;">
+                    <h3 style="margin-top:0; color:#000080;">💾 Why Bootstrap?</h3>
+                    <p style="margin-bottom:0; font-size:14px;">
+                        Bootstrap ensured consistent responsiveness, faster prototyping, reliable mobile behavior, and clean, predictable grid layouts.
+                    </p>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- 8. ARTIFACTS -->
+            <h2 id="artifacts">📁 8. Key Design Artifacts</h2>
+
+            <p>These artifacts represent the evolution of the Munich Travel Guide from early ideation to final execution.</p>
+
 
 <div class="artifact-grid-95">
 
@@ -575,72 +549,92 @@ To make this clear and scannable, each phase is broken down into its core activi
 </div>
 
 
-<hr>
+<br>
 
-<!-- 9. FINAL DESIGN -->
-<h2 id="final-design">9. The Final Design & Key Features</h2>
+            <hr>
+            <!-- 9. FINAL DESIGN -->
+            <h2 id="final-design">🖥️ 9. The Final Design & Key Features</h2>
 
-<p>The final Munich Travel Guide is a clean, mobile-first platform built using Bootstrap 5. It directly addresses the core pain points identified during research.</p>
+            <p>The final Munich Travel Guide is a clean, mobile-first platform built using Bootstrap 5. It directly addresses the core pain points identified during research.</p>
 
-<div class="highlight-box-95">
-    <strong>Design Philosophy:</strong> Reduce friction, improve clarity, and make essential information instantly accessible.
-</div>
+            <div class="highlight-box-95">
+                <strong>⚠ Design Philosophy:</strong> Reduce friction, improve clarity, and make essential information instantly accessible.
+            </div>
 
-<div style="background: #f0f0f0; border: 1px solid #808080; padding: 15px; margin-bottom: 15px; box-shadow: 1px 1px 0 #000;">
-    <h3 style="color: #000080; font-size: 1.1rem; margin-bottom: 6px;">Centralized Information Hub</h3>
-    <p style="margin: 0; font-size: 14px;">Navigation is structured around major tourist activities (e.g., historical sites, breweries, museums), allowing users to immediately click into the content they need without external searches.</p>
-</div>
+            <div style="background: #f0f0f0; border: 1px solid #808080; padding: 15px; margin-bottom: 15px; box-shadow: 1px 1px 0 #000;">
+                <h3 style="color: #000080; font-size: 1.1rem; margin-bottom: 6px;">📁 Centralized Information Hub</h3>
+                <p style="margin: 0; font-size: 14px;">Navigation is structured around major tourist activities (e.g., historical sites, breweries, museums), allowing users to immediately click into the content they need without external searches.</p>
+            </div>
 
-<div style="background: #f0f0f0; border: 1px solid #808080; padding: 15px; margin-bottom: 15px; box-shadow: 1px 1px 0 #000;">
-    <h3 style="color: #000080; font-size: 1.1rem; margin-bottom: 6px;">Mobile-First Accessibility</h3>
-    <p style="margin: 0; font-size: 14px;">The entire layout is fully mobile-responsive. Using Bootstrap ensures that text, images, and navigation stack and adapt on smartphones and tablets, catering to tourists on-the-go.</p>
-</div>
+            <div style="background: #f0f0f0; border: 1px solid #808080; padding: 15px; margin-bottom: 15px; box-shadow: 1px 1px 0 #000;">
+                <h3 style="color: #000080; font-size: 1.1rem; margin-bottom: 6px;">📱 Mobile-First Accessibility</h3>
+                <p style="margin: 0; font-size: 14px;">The entire layout is fully mobile-responsive. Using Bootstrap ensures that text, images, and navigation stack and adapt on smartphones and tablets, catering to tourists on-the-go.</p>
+            </div>
 
-<div style="background: #f0f0f0; border: 1px solid #808080; padding: 15px; margin-bottom: 15px; box-shadow: 1px 1px 0 #000;">
-    <h3 style="color: #000080; font-size: 1.1rem; margin-bottom: 6px;">Interactive Search Functionality</h3>
-    <p style="margin: 0; font-size: 14px;">A search bar and plans for interactive maps were integrated to help users quickly find nearby attractions, restaurants, and events based on their current location or filtered criteria.</p>
-</div>
+            <div style="background: #f0f0f0; border: 1px solid #808080; padding: 15px; margin-bottom: 15px; box-shadow: 1px 1px 0 #000;">
+                <h3 style="color: #000080; font-size: 1.1rem; margin-bottom: 6px;">🔍 Interactive Search Functionality</h3>
+                <p style="margin: 0; font-size: 14px;">A search bar and plans for interactive maps were integrated to help users quickly find nearby attractions, restaurants, and events based on their current location or filtered criteria.</p>
+            </div>
 
-<hr>
+            <hr>
 
-<!-- 10. OUTCOMES -->
-<h2 id="outcomes">10. Outcomes</h2>
+            <!-- 10. OUTCOMES -->
+            <h2 id="outcomes">📌 10. Outcomes</h2>
 
-<p>The Munich Travel Guide successfully transformed fragmented tourist information into a unified, intuitive platform.</p>
+            <p>The Munich Travel Guide successfully transformed fragmented tourist information into a unified, intuitive platform.</p>
 
-<div class="highlight-box-95">
-    <strong>Outcome Summary:</strong> Users found information faster, trusted the layout more, and navigated the site with significantly less friction.
-</div>
+            <div class="highlight-box-95">
+                <strong>⚠ Outcome Summary:</strong> Users found information faster, trusted the layout more, and navigated the site with significantly less friction.
+            </div>
 
-<ul>
-    <li><strong>Centralized Information:</strong> Users no longer needed multiple tabs or external sources.</li>
-    <li><strong>Improved Mobile Experience:</strong> Bootstrap ensured smooth behavior across devices.</li>
-    <li><strong>Clear Navigation:</strong> Categories matched user expectations and reduced cognitive load.</li>
-    <li><strong>Higher Trust:</strong> Clean layout and structured content increased perceived reliability.</li>
-    <li><strong>Faster Planning:</strong> Users reported they could find information much quicker than on typical travel blogs.</li>
-</ul>
+            <ul>
+                <li><strong>Centralized Information:</strong> Users no longer needed multiple tabs or external sources.</li>
+                <li><strong>Improved Mobile Experience:</strong> Bootstrap ensured smooth behavior across devices.</li>
+                <li><strong>Clear Navigation:</strong> Categories matched user expectations and reduced cognitive load.</li>
+                <li><strong>Higher Trust:</strong> Clean layout and structured content increased perceived reliability.</li>
+                <li><strong>Faster Planning:</strong> Users reported they could find information much quicker than on typical travel blogs.</li>
+            </ul>
 
-<hr>
+            <hr>
 
-<!-- 11. REFLECTION -->
-<h2 id="reflection">11. Reflection</h2>
-<div class="classic-quote-95">
+            <!-- 11. REFLECTION -->
+            <h2 id="reflection">📝 11. Reflection</h2>
+
+            <div class="classic-quote-95">
                 <p style="margin: 0;">
+                    This project taught me the importance of grounding design decisions in user research rather than assumptions. Although the site is visually simple, its strength lies in clear information architecture, mobile-first responsiveness, user-validated navigation, and consistent layout patterns.
+                </p>
+            </div>
 
-<p>This project taught me the importance of grounding design decisions in user research rather than assumptions. Although the site is visually simple, its strength lies in clear information architecture, mobile-first responsiveness, user-validated navigation, and consistent layout patterns.</p>
+            <p>If expanded, I would incorporate real-time event APIs, multilingual support, interactive maps, and more formal usability testing. The Munich Travel Guide demonstrates my ability to combine UX research, IA, prototyping, and front-end development into a cohesive, user-centered product.</p>
 
-<p>If expanded, I would incorporate real-time event APIs, multilingual support, interactive maps, and more formal usability testing. The Munich Travel Guide demonstrates my ability to combine UX research, IA, prototyping, and front-end development into a cohesive, user-centered product.</p>
-</div>
+            <hr>
 
+            <!-- 12. KEY LEARNINGS -->
+            <h2 id="learnings">💡 12. Key Learnings</h2>
 
-<!-- CLOSE BUTTON -->
-<div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
-    <button class="win95-link-btn"
-            onclick="window.location.href='projects.html';"
-            style="font-size: 13px; padding: 6px 24px; font-weight: bold; cursor: pointer;">
-        Close File and Return to Projects
-    </button>
-</div>
+            <div class="highlight-box-95">
+                <strong>⚠ What I Learned:</strong> Strong UX outcomes come from clear structure, validated insights, and consistent design patterns — not visual complexity.
+            </div>
+
+            <ul>
+                <li><strong>User research</strong> is essential even when informal — small insights can drive major design decisions.</li>
+                <li><strong>Information architecture</strong> has a bigger impact on usability than visual styling.</li>
+                <li><strong>Mobile-first design</strong> is critical for travel-related products.</li>
+                <li><strong>Bootstrap</strong> accelerates development while maintaining UX consistency.</li>
+                <li><strong>Iteration</strong> improves clarity and reduces friction more than adding features.</li>
+            </ul>
+
+        
+
+            <!-- CLOSE BUTTON -->
+            <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
+                <button class="win95-link-btn"
+                        onclick="window.location.href='projects.html';"
+                        style="font-size: 13px; padding: 6px 24px; font-weight: bold; cursor: pointer;">
+                    Close File and Return to Projects
+                </button>
+            </div>
 
         </div>
     </div>
