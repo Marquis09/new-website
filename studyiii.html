@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MMU_TV_Case_Study.txt - Notepad</title>
     <link href="../new-website/styles.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='8,4 8,52 20,40 28,60 34,58 26,38 40,34' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E">
+
     <style>
         body {
             background-color: #008080;
@@ -217,6 +219,244 @@
                     <li><strong>Solution:</strong> A responsive, Bootstrap-based site with clear navigation, simple search, and streamlined sign-up flow.</li>
                 </ul>
             </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMU_TV_Case_Study.txt - Notepad</title>
+    <link href="../new-website/styles.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #008080;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .win95-maximized-workspace {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            background: #cbd0d4;
+            padding: 4px;
+            z-index: 999;
+        }
+
+        .win95-main-body {
+            flex: 1;
+            background: #fff;
+            border: 2px inset #fff;
+            overflow-y: auto;
+            color: #000;
+            padding: 0;
+        }
+
+        .document-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .meta-sidebar-95 {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 1px 1px 0 #000;
+        }
+
+        .meta-list-95 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .meta-list-95 li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #cbd0d4;
+            font-size: 14px;
+        }
+
+        .meta-list-95 li:last-child {
+            border-bottom: none;
+        }
+
+        .system-row-95 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .system-col-6 {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .image-preview-frame {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .image-preview-frame img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #808080;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        .artifact-grid-95 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .artifact-card-95 {
+            background: #f0f0f0;
+            border: 1px solid #808080;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .artifact-card-95 img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border: 1px solid #808080;
+            background: #fff;
+            margin-bottom: 8px;
+        }
+
+        .process-index-bar {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 12px;
+            margin-bottom: 25px;
+            box-shadow: 1px 1px 0 #000;
+            font-size: 14px;
+        }
+
+        .process-index-bar a {
+            color: #000080;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h1, h2, h3, h4 {
+            color: #000;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 35px;
+            border-bottom: 2px solid #cbd0d4;
+            padding-bottom: 6px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            line-height: 1.6;
+            font-size: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #808080;
+            border-bottom: 1px solid #fff;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="binary-layer" id="binaryLayer"></div>
+<div class="noise-overlay"></div>
+
+<header class="win95-taskbar" style="position: fixed; top: 0; left: 0; right: 0; height: 40px; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4px; background: #cbd0d4; border-bottom: 2px solid #808080;">
+    <div class="taskbar-tasks" style="display: flex; align-items: center; flex: 1;">
+        <div class="win95-task-tab active" style="display: flex; align-items: center; background: #fff; border: 2px inset #fff; padding: 2px 12px; font-size: 12px; height: 24px; font-weight: bold; box-shadow: 1px 1px 0 #000;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="icon">
+            MMU_TV_Case_Study.txt
+        </div>
+    </div>
+    <div class="win95-system-tray" style="display: flex; align-items: center; background: #cbd0d4; border: 2px inset #fff; padding: 2px 8px; font-size: 12px; height: 24px; box-shadow: 1px 1px 0 #000;">
+        <span id="win95-clock">16:35 PM</span>
+    </div>
+</header>
+
+<div class="win95-maximized-workspace">
+    <div class="window-titlebar" style="cursor: default; display: flex; align-items: center; justify-content: space-between; background: #000080; color: #fff; padding: 3px 6px; font-weight: bold; font-size: 13px;">
+        <div class="title-text" style="display: flex; align-items: center;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="">
+            MMU_TV_Case_Study.txt - Notepad
+        </div>
+        <div class="window-controls" style="display: flex; align-items: center; gap: 4px;">
+            <button class="win95-link-btn"
+                    onclick="window.location.href='projects.html';"
+                    title="Return to Projects"
+                    style="font-size:11px; padding:2px 8px; font-weight:bold; cursor:pointer;">
+                X
+            </button>
+        </div>
+    </div>
+
+    <div class="win95-main-body">
+        <div class="document-container">
+
+            <!-- HEADER -->
+            <div style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 30px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
+                <h1 style="font-size: 2.2rem; margin: 0; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px; color: #fff;">
+                    MMU TV Website - Web Development & UX Case Study
+                </h1>
+                <p style="margin: 8px 0 0 0; color: #cbd0d4; font-size: 15px;">
+                    Building a "CREATIVE PLATFORM" for the MMU Community to showcase and explore media projects.
+                </p>
+            </div>
+
+            <!-- PROCESS INDEX BAR -->
+            <div class="process-index-bar">
+                <strong>Process Index:</strong>
+                <a href="#overview">Project Overview</a> |
+                <a href="#challenges">Challenges</a> |
+                <a href="#goals">Design Goals</a> |
+                <a href="#development">Development Process</a> |
+                <a href="#solutions">Key Solutions</a> |
+                <a href="#reflection">Reflection</a> |
+                <a href="#learnings">What I Learned</a>
+            </div>
+
+            <!-- EXECUTIVE SUMMARY -->
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
+                <ul class="meta-list-95">
+                    <li><strong>Overview:</strong> This project allowed me to design and build a creative media platform from the ground up. My goal was to create a space where MMU students and staff could easily share, explore, and engage with video content.</li>
+                    <li><strong>Challenge:</strong> Building a fully responsive, intuitive website that supports diverse media formats while remaining simple enough for casual browsing.</li>
+                    <li><strong>Outcome:</strong> A clean, Bootstrap-powered platform with intuitive navigation, mobile-first layouts, and a streamlined sign-up flow.</li>
+                </ul>
+            </div>
 
             <!-- PROJECT DETAILS -->
             <div class="meta-sidebar-95">
@@ -235,9 +475,13 @@
             </div>
 
             <!-- SECTION 1 -->
-            <h2>1. Project Overview & Introduction</h2>
+            <h2 id="overview">📁 1. Project Overview & Introduction</h2>
             <p>The MMU TV website was created as a platform to showcase "CREATIVE PROJECTS" from Manchester Metropolitan University (MMU) students and staff. The core goal was to make it easy for users to "EXPLORE VIDEOS", sign up, and engage with the MMU community.</p>
-            <p><strong>The Challenge:</strong> To design and build a fully functional, "MOBILE-FRIENDLY" website from scratch that could host diverse media content while maintaining an intuitive user experience for both student creators and casual viewers.</p>
+
+            <div class="highlight-box-95" style="background:#fff8c6; border:2px solid #d4b300; padding:15px 20px; margin:25px 0; box-shadow:2px 2px 0 #b5b5b5;">
+                <strong>⚠ The Challenge:</strong>
+                To design and build a fully functional, mobile-friendly website from scratch that could host diverse media content while maintaining an intuitive user experience for both student creators and casual viewers.
+            </div>
 
             <div class="image-preview-frame" style="max-width: 500px; margin: 0 auto;">
                 <img src="../new-website/properties/img/mmud.jpg" alt="Sign-Up Page Design">
@@ -251,24 +495,24 @@
             <hr>
 
             <!-- SECTION 2 -->
-            <h2>2. Challenges & Design Goals</h2>
+            <h2 id="challenges">📁 2. Challenges & Design Goals</h2>
             <div class="system-row-95">
                 <div class="system-col-6" style="background:#ffe0e0; border:1px solid #ff8080; padding:15px; box-shadow:1px 1px 0 #808080;">
                     <h3 class="text-danger" style="color:#a00000; font-size:1.2rem; margin-bottom:10px;">Key Challenges</h3>
                     <ul>
-                        <li>Layout: Lack of a clear, "MODERN LAYOUT" for displaying diverse video content.</li>
-                        <li>Accessibility: Ensuring the website was mobile-friendly and met "ACCESSIBILITY STANDARDS".</li>
-                        <li>Search: Creating a simple but "FUNCTIONAL SEARCH FEATURE" for filtering video content.</li>
-                        <li>User Needs: Developing an intuitive user experience that caters to "BOTH STUDENTS AND STAFF".</li>
+                        <li>Layout: Lack of a clear, modern layout for displaying diverse video content.</li>
+                        <li>Accessibility: Ensuring the website was mobile-friendly and met accessibility standards.</li>
+                        <li>Search: Creating a simple but functional search feature for filtering video content.</li>
+                        <li>User Needs: Developing an intuitive user experience that caters to both students and staff.</li>
                     </ul>
                 </div>
                 <div class="system-col-6" style="background:#e0ffe0; border:1px solid #80ff80; padding:15px; box-shadow:1px 1px 0 #808080;">
-                    <h3 class="text-success" style="color:#00a000; font-size:1.2rem; margin-bottom:10px;">Primary Design Objectives</h3>
+                    <h3 id="goals" class="text-success" style="color:#00a000; font-size:1.2rem; margin-bottom:10px;">Primary Design Objectives</h3>
                     <ul>
-                        <li>Responsiveness: Build a responsive, "MOBILE-FIRST DESIGN" for easy access on all devices.</li>
-                        <li>Navigation: Develop an "INTUITIVE NAVIGATION SYSTEM" to quickly find and view videos.</li>
-                        <li>Visual Appeal: Create visually appealing and "ENGAGING CONTENT SECTIONS" to showcase creative work.</li>
-                        <li>Simplicity: Design the sign-up and interaction processes for "MAXIMUM SIMPLICITY".</li>
+                        <li>Responsiveness: Build a responsive, mobile-first design for easy access on all devices.</li>
+                        <li>Navigation: Develop an intuitive navigation system to quickly find and view videos.</li>
+                        <li>Visual Appeal: Create visually appealing and engaging content sections to showcase creative work.</li>
+                        <li>Simplicity: Design the sign-up and interaction processes for maximum simplicity.</li>
                     </ul>
                 </div>
             </div>
@@ -276,10 +520,10 @@
             <hr>
 
             <!-- SECTION 3 -->
-            <h2>3. Development Process & Key Solutions</h2>
-            <p>The website was built using HTML5, CSS3, and the Bootstrap framework, focusing on the "FRONT-END DEVELOPMENT" and visual presentation.</p>
+            <h2 id="development">📁 3. Development Process & Key Solutions</h2>
+            <p>The website was built using HTML5, CSS3, and the Bootstrap framework, focusing on the front-end development and visual presentation.</p>
 
-            <div class="artifact-grid-95">
+            <div class="artifact-grid-95" id="solutions">
                 <div class="artifact-card-95">
                     <h4>Solution 1: Clean Homepage Design</h4>
                     <img src="../new-website/properties/img/mmua.jpg" alt="MMU TV Homepage Design">
@@ -305,27 +549,65 @@
             <hr>
 
             <!-- SECTION 4 -->
-            <h2>4. Final Thoughts & Next Steps</h2>
-            <p>This project was an exciting opportunity to apply my "FRONT-END DEVELOPMENT SKILLS" and create a user-centric website that serves the MMU community. With responsive design, accessibility, and simple navigation, the MMU TV website provides a "SEAMLESS AND ENGAGING EXPERIENCE" for users across all devices.</p>
+            <h2 id="reflection">📁 4. Final Thoughts & Reflection</h2>
+            <p>This project was an exciting opportunity to apply my front-end development skills and create a user-centric website that serves the MMU community. With responsive design, accessibility, and simple navigation, the MMU TV website provides a seamless and engaging experience for users across all devices.</p>
 
-            <h3 style="font-size: 1.1rem; color: #808080; margin-top: 20px; margin-bottom: 8px;">Future Steps</h3>
-            <ul>
-                <li>User Accounts: Implement full user authentication and "PERSONALIZED DASHBOARDS".</li>
-                <li>Video Playlists: Add functionality for users to create and manage their own "VIDEO PLAYLISTS".</li>
-                <li>Dynamic Interactions: Integrate more dynamic JavaScript interactions and API integration for content updates.</li>
-            </ul>
+            <h3 style="font-size: 1.1rem; color: #000080; margin-top: 20px;">Reflection</h3>
+            <p>Building MMU TV strengthened my confidence in designing for diverse audiences and creating layouts that balance creativity with usability. I learned how important it is to simplify interactions, especially when users are exploring media content. This project helped me refine my ability to design responsive interfaces and create clear, predictable user flows.</p>
 
-           <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
+            <!-- WHAT I LEARNED -->
+            <div id="learnings" style="background:#fff8c6; border:2px solid #d4b300; padding:15px 20px; margin:25px 0; box-shadow:2px 2px 0 #b5b5b5;">
+                <h3 style="margin-top:0; color:#000080;">What I Learned</h3>
+                <ul style="margin:0; padding-left:20px;">
+                    <li>Clear navigation helps users explore content confidently.</li>
+                    <li>Mobile-first layouts are essential for modern media platforms.</li>
+                    <li>Simple search features dramatically improve content discoverability.</li>
+                    <li>Visual consistency builds trust and improves engagement.</li>
+                    <li>Small UX improvements can significantly enhance user satisfaction.</li>
+                </ul>
+            </div>
+
+            <!-- GROWTH BOX -->
+            <div style="background:#e0f0ff; border:2px solid #8080ff; padding:15px 20px; margin:25px 0; box-shadow:2px 2px 0 #808080;">
+                <h3 style="margin-top:0; color:#000080;">How This Project Helped Me Grow</h3>
+                <p style="margin:0;">MMU TV helped me bridge my front-end development skills with UX thinking. I learned how to design for real users in a community context, create layouts that support content discovery, and build responsive experiences that feel consistent across devices. It reinforced my ability to ship complete, functional projects that balance creativity with usability.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
                 <button class="win95-link-btn"
                         onclick="window.location.href='projects.html';"
                         style="font-size: 13px; padding: 6px 24px; font-weight: bold; cursor: pointer;">
                     Close File and Return to Projects
                 </button>
             </div>
+
         </div>
     </div>
 </div>
 
 <script src="../new-website/Jsscript.js"></script>
+
+<script>
+    function updateLocalClock() {
+        const clock = document.getElementById("win95-clock");
+        if (!clock) return;
+
+        const now = new Date();
+
+        // 24-hour format
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+
+        // AM/PM indicator
+        const ampm = now.getHours() >= 12 ? "PM" : "AM";
+
+        clock.textContent = `${hours}:${minutes} ${ampm}`;
+    }
+
+    setInterval(updateLocalClock, 1000);
+    updateLocalClock();
+</script>
+
+
 </body>
 </html>

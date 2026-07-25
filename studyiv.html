@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project H - UX Case Study</title>
     <link href="../new-website/styles.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='8,4 8,52 20,40 28,60 34,58 26,38 40,34' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E">
+
     <style>
         body {
             background-color: #008080;
@@ -264,7 +266,7 @@
 
 
             <!-- SECTION 1 -->
-            <h2 id="vision">1. The Vision: Same Layout, Better UI</h2>
+            <h2 id="vision">📁 1. The Vision: Same Layout, Better UI</h2>
             <p>I set out to prove that Information Architecture doesn't have to be overwhelming. I kept the structural layout the client was used to, but completely overhauled the Visual Interface. By removing the "Wall of Text," I created an environment that is action-oriented and accessible to all ages.</p>
 
             <div class="classic-quote-95">
@@ -274,7 +276,7 @@
             <hr>
 
             <!-- SECTION 2 -->
-            <h2 id="bento">2. UI Innovation: The "Lumia" Bento Transformation</h2>
+            <h2 id="bento">📁 2. UI Innovation: The "Lumia" Bento Transformation</h2>
             <p>The defining change was the implementation of a Bento Box UI. This modular approach allowed me to keep the same site structure while drastically improving the UX:</p>
 
             <ul>
@@ -299,7 +301,7 @@
             <hr>
 
             <!-- SECTION 3 -->
-            <h2 id="evolution">3. The Evolution: Text-Heavy to Bento-Light</h2>
+            <h2 id="evolution">📁 3. The Evolution: Text-Heavy to Bento-Light</h2>
             <p>Comparing the legacy agency design to my proposed redesign:</p>
 
             <div class="artifact-grid-95">
@@ -326,7 +328,7 @@
             <hr>
 
             <!-- SECTION 4 -->
-            <h2 id="prototype">4. Technical Implementation: Responsive Prototype</h2>
+            <h2 id="prototype">📁 4. Technical Implementation: Responsive Prototype</h2>
             <div class="image-preview-frame" style="max-width: 500px; margin: 0 auto;">
                 <img src="../new-website/properties/hartshill img/land.png" alt="Full Site Scrolling Preview">
                 <div style="padding: 5px 0;">
@@ -339,7 +341,7 @@
             <hr>
 
             <!-- SECTION 5: NEXT STEPS & FUTURE ITERATIONS -->
-            <h2 id="next-steps">5. Next Steps & Future Iterations</h2>
+            <h2 id="next-steps">📁 5. Next Steps & Future Iterations</h2>
             <ul>
                 <li><strong>Accessibility Audit (WCAG 2.1 AA):</strong> Perform high-contrast theme testing to ensure full readability for low-vision users.</li>
                 <li><strong>Content Management Integration:</strong> Build custom Bento Grid templates within a headless CMS to allow non-technical stakeholders to add news tiles seamlessly.</li>
@@ -349,7 +351,7 @@
             <hr>
 
             <!-- SECTION 6 -->
-            <h2 id="reflection">6. Technical & Ethical Reflection</h2>
+            <h2 id="reflection">📁 6. Technical & Ethical Reflection</h2>
              <div class="classic-quote-95">
                 <p style="margin: 0;">
             To respect the privacy of the organization, identifying content has been sanitized. This project highlights my ability to take an agency-managed "wall of text" and transform it into a modern Modular UI that satisfies both user needs and stakeholder goals.</p>
@@ -367,5 +369,28 @@
 </div>
 
 <script src="../new-website/Jsscript.js"></script>
+
+<script>
+    function updateLocalClock() {
+        const clock = document.getElementById("win95-clock");
+        if (!clock) return;
+
+        const now = new Date();
+
+        // 24-hour format
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+
+        // AM/PM indicator
+        const ampm = now.getHours() >= 12 ? "PM" : "AM";
+
+        clock.textContent = `${hours}:${minutes} ${ampm}`;
+    }
+
+    setInterval(updateLocalClock, 1000);
+    updateLocalClock();
+</script>
+
+
 </body>
 </html>

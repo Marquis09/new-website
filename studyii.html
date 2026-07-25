@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WCH_Redesign_Case_Study.txt - Notepad</title>
     <link href="../new-website/styles.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='8,4 8,52 20,40 28,60 34,58 26,38 40,34' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E">
+
     <style>
         body {
             background-color: #008080;
@@ -126,6 +128,21 @@
             margin-bottom: 8px;
         }
 
+        .process-index-bar {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 12px;
+            margin-bottom: 25px;
+            box-shadow: 1px 1px 0 #000;
+            font-size: 14px;
+        }
+
+        .process-index-bar a {
+            color: #000080;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         h1, h2, h3, h4 {
             color: #000;
             margin-top: 0;
@@ -185,15 +202,14 @@
             <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="">
             WCH_Redesign_Case_Study.txt - Notepad
         </div>
-       <div class="window-controls" style="display: flex; align-items: center; gap: 4px;">
-
-    <button class="win95-link-btn"
-            onclick="window.location.href='projects.html';"
-            title="Return to Projects"
-            style="font-size:11px; padding:2px 8px; font-weight:bold; cursor:pointer;">
-        X
-    </button>
-</div>
+        <div class="window-controls" style="display: flex; align-items: center; gap: 4px;">
+            <button class="win95-link-btn"
+                    onclick="window.location.href='projects.html';"
+                    title="Return to Projects"
+                    style="font-size:11px; padding:2px 8px; font-weight:bold; cursor:pointer;">
+                X
+            </button>
+        </div>
     </div>
 
     <div class="win95-main-body">
@@ -209,13 +225,29 @@
                 </p>
             </div>
 
+            <!-- PROCESS OVERVIEW -->
+            <h2 id="overview">📁 1. Process Overview</h2>
+
+            <div class="process-index-bar">
+                <strong>Process Index:</strong>
+                <a href="#overview">Process Overview</a> |
+                <a href="#background">Project Summary</a> |
+                <a href="#painpoints">Pain Points</a> |
+                <a href="#process">Design Process</a> |
+                <a href="#final-design">Key Solutions</a> |
+                <a href="#outcomes">Before & After</a> |
+                <a href="#reflection">Reflection</a> |
+                <a href="#learnings">Key Learnings</a>
+            </div>
+
+
             <!-- EXECUTIVE SUMMARY -->
             <div class="meta-sidebar-95">
                 <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
                 <ul class="meta-list-95">
-                    <li><strong>Overview:</strong> Targeted redesign of an e-commerce site suffering from usability and design flaws.</li>
-                    <li><strong>Challenge:</strong> Modernize the aesthetic, simplify information architecture, and create a seamless, mobile-first shopping experience.</li>
-                    <li><strong>Outcome:</strong> Clearer navigation, improved mobile usability, and streamlined checkout flow to reduce friction.</li>
+                    <li><strong>Overview:</strong> This project challenged me to rethink how users interact with an e‑commerce website and how subtle usability issues can create major friction. I approached the redesign with a strong focus on clarity, predictability, and user comfort.</li>
+                    <li><strong>Challenge:</strong> The original site suffered from cluttered navigation, inconsistent layouts, and poor mobile responsiveness. My goal was to modernise the aesthetic while creating a smoother, more intuitive shopping experience.</li>
+                    <li><strong>Outcome:</strong> The redesign resulted in clearer navigation, improved mobile usability, and a streamlined checkout flow that reduces hesitation and supports confident purchasing.</li>
                 </ul>
             </div>
 
@@ -231,9 +263,16 @@
             </div>
 
             <!-- SECTION 1 -->
-            <h2>1. Project Summary & The Challenge</h2>
-            <p>The original Working Class Heroes e-commerce website suffered from significant "USABILITY AND DESIGN FLAWS" that created friction for users trying to browse and purchase products. The main issues were a cluttered navigation, poor mobile adaptability, and inconsistencies in the checkout process.</p>
-            <p><strong>The Challenge:</strong> To perform a targeted redesign focused on modernizing the aesthetic, simplifying the information architecture, and creating a "SEAMLESS, MOBILE-FIRST SHOPPING EXPERIENCE" to increase conversion rates and customer satisfaction.</p>
+            <h2 id="background">📁 2. Project Summary & The Challenge</h2>
+
+            <p>The original Working Class Heroes e‑commerce website suffered from significant usability issues that directly impacted user confidence and conversion rates. Navigation felt cluttered, product information was difficult to scan, and the checkout flow created unnecessary friction for users trying to complete purchases.</p>
+
+           <div class="highlight-box-95" style="background:#fff8c6; border:2px solid #d4b300; padding:15px 20px; margin:25px 0; box-shadow:2px 2px 0 #b5b5b5;">
+                <strong>⚠ The Challenge:</strong>
+                My goal was to redesign the experience in a way that felt modern, predictable, and supportive of fast decision‑making. I wanted users to feel guided rather than overwhelmed, especially on mobile devices where clarity and responsiveness are essential.
+            </div>
+
+            <p>This project also reflects my personal design philosophy: creating interfaces that feel intuitive, calm, and visually structured. Even within a commercial context, I aim to reduce cognitive load and help users move through tasks with confidence.</p>
 
             <div class="image-preview-frame" style="max-width: 500px; margin: 0 auto;">
                 <img src="../new-website/properties/img/studyiie.jpg" alt="Original Design">
@@ -247,7 +286,7 @@
             <hr>
 
             <!-- SECTION 2 -->
-            <h2>2. Problem Statement & Design Goals</h2>
+            <h2 id="painpoints">📁 3. Problem Statement & Design Goals</h2>
             <p>User analysis revealed that the website's technical and structural shortcomings directly impacted customer abandonment rates.</p>
 
             <div class="system-row-95">
@@ -274,7 +313,7 @@
             <hr>
 
             <!-- SECTION 3 -->
-            <h2>3. Design Process: Analysis and Ideation</h2>
+            <h2 id="process">📁 4. Design Process: Analysis and Ideation</h2>
             <p>The redesign followed a user-centered approach, prioritizing "INFORMATION ARCHITECTURE" and mobile adaptability.</p>
 
             <div class="system-row-95">
@@ -295,11 +334,13 @@
                 </div>
             </div>
 
+            <p>Before finalising the redesign, I explored visual directions that balanced modern e-commerce standards with a clean, approachable aesthetic. I focused on neutral tones, simplified typography, and clear product imagery to create a visual language that felt trustworthy and easy to navigate.</p>
+
             <hr>
 
             <!-- SECTION 4 -->
-            <h2>4. Key Design Solutions Implemented</h2>
-            <p>The redesign focused on four critical areas to alleviate user pain and drive conversion:</p>
+            <h2 id="final-design">📁 5. Key Design Solutions Implemented</h2>
+            <p>Each design decision in this project was made to reduce friction and support a smoother shopping journey. I prioritised clarity, predictability, and responsiveness because users visiting e-commerce sites often make quick decisions. By simplifying the homepage, strengthening the search experience, and refining the checkout flow, I aimed to create an environment where users could browse confidently and complete purchases without hesitation.</p>
 
             <div class="artifact-grid-95">
                 <div class="artifact-card-95">
@@ -327,7 +368,7 @@
             <hr>
 
             <!-- SECTION 5 -->
-            <h2>5. Before and After</h2>
+            <h2 id="outcomes">📁 6. Before and After</h2>
             <p>A visual comparison of the original website versus the redesigned version, showcasing the move to a cleaner aesthetic:</p>
 
             <div class="artifact-grid-95">
@@ -344,7 +385,7 @@
             <hr>
 
             <!-- SECTION 6 -->
-            <h2>6. Final Thoughts & Future Steps</h2>
+            <h2 id="reflection">📁 7. Final Thoughts & Future Steps</h2>
             <p>This redesign was a valuable experience, as it allowed me to tackle real-world usability issues and improve the overall shopping experience.</p>
 
             <h3 style="font-size: 1.1rem; color: #808080; margin-top: 20px; margin-bottom: 8px;">Future Steps</h3>
@@ -354,17 +395,60 @@
                 <li>Refinement: Continue refining the site with more dynamic features, like personalized recommendations.</li>
             </ul>
 
-          <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
+            <h3 style="font-size: 1.1rem; color: #000080; margin-top: 30px;">Reflection</h3>
+            <p>This project strengthened my confidence in handling complex UX flows and balancing user needs with business goals. Working on an e‑commerce redesign pushed me to think more critically about how small usability issues can create large‑scale friction. I learned to trust my judgement, make decisive design choices, and refine interactions that directly influence user behaviour.</p>
+
+            <div id="learnings" style="background:#fff8c6; border:2px solid #d4b300; padding:15px 20px; margin:25px 0; box-shadow:2px 2px 0 #b5b5b5;">
+                <h3 style="margin-top:0; color:#000080;">What I Learned</h3>
+                <ul style="margin:0; padding-left:20px;">
+                    <li>Clear navigation dramatically reduces hesitation during browsing.</li>
+                    <li>Mobile-first thinking is essential for fast, on the go shopping behaviour.</li>
+                    <li>Predictive search and error prevention build user trust.</li>
+                    <li>Checkout friction is often caused by small layout inconsistencies.</li>
+                    <li>Visual calmness improves user confidence during decision-making.</li>
+                </ul>
+            </div>
+
+            <div style="background:#e0f0ff; border:2px solid #8080ff; padding:15px 20px; margin:25px 0; box-shadow:2px 2px 0 #808080;">
+                <h3 style="margin-top:0; color:#000080;">How This Project Helped Me Grow</h3>
+                <p style="margin:0;">This redesign helped me refine my ability to simplify complex flows, communicate design decisions clearly, and create experiences that feel predictable and user-friendly. It also strengthened my confidence in applying UX principles to real-world commercial challenges.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
                 <button class="win95-link-btn"
                         onclick="window.location.href='projects.html';"
                         style="font-size: 13px; padding: 6px 24px; font-weight: bold; cursor: pointer;">
                     Close File and Return to Projects
                 </button>
             </div>
+
         </div>
     </div>
 </div>
 
 <script src="../new-website/Jsscript.js"></script>
+
+<script>
+    function updateLocalClock() {
+        const clock = document.getElementById("win95-clock");
+        if (!clock) return;
+
+        const now = new Date();
+
+        // 24-hour format
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+
+        // AM/PM indicator
+        const ampm = now.getHours() >= 12 ? "PM" : "AM";
+
+        clock.textContent = `${hours}:${minutes} ${ampm}`;
+    }
+
+    setInterval(updateLocalClock, 1000);
+    updateLocalClock();
+</script>
+
+
 </body>
 </html>

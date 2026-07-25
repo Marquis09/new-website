@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project_Coward_Case_Study.txt - Notepad</title>
     <link href="../new-website/styles.css" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='8,4 8,52 20,40 28,60 34,58 26,38 40,34' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E">
 
     <style>
         body {
@@ -236,7 +237,7 @@
             </div>
 
             <!-- BACKGROUND -->
-            <h2 id="section-background">Background</h2>
+            <h2 id="section-background">📁 Background</h2>
             <div class="classic-quote-95">
                 <p style="margin: 0;">
                   Project Coward began as a collaborative Alternate Reality Game (ARG) experiment exploring digital personas, cyberbullying, and psychological horror through the lens of a fictional Vtuber influencer. The central hub (the VTuber Nexus) served as the entry point for players, beginning as a wholesome, inviting space before gradually degrading into a corrupted, glitch-filled environment that mirrored the character’s emotional deterioration.  
@@ -285,7 +286,7 @@
             </div>
 
             <!-- SECTION 1 -->
-            <h2 id="section-vision">1. The Vision: Immersive Environmental Storytelling</h2>
+            <h2 id="section-vision">📁 1. The Vision: Immersive Environmental Storytelling</h2>
             <p>
                 The VTuber Nexus was designed to feel like a living environment, a space that evolved alongside the narrative. The wholesome aesthetic of the early interface represented Stella’s innocence and approachability, while the later corrupted state reflected her psychological unraveling under cyberbullying pressure.
             </p>
@@ -309,7 +310,7 @@
             <hr>
 
             <!-- SECTION 2 -->
-            <h2 id="section-engineering">2. Interactive Engineering: The Dual-State Architecture</h2>
+            <h2 id="section-engineering">📁 2. Interactive Engineering: The Dual-State Architecture</h2>
             <p>
                 The interface was built around a dual-state architecture: a stable, wholesome environment and a corrupted, horror-driven counterpart. This required careful engineering to ensure seamless transitions triggered by user interactions.
             </p>
@@ -333,7 +334,7 @@
             <hr>
 
             <!-- SECTION 3 -->
-            <h2 id="section-evolution">3. The Evolution: System Stability to Total Corruption</h2>
+            <h2 id="section-evolution">📁 3. The Evolution: System Stability to Total Corruption</h2>
             <p>
                 The interface’s transformation was designed to be immediate and unsettling. Once triggered, the wholesome layout collapses into a corrupted state, visually representing Stella’s psychological breakdown.
             </p>
@@ -352,7 +353,7 @@
             <hr>
 
             <!-- SECTION 4 -->
-            <h2 id="section-prototype">4. Responsive Testing Grounds: Live Prototype & Mechanics</h2>
+            <h2 id="section-prototype">📁 4. Responsive Testing Grounds: Live Prototype & Mechanics</h2>
             <p>
                 The prototype served as both a narrative device and a functional testing ground. Players interacted with the login system, explored the wholesome hub, and triggered the glitch event, experiencing the psychological shift firsthand.
             </p>
@@ -369,7 +370,7 @@
             <hr>
 
             <!-- SECTION 5 -->
-            <h2 id="section-testing">5. Testing</h2>
+            <h2 id="section-testing">📁 5. Testing</h2>
             <p>
                 Testing validated that players naturally explored interactive elements and discovered hidden triggers without explicit guidance. This confirmed that the environmental storytelling approach was intuitive and effective.
             </p>
@@ -377,7 +378,7 @@
             <hr>
 
             <!-- SECTION 6 -->
-            <h2 id="section-challenges">6. Technical Challenges & Team Adaptability</h2>
+            <h2 id="section-challenges">📁 6. Technical Challenges & Team Adaptability</h2>
             <p>
                 A major challenge emerged when Twitter’s safety algorithms shadowbanned our automated character feed due to high-velocity fictional activity. This threatened to break the ARG’s cross-platform progression loop.
             </p>
@@ -400,7 +401,7 @@
             <hr>
 
             <!-- SECTION 7 -->
-            <h2 id="section-reflection">7. Reflection</h2>
+            <h2 id="section-reflection">📁 7. Reflection</h2>
 
             <div class="classic-quote-95">
                 <p style="margin: 0;">
@@ -428,6 +429,29 @@
 </div>
 
 <script src="../new-website/Jsscript.js"></script>
+
+<script>
+    function updateLocalClock() {
+        const clock = document.getElementById("win95-clock");
+        if (!clock) return;
+
+        const now = new Date();
+
+        // 24-hour format
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+
+        // AM/PM indicator
+        const ampm = now.getHours() >= 12 ? "PM" : "AM";
+
+        clock.textContent = `${hours}:${minutes} ${ampm}`;
+    }
+
+    setInterval(updateLocalClock, 1000);
+    updateLocalClock();
+</script>
+
+
 </body>
 </html>
 
