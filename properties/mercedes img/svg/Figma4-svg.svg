@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="100%" height="100%" style="background-color: #FFFFFF; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Soft Figma Canvas Drop Shadow -->
+    <filter id="figma-shadow" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+
+  <!-- ================= FIGMA CANVAS AREA ================= -->
+  <g transform="translate(40, 20)">
+
+    <!-- 2x2 QUADRANT CARDS GRID (Compact & Modern Figma Look) -->
+
+    <!-- QUADRANT 1: TOP-LEFT (Quick Wins) -->
+    <g transform="translate(0, 0)" filter="url(#figma-shadow)">
+      <rect x="0" y="0" width="230" height="120" rx="8" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="1"/>
+      <!-- Accent Pill Badge -->
+      <rect x="16" y="16" width="68" height="18" rx="9" fill="#ECFDF5"/>
+      <text x="50" y="28" font-size="9" font-weight="600" fill="#059669" text-anchor="middle">QUICK WIN</text>
+      
+      <g transform="translate(16, 48)">
+        <text x="0" y="12" font-size="14" font-weight="600" fill="#1A1A1A">Quick Wins</text>
+        <text x="0" y="26" font-size="11" font-weight="500" fill="#6B7280">(High Impact / Low Effort)</text>
+
+        <!-- Bullet Items -->
+        <g transform="translate(0, 42)">
+          <circle cx="3" cy="3" r="2" fill="#10B981"/>
+          <text x="10" y="6" font-size="11" font-weight="400" fill="#374151">Hover tooltips</text>
+
+          <circle cx="3" cy="18" r="2" fill="#10B981"/>
+          <text x="10" y="21" font-size="11" font-weight="400" fill="#374151">Plain‑English text updates</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- QUADRANT 2: TOP-RIGHT (Strategic Projects) -->
+    <g transform="translate(242, 0)" filter="url(#figma-shadow)">
+      <rect x="0" y="0" width="230" height="120" rx="8" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="1"/>
+      <!-- Accent Pill Badge -->
+      <rect x="16" y="16" width="68" height="18" rx="9" fill="#EFF6FF"/>
+      <text x="50" y="28" font-size="9" font-weight="600" fill="#2563EB" text-anchor="middle">STRATEGIC</text>
+
+      <g transform="translate(16, 48)">
+        <text x="0" y="12" font-size="14" font-weight="600" fill="#1A1A1A">Strategic Projects</text>
+        <text x="0" y="26" font-size="11" font-weight="500" fill="#6B7280">(High Impact / High Effort)</text>
+
+        <!-- Bullet Items -->
+        <g transform="translate(0, 42)">
+          <circle cx="3" cy="3" r="2" fill="#2563EB"/>
+          <text x="10" y="6" font-size="11" font-weight="400" fill="#374151">Side‑by‑side comparison cards</text>
+
+          <circle cx="3" cy="18" r="2" fill="#2563EB"/>
+          <text x="10" y="21" font-size="11" font-weight="400" fill="#374151">“Help Me Choose” wizard</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- QUADRANT 3: BOTTOM-LEFT (Low-Value Tasks) -->
+    <g transform="translate(0, 132)">
+      <rect x="0" y="0" width="230" height="120" rx="8" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1" stroke-dasharray="4 4"/>
+
+      <g transform="translate(16, 32)">
+        <text x="0" y="14" font-size="14" font-weight="600" fill="#9CA3AF">Low‑Value Tasks</text>
+        <text x="0" y="30" font-size="11" font-weight="500" fill="#9CA3AF">(Low Impact / Low Effort)</text>
+      </g>
+    </g>
+
+    <!-- QUADRANT 4: BOTTOM-RIGHT (Avoid / Defer) -->
+    <g transform="translate(242, 132)">
+      <rect x="0" y="0" width="230" height="120" rx="8" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1" stroke-dasharray="4 4"/>
+
+      <g transform="translate(16, 32)">
+        <text x="0" y="14" font-size="14" font-weight="600" fill="#9CA3AF">Avoid / Defer</text>
+        <text x="0" y="30" font-size="11" font-weight="500" fill="#9CA3AF">(Low Impact / High Effort)</text>
+      </g>
+    </g>
+
+  </g>
+</svg>

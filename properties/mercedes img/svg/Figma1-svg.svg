@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%" style="background-color: #F8F9FA; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Card & Popover Drop Shadow -->
+    <filter id="popover-shadow" x="-20%" y="-10%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <filter id="card-shadow" x="-10%" y="-5%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Content Container -->
+  <g transform="translate(100, 30)">
+    
+    <!-- 1. Finance Card Container (320 x 180) -->
+    <rect x="0" y="0" width="320" height="180" rx="8" ry="8" fill="#FFFFFF" stroke="#D1D1D1" stroke-width="1" filter="url(#card-shadow)"/>
+
+    <!-- Title Row Group (Padding Top: 24px, Left: 24px) -->
+    <g transform="translate(24, 24)">
+      
+      <!-- Card Title: "PCP" -->
+      <text x="0" y="17" font-size="18" font-weight="600" fill="#1A1A1A" letter-spacing="-0.01em">PCP</text>
+
+      <!-- Info Icon (Positioned 8px to the right of "PCP" text ~ 38px width) -->
+      <g transform="translate(46, 2)" cursor="pointer">
+        <!-- Hover Target Area -->
+        <rect x="-2" y="-2" width="20" height="20" fill="transparent"/>
+        <!-- Outer Circle -->
+        <circle cx="8" cy="8" r="8" fill="#0078D4"/>
+        <!-- Inner "i" symbol -->
+        <text x="8" y="12" font-size="11" font-weight="700" font-family="Merriweather, Georgia, serif" fill="#FFFFFF" text-anchor="middle">i</text>
+      </g>
+
+    </g>
+
+    <!-- Decorative Card Content Baseline (To show card structure) -->
+    <g transform="translate(24, 70)">
+      <rect x="0" y="0" width="140" height="12" rx="3" fill="#F1F3F5"/>
+      <rect x="0" y="20" width="272" height="8" rx="2" fill="#F8F9FA"/>
+      <rect x="0" y="34" width="220" height="8" rx="2" fill="#F8F9FA"/>
+      
+      <rect x="0" y="62" width="100" height="28" rx="4" fill="#0078D4"/>
+      <text x="50" y="80" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">Apply Now</text>
+    </g>
+
+    <!-- 2. Tooltip Popover Assembly -->
+    <!-- Positioned 8px below the Info Icon (Icon Y=24+2=26, Height=16 -> Y=42 + 8px gap = 50px) -->
+    <g transform="translate(60, 50)" filter="url(#popover-shadow)">
+      
+      <!-- Pointer / Arrow (12x12 rotated 45deg, positioned top-left aligned) -->
+      <!-- Placed behind body frame to seamlessly merge stroke/fill -->
+      <rect x="18" y="-6" width="12" height="12" rx="1" transform="rotate(45 24 0)" fill="#FFFFFF" stroke="#D1D1D1" stroke-width="1"/>
+
+      <!-- Popover Body Frame (280 x 140, Corner Radius 6px) -->
+      <rect x="0" y="0" width="280" height="140" rx="6" ry="6" fill="#FFFFFF" stroke="#D1D1D1" stroke-width="1"/>
+
+      <!-- Cover Arrow Inner Stroke Baseline -->
+      <rect x="13" y="1" width="22" height="5" fill="#FFFFFF"/>
+
+      <!-- 3. Tooltip Content (Padding: 16px all sides) -->
+      <g transform="translate(16, 16)">
+        
+        <!-- Tooltip Heading -->
+        <text x="0" y="14" font-size="16" font-weight="600" fill="#1A1A1A">What is PCP?</text>
+
+        <!-- Tooltip Body Paragraph (Multi-line text with 20px line-height) -->
+        <g transform="translate(0, 30)">
+          <text font-size="14" font-weight="400" fill="#4A4A4A">
+            <tspan x="0" y="10">A flexible finance option where you pay</tspan>
+            <tspan x="0" y="30">monthly and decide at the end whether</tspan>
+            <tspan x="0" y="50">to keep, return, or upgrade the car.</tspan>
+          </text>
+        </g>
+
+      </g>
+    </g>
+
+  </g>
+</svg>
