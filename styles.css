@@ -670,7 +670,7 @@ h2 {
     text-align: right; 
     overflow: hidden;   
 }/* =========================================================
-   WINDOWS 95 CONTROLS - CROSS BROWSER / MOBILE
+   WINDOWS 95 CONTROLS - SAMSUNG INTERNET & DARK MODE FIX
    ========================================================= */
 
 .window-controls {
@@ -695,6 +695,12 @@ h2 {
 
     display: block !important;
     flex: 0 0 20px !important;
+
+    /* Prevent Samsung Internet and Chrome forced Dark Mode color inversion */
+    color-scheme: light !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    forced-color-adjust: none !important;
 
     /* Base Win95 Grey Background */
     background-color: #c0c0c0 !important;
@@ -721,11 +727,11 @@ h2 {
 }
 
 /* -------------------------
-   MAXIMIZE / RESTORE ICON
+   MAXIMIZE / OUTLINE BOX ICON
    ------------------------- */
 
 .window-controls .maximize-btn {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 9 9'%3E%3Cpath fill='%23000000' d='M0 0h9v9H0V0zm1 2h7v6H1V2z'/%3E%3C/svg%3E") !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='8' viewBox='0 0 9 8'%3E%3Cpath fill='%23000000' d='M0 0h9v8H0V0zm1 1v1h7V1H1zm0 2v4h7V3H1z'/%3E%3C/svg%3E") !important;
 }
 
 /* -------------------------
