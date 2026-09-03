@@ -670,3 +670,10 @@ h2 {
     text-align: right; 
     overflow: hidden;   
 }
+.win-btn {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+}
