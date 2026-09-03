@@ -670,33 +670,62 @@ h2 {
     text-align: right; 
     overflow: hidden;   
 }
-.win-btn {
-    width: 26px;
-    height: 23px;
-    padding: 0;
-    margin-left: 2px;
+/* =========================================================
+   WINDOWS 95 CONTROLS - CROSS BROWSER / MOBILE
+   ========================================================= */
 
-    position: relative;
+.window-controls {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+    height: 100%;
+}
 
-    background: #c0c0c0;
+.window-controls .win-btn {
+    position: relative !important;
 
-    border-top: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #000000;
-    border-bottom: 2px solid #000000;
+    width: 20px !important;
+    height: 18px !important;
 
-    box-sizing: border-box;
-    flex-shrink: 0;
+    min-width: 20px !important;
+    min-height: 18px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: block !important;
+    flex: 0 0 20px !important;
+
+    background: #c0c0c0 !important;
+
+    border-top: 2px solid #ffffff !important;
+    border-left: 2px solid #ffffff !important;
+    border-right: 2px solid #000000 !important;
+    border-bottom: 2px solid #000000 !important;
+
+    border-radius: 0 !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 0 !important;
+    line-height: 0 !important;
+
+    overflow: hidden !important;
 
     cursor: pointer;
 }
 
-/* MAXIMIZE ICON */
-.maximize-btn::before {
+/* -------------------------
+   MAXIMIZE / RESTORE ICON
+   ------------------------- */
+
+.window-controls .maximize-btn::before {
     content: "";
+
     position: absolute;
 
-    width: 10px;
+    width: 9px;
     height: 8px;
 
     left: 50%;
@@ -704,38 +733,47 @@ h2 {
 
     transform: translate(-50%, -50%);
 
-    border: 2px solid #000;
-    border-top-width: 3px;
+    border: 2px solid #000000;
 
     box-sizing: border-box;
 }
 
-/* CLOSE ICON */
-.close-btn::before,
-.close-btn::after {
+/* -------------------------
+   CLOSE X
+   ------------------------- */
+
+.window-controls .close-btn::before,
+.window-controls .close-btn::after {
     content: "";
+
     position: absolute;
 
-    width: 12px;
+    width: 11px;
     height: 2px;
 
     left: 50%;
     top: 50%;
 
-    background: #000;
+    background: #000000;
+
+    transform-origin: center;
 }
 
-.close-btn::before {
+.window-controls .close-btn::before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.close-btn::after {
+.window-controls .close-btn::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.win-btn:active {
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    border-right: 2px solid #ffffff;
-    border-bottom: 2px solid #ffffff;
+/* -------------------------
+   PRESSED STATE
+   ------------------------- */
+
+.window-controls .win-btn:active {
+    border-top: 2px solid #000000 !important;
+    border-left: 2px solid #000000 !important;
+    border-right: 2px solid #ffffff !important;
+    border-bottom: 2px solid #ffffff !important;
 }
