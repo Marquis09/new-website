@@ -670,3 +670,72 @@ h2 {
     text-align: right; 
     overflow: hidden;   
 }
+.win-btn {
+    width: 26px;
+    height: 23px;
+    padding: 0;
+    margin-left: 2px;
+
+    position: relative;
+
+    background: #c0c0c0;
+
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    cursor: pointer;
+}
+
+/* MAXIMIZE ICON */
+.maximize-btn::before {
+    content: "";
+    position: absolute;
+
+    width: 10px;
+    height: 8px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 2px solid #000;
+    border-top-width: 3px;
+
+    box-sizing: border-box;
+}
+
+/* CLOSE ICON */
+.close-btn::before,
+.close-btn::after {
+    content: "";
+    position: absolute;
+
+    width: 12px;
+    height: 2px;
+
+    left: 50%;
+    top: 50%;
+
+    background: #000;
+}
+
+.close-btn::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-btn::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.win-btn:active {
+    border-top: 2px solid #000000;
+    border-left: 2px solid #000000;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
