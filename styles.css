@@ -669,8 +669,7 @@ h2 {
     line-height: 1.2;
     text-align: right; 
     overflow: hidden;   
-}
-/* =========================================================
+}/* =========================================================
    WINDOWS 95 CONTROLS - CROSS BROWSER / MOBILE
    ========================================================= */
 
@@ -697,20 +696,25 @@ h2 {
     display: block !important;
     flex: 0 0 20px !important;
 
-    background: #c0c0c0 !important;
+    /* Base Win95 Grey Background */
+    background-color: #c0c0c0 !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
 
+    /* Override mobile/browser default button appearances */
+    -webkit-appearance: none !important;
+    appearance: none !important;
+
+    /* Win95 Bevel Borders */
     border-top: 2px solid #ffffff !important;
     border-left: 2px solid #ffffff !important;
     border-right: 2px solid #000000 !important;
     border-bottom: 2px solid #000000 !important;
 
     border-radius: 0 !important;
-
     box-sizing: border-box !important;
 
-    font-size: 0 !important;
-    line-height: 0 !important;
-
+    line-height: normal !important;
     overflow: hidden !important;
 
     cursor: pointer;
@@ -720,51 +724,16 @@ h2 {
    MAXIMIZE / RESTORE ICON
    ------------------------- */
 
-.window-controls .maximize-btn::before {
-    content: "";
-
-    position: absolute;
-
-    width: 9px;
-    height: 8px;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    border: 2px solid #000000;
-
-    box-sizing: border-box;
+.window-controls .maximize-btn {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 9 9'%3E%3Cpath fill='%23000000' d='M0 0h9v9H0V0zm1 2h7v6H1V2z'/%3E%3C/svg%3E") !important;
 }
 
 /* -------------------------
    CLOSE X
    ------------------------- */
 
-.window-controls .close-btn::before,
-.window-controls .close-btn::after {
-    content: "";
-
-    position: absolute;
-
-    width: 11px;
-    height: 2px;
-
-    left: 50%;
-    top: 50%;
-
-    background: #000000;
-
-    transform-origin: center;
-}
-
-.window-controls .close-btn::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.window-controls .close-btn::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+.window-controls .close-btn {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='7' viewBox='0 0 8 7'%3E%3Cpath fill='%23000000' d='M0 0h2v1h1v1h2V1h1V0h2v1H7v1H6v1H5v1h1v1h1v1h1v1H6V6H5V5H3v1H2v1H0V6h1V5h1V4h1V3H2V2H1V1H0V0z'/%3E%3C/svg%3E") !important;
 }
 
 /* -------------------------
