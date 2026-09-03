@@ -677,3 +677,25 @@ h2 {
     line-height: 1;
     text-align: center;
 }
+.window-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000080; /* Windows 95 classic blue titlebar */
+    padding: 3px 4px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.win-btn {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 1;
+    text-align: center;
+}
