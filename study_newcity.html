@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New City Church MK - UX Case Study</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='8,4 8,52 20,40 28,60 34,58 26,38 40,34' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E">
+
+    <style>
+        body {
+            background-color: #008080;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .win95-maximized-workspace {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            background: #cbd0d4;
+            padding: 4px;
+            z-index: 999;
+        }
+
+        .win95-main-body {
+            flex: 1;
+            background: #fff;
+            border: 2px inset #fff;
+            overflow-y: auto;
+            color: #000;
+            padding: 0;
+        }
+
+        .document-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .meta-sidebar-95 {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 1px 1px 0 #000;
+        }
+
+        .meta-list-95 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .meta-list-95 li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #cbd0d4;
+            font-size: 14px;
+        }
+
+        .meta-list-95 li:last-child {
+            border-bottom: none;
+        }
+
+        .classic-quote-95 {
+            background: #ffffe0;
+            border-left: 4px solid #808080;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .highlight-box-95 {
+            background: #ffffe0;
+            border: 1px solid #808080;
+            padding: 14px 18px;
+            margin: 18px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .tag-95 {
+            background: #e0e0e0;
+            border: 1px solid #808080;
+            padding: 1px 6px;
+            font-size: 12px;
+            margin-right: 4px;
+            display: inline-block;
+        }
+
+        h1, h2, h3, h4 {
+            color: #000;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 1.55rem;
+            margin-top: 35px;
+            border-bottom: 2px solid #cbd0d4;
+            padding-bottom: 6px;
+        }
+
+        p {
+            line-height: 1.65;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            line-height: 1.6;
+            font-size: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #808080;
+            border-bottom: 1px solid #fff;
+            margin: 30px 0;
+        }
+
+        .process-index-bar {
+            background: #e0e0e0;
+            border: 2px inset #fff;
+            padding: 10px 14px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            box-shadow: 1px 1px 0 #000;
+            line-height: 1.7;
+        }
+
+        .process-index-bar a {
+            color: #0000aa;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 4px;
+        }
+
+        .process-index-bar a:hover {
+            text-decoration: underline;
+        }
+
+        .win95-link-btn {
+            background: #cbd0d4;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .win95-link-btn:active {
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+        }
+
+        .before-after-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            margin: 18px 0 24px 0;
+        }
+
+        .before-after-table th {
+            background: #000080;
+            color: #fff;
+            text-align: left;
+            padding: 8px 10px;
+            border: 1px solid #000;
+        }
+
+        .before-after-table td {
+            padding: 8px 10px;
+            border: 1px solid #808080;
+            vertical-align: top;
+        }
+
+        .before-after-table tr:nth-child(even) {
+            background: #f0f0f0;
+        }
+
+        .live-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 16px 0 8px 0;
+        }
+
+        .live-links a {
+            background: #cbd0d4;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            padding: 6px 14px;
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .live-links a:active {
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+        }
+
+        .artifact-grid-95 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 20px 0 10px 0;
+        }
+
+        .artifact-card-95 {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            box-shadow: 1px 1px 0 #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .artifact-card-95 img {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            object-fit: contain;
+            border: 1px solid #808080;
+            background: #fff;
+            display: block;
+            margin: 0 auto 8px auto;
+        }
+
+        .wf-placeholder {
+            width: 100%;
+            min-height: 180px;
+            background: repeating-linear-gradient(
+                -45deg,
+                #e8e8e8,
+                #e8e8e8 8px,
+                #f4f4f4 8px,
+                #f4f4f4 16px
+            );
+            border: 1px solid #808080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #666;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            box-sizing: border-box;
+            padding: 16px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .wf-placeholder.desktop {
+            min-height: 220px;
+        }
+
+        .wf-placeholder.mobile {
+            min-height: 260px;
+            max-width: 160px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .artifact-card-95 .caption {
+            font-size: 12.5px;
+            color: #333;
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 18px 0 22px 0;
+        }
+
+        @media (max-width: 700px) {
+            .ba-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ba-card {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            box-shadow: 1px 1px 0 #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .ba-card img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #808080;
+            background: #fff;
+            display: block;
+            margin: 0 auto 8px auto;
+        }
+
+        .ba-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 8px;
+            margin-bottom: 6px;
+            border: 1px solid #808080;
+        }
+
+        .ba-label.before {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .ba-label.after {
+            background: #8B2F5F;
+            color: #fff;
+            border-color: #6E244A;
+        }
+
+        .mobile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 18px 0 22px 0;
+            justify-items: center;
+        }
+
+        @media (max-width: 700px) {
+            .mobile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mobile-card {
+            background: #f0f0f0;
+            border: 2px inset #fff;
+            box-shadow: 1px 1px 0 #000;
+            padding: 12px;
+            text-align: center;
+            max-width: 280px;
+            width: 100%;
+        }
+
+        .mobile-card img {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            border: 1px solid #808080;
+            background: #fff;
+            display: block;
+            margin: 0 auto 8px auto;
+            border-radius: 12px;
+        }
+
+        .mobile-card .caption {
+            font-size: 12.5px;
+            color: #333;
+            margin: 0;
+            line-height: 1.35;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Taskbar -->
+<header class="win95-taskbar" style="position: fixed; top: 0; left: 0; right: 0; height: 40px; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4px; background: #cbd0d4; border-bottom: 2px solid #808080;">
+    <div class="taskbar-tasks" style="display: flex; align-items: center; flex: 1;">
+        <div class="win95-task-tab active" style="display: flex; align-items: center; background: #fff; border: 2px inset #fff; padding: 2px 12px; font-size: 12px; height: 24px; font-weight: bold; box-shadow: 1px 1px 0 #000;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="icon">
+            New_City_Church_MK_Case_Study.txt
+        </div>
+    </div>
+    <div class="win95-system-tray" style="display: flex; align-items: center; background: #cbd0d4; border: 2px inset #fff; padding: 2px 8px; font-size: 12px; height: 24px; box-shadow: 1px 1px 0 #000;">
+        <span id="win95-clock">--:-- --</span>
+    </div>
+</header>
+
+<div class="win95-maximized-workspace">
+
+    <!-- Window title bar -->
+    <div class="window-titlebar" style="cursor: default; display: flex; align-items: center; justify-content: space-between; background: #000080; color: #fff; padding: 3px 6px; font-weight: bold; font-size: 13px;">
+        <div class="title-text" style="display: flex; align-items: center;">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="">
+            New_City_Church_MK_Case_Study.txt - Notepad
+        </div>
+        <div class="window-controls" style="display: flex; align-items: center; gap: 4px;">
+            <button class="win95-link-btn"
+                    onclick="window.location.href='projects.html';"
+                    title="Return to Projects"
+                    style="font-size:11px; padding:2px 8px; font-weight:bold; cursor:pointer;">
+                X
+            </button>
+        </div>
+    </div>
+
+    <div class="win95-main-body">
+        <div class="document-container">
+
+            <!-- BLUE HEADER -->
+            <div style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 30px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
+                <h1 style="font-size: 2.1rem; margin: 0; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px; color: #fff;">
+                    New City Church MK
+                </h1>
+                <p style="margin: 8px 0 0 0; color: #cbd0d4; font-size: 15px;">
+                    From abandoned Wix site to a modern, welcoming digital home
+                </p>
+            </div>
+
+            <!-- EXECUTIVE SUMMARY -->
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
+                <ul class="meta-list-95">
+                    <li><strong>Challenge:</strong> Rebuild a church website that had been left behind after the original Wix developers departed, no one remaining could update content or maintain the site.</li>
+                    <li><strong>Solution:</strong> Custom, mobile-first front-end with a clear newcomer journey, modern visual system, and a simple CMS so church staff can publish news without developer help.</li>
+                    <li><strong>Milestone:</strong> Full redesign (Home, Plan Your Visit, Sermons, Church Life, News, supporting pages) implemented and live in preview; close to production launch.</li>
+                </ul>
+            </div>
+
+            <!-- PROJECT DETAILS -->
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Project Details</h3>
+                <ul class="meta-list-95">
+                    <li><strong>My Role:</strong>
+                        <span class="tag-95">UX Designer</span>
+                        <span class="tag-95">UI Designer</span>
+                        <span class="tag-95">Front-end Developer</span>
+                    </li>
+                    <li><strong>Tools &amp; Tech:</strong>
+                        <span class="tag-95">HTML5</span>
+                        <span class="tag-95">CSS3</span>
+                        <span class="tag-95">Netlify CMS</span>
+                        <span class="tag-95">GitHub Pages</span>
+                        <span class="tag-95">UX Strategy</span>
+                    </li>
+                    <li><strong>Project Type:</strong> Real client redesign: Independent Evangelical Church (FIEC)</li>
+                    <li><strong>Constraints:</strong> Informal brief · Sole designer/developer · Must be maintainable by non-technical staff · Preserve warm, informal church identity</li>
+                    <li><strong>Timeline:</strong> 2025 – 2026 (late development / pre-launch)</li>
+                </ul>
+            </div>
+
+            <!-- PROCESS INDEX -->
+            <div class="process-index-bar">
+                <strong>Process Index:</strong>
+                <a href="#brief">1. Brief</a> |
+                <a href="#problem">2. Problem</a> |
+                <a href="#process">3. Process</a> |
+                <a href="#personas">4. Personas</a> |
+                <a href="#ia">5. IA</a> |
+                <a href="#design">6. Design</a> |
+                <a href="#wireframes">7. Wireframes</a> |
+                <a href="#solution">8. Solution</a> |
+                <a href="#tech">9. Tech</a> |
+                <a href="#reflection">10. Reflection</a>
+            </div>
+
+            <hr>
+
+            <!-- 1. BRIEF -->
+            <h2 id="brief">📁 1. The Brief &amp; Opportunity</h2>
+
+            <p>
+                The project began with a simple, human request. The pastor’s wife approached me and asked if I would take a look at the church website.
+                The original site had been built in Wix by an external team who had since left. No one remaining in the church had access, training,
+                or the ability to update content. The site was effectively abandoned still live, still representing the church online,
+                but frozen in time and increasingly out of step with how the community actually felt.
+            </p>
+
+            <p>
+                This was not a formal agency brief. It was a real need from a real community: a digital front door that felt welcoming,
+                that newcomers could trust, and that the church itself could own and maintain without needing external developers for every small change.
+            </p>
+
+            <div class="highlight-box-95">
+                <strong>Core Challenge:</strong>
+                Rebuild the entire web presence from the ground up so that it felt contemporary, mobile-first, accessible,
+                and easy for non-technical staff to update while preserving the warm, informal, Bible-centred identity of New City Church MK.
+            </div>
+
+            <hr>
+
+            <!-- 2. PROBLEM -->
+            <h2 id="problem">📁 2. Understanding the Problem</h2>
+
+            <p>
+                I began by auditing the existing Wix site and speaking informally with people connected to the church about what they actually needed from the website.
+            </p>
+
+            <p><strong>Issues with the legacy Wix site:</strong></p>
+            <ul>
+                <li><strong>Ownership gap:</strong> Original developers had left. No one in the church could edit content, fix broken elements, or update news.</li>
+                <li><strong>Performance &amp; weight:</strong> Typical of many Wix builds: heavy, slower on mobile, multiple third-party scripts.</li>
+                <li><strong>Limited newcomer guidance:</strong> Critical practical questions (parking, dress code, children’s provision, what a Sunday feels like) were hard to find or missing.</li>
+                <li><strong>Navigation &amp; hierarchy:</strong> Structure did not prioritise the primary job of a church website: helping a first-time visitor feel confident enough to come.</li>
+                <li><strong>Visual language:</strong> Full-bleed photography with heavy overlays felt dated and did not scale well across devices.</li>
+                <li><strong>Maintainability:</strong> Locked into a platform the church could no longer control.</li>
+            </ul>
+
+            <div class="classic-quote-95">
+                Success needed to look like: a site that a nervous first-time visitor could understand in under 30 seconds,
+                that a parent could check for kids provision on their phone, that a regular could quickly find the latest sermon,
+                and that a church admin could update without calling a developer.
+            </div>
+
+            <hr>
+
+            <!-- 3. PROCESS -->
+            <h2 id="process">📁 3. My Role &amp; Process</h2>
+
+            <p>
+                I worked as the sole designer and developer. This meant owning the full path from research through to front-end implementation and CMS setup.
+            </p>
+
+            <ul>
+                <li><strong>1. Discovery:</strong> Site audit of the Wix original, informal conversations with church contacts, competitive look at other FIEC / independent church sites, content inventory.</li>
+                <li><strong>2. Information Architecture:</strong> Defined primary user jobs, reduced navigation to the essentials, prioritised the newcomer journey, mapped content to pages.</li>
+                <li><strong>3. Wireframing:</strong> Low-fidelity layouts for Home, Plan Your Visit, Sermons, Church Life and supporting pages (desktop and mobile).</li>
+                <li><strong>4. Visual Design:</strong> Established colour system (deep magenta brand), typography (Plus Jakarta Sans), component patterns, photography direction.</li>
+                <li><strong>5. Development:</strong> Semantic HTML5, modern CSS (Flexbox/Grid), responsive breakpoints, performance-conscious asset handling, accessibility foundations.</li>
+                <li><strong>6. CMS &amp; Handover:</strong> Netlify / Decap CMS for news so staff can publish without code. Documentation and simple training path.</li>
+            </ul>
+
+            <hr>
+
+            <!-- 4. PERSONAS -->
+            <h2 id="personas">📁 4. Research Insights &amp; Personas</h2>
+
+            <p>
+                Church websites serve a uniquely mixed audience: curious first-timers, regulars looking for practical info, parents, and staff.
+                I focused the design on three primary personas that repeatedly surfaced.
+            </p>
+
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 14px;">Persona 1: Sarah, the Curious Newcomer</h3>
+                <p style="margin: 0; font-size: 14px; line-height: 1.55;">
+                    Recently moved to Milton Keynes or exploring faith. Primary questions: What time do you meet? Where do I park?
+                    What should I wear? Is there something for my children? Will anyone talk to me?<br><br>
+                    <strong>Design response:</strong> A prominent “Plan Your Visit” path, clear service-time card, dress-code reassurance,
+                    kids information, and an obvious contact route.
+                </p>
+            </div>
+
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 14px;">Persona 2: David, the Regular / Parent</h3>
+                <p style="margin: 0; font-size: 14px; line-height: 1.55;">
+                    Already connected or considering a group. Needs fast access to sermons, group times and news.<br><br>
+                    <strong>Design response:</strong> Persistent, short navigation to Sermons and Church Life, scannable group lists,
+                    and a living news section.
+                </p>
+            </div>
+
+            <div class="meta-sidebar-95">
+                <h3 style="margin-top: 0; color: #000080; font-size: 14px;">Persona 3: Church Staff / Admin</h3>
+                <p style="margin: 0; font-size: 14px; line-height: 1.55;">
+                    Needs to publish news and announcements without developer help.<br><br>
+                    <strong>Design response:</strong> A simple CMS for news posts so the front-end stays mostly static and maintainable.
+                </p>
+            </div>
+
+            <hr>
+
+            <!-- 5. IA -->
+            <h2 id="ia">📁 5. Information Architecture</h2>
+
+            <p>
+                I deliberately kept the primary navigation short. The website’s main job is not to showcase every ministry in equal weight;
+                it is to help a first-time visitor feel confident enough to walk through the door on Sunday.
+            </p>
+
+            <p>
+                <strong>Primary navigation:</strong> Home · About Us · Sermons · Church Life · News &nbsp;+&nbsp; the high-visibility “Plan Your Visit” CTA.
+            </p>
+            <p>
+                Supporting content (Giving, Privacy, Data Protection, Contact) lives in the footer and secondary paths.
+                News is CMS-powered so the church can keep the site alive without touching code.
+            </p>
+
+            <hr>
+
+            <!-- 6. DESIGN -->
+            <h2 id="design">📁 6. Design System &amp; Visual Language</h2>
+
+            <p>
+                The visual system needed to feel warm and contemporary without losing the approachable, non-corporate character of the church.
+                I chose a deep magenta as the primary accent, energetic yet serious, paired with clean slate neutrals and soft surfaces.
+            </p>
+
+            <div class="artifact-card-95" style="margin-bottom: 22px;">
+                <img src="../new-website/properties/newcity img/brand_colour.png" alt="Brand colour palette — New City Church MK">
+                <p class="caption"><strong>Colour palette &amp; type sample</strong><br>Primary magenta, neutrals, and Plus Jakarta Sans in use.</p>
+            </div>
+
+            <div class="artifact-card-95" style="margin-bottom: 22px;">
+                <img src="../new-website/properties/newcity img/visual_direction.png" alt="Visual direction pillars — Warmth, Clarity, Trust, Community">
+                <p class="caption"><strong>Visual direction</strong><br>Four pillars that guided every design decision.</p>
+            </div>
+
+            <p><strong>Key design decisions:</strong></p>
+            <ul>
+                <li><strong>Typography:</strong> Plus Jakarta Sans for a modern, highly legible geometric sans that works well at both display and body sizes.</li>
+                <li><strong>Cards &amp; radius:</strong> Soft 14–28 px rounded cards with subtle shadows to create hierarchy without harsh boxes.</li>
+                <li><strong>Photography:</strong> Real community imagery (families, children, gatherings) rather than generic stock or heavy overlays.</li>
+                <li><strong>CTAs:</strong> Primary actions always in solid magenta; secondary actions as text links or ghost buttons to protect hierarchy.</li>
+                <li><strong>Mobile-first:</strong> Large touch targets, sticky navigation considerations, and no horizontal overflow at any common viewport.</li>
+            </ul>
+
+            <hr>
+
+            <!-- 7. WIREFRAMES -->
+            <h2 id="wireframes">📁 7. Wireframes</h2>
+
+            <p>
+                Low-fidelity wireframes established content priority and layout structure before visual design.
+                The Home page and “Plan Your Visit” page received the most attention because they carry the primary
+                conversion and reassurance jobs for first-time visitors.
+            </p>
+
+            <div class="artifact-grid-95">
+
+                <!-- Home Desktop -->
+                <div class="artifact-card-95">
+                    <img src="../new-website/properties/newcity img/wireframe_home_desktop.png" alt="Home page desktop wireframe — New City Church MK">
+                    <p class="caption"><strong>Home (Desktop)</strong><br>Hero with dual CTA, service-time overlay, quick-info cards, video and groups blocks.</p>
+                </div>
+
+                <!-- Home Mobile -->
+                <div class="artifact-card-95">
+                    <img src="../new-website/properties/newcity img/wireframe_home_mobile.png" alt="Home page mobile wireframe — New City Church MK" style="max-width: 200px;">
+                    <p class="caption"><strong>Home (Mobile)</strong><br>Single-column stack, large touch targets, persistent contact path.</p>
+                </div>
+
+                <!-- Plan Your Visit -->
+                <div class="artifact-card-95">
+                    <img src="../new-website/properties/newcity img/wireframe_imnew.png" alt="Plan Your Visit wireframe — New City Church MK">
+                    <p class="caption"><strong>Plan Your Visit / I’m New</strong><br>Newcomer journey: video intro, location/parking, dress code, kids systems, contact CTA.</p>
+                </div>
+
+                <!-- Sitemap -->
+                <div class="artifact-card-95">
+                    <img src="../new-website/properties/newcity img/wireframe_sitemap.png" alt="Sitemap and information architecture — New City Church MK">
+                    <p class="caption"><strong>Sitemap</strong><br>Short primary navigation prioritising the newcomer path and core content hubs.</p>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- 8. SOLUTION -->
+            <h2 id="solution">📁 8. The Solution</h2>
+
+            <p>
+                The new site is a custom-built, semantic front-end with a lightweight CMS for news.
+                It prioritises the newcomer journey while remaining useful for regulars and maintainable by staff.
+            </p>
+
+            <p><strong>Key features delivered:</strong></p>
+            <ul>
+                <li><strong>Clear newcomer path:</strong> Dedicated “Plan Your Visit” page answering the questions people actually ask before attending for the first time.</li>
+                <li><strong>Service times &amp; location front and centre:</strong> Visible on the Home hero with directions link.</li>
+                <li><strong>Sermons hub:</strong> Scripture-led presentation with easy links out to Logos and Spotify for ongoing listening.</li>
+                <li><strong>Church Life overview:</strong> Homegroups, youth, kids and other groups presented scannably.</li>
+                <li><strong>News CMS:</strong> Staff can publish announcements without touching code.</li>
+                <li><strong>Performance &amp; accessibility foundations:</strong> Clean HTML/CSS, responsive layout, high-contrast text, keyboard-friendly navigation.</li>
+            </ul>
+
+            <!-- BEFORE / AFTER VISUAL -->
+            <p><strong>Before → After (visual)</strong></p>
+
+            <div class="ba-grid">
+                <div class="ba-card">
+                    <span class="ba-label before">BEFORE</span>
+                    <img src="../new-website/properties/newcity img/old.png" alt="Legacy Wix homepage — New City Church MK">
+                    <p class="caption">Legacy Wix site<br><a href="https://www.newcitychurch.co.uk/" target="_blank" rel="noopener">www.newcitychurch.co.uk</a></p>
+                </div>
+                <div class="ba-card">
+                    <span class="ba-label after">AFTER</span>
+                    <img src="../new-website/properties/newcity img/new.png" alt="Redesigned homepage — New City Church MK">
+                    <p class="caption">Custom redesign<br><a href="https://marquis09.github.io/Newcity/" target="_blank" rel="noopener">marquis09.github.io/Newcity</a></p>
+                </div>
+            </div>
+
+            <!-- MOBILE VIEWS -->
+            <p><strong>Mobile views (live redesign)</strong></p>
+            <p style="font-size: 14px; margin-top: -6px;">
+                Most first-time visitors check the site on their phone. These frames show the Home and Plan Your Visit experiences on a small screen — large CTAs, stacked content, and the newcomer path within reach.
+            </p>
+
+            <div class="mobile-grid">
+                <div class="mobile-card">
+                    <img src="../new-website/properties/newcity img/mobile_home.png" alt="Home page mobile view — New City Church MK redesign">
+                    <p class="caption"><strong>Home (Mobile)</strong><br>Hero, dual CTA, service info within the first scroll.</p>
+                </div>
+                <div class="mobile-card">
+                    <img src="../new-website/properties/newcity img/mobile_imnew.png" alt="Plan Your Visit mobile view — New City Church MK redesign">
+                    <p class="caption"><strong>Plan Your Visit (Mobile)</strong><br>Newcomer journey: intro, video, location, FAQs.</p>
+                </div>
+            </div>
+
+            <p style="font-size: 13px; color: #555;">
+                <em>Add <code>mobile_home.png</code> and <code>mobile_imnew.png</code> to your <code>properties/newcity img/</code> folder (screenshots from the live redesign on a phone or browser device mode).</em>
+            </p>
+
+            <p><strong>Before → After (detail)</strong></p>
+            <table class="before-after-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Legacy Wix Site</th>
+                        <th>New Redesign</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ownership</strong></td>
+                        <td>Locked; original developers gone</td>
+                        <td>Church can update news via CMS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Newcomer focus</strong></td>
+                        <td>Scattered / incomplete</td>
+                        <td>Dedicated Plan Your Visit journey</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile experience</strong></td>
+                        <td>Heavy, slower, less considered</td>
+                        <td>Mobile-first, large targets, clean stack</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visual system</strong></td>
+                        <td>Full-bleed overlays, dated feel</td>
+                        <td>Soft cards, strong hierarchy, modern type</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maintainability</strong></td>
+                        <td>Platform dependency</td>
+                        <td>Static front-end + simple CMS</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="live-links">
+                <a href="https://marquis09.github.io/Newcity/" target="_blank" rel="noopener">Visit Live Redesign ↗</a>
+                <a href="https://www.newcitychurch.co.uk/" target="_blank" rel="noopener">View Legacy Site ↗</a>
+            </div>
+
+            <hr>
+
+            <!-- 9. TECH -->
+            <h2 id="tech">📁 9. Technical Approach</h2>
+
+            <p>
+                I chose a deliberately simple, durable stack so the church would not be dependent on a single external developer or proprietary platform again.
+            </p>
+
+            <ul>
+                <li><strong>Markup:</strong> Semantic HTML5: readable structure, strong accessibility baseline, easy for future developers to understand.</li>
+                <li><strong>Styling:</strong> Modern CSS (Flexbox / Grid, custom properties): no heavy framework dependency, full control over performance and design tokens.</li>
+                <li><strong>Typography:</strong> Plus Jakarta Sans via Google Fonts: contemporary geometric sans with excellent screen readability.</li>
+                <li><strong>Icons:</strong> Phosphor Icons: lightweight, consistent, accessible icon set.</li>
+                <li><strong>CMS:</strong> Netlify CMS / Decap CMS for news: Git-based, free, allows non-technical editors to publish without code access.</li>
+                <li><strong>Hosting:</strong> GitHub Pages for the redesign preview; production can move to any static host or Netlify.</li>
+            </ul>
+
+            <hr>
+
+            <!-- 10. REFLECTION -->
+            <h2 id="reflection">📁 10. Outcomes &amp; Reflection</h2>
+
+            <p>
+                The redesign is in late development and close to launch readiness. The core pages, design system, newcomer journey and CMS path are in place.
+                Final content review, accessibility checks and domain cut-over remain.
+            </p>
+
+            <p><strong>What this project demonstrates:</strong></p>
+            <ul>
+                <li>Ability to turn an informal, real-world request into a structured UX process.</li>
+                <li>End-to-end ownership: research → IA → wireframes → visual design → front-end code → CMS.</li>
+                <li>User-centred prioritisation (newcomer confidence as the primary success metric).</li>
+                <li>Practical technical decision-making that protects the client’s long-term independence.</li>
+                <li>Attention to accessibility, performance and maintainability alongside visual quality.</li>
+            </ul>
+
+            <div class="classic-quote-95">
+                This project reinforced that good design for community organisations is less about visual novelty and more about reducing anxiety and increasing clarity.
+                A first-time visitor to a church often arrives with quiet questions. The website’s job is to answer those questions before they even leave the house.
+                Building something the church can actually own and update has been just as important as making it look contemporary.
+            </div>
+
+            <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
+                <button class="win95-link-btn"
+                        onclick="window.location.href='projects.html';"
+                        style="font-size: 13px; padding: 6px 24px; font-weight: bold; cursor: pointer;">
+                    Close File and Return to Projects
+                </button>
+            </div>
+
+            <p style="text-align: center; margin-top: 28px; font-size: 12px; color: #666;">
+                New City Church Milton Keynes · Portfolio case study · 2026
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateLocalClock() {
+        const clock = document.getElementById("win95-clock");
+        if (!clock) return;
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const ampm = now.getHours() >= 12 ? "PM" : "AM";
+        clock.textContent = `${hours}:${minutes} ${ampm}`;
+    }
+    setInterval(updateLocalClock, 1000);
+    updateLocalClock();
+</script>
+
+</body>
+</html>
