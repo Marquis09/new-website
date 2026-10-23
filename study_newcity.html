@@ -192,6 +192,10 @@
             background: #f0f0f0;
         }
 
+        .table-scroll {
+            overflow-x: auto;
+        }
+
         .live-links {
             display: flex;
             flex-wrap: wrap;
@@ -243,42 +247,6 @@
             background: #fff;
             display: block;
             margin: 0 auto 8px auto;
-        }
-
-        .wf-placeholder {
-            width: 100%;
-            min-height: 180px;
-            background: repeating-linear-gradient(
-                -45deg,
-                #e8e8e8,
-                #e8e8e8 8px,
-                #f4f4f4 8px,
-                #f4f4f4 16px
-            );
-            border: 1px solid #808080;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: #666;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            box-sizing: border-box;
-            padding: 16px;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .wf-placeholder.desktop {
-            min-height: 220px;
-        }
-
-        .wf-placeholder.mobile {
-            min-height: 260px;
-            max-width: 160px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .artifact-card-95 .caption {
@@ -379,6 +347,23 @@
             margin: 0;
             line-height: 1.35;
         }
+
+        .done-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 18px 0 22px 0;
+        }
+
+        @media (max-width: 700px) {
+            .done-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .done-grid .meta-sidebar-95 {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -422,8 +407,11 @@
                 <h1 style="font-size: 2.1rem; margin: 0; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px; color: #fff;">
                     New City Church MK
                 </h1>
-                <p style="margin: 8px 0 0 0; color: #cbd0d4; font-size: 15px;">
+                <p style="margin: 8px 0 0 0; color: #e8eaec; font-size: 15px;">
                     From abandoned Wix site to a modern, welcoming digital home
+                </p>
+                <p style="margin: 12px 0 0 0; color: #e8eaec; font-size: 13px; line-height: 1.5;">
+                    Real volunteer project for a local church &middot; Sole designer and developer &middot; Built with permission to share as a portfolio reference
                 </p>
             </div>
 
@@ -431,9 +419,11 @@
             <div class="meta-sidebar-95">
                 <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
                 <ul class="meta-list-95">
-                    <li><strong>Challenge:</strong> Rebuild a church website that had been left behind after the original Wix developers departed, no one remaining could update content or maintain the site.</li>
-                    <li><strong>Solution:</strong> Custom, mobile-first front-end with a clear newcomer journey, modern visual system, and a simple CMS so church staff can publish news without developer help.</li>
-                    <li><strong>Milestone:</strong> Full redesign (Home, Plan Your Visit, Sermons, Church Life, News, supporting pages) implemented and live in preview; close to production launch.</li>
+                    <li><strong>Situation:</strong> The church's Wix site had been left behind after the original developers departed. No one remaining could update content or maintain it.</li>
+                    <li><strong>Task:</strong> Rebuild the site as the sole designer and developer, so a nervous first-time visitor could find what they need and church staff could publish news without developer help.</li>
+                    <li><strong>Action:</strong> Audited the old site, spoke informally with church contacts, simplified the navigation around a "Plan Your Visit" path, and built a mobile-first static front-end with a simple CMS for news.</li>
+                    <li><strong>Result:</strong> The site is live in preview and complete from the design and development side. It has been reviewed by the pastor and several church members, and only small changes were requested, all of which I made.</li>
+                    <li><strong>Status:</strong> Awaiting church-side items before launch: a new welcome video, replacement photos, and the domain so the site can move to the church's own hosting.</li>
                 </ul>
             </div>
 
@@ -449,13 +439,13 @@
                     <li><strong>Tools &amp; Tech:</strong>
                         <span class="tag-95">HTML5</span>
                         <span class="tag-95">CSS3</span>
-                        <span class="tag-95">Netlify CMS</span>
+                        <span class="tag-95">JavaScript</span>
+                        <span class="tag-95">Netlify / Decap CMS</span>
                         <span class="tag-95">GitHub Pages</span>
-                        <span class="tag-95">UX Strategy</span>
                     </li>
-                    <li><strong>Project Type:</strong> Real client redesign: Independent Evangelical Church (FIEC)</li>
-                    <li><strong>Constraints:</strong> Informal brief · Sole designer/developer · Must be maintainable by non-technical staff · Preserve warm, informal church identity</li>
-                    <li><strong>Timeline:</strong> 2025 – 2026 (late development / pre-launch)</li>
+                    <li><strong>Project Type:</strong> Real volunteer project for a local Independent Evangelical church (FIEC). Not university coursework.</li>
+                    <li><strong>Constraints:</strong> Informal brief · Sole designer and developer · Must be maintainable by non-technical staff · Preserve the warm, informal church identity</li>
+                    <li><strong>Timeline:</strong> 2025 – 2026</li>
                 </ul>
             </div>
 
@@ -468,10 +458,12 @@
                 <a href="#personas">4. Personas</a> |
                 <a href="#ia">5. IA</a> |
                 <a href="#design">6. Design</a> |
-                <a href="#wireframes">7. Wireframes</a> |
-                <a href="#solution">8. Solution</a> |
-                <a href="#tech">9. Tech</a> |
-                <a href="#reflection">10. Reflection</a>
+                <a href="#decisions">7. Decisions</a> |
+                <a href="#wireframes">8. Wireframes</a> |
+                <a href="#solution">9. Solution</a> |
+                <a href="#evidence">10. Feedback</a> |
+                <a href="#tech">11. Tech</a> |
+                <a href="#reflection">12. Reflection</a>
             </div>
 
             <hr>
@@ -482,7 +474,7 @@
             <p>
                 The project began with a simple, human request. The pastor’s wife approached me and asked if I would take a look at the church website.
                 The original site had been built in Wix by an external team who had since left. No one remaining in the church had access, training,
-                or the ability to update content. The site was effectively abandoned still live, still representing the church online,
+                or the ability to update content. The site was effectively abandoned: still live, still representing the church online,
                 but frozen in time and increasingly out of step with how the community actually felt.
             </p>
 
@@ -494,7 +486,7 @@
             <div class="highlight-box-95">
                 <strong>Core Challenge:</strong>
                 Rebuild the entire web presence from the ground up so that it felt contemporary, mobile-first, accessible,
-                and easy for non-technical staff to update while preserving the warm, informal, Bible-centred identity of New City Church MK.
+                and easy for non-technical staff to update, while preserving the warm, informal, Bible-centred identity of New City Church MK.
             </div>
 
             <hr>
@@ -503,7 +495,8 @@
             <h2 id="problem">📁 2. Understanding the Problem</h2>
 
             <p>
-                I began by auditing the existing Wix site and speaking informally with people connected to the church about what they actually needed from the website.
+                I began by auditing the existing Wix site and speaking informally with people connected to the church about what they needed from the website.
+                This was conversation-based discovery rather than formal user research.
             </p>
 
             <p><strong>Issues with the legacy Wix site:</strong></p>
@@ -528,26 +521,28 @@
             <h2 id="process">📁 3. My Role &amp; Process</h2>
 
             <p>
-                I worked as the sole designer and developer. This meant owning the full path from research through to front-end implementation and CMS setup.
+                I worked as the sole designer and developer, volunteering my time. I owned the full path from discovery through to front-end implementation, CMS setup and review with the church.
             </p>
 
             <ul>
-                <li><strong>1. Discovery:</strong> Site audit of the Wix original, informal conversations with church contacts, competitive look at other FIEC / independent church sites, content inventory.</li>
+                <li><strong>1. Discovery:</strong> Site audit of the Wix original, informal conversations with church contacts, a look at other FIEC and independent church sites, and a content inventory.</li>
                 <li><strong>2. Information Architecture:</strong> Defined primary user jobs, reduced navigation to the essentials, prioritised the newcomer journey, mapped content to pages.</li>
                 <li><strong>3. Wireframing:</strong> Low-fidelity layouts for Home, Plan Your Visit, Sermons, Church Life and supporting pages (desktop and mobile).</li>
-                <li><strong>4. Visual Design:</strong> Established colour system (deep magenta brand), typography (Plus Jakarta Sans), component patterns, photography direction.</li>
-                <li><strong>5. Development:</strong> Semantic HTML5, modern CSS (Flexbox/Grid), responsive breakpoints, performance-conscious asset handling, accessibility foundations.</li>
-                <li><strong>6. CMS &amp; Handover:</strong> Netlify / Decap CMS for news so staff can publish without code. Documentation and simple training path.</li>
+                <li><strong>4. Visual Design:</strong> Established the colour system (deep magenta brand), typography (Plus Jakarta Sans), component patterns and photography direction.</li>
+                <li><strong>5. Development:</strong> Semantic HTML5, modern CSS (Flexbox/Grid), responsive breakpoints, performance-conscious asset handling and accessibility foundations.</li>
+                <li><strong>6. CMS &amp; Integrations:</strong> Netlify / Decap CMS for news, plus embeds for ChurchSuite, the church calendar, YouTube and Spotify, and an online giving page.</li>
+                <li><strong>7. Review with the church:</strong> Shared the live preview with the pastor and church members, collected feedback, and made the requested changes.</li>
             </ul>
 
             <hr>
 
             <!-- 4. PERSONAS -->
-            <h2 id="personas">📁 4. Research Insights &amp; Personas</h2>
+            <h2 id="personas">📁 4. Working Personas</h2>
 
             <p>
-                Church websites serve a uniquely mixed audience: curious first-timers, regulars looking for practical info, parents, and staff.
-                I focused the design on three primary personas that repeatedly surfaced.
+                Church websites serve a mixed audience: curious first-timers, regulars looking for practical info, parents, and staff.
+                These three working personas were drawn from my informal conversations with church contacts and my audit of the old site.
+                They are design tools rather than the output of formal research, and they kept decisions focused on real needs.
             </p>
 
             <div class="meta-sidebar-95">
@@ -591,7 +586,7 @@
                 <strong>Primary navigation:</strong> Home · About Us · Sermons · Church Life · News &nbsp;+&nbsp; the high-visibility “Plan Your Visit” CTA.
             </p>
             <p>
-                Supporting content (Giving, Privacy, Data Protection, Contact) lives in the footer and secondary paths.
+                Supporting content (Giving, Privacy, Data Protection, Safeguarding, Contact) lives in the footer and secondary paths.
                 News is CMS-powered so the church can keep the site alive without touching code.
             </p>
 
@@ -606,58 +601,103 @@
             </p>
 
             <div class="artifact-card-95" style="margin-bottom: 22px;">
-                <img src="../new-website/properties/newcity img/brand_colour.png" alt="Brand colour palette — New City Church MK">
+                <img src="../new-website/properties/newcity img/brand_colour.png" alt="Brand colour palette: New City Church MK">
                 <p class="caption"><strong>Colour palette &amp; type sample</strong><br>Primary magenta, neutrals, and Plus Jakarta Sans in use.</p>
             </div>
 
             <div class="artifact-card-95" style="margin-bottom: 22px;">
-                <img src="../new-website/properties/newcity img/visual_direction.png" alt="Visual direction pillars — Warmth, Clarity, Trust, Community">
+                <img src="../new-website/properties/newcity img/visual_direction.png" alt="Visual direction pillars: Warmth, Clarity, Trust, Community">
                 <p class="caption"><strong>Visual direction</strong><br>Four pillars that guided every design decision.</p>
             </div>
 
-            <p><strong>Key design decisions:</strong></p>
+            <p><strong>Key design choices:</strong></p>
             <ul>
                 <li><strong>Typography:</strong> Plus Jakarta Sans for a modern, highly legible geometric sans that works well at both display and body sizes.</li>
                 <li><strong>Cards &amp; radius:</strong> Soft 14–28 px rounded cards with subtle shadows to create hierarchy without harsh boxes.</li>
                 <li><strong>Photography:</strong> Real community imagery (families, children, gatherings) rather than generic stock or heavy overlays.</li>
                 <li><strong>CTAs:</strong> Primary actions always in solid magenta; secondary actions as text links or ghost buttons to protect hierarchy.</li>
-                <li><strong>Mobile-first:</strong> Large touch targets, sticky navigation considerations, and no horizontal overflow at any common viewport.</li>
+                <li><strong>Mobile-first:</strong> Large touch targets, a pull-up footer drawer on mobile, and no horizontal overflow at common viewport sizes.</li>
             </ul>
 
             <hr>
 
-            <!-- 7. WIREFRAMES -->
-            <h2 id="wireframes">📁 7. Wireframes</h2>
+            <!-- 7. DECISIONS -->
+            <h2 id="decisions">📁 7. Key Decisions &amp; Alternatives</h2>
+
+            <p>
+                A few choices shaped the project more than any others. Each one was a trade-off between what looks best,
+                what the church needs, and what the church can realistically maintain.
+            </p>
+
+            <div class="table-scroll">
+                <table class="before-after-table">
+                    <thead>
+                        <tr>
+                            <th>Decision</th>
+                            <th>Alternative considered</th>
+                            <th>Why I chose this</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Custom static front-end</strong></td>
+                            <td>Stay on Wix, or move to another site builder</td>
+                            <td>The church had already been left stranded by a platform it couldn’t control. Plain HTML/CSS is portable, fast, and readable by any future developer.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Decap CMS for news only</strong></td>
+                            <td>A full CMS for every page</td>
+                            <td>News is the one thing staff genuinely need to change regularly. Keeping everything else static keeps the site simple and hard to break.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Short navigation + “Plan Your Visit”</strong></td>
+                            <td>A full menu listing every ministry</td>
+                            <td>The site’s main job is to give newcomers confidence. Fewer choices makes the first step obvious.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Embed ChurchSuite, calendar, YouTube and Spotify</strong></td>
+                            <td>Rebuild those features from scratch</td>
+                            <td>The church already uses these tools. Embedding them avoids duplicate admin work and keeps information up to date in one place.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Real community photography</strong></td>
+                            <td>Stock images or full-bleed overlays</td>
+                            <td>Stock imagery undermines trust. Real families and gatherings show newcomers who they will actually meet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+
+            <!-- 8. WIREFRAMES -->
+            <h2 id="wireframes">📁 8. Wireframes</h2>
 
             <p>
                 Low-fidelity wireframes established content priority and layout structure before visual design.
                 The Home page and “Plan Your Visit” page received the most attention because they carry the primary
-                conversion and reassurance jobs for first-time visitors.
+                reassurance jobs for first-time visitors.
             </p>
 
             <div class="artifact-grid-95">
 
-                <!-- Home Desktop -->
                 <div class="artifact-card-95">
-                    <img src="../new-website/properties/newcity img/wireframe_home_desktop.png" alt="Home page desktop wireframe — New City Church MK">
+                    <img src="../new-website/properties/newcity img/wireframe_home_desktop.png" alt="Home page desktop wireframe: New City Church MK">
                     <p class="caption"><strong>Home (Desktop)</strong><br>Hero with dual CTA, service-time overlay, quick-info cards, video and groups blocks.</p>
                 </div>
 
-                <!-- Home Mobile -->
                 <div class="artifact-card-95">
-                    <img src="../new-website/properties/newcity img/wireframe_home_mobile.png" alt="Home page mobile wireframe — New City Church MK" style="max-width: 200px;">
+                    <img src="../new-website/properties/newcity img/wireframe_home_mobile.png" alt="Home page mobile wireframe: New City Church MK" style="max-width: 200px;">
                     <p class="caption"><strong>Home (Mobile)</strong><br>Single-column stack, large touch targets, persistent contact path.</p>
                 </div>
 
-                <!-- Plan Your Visit -->
                 <div class="artifact-card-95">
-                    <img src="../new-website/properties/newcity img/wireframe_imnew.png" alt="Plan Your Visit wireframe — New City Church MK">
+                    <img src="../new-website/properties/newcity img/wireframe_imnew.png" alt="Plan Your Visit wireframe: New City Church MK">
                     <p class="caption"><strong>Plan Your Visit / I’m New</strong><br>Newcomer journey: video intro, location/parking, dress code, kids systems, contact CTA.</p>
                 </div>
 
-                <!-- Sitemap -->
                 <div class="artifact-card-95">
-                    <img src="../new-website/properties/newcity img/wireframe_sitemap.png" alt="Sitemap and information architecture — New City Church MK">
+                    <img src="../new-website/properties/newcity img/wireframe_sitemap.png" alt="Sitemap and information architecture: New City Church MK">
                     <p class="caption"><strong>Sitemap</strong><br>Short primary navigation prioritising the newcomer path and core content hubs.</p>
                 </div>
 
@@ -665,8 +705,8 @@
 
             <hr>
 
-            <!-- 8. SOLUTION -->
-            <h2 id="solution">📁 8. The Solution</h2>
+            <!-- 9. SOLUTION -->
+            <h2 id="solution">📁 9. The Solution</h2>
 
             <p>
                 The new site is a custom-built, semantic front-end with a lightweight CMS for news.
@@ -675,12 +715,14 @@
 
             <p><strong>Key features delivered:</strong></p>
             <ul>
-                <li><strong>Clear newcomer path:</strong> Dedicated “Plan Your Visit” page answering the questions people actually ask before attending for the first time.</li>
-                <li><strong>Service times &amp; location front and centre:</strong> Visible on the Home hero with directions link.</li>
-                <li><strong>Sermons hub:</strong> Scripture-led presentation with easy links out to Logos and Spotify for ongoing listening.</li>
+                <li><strong>Clear newcomer path:</strong> A dedicated “Plan Your Visit” page answering the questions people actually ask before attending for the first time.</li>
+                <li><strong>Service times &amp; location front and centre:</strong> Visible on the Home hero with a directions link.</li>
+                <li><strong>Sermons hub:</strong> Scripture-led presentation with easy links out to Logos and Spotify for ongoing listening, plus embedded YouTube.</li>
                 <li><strong>Church Life overview:</strong> Homegroups, youth, kids and other groups presented scannably.</li>
+                <li><strong>Church tools built in:</strong> ChurchSuite and the church calendar embedded, and an online giving page for donations.</li>
                 <li><strong>News CMS:</strong> Staff can publish announcements without touching code.</li>
-                <li><strong>Performance &amp; accessibility foundations:</strong> Clean HTML/CSS, responsive layout, high-contrast text, keyboard-friendly navigation.</li>
+                <li><strong>Mobile footer drawer:</strong> A pull-up bar at the bottom of the page gives quick access to contact details and links.</li>
+                <li><strong>Performance &amp; accessibility foundations:</strong> Clean HTML/CSS, responsive layout, readable text sizes and keyboard-friendly navigation.</li>
             </ul>
 
             <!-- BEFORE / AFTER VISUAL -->
@@ -689,12 +731,12 @@
             <div class="ba-grid">
                 <div class="ba-card">
                     <span class="ba-label before">BEFORE</span>
-                    <img src="../new-website/properties/newcity img/old.png" alt="Legacy Wix homepage — New City Church MK">
+                    <img src="../new-website/properties/newcity img/old.png" alt="Legacy Wix homepage: New City Church MK">
                     <p class="caption">Legacy Wix site<br><a href="https://www.newcitychurch.co.uk/" target="_blank" rel="noopener">www.newcitychurch.co.uk</a></p>
                 </div>
                 <div class="ba-card">
                     <span class="ba-label after">AFTER</span>
-                    <img src="../new-website/properties/newcity img/new.png" alt="Redesigned homepage — New City Church MK">
+                    <img src="../new-website/properties/newcity img/new.png" alt="Redesigned homepage: New City Church MK">
                     <p class="caption">Custom redesign<br><a href="https://marquis09.github.io/Newcity/" target="_blank" rel="noopener">marquis09.github.io/Newcity</a></p>
                 </div>
             </div>
@@ -702,61 +744,59 @@
             <!-- MOBILE VIEWS -->
             <p><strong>Mobile views (live redesign)</strong></p>
             <p style="font-size: 14px; margin-top: -6px;">
-                Most first-time visitors check the site on their phone. These frames show the Home and Plan Your Visit experiences on a small screen — large CTAs, stacked content, and the newcomer path within reach.
+                Most first-time visitors check the site on their phone. These frames show the Home and Plan Your Visit experiences on a small screen: large CTAs, stacked content, and the newcomer path within reach.
             </p>
 
             <div class="mobile-grid">
                 <div class="mobile-card">
-                    <img src="../new-website/properties/newcity img/mobile_home.png" alt="Home page mobile view — New City Church MK redesign">
+                    <img src="../new-website/properties/newcity img/mobile_home.png" alt="Home page mobile view: New City Church MK redesign">
                     <p class="caption"><strong>Home (Mobile)</strong><br>Hero, dual CTA, service info within the first scroll.</p>
                 </div>
                 <div class="mobile-card">
-                    <img src="../new-website/properties/newcity img/mobile_imnew.png" alt="Plan Your Visit mobile view — New City Church MK redesign">
+                    <img src="../new-website/properties/newcity img/mobile_imnew.png" alt="Plan Your Visit mobile view: New City Church MK redesign">
                     <p class="caption"><strong>Plan Your Visit (Mobile)</strong><br>Newcomer journey: intro, video, location, FAQs.</p>
                 </div>
             </div>
 
-            <p style="font-size: 13px; color: #555;">
-                <em>Add <code>mobile_home.png</code> and <code>mobile_imnew.png</code> to your <code>properties/newcity img/</code> folder (screenshots from the live redesign on a phone or browser device mode).</em>
-            </p>
-
             <p><strong>Before → After (detail)</strong></p>
-            <table class="before-after-table">
-                <thead>
-                    <tr>
-                        <th>Aspect</th>
-                        <th>Legacy Wix Site</th>
-                        <th>New Redesign</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Ownership</strong></td>
-                        <td>Locked; original developers gone</td>
-                        <td>Church can update news via CMS</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Newcomer focus</strong></td>
-                        <td>Scattered / incomplete</td>
-                        <td>Dedicated Plan Your Visit journey</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Mobile experience</strong></td>
-                        <td>Heavy, slower, less considered</td>
-                        <td>Mobile-first, large targets, clean stack</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Visual system</strong></td>
-                        <td>Full-bleed overlays, dated feel</td>
-                        <td>Soft cards, strong hierarchy, modern type</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Maintainability</strong></td>
-                        <td>Platform dependency</td>
-                        <td>Static front-end + simple CMS</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-scroll">
+                <table class="before-after-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Legacy Wix Site</th>
+                            <th>New Redesign</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ownership</strong></td>
+                            <td>Locked; original developers gone</td>
+                            <td>Church can update news via CMS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Newcomer focus</strong></td>
+                            <td>Scattered / incomplete</td>
+                            <td>Dedicated Plan Your Visit journey</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mobile experience</strong></td>
+                            <td>Heavy, slower, less considered</td>
+                            <td>Mobile-first, large targets, clean stack</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Visual system</strong></td>
+                            <td>Full-bleed overlays, dated feel</td>
+                            <td>Soft cards, strong hierarchy, modern type</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Maintainability</strong></td>
+                            <td>Platform dependency</td>
+                            <td>Static front-end + simple CMS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="live-links">
                 <a href="https://marquis09.github.io/Newcity/" target="_blank" rel="noopener">Visit Live Redesign ↗</a>
@@ -765,8 +805,52 @@
 
             <hr>
 
-            <!-- 9. TECH -->
-            <h2 id="tech">📁 9. Technical Approach</h2>
+            <!-- 10. EVIDENCE -->
+            <h2 id="evidence">📁 10. Feedback &amp; Evidence</h2>
+
+            <p>
+                I shared the live preview with the pastor and a small number of church members and asked for their reactions.
+                This was informal feedback, not a formal usability study, and I have kept the two clearly separate below.
+            </p>
+
+            <div class="done-grid">
+                <div class="meta-sidebar-95">
+                    <h3 style="margin-top: 0; color: #000080; font-size: 14px;">Completed</h3>
+                    <ul style="margin: 0; font-size: 14px;">
+                        <li>Audit of the legacy Wix site</li>
+                        <li>Informal conversations with church contacts</li>
+                        <li>Review of the live preview by the pastor and several church members</li>
+                        <li>Small changes requested during review, all implemented</li>
+                    </ul>
+                </div>
+                <div class="meta-sidebar-95">
+                    <h3 style="margin-top: 0; color: #000080; font-size: 14px;">Not yet done</h3>
+                    <ul style="margin: 0; font-size: 14px;">
+                        <li>Formal usability testing with first-time visitors</li>
+                        <li>Full accessibility audit</li>
+                        <li>Before/after performance measurement</li>
+                        <li>Post-launch review of how newcomers use the site</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p><strong>What a church member said after trying the preview:</strong></p>
+
+            <div class="classic-quote-95">
+                “I think it’s really good. I like the drag up bar at the bottom, that’s a great feature. I don’t think I would change anything other than needing an updated video to show the correct school.”
+                <br><span style="font-style: normal; font-size: 13px;">Church member, informal feedback</span>
+            </div>
+
+            <p>
+                Two things stand out. The pull-up bar was noticed and liked without being pointed out, which suggests it is discoverable.
+                And the only change this tester wanted was content (a video), not design or structure.
+                With a handful of reviewers this is encouraging rather than conclusive, which is why formal testing sits on the next-steps list.
+            </p>
+
+            <hr>
+
+            <!-- 11. TECH -->
+            <h2 id="tech">📁 11. Technical Approach</h2>
 
             <p>
                 I chose a deliberately simple, durable stack so the church would not be dependent on a single external developer or proprietary platform again.
@@ -778,26 +862,41 @@
                 <li><strong>Typography:</strong> Plus Jakarta Sans via Google Fonts: contemporary geometric sans with excellent screen readability.</li>
                 <li><strong>Icons:</strong> Phosphor Icons: lightweight, consistent, accessible icon set.</li>
                 <li><strong>CMS:</strong> Netlify CMS / Decap CMS for news: Git-based, free, allows non-technical editors to publish without code access.</li>
-                <li><strong>Hosting:</strong> GitHub Pages for the redesign preview; production can move to any static host or Netlify.</li>
+                <li><strong>Embeds:</strong> ChurchSuite, calendar, YouTube and Spotify, so the church keeps managing content in the tools it already uses.</li>
+                <li><strong>Hosting:</strong> GitHub Pages for the preview. The plan is to move it to the church’s own GitHub account with the CMS running once the domain is supplied.</li>
             </ul>
 
             <hr>
 
-            <!-- 10. REFLECTION -->
-            <h2 id="reflection">📁 10. Outcomes &amp; Reflection</h2>
+            <!-- 12. REFLECTION -->
+            <h2 id="reflection">📁 12. Status, Reflection &amp; Next Steps</h2>
 
+            <p><strong>Current status:</strong></p>
             <p>
-                The redesign is in late development and close to launch readiness. The core pages, design system, newcomer journey and CMS path are in place.
-                Final content review, accessibility checks and domain cut-over remain.
+                From the design and development side, the site is complete and viewable at the live link. It is not yet launched on the church’s domain
+                because the remaining items depend on the church:
             </p>
+            <ul>
+                <li>Recording and supplying a new welcome video so I can embed it (the current one shows the wrong school).</li>
+                <li>Supplying replacement photos for the site.</li>
+                <li>Providing the domain so the site can move to the church’s own GitHub and the CMS can go live.</li>
+            </ul>
 
             <p><strong>What this project demonstrates:</strong></p>
             <ul>
-                <li>Ability to turn an informal, real-world request into a structured UX process.</li>
-                <li>End-to-end ownership: research → IA → wireframes → visual design → front-end code → CMS.</li>
-                <li>User-centred prioritisation (newcomer confidence as the primary success metric).</li>
-                <li>Practical technical decision-making that protects the client’s long-term independence.</li>
-                <li>Attention to accessibility, performance and maintainability alongside visual quality.</li>
+                <li>Turning an informal, real-world request into a structured UX process.</li>
+                <li>End-to-end ownership: discovery, IA, wireframes, visual design, front-end code, CMS and client review.</li>
+                <li>User-centred prioritisation (newcomer confidence as the primary success measure).</li>
+                <li>Practical technical decisions that protect the client’s long-term independence.</li>
+                <li>Working with a non-technical client, gathering feedback and acting on it.</li>
+            </ul>
+
+            <p><strong>Limitations and what I would do next:</strong></p>
+            <ul>
+                <li>Feedback came from a small, friendly group, so it validates direction but isn’t a substitute for testing with real first-time visitors.</li>
+                <li>I would run short usability sessions on the Plan Your Visit page with two or three newcomers.</li>
+                <li>I would run a formal accessibility check (contrast, keyboard and screen-reader testing) and record before/after performance figures.</li>
+                <li>I would hold a short handover session so staff are confident publishing news through the CMS.</li>
             </ul>
 
             <div class="classic-quote-95">
