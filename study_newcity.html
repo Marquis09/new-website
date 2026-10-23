@@ -364,6 +364,278 @@
         .done-grid .meta-sidebar-95 {
             margin-bottom: 0;
         }
+
+        /* Expandable folders */
+        details.folder-95 {
+            background: #f0f0f0;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            margin-bottom: 10px;
+        }
+
+        details.folder-95 > summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 10px 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #cbd0d4;
+        }
+
+        details.folder-95 > summary::-webkit-details-marker { display: none; }
+
+        details.folder-95 > summary::after {
+            content: "+";
+            margin-left: auto;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #808080;
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            line-height: 16px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        details.folder-95[open] > summary::after { content: "\2212"; }
+
+        details.folder-95 > summary:hover { background: #d8dce0; }
+
+        details.folder-95 > summary:focus-visible {
+            outline: 2px dotted #000080;
+            outline-offset: -4px;
+        }
+
+        details.folder-95[open] > summary {
+            background: #000080;
+            color: #fff;
+        }
+
+        .folder-body {
+            background: #fff;
+            border: 2px inset #fff;
+            margin: 4px;
+            padding: 8px 18px 6px 18px;
+        }
+
+        .folder-body > h3:first-child, .folder-body > p:first-child { margin-top: 12px; }
+
+        .folder-controls {
+            display: flex;
+            gap: 10px;
+            margin: 0 0 14px 0;
+        }
+
+        .folder-controls button {
+            padding: 4px 14px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* ---------- Responsive / mobile ---------- */
+        html { -webkit-text-size-adjust: 100%; }
+
+        .document-container,
+        .folder-body,
+        .caption,
+        .meta-list-95 li,
+        .before-after-table td {
+            overflow-wrap: anywhere;
+        }
+
+        .win95-main-body {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+
+        .artifact-grid-95 {
+            grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+        }
+
+        .win95-task-tab,
+        .title-text {
+            min-width: 0;
+        }
+
+        details.folder-95 > summary .folder-title {
+            min-width: 0;
+            flex: 1 1 auto;
+        }
+
+        details.folder-95 > summary::after {
+            flex-shrink: 0;
+        }
+
+        details.folder-95 > summary,
+        .folder-controls button,
+        .process-index-bar a {
+            -webkit-tap-highlight-color: rgba(0, 0, 128, 0.15);
+        }
+
+        @media (max-width: 700px) {
+            /* Taskbar and title bar: stop long file name pushing the layout wide */
+            .win95-task-tab {
+                max-width: calc(100vw - 110px);
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .title-text {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                flex: 1 1 auto;
+            }
+
+            .window-controls .win95-link-btn {
+                min-width: 36px;
+                min-height: 28px;
+            }
+
+            .document-container {
+                padding: 18px 12px 28px 12px;
+            }
+
+            .document-container h1 {
+                font-size: 1.5rem !important;
+                letter-spacing: 0 !important;
+                overflow-wrap: anywhere;
+            }
+
+            .meta-sidebar-95 {
+                padding: 14px;
+                margin-bottom: 22px;
+            }
+
+            .meta-list-95 li {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            p, ul {
+                font-size: 15px;
+            }
+
+            .classic-quote-95 {
+                padding: 12px 14px;
+            }
+
+            .highlight-box-95 {
+                padding: 12px 14px;
+            }
+
+            /* Process index: bigger tap targets, one link per chip */
+            .process-index-bar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                padding: 10px;
+                line-height: 1.2;
+            }
+
+            .process-index-bar strong {
+                flex: 0 0 100%;
+            }
+
+            .process-index-bar a {
+                margin: 0;
+                padding: 8px 10px;
+                background: #cbd0d4;
+                border-top: 2px solid #fff;
+                border-left: 2px solid #fff;
+                border-right: 2px solid #808080;
+                border-bottom: 2px solid #808080;
+                color: #000;
+                font-size: 12.5px;
+            }
+
+            .folder-controls button {
+                flex: 1 1 0;
+                min-height: 44px;
+                font-size: 13px;
+            }
+
+            /* Folders */
+            details.folder-95 > summary {
+                min-height: 48px;
+                padding: 10px 12px;
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+
+            details.folder-95 > summary::after {
+                width: 26px;
+                height: 26px;
+                line-height: 24px;
+                font-size: 18px;
+            }
+
+            .folder-body {
+                margin: 3px;
+                padding: 6px 12px 4px 12px;
+            }
+
+            .folder-body ul {
+                padding-left: 18px;
+            }
+
+            /* Tables scroll sideways inside their own box, not the page */
+            .table-scroll {
+                -webkit-overflow-scrolling: touch;
+                border: 1px solid #808080;
+            }
+
+            .table-scroll .before-after-table {
+                min-width: 520px;
+                margin: 0;
+            }
+
+            .before-after-table {
+                font-size: 13px;
+            }
+
+            .live-links a {
+                flex: 1 1 100%;
+                text-align: center;
+                padding: 12px 14px;
+            }
+
+            #solution .win95-link-btn,
+            .document-container > div[style*="text-align: center"] .win95-link-btn {
+                width: 100%;
+                min-height: 44px;
+            }
+
+            .artifact-card-95 img,
+            .ba-card img,
+            .mobile-card img {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .document-container {
+                padding: 14px 8px 24px 8px;
+            }
+
+            .folder-body {
+                padding: 4px 10px 2px 10px;
+            }
+
+            .process-index-bar a {
+                padding: 8px 8px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -466,10 +738,14 @@
                 <a href="#reflection">12. Reflection</a>
             </div>
 
-            <hr>
+            <div class="folder-controls">
+                <button type="button" class="win95-link-btn" id="expand-all">Expand all</button>
+                <button type="button" class="win95-link-btn" id="collapse-all">Collapse all</button>
+            </div>
 
-            <!-- 1. BRIEF -->
-            <h2 id="brief">📁 1. The Brief &amp; Opportunity</h2>
+            <details class="folder-95" id="brief" open>
+                <summary><span class="folder-title">📁 1. The Brief &amp; Opportunity</span></summary>
+                <div class="folder-body">
 
             <p>
                 The project began with a simple, human request. The pastor’s wife approached me and asked if I would take a look at the church website.
@@ -488,11 +764,12 @@
                 Rebuild the entire web presence from the ground up so that it felt contemporary, mobile-first, accessible,
                 and easy for non-technical staff to update, while preserving the warm, informal, Bible-centred identity of New City Church MK.
             </div>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 2. PROBLEM -->
-            <h2 id="problem">📁 2. Understanding the Problem</h2>
+            <details class="folder-95" id="problem">
+                <summary><span class="folder-title">📁 2. Understanding the Problem</span></summary>
+                <div class="folder-body">
 
             <p>
                 I began by auditing the existing Wix site and speaking informally with people connected to the church about what they needed from the website.
@@ -514,11 +791,12 @@
                 that a parent could check for kids provision on their phone, that a regular could quickly find the latest sermon,
                 and that a church admin could update without calling a developer.
             </div>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 3. PROCESS -->
-            <h2 id="process">📁 3. My Role &amp; Process</h2>
+            <details class="folder-95" id="process">
+                <summary><span class="folder-title">📁 3. My Role &amp; Process</span></summary>
+                <div class="folder-body">
 
             <p>
                 I worked as the sole designer and developer, volunteering my time. I owned the full path from discovery through to front-end implementation, CMS setup and review with the church.
@@ -533,11 +811,12 @@
                 <li><strong>6. CMS &amp; Integrations:</strong> Netlify / Decap CMS for news, plus embeds for ChurchSuite, the church calendar, YouTube and Spotify, and an online giving page.</li>
                 <li><strong>7. Review with the church:</strong> Shared the live preview with the pastor and church members, collected feedback, and made the requested changes.</li>
             </ul>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 4. PERSONAS -->
-            <h2 id="personas">📁 4. Working Personas</h2>
+            <details class="folder-95" id="personas">
+                <summary><span class="folder-title">📁 4. Working Personas</span></summary>
+                <div class="folder-body">
 
             <p>
                 Church websites serve a mixed audience: curious first-timers, regulars looking for practical info, parents, and staff.
@@ -571,11 +850,12 @@
                     <strong>Design response:</strong> A simple CMS for news posts so the front-end stays mostly static and maintainable.
                 </p>
             </div>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 5. IA -->
-            <h2 id="ia">📁 5. Information Architecture</h2>
+            <details class="folder-95" id="ia">
+                <summary><span class="folder-title">📁 5. Information Architecture</span></summary>
+                <div class="folder-body">
 
             <p>
                 I deliberately kept the primary navigation short. The website’s main job is not to showcase every ministry in equal weight;
@@ -589,11 +869,12 @@
                 Supporting content (Giving, Privacy, Data Protection, Safeguarding, Contact) lives in the footer and secondary paths.
                 News is CMS-powered so the church can keep the site alive without touching code.
             </p>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 6. DESIGN -->
-            <h2 id="design">📁 6. Design System &amp; Visual Language</h2>
+            <details class="folder-95" id="design">
+                <summary><span class="folder-title">📁 6. Design System &amp; Visual Language</span></summary>
+                <div class="folder-body">
 
             <p>
                 The visual system needed to feel warm and contemporary without losing the approachable, non-corporate character of the church.
@@ -618,11 +899,12 @@
                 <li><strong>CTAs:</strong> Primary actions always in solid magenta; secondary actions as text links or ghost buttons to protect hierarchy.</li>
                 <li><strong>Mobile-first:</strong> Large touch targets, a pull-up footer drawer on mobile, and no horizontal overflow at common viewport sizes.</li>
             </ul>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 7. DECISIONS -->
-            <h2 id="decisions">📁 7. Key Decisions &amp; Alternatives</h2>
+            <details class="folder-95" id="decisions">
+                <summary><span class="folder-title">📁 7. Key Decisions &amp; Alternatives</span></summary>
+                <div class="folder-body">
 
             <p>
                 A few choices shaped the project more than any others. Each one was a trade-off between what looks best,
@@ -667,11 +949,12 @@
                     </tbody>
                 </table>
             </div>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 8. WIREFRAMES -->
-            <h2 id="wireframes">📁 8. Wireframes</h2>
+            <details class="folder-95" id="wireframes">
+                <summary><span class="folder-title">📁 8. Wireframes</span></summary>
+                <div class="folder-body">
 
             <p>
                 Low-fidelity wireframes established content priority and layout structure before visual design.
@@ -702,11 +985,12 @@
                 </div>
 
             </div>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 9. SOLUTION -->
-            <h2 id="solution">📁 9. The Solution</h2>
+            <details class="folder-95" id="solution">
+                <summary><span class="folder-title">📁 9. The Solution</span></summary>
+                <div class="folder-body">
 
             <p>
                 The new site is a custom-built, semantic front-end with a lightweight CMS for news.
@@ -802,11 +1086,12 @@
                 <a href="https://marquis09.github.io/Newcity/" target="_blank" rel="noopener">Visit Live Redesign ↗</a>
                 <a href="https://www.newcitychurch.co.uk/" target="_blank" rel="noopener">View Legacy Site ↗</a>
             </div>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 10. EVIDENCE -->
-            <h2 id="evidence">📁 10. Feedback &amp; Evidence</h2>
+            <details class="folder-95" id="evidence">
+                <summary><span class="folder-title">📁 10. Feedback &amp; Evidence</span></summary>
+                <div class="folder-body">
 
             <p>
                 I shared the live preview with the pastor and a small number of church members and asked for their reactions.
@@ -846,11 +1131,12 @@
                 And the only change this tester wanted was content (a video), not design or structure.
                 With a handful of reviewers this is encouraging rather than conclusive, which is why formal testing sits on the next-steps list.
             </p>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 11. TECH -->
-            <h2 id="tech">📁 11. Technical Approach</h2>
+            <details class="folder-95" id="tech">
+                <summary><span class="folder-title">📁 11. Technical Approach</span></summary>
+                <div class="folder-body">
 
             <p>
                 I chose a deliberately simple, durable stack so the church would not be dependent on a single external developer or proprietary platform again.
@@ -865,11 +1151,12 @@
                 <li><strong>Embeds:</strong> ChurchSuite, calendar, YouTube and Spotify, so the church keeps managing content in the tools it already uses.</li>
                 <li><strong>Hosting:</strong> GitHub Pages for the preview. The plan is to move it to the church’s own GitHub account with the CMS running once the domain is supplied.</li>
             </ul>
+                </div>
+            </details>
 
-            <hr>
-
-            <!-- 12. REFLECTION -->
-            <h2 id="reflection">📁 12. Status, Reflection &amp; Next Steps</h2>
+            <details class="folder-95" id="reflection">
+                <summary><span class="folder-title">📁 12. Status, Reflection &amp; Next Steps</span></summary>
+                <div class="folder-body">
 
             <p><strong>Current status:</strong></p>
             <p>
@@ -904,6 +1191,8 @@
                 A first-time visitor to a church often arrives with quiet questions. The website’s job is to answer those questions before they even leave the house.
                 Building something the church can actually own and update has been just as important as making it look contemporary.
             </div>
+                </div>
+            </details>
 
             <div style="text-align: center; margin-top: 45px; padding-top: 20px; border-top: 1px solid #808080;">
                 <button class="win95-link-btn"
@@ -933,6 +1222,49 @@
     }
     setInterval(updateLocalClock, 1000);
     updateLocalClock();
+
+    // Expandable folders
+    (function () {
+        var folders = Array.prototype.slice.call(document.querySelectorAll('details.folder-95'));
+
+        function setIcon(d) {
+            var t = d.querySelector('.folder-title');
+            if (!t) return;
+            t.textContent = t.textContent.replace(/^(\uD83D\uDCC1|\uD83D\uDCC2)/, d.open ? '\uD83D\uDCC2' : '\uD83D\uDCC1');
+        }
+
+        folders.forEach(function (d) {
+            setIcon(d);
+            d.addEventListener('toggle', function () { setIcon(d); });
+        });
+
+        function openTo(id, smooth) {
+            var d = document.getElementById(id);
+            if (!d || !d.matches('details.folder-95')) return false;
+            d.open = true;
+            setIcon(d);
+            d.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+            return true;
+        }
+
+        document.querySelectorAll('.process-index-bar a').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+                var id = a.getAttribute('href').slice(1);
+                if (openTo(id, true)) e.preventDefault();
+            });
+        });
+
+        var expandBtn = document.getElementById('expand-all');
+        var collapseBtn = document.getElementById('collapse-all');
+        if (expandBtn) expandBtn.addEventListener('click', function () {
+            folders.forEach(function (d) { d.open = true; setIcon(d); });
+        });
+        if (collapseBtn) collapseBtn.addEventListener('click', function () {
+            folders.forEach(function (d) { d.open = false; setIcon(d); });
+        });
+
+        if (location.hash) openTo(location.hash.slice(1), false);
+    })();
 </script>
 
 </body>
