@@ -10,65 +10,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const win95Clock = document.getElementById("win95-clock");
 
     /* ==========================================================================
-       1. BINARY BACKGROUND
+       1. BINARY BACKGROUND (single layer, redrawn every 2.5s, fits any screen)
        ========================================================================== */
     function generateBinary() {
-    if (!binaryLayer) return;
+        if (!binaryLayer) return;
 
-    const charWidth = 8.4;
-    const charHeight = 16.8;
+        // Measure the real character size so the grid always fills the screen
+        const probe = document.createElement("span");
+        probe.textContent = "0000000000";
+        probe.style.cssText = "position:absolute;visibility:hidden;white-space:pre;";
+        binaryLayer.appendChild(probe);
+        const charWidth = probe.getBoundingClientRect().width / 10 || 8.4;
+        const charHeight = parseFloat(getComputedStyle(binaryLayer).lineHeight) || 16.8;
+        binaryLayer.removeChild(probe);
 
-    const columns = Math.ceil(window.innerWidth / charWidth);
-    const rows = Math.ceil(window.innerHeight / charHeight);
+        // +1 so the last column and row are always covered (the layer clips the extra)
+        const columns = Math.ceil(window.innerWidth / charWidth) + 1;
+        const rows = Math.ceil(window.innerHeight / charHeight) + 1;
 
-    const totalCharacters = columns * rows;
-
-    let output = "";
-    for (let i = 0; i < totalCharacters; i++) {
-        output += Math.random() > 0.5 ? "1" : "0";
-
-        if ((i + 1) % columns === 0) {
+        let output = "";
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < columns; c++) {
+                output += Math.random() > 0.5 ? "1" : "0";
+            }
             output += "\n";
         }
+
+        binaryLayer.textContent = output;
     }
-
-    binaryLayer.textContent = output;
-}
-
 
     generateBinary();
     setInterval(generateBinary, 2500);
-    window.addEventListener("resize", generateBinary);
-    
 
-    const binaryPatch = document.getElementById("binaryPatch");
-
-function generateBinaryPatch() {
-    const charWidth = 8.4;
-    const charHeight = 16.8;
-
-    const patchWidth = binaryPatch.offsetWidth;
-    const columns = Math.ceil(patchWidth / charWidth);
-    const rows = Math.ceil(window.innerHeight / charHeight);
-
-    let output = "";
-    for (let i = 0; i < columns * rows; i++) {
-        output += Math.random() > 0.5 ? "1" : "0";
-        if ((i + 1) % columns === 0) output += "\n";
-    }
-
-    binaryPatch.textContent = output;
-}
-
-generateBinaryPatch();
-setInterval(generateBinaryPatch, 2500);
-window.addEventListener("resize", generateBinaryPatch);
-
+    let binaryResizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(binaryResizeTimer);
+        binaryResizeTimer = setTimeout(generateBinary, 150);
+    });
 
     /* ==========================================================================
        2. TYPING ENGINE
        ========================================================================== */
-    const textToType = "Junior UX/UI Designer | Frontend Systems | Interaction Logic";
+    const textToType = "Junior UX/UI Designer | Frontend Developer | Interaction Logic";
     let textIndex = 0;
 
     function type() {
@@ -174,6 +157,20 @@ window.addEventListener("resize", generateBinaryPatch);
         win.addEventListener('mousedown', () => bringToFront(win));
     });
 
+    // Start menu links from other pages (e.g. index.html#about) open that window on arrival
+    const hashWindows = {
+        about: "about-win",
+        projects: "projects-win",
+        faith: "faith-win",
+        contact: "contact-win"
+    };
+    const arrivalTarget = hashWindows[window.location.hash.replace("#", "")];
+    if (arrivalTarget && document.getElementById(arrivalTarget)) {
+        const workspace = document.getElementById("desktop-env");
+        if (workspace) workspace.scrollIntoView();
+        openWindow(arrivalTarget);
+    }
+
     /* ==========================================================================
        5. START MENU (FIXED)
        ========================================================================== */
@@ -219,6 +216,45 @@ window.addEventListener("resize", generateBinaryPatch);
     }
 
     /* ==========================================================================
+       5b. MOBILE START MENU DROPDOWNS (phones/tablets only, desktop untouched)
+       ========================================================================== */
+
+    if (win95StartBtn && win95StartMenu) {
+        const isMobileView = () => window.matchMedia("(max-width: 768px)").matches;
+
+        // Capture phase: runs before the inline onclick popups on the menu links
+        win95StartMenu.addEventListener("click", (e) => {
+            if (!isMobileView()) return;
+
+            // Links inside a dropdown go straight to their page (no popup window)
+            const subLink = e.target.closest(".win95-submenu a");
+            if (subLink) {
+                e.stopPropagation();
+                win95StartMenu.classList.add("hidden");
+                win95StartBtn.classList.remove("pressed");
+                return;
+            }
+
+            // Tapping "Programs" or "Contact Me" expands / collapses its dropdown
+            const parentLink = e.target.closest(".has-submenu > a");
+            if (parentLink) {
+                e.preventDefault();
+                e.stopPropagation();
+                const item = parentLink.parentElement;
+                const isOpen = item.classList.toggle("open");
+                parentLink.setAttribute("aria-expanded", String(isOpen));
+            }
+        }, true);
+
+        // Start every menu opening with the dropdowns collapsed
+        win95StartBtn.addEventListener("click", () => {
+            win95StartMenu.querySelectorAll(".has-submenu.open").forEach(item => {
+                item.classList.remove("open");
+            });
+        });
+    }
+
+    /* ==========================================================================
        6. CLOCK
        ========================================================================== */
 
@@ -233,6 +269,31 @@ window.addEventListener("resize", generateBinaryPatch);
 
     setInterval(updateWin95Clock, 1000);
     updateWin95Clock();
+
+    /* ==========================================================================
+       6b. MINI WINDOW MINIMISE (NEW)
+       ========================================================================== */
+
+    document.querySelectorAll(".minimise-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const miniWin = btn.closest(".mini-window");
+            if (!miniWin) return;
+            const collapsed = miniWin.classList.toggle("collapsed");
+            btn.setAttribute("aria-expanded", String(!collapsed));
+        });
+    });
+
+    // Clicking the folder icon restores the window
+    document.querySelectorAll(".mini-folder").forEach(folder => {
+        folder.addEventListener("click", () => {
+            const miniWin = folder.closest(".mini-window");
+            if (!miniWin) return;
+            miniWin.classList.remove("collapsed");
+            const btn = miniWin.querySelector(".minimise-btn");
+            if (btn) btn.setAttribute("aria-expanded", "true");
+        });
+    });
 
     /* ==========================================================================
        7. SMOOTH SCROLL

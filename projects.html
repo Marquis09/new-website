@@ -2,166 +2,274 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Case Studies Directory - Windows 98 Explorer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies Directory | Marquis Orchard</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='8,4 8,52 20,40 28,60 34,58 26,38 40,34' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E">
 
-<style>
-    body {
-        margin: 0;
-        background: #c0c0c0;
-        font-family: "MS Sans Serif", Arial;
-    }
+<!-- Same stylesheet as the landing page, so the window and folders match exactly -->
+<link rel="stylesheet" href="styles.css">
 
-    /* FULLSCREEN WINDOW */
-    .win98-window {
+<style>
+    /* The window: same look as the popups, centred on every screen size */
+    .win95-window.archive-window {
         position: fixed;
-        top: 0;
+        top: 56px;
         left: 0;
         right: 0;
-        bottom: 0;
-        background: #c0c0c0;
-        border: 2px solid #fff;
-        box-shadow: inset -2px -2px #808080, inset 2px 2px #fff;
-        display: flex;
-        flex-direction: column;
+        width: min(920px, calc(100vw - 32px));
+        height: auto;
+        max-width: none;
+        max-height: calc(100vh - 76px);
+        max-height: calc(100dvh - 76px);
+        margin: 0 auto;
     }
 
-    /* TITLE BAR */
-    .titlebar {
-        background: #000080;
-        color: #fff;
-        padding: 3px 6px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-        font-size: 13px;
-    }
-
-    .title-left {
+    .archive-window .title-text {
         display: flex;
         align-items: center;
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
-    .title-left img {
-        width: 16px;
-        height: 16px;
-        margin-right: 6px;
-    }
-
-    .title-buttons button {
-        background: #c0c0c0;
-        border: 2px solid #fff;
-        box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
-        font-size: 12px;
-        font-weight: bold;
-        width: 24px;
-        height: 20px;
-        cursor: pointer;
-        margin-left: 4px;
-    }
-
-    /* MAIN AREA */
-    .main-area {
-        flex: 1;
-        background: #fff;
-        border: 2px inset #fff;
-        padding: 20px;
-        overflow-y: auto;
-    }
-
-    /* FOLDER GRID */
-    .folder-grid {
+    /* Folders: same size and style as the landing page folders (48px icon, 11px label) */
+    .archive-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 25px;
-        margin-top: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 12px;
+        margin-top: 8px;
     }
 
-    .folder {
-        text-align: center;
-        text-decoration: none;
+    .archive-window .icon-image {
+        width: 48px;
+        height: 48px;
+    }
+
+    .archive-window .icon-label {
         color: #000;
-        cursor: pointer;
     }
 
-    .folder img {
-        width: 64px;
-        height: 64px;
-        image-rendering: pixelated;
-        margin-bottom: 8px;
+    .archive-window .desktop-icon:hover,
+    .archive-window .desktop-icon:focus-visible {
+        background-color: rgba(0, 0, 128, 0.12);
+        border: 1px dotted #000;
+        outline: none;
     }
 
-    .folder-title {
-        font-size: 14px;
-        font-weight: bold;
+    /* Desktop only: bigger folders (phones keep the 48px size) */
+    @media (min-width: 769px) {
+        .win95-window.archive-window {
+            width: min(1040px, calc(100vw - 32px));
+            min-height: 460px;
+        }
+
+        .archive-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .archive-window .icon-image {
+            width: 80px;
+            height: 80px;
+        }
+
+        .archive-window .icon-label {
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .win95-window.archive-window {
+            top: 48px;
+            width: calc(100vw - 24px);
+            max-height: calc(100vh - 64px);
+            max-height: calc(100dvh - 64px);
+        }
+
+        .archive-grid {
+            grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+        }
     }
 </style>
-
-<script>
-    function closeWindow() {
-        window.location.href = "index.html";
-    }
-</script>
-
 </head>
 <body>
 
-<!-- FULLSCREEN WINDOW -->
-<div class="win98-window">
+<!-- Background layer (same as landing page) -->
+<div class="binary-layer" id="binaryLayer"></div>
 
-    <!-- TITLE BAR -->
-    <div class="titlebar">
-        <div class="title-left">
-            <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
-            Case Studies Directory
+<!-- TASKBAR (same bar, Start menu and light/dark button as the landing page) -->
+<header class="win95-taskbar">
+    <button id="win95StartBtn" class="win95-start-button">
+        <span class="win95-logo" style="font-size: 14px; margin-right: 6px; display: inline-flex; align-items: center;">🏠</span>
+        <strong>S<u>t</u>art</strong>
+    </button>
+
+    <div class="taskbar-tasks">
+        <div class="win95-task-tab active">
+            <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" style="width:14px; height:14px; margin-right:6px; image-rendering:pixelated;" alt="Sys">
+            System Interface
+        </div>
+    </div>
+
+    <div class="win95-system-tray">
+        <button id="darkModeButton">Mode: Dark</button>
+        <span id="win95-clock">12:00 PM</span>
+    </div>
+
+    <div id="win95StartMenu" class="win95-start-menu hidden">
+        <div class="win95-sidebar">
+            <span><strong>System</strong>95</span>
         </div>
 
-        <div class="title-buttons">
-            <button onclick="closeWindow()">X</button>
+        <ul class="win95-menu-list">
+            <li>
+                <a href="index.html#state1">
+                    <img src="https://win98icons.alexmeub.com/icons/png/desktop-0.png" class="item-icon" alt="Hero">
+                    <span>Start (Hero)</span>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#about">
+                    <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" class="item-icon" alt="About">
+                    <span>About_Me.txt</span>
+                </a>
+            </li>
+            <li class="has-submenu">
+                <a href="index.html#projects">
+                    <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="item-icon" alt="Folder">
+                    <span>Programs (Case Studies)</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <ul class="win95-submenu">
+
+                    <li>
+                        <a href="study_newcity.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/html-1.png" class="item-icon" alt="Doc">
+                            <span>New City Church MK</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="studyvi.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/html-1.png" class="item-icon" alt="Doc">
+                            <span>Mercedes-Benz Finance</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-separator"></li>
+                    <!-- FIXED: Full Archive now links to projects.html -->
+                    <li>
+                        <a href="projects.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="item-icon" alt="Folder">
+                            <span>Full Archive...</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="index.html#faith">
+                    <img src="https://win98icons.alexmeub.com/icons/png/world-0.png" class="item-icon" alt="Faith">
+                    <span>Faith Section</span>
+                </a>
+            </li>
+            <li class="menu-separator"></li>
+            <li>
+                <a href="properties/Marquis_CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <svg class="item-icon" viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d="M5.5 2.5H20.5L26.5 8.5V29.5H5.5Z" fill="#fff" stroke="#000"/><path d="M20.5 2.5V8.5H26.5" fill="#c0c0c0" stroke="#000"/><path d="M25.5 9.5V28.5H6.5" fill="none" stroke="#808080"/><rect x="7" y="5" width="12" height="8" fill="#c00000"/><path fill="#fff" d="M8 7h4v1H8zM8 8h1v3H8zM8 11h4v1H8zM13 7h1v2h-1zM17 7h1v2h-1zM14 9h1v2h-1zM16 9h1v2h-1zM15 11h1v1h-1z"/><rect x="8" y="16" width="16" height="1" fill="#000080"/><rect x="8" y="19" width="16" height="1" fill="#000080"/><rect x="8" y="22" width="16" height="1" fill="#000080"/><rect x="8" y="25" width="9" height="1" fill="#000080"/></svg>
+                    <span>Download CV</span>
+                </a>
+            </li>
+
+            <li class="has-submenu">
+                <a href="index.html#contact">
+                    <img src="https://win98icons.alexmeub.com/icons/png/address_book-0.png" class="item-icon" alt="Contact">
+                    <span>Contact Me</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <ul class="win95-submenu">
+                    <li>
+                        <a href="https://www.linkedin.com/in/marquis-orchard/" target="_blank" rel="noopener noreferrer">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="15" height="15" fill="#000080" stroke="#000"/><path d="M3 5h2v2H3zM3 8h2v5H3zM7 8h2v5H7zM9 8h3v2H9zM11 10h2v3h-2z" fill="#fff"/></svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:marquisorchard95@yahoo.com">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x=".5" y="2.5" width="15" height="11" fill="#fff4b0" stroke="#000"/><path d="M1 3l7 6 7-6" fill="none" stroke="#000"/></svg>
+                            <span>Email Me</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:+447930733724">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d="M2.5 1.5h3l1.5 3.5-2 1.5c1 2 2.5 3.500 4.500 4.500l1.500-2 3.500 1.500v3c0 1-1 1.500-2 1.500C6.500 14.500 1.500 9.500 1.500 3.500c0-1 .5-2 1-2z" fill="#000080" stroke="#000"/></svg>
+                            <span>Call Me</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<!-- WINDOW -->
+<div class="win95-window archive-window" id="archive-win">
+
+    <!-- TITLE BAR -->
+    <div class="window-titlebar">
+        <div class="title-text">
+            <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" style="width:16px; height:16px; margin-right:6px; flex-shrink:0; image-rendering:pixelated;" alt="">
+            C:\Portfolio\All_Case_Studies
+        </div>
+
+        <div class="window-controls">
+            <button class="win-btn close-btn" onclick="window.location.href='index.html'" aria-label="Close and go back"></button>
         </div>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div class="main-area">
+    <div class="window-body">
         <h2>All Case Studies</h2>
+        <hr style="border: 1px solid #808080; border-bottom: 1px solid #fff; margin-bottom: 15px;">
         <p>Below are all UX/UI and development case studies. Click a folder to open the full case study.</p>
 
-        <div class="folder-grid">
+        <div class="archive-grid">
 
-            <a class="folder" href="study_newcity.html">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
-                <div class="folder-title">New City Church</div>
+            <a class="desktop-icon" href="study_newcity.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="icon-image" alt="">
+                <span class="icon-label">New City Church</span>
             </a>
 
-             <a class="folder" href="studyvi.html">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
-                <div class="folder-title">Mercedes-Benz Finance</div>
+            <a class="desktop-icon" href="studyvi.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="icon-image" alt="">
+                <span class="icon-label">Mercedes-Benz Finance</span>
             </a>
 
-            <a class="folder" href="studyiv.html">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
-                <div class="folder-title">Hartshill Bible Church</div>
+            <a class="desktop-icon" href="studyiv.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="icon-image" alt="">
+                <span class="icon-label">Hartshill Bible Church</span>
             </a>
 
-            <a class="folder" href="studyv.html">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
-                <div class="folder-title">Project Coward</div>
+            <a class="desktop-icon" href="studyv.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="icon-image" alt="">
+                <span class="icon-label">Project Coward</span>
             </a>
 
-            <a class="folder" href="study.html">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
-                <div class="folder-title">Munich Travel Guide</div>
+            <a class="desktop-icon" href="study.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="icon-image" alt="">
+                <span class="icon-label">Munich Travel Guide</span>
             </a>
 
-            <a class="folder" href="studyiii.html">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png">
-                <div class="folder-title">MMU TV Platform</div>
+            <a class="desktop-icon" href="studyiii.html">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="icon-image" alt="">
+                <span class="icon-label">MMU TV Platform</span>
             </a>
 
         </div>
     </div>
 </div>
+
+<!-- Same script as the landing page: background animation and light/dark mode -->
+<script src="Jsscript.js"></script>
 
 </body>
 </html>

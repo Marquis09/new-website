@@ -15,9 +15,13 @@
             overflow: hidden;
         }
 
+        .win95-taskbar {
+            z-index: 1000;
+        }
+
         .win95-maximized-workspace {
             position: fixed;
-            top: 40px;
+            top: 36px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -86,12 +90,41 @@
         }
 
         .tag-95 {
+            display: inline-flex;
+            align-items: center;
             background: #e0e0e0;
-            border: 1px solid #808080;
-            padding: 1px 6px;
-            font-size: 12px;
-            margin-right: 4px;
-            display: inline-block;
+            border: 1px solid;
+            border-color: #fff #808080 #808080 #fff;
+            padding: 3px 10px;
+            font-size: 12.5px;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        /* Project Details: label on the left, value on the right */
+        .meta-rows li {
+            display: grid;
+            grid-template-columns: 130px minmax(0, 1fr);
+            gap: 6px 16px;
+            align-items: start;
+            padding: 10px 0;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .meta-rows .meta-label,
+        .meta-rows .meta-value {
+            padding-top: 3px;
+        }
+
+        .meta-rows .tag-group {
+            padding-top: 0;
         }
 
         h1, h2, h3, h4 {
@@ -130,24 +163,53 @@
         }
 
         .process-index-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
             background: #e0e0e0;
             border: 2px inset #fff;
-            padding: 10px 14px;
+            padding: 12px 14px 14px 14px;
             margin-bottom: 25px;
             font-size: 13px;
             box-shadow: 1px 1px 0 #000;
-            line-height: 1.7;
         }
 
+        .process-index-bar strong {
+            flex: 0 0 100%;
+            font-size: 13px;
+        }
+
+        /* Buttons share each row equally, so the last row never looks ragged */
         .process-index-bar a {
-            color: #0000aa;
-            text-decoration: none;
+            flex: 1 1 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
+            padding: 6px 8px;
+            box-sizing: border-box;
+            background: #cbd0d4;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            color: #000;
+            font-size: 13px;
             font-weight: bold;
-            margin: 0 4px;
+            line-height: 1.2;
+            text-align: center;
+            text-decoration: none;
         }
 
         .process-index-bar a:hover {
-            text-decoration: underline;
+            background: #d8dce0;
+        }
+
+        .process-index-bar a:active {
+            border-color: #808080 #fff #fff #808080;
+        }
+
+        .process-index-bar a:focus-visible {
+            outline: 2px dotted #000080;
+            outline-offset: -5px;
         }
 
         .win95-link-btn {
@@ -440,6 +502,20 @@
             font-weight: bold;
         }
 
+        /* Outcome / demonstrates box */
+        .outcome-box {
+            background: #e8f0e8;
+            border: 2px solid #608060;
+            padding: 14px 18px;
+            margin: 0 0 28px 0;
+            font-size: 14.5px;
+            line-height: 1.55;
+        }
+
+        .outcome-box strong {
+            color: #1a3a1a;
+        }
+
         /* ---------- Responsive / mobile ---------- */
         html { -webkit-text-size-adjust: 100%; }
 
@@ -454,7 +530,10 @@
         .win95-main-body {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
+            overflow-x: hidden;
         }
+
+        img, video { max-width: 100%; }
 
         .artifact-grid-95 {
             grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
@@ -481,7 +560,6 @@
         }
 
         @media (max-width: 700px) {
-            /* Taskbar and title bar: stop long file name pushing the layout wide */
             .win95-task-tab {
                 max-width: calc(100vw - 110px);
                 overflow: hidden;
@@ -533,29 +611,46 @@
                 padding: 12px 14px;
             }
 
-            /* Process index: bigger tap targets, one link per chip */
             .process-index-bar {
-                display: flex;
-                flex-wrap: wrap;
                 gap: 6px;
                 padding: 10px;
-                line-height: 1.2;
-            }
-
-            .process-index-bar strong {
-                flex: 0 0 100%;
             }
 
             .process-index-bar a {
-                margin: 0;
-                padding: 8px 10px;
-                background: #cbd0d4;
-                border-top: 2px solid #fff;
-                border-left: 2px solid #fff;
-                border-right: 2px solid #808080;
-                border-bottom: 2px solid #808080;
-                color: #000;
+                flex: 1 1 calc(50% - 6px);
+                min-height: 44px;
+                padding: 6px;
                 font-size: 12.5px;
+            }
+
+            .meta-rows li {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 4px;
+            }
+
+            .meta-rows .meta-label,
+            .meta-rows .meta-value {
+                padding-top: 0;
+            }
+
+            .case-header {
+                padding: 18px 14px !important;
+                margin-bottom: 18px !important;
+            }
+
+            .outcome-box {
+                padding: 12px 14px;
+                margin-bottom: 22px;
+            }
+
+            .image-preview-frame {
+                padding: 10px;
+                margin: 18px 0;
+            }
+
+            .highlight-box-95,
+            .classic-quote-95 {
+                margin: 16px 0;
             }
 
             .folder-controls button {
@@ -564,7 +659,6 @@
                 font-size: 13px;
             }
 
-            /* Folders */
             details.folder-95 > summary {
                 min-height: 48px;
                 padding: 10px 12px;
@@ -588,7 +682,6 @@
                 padding-left: 18px;
             }
 
-            /* Tables scroll sideways inside their own box, not the page */
             .table-scroll {
                 -webkit-overflow-scrolling: touch;
                 border: 1px solid #808080;
@@ -632,11 +725,13 @@
             }
 
             .process-index-bar a {
-                padding: 8px 8px;
                 font-size: 12px;
             }
+
+            .image-preview-frame {
+                padding: 8px;
+            }
         }
-    
 
         .image-preview-frame {
             background: #f0f0f0;
@@ -644,6 +739,10 @@
             padding: 15px;
             margin: 25px 0;
             text-align: center;
+        }
+
+        .image-preview-frame {
+            box-sizing: border-box;
         }
 
         .image-preview-frame img,
@@ -661,21 +760,123 @@
             padding-left: 15px;
             margin: 8px 0 0 0;
         }
-            </style>
+    </style>
 </head>
 <body>
 
 <div class="binary-layer" id="binaryLayer"></div>
 <div class="noise-overlay"></div>
 
-<header class="win95-taskbar" style="position: fixed; top: 0; left: 0; right: 0; height: 40px; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4px; background: #cbd0d4; border-bottom: 2px solid #808080;">
-    <div class="taskbar-tasks" style="display: flex; align-items: center; flex: 1;">
-        <div class="win95-task-tab active" style="display: flex; align-items: center; background: #fff; border: 2px inset #fff; padding: 2px 12px; font-size: 12px; height: 24px; font-weight: bold; box-shadow: 1px 1px 0 #000;">
-            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="">Mercedes_Case_Study.txt
+<!-- TASKBAR (same bar, Start menu, mode button and clock as the landing page) -->
+<header class="win95-taskbar">
+    <button id="win95StartBtn" class="win95-start-button">
+        <span class="win95-logo" style="font-size: 14px; margin-right: 6px; display: inline-flex; align-items: center;">🏠</span>
+        <strong>S<u>t</u>art</strong>
+    </button>
+
+    <div class="taskbar-tasks">
+        <div class="win95-task-tab active">
+            <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" style="width:14px; height:14px; margin-right:6px; image-rendering:pixelated;" alt="Sys">
+            System Interface
         </div>
     </div>
-    <div class="win95-system-tray" style="display: flex; align-items: center; background: #cbd0d4; border: 2px inset #fff; padding: 2px 8px; font-size: 12px; height: 24px; box-shadow: 1px 1px 0 #000;">
-        <span id="win95-clock">--:-- --</span>
+
+    <div class="win95-system-tray">
+        <button id="darkModeButton">Mode: Dark</button>
+        <span id="win95-clock">12:00 PM</span>
+    </div>
+
+    <div id="win95StartMenu" class="win95-start-menu hidden">
+        <div class="win95-sidebar">
+            <span><strong>System</strong>95</span>
+        </div>
+
+        <ul class="win95-menu-list">
+            <li>
+                <a href="index.html#state1">
+                    <img src="https://win98icons.alexmeub.com/icons/png/desktop-0.png" class="item-icon" alt="Hero">
+                    <span>Start (Hero)</span>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#about">
+                    <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" class="item-icon" alt="About">
+                    <span>About_Me.txt</span>
+                </a>
+            </li>
+            <li class="has-submenu">
+                <a href="index.html#projects">
+                    <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="item-icon" alt="Folder">
+                    <span>Programs (Case Studies)</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <ul class="win95-submenu">
+
+                    <li>
+                        <a href="study_newcity.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/html-1.png" class="item-icon" alt="Doc">
+                            <span>New City Church MK</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="studyvi.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/html-1.png" class="item-icon" alt="Doc">
+                            <span>Mercedes-Benz Finance</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-separator"></li>
+                    <!-- FIXED: Full Archive now links to projects.html -->
+                    <li>
+                        <a href="projects.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="item-icon" alt="Folder">
+                            <span>Full Archive...</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="index.html#faith">
+                    <img src="https://win98icons.alexmeub.com/icons/png/world-0.png" class="item-icon" alt="Faith">
+                    <span>Faith Section</span>
+                </a>
+            </li>
+            <li class="menu-separator"></li>
+            <li>
+                <a href="properties/Marquis_CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <svg class="item-icon" viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d="M5.5 2.5H20.5L26.5 8.5V29.5H5.5Z" fill="#fff" stroke="#000"/><path d="M20.5 2.5V8.5H26.5" fill="#c0c0c0" stroke="#000"/><path d="M25.5 9.5V28.5H6.5" fill="none" stroke="#808080"/><rect x="7" y="5" width="12" height="8" fill="#c00000"/><path fill="#fff" d="M8 7h4v1H8zM8 8h1v3H8zM8 11h4v1H8zM13 7h1v2h-1zM17 7h1v2h-1zM14 9h1v2h-1zM16 9h1v2h-1zM15 11h1v1h-1z"/><rect x="8" y="16" width="16" height="1" fill="#000080"/><rect x="8" y="19" width="16" height="1" fill="#000080"/><rect x="8" y="22" width="16" height="1" fill="#000080"/><rect x="8" y="25" width="9" height="1" fill="#000080"/></svg>
+                    <span>Download CV</span>
+                </a>
+            </li>
+
+            <li class="has-submenu">
+                <a href="index.html#contact">
+                    <img src="https://win98icons.alexmeub.com/icons/png/address_book-0.png" class="item-icon" alt="Contact">
+                    <span>Contact Me</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <ul class="win95-submenu">
+                    <li>
+                        <a href="https://www.linkedin.com/in/marquis-orchard/" target="_blank" rel="noopener noreferrer">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="15" height="15" fill="#000080" stroke="#000"/><path d="M3 5h2v2H3zM3 8h2v5H3zM7 8h2v5H7zM9 8h3v2H9zM11 10h2v3h-2z" fill="#fff"/></svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:marquisorchard95@yahoo.com">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x=".5" y="2.5" width="15" height="11" fill="#fff4b0" stroke="#000"/><path d="M1 3l7 6 7-6" fill="none" stroke="#000"/></svg>
+                            <span>Email Me</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:+447930733724">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d="M2.5 1.5h3l1.5 3.5-2 1.5c1 2 2.5 3.500 4.500 4.500l1.500-2 3.500 1.500v3c0 1-1 1.500-2 1.500C6.500 14.500 1.500 9.500 1.500 3.500c0-1 .5-2 1-2z" fill="#000080" stroke="#000"/></svg>
+                            <span>Call Me</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </header>
 
@@ -692,30 +893,64 @@
     <div class="win95-main-body">
         <div class="document-container">
 
-            <div style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 30px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
+            <!-- HEADER -->
+            <div class="case-header" style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 24px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
                 <h1 style="font-size: 2.1rem; margin: 0; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px; color: #fff;">Mercedes-Benz Online Finance Journey</h1>
                 <p style="margin: 8px 0 0 0; color: #e8eaec; font-size: 15px;">A digital customer experience proposal for an interview exercise</p>
-                <p style="margin: 12px 0 0 0; color: #e8eaec; font-size: 13px; line-height: 1.5;">Real interview exercise &middot; Not commissioned or implemented &middot; Concepts only, untested</p>
+                <p style="margin: 12px 0 0 0; color: #e8eaec; font-size: 13px; line-height: 1.5;">
+                    Real interview exercise &middot; Speculative concepts only &middot; Not commissioned, built or tested
+                </p>
             </div>
 
+            <!-- WHAT THIS DEMONSTRATES -->
+            <div class="outcome-box">
+                <strong>What this demonstrates:</strong> A structured approach to a complex digital customer experience problem — from problem framing and discovery through concepting, prioritisation and validation planning. Concepts only; nothing was built, tested or measured with customers.
+            </div>
+
+            <!-- EXECUTIVE SUMMARY -->
             <div class="meta-sidebar-95">
                 <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Executive Summary</h3>
-                <ul class="meta-list-95"><li><strong>Situation:</strong> The interview brief described customers struggling with finance terms, comparing options and finishing quotes online.</li><li><strong>Task:</strong> Explain how I would understand the problem and improve confidence in the finance journey.</li><li><strong>Action:</strong> Proposed a discovery approach, three concept improvements (tooltips, comparison cards, a decision wizard), a prioritisation view and a validation plan, with concept visuals.</li><li><strong>Result:</strong> A complete proposal. Nothing was built, tested or measured.</li><li><strong>Status:</strong> Speculative. No prototypes, user research or implementation.</li></ul>
+                <ul class="meta-list-95">
+                    <li><strong>Situation:</strong> The interview brief described customers struggling with finance terms, comparing options and finishing quotes online.</li>
+                    <li><strong>Task:</strong> Explain how I would understand the problem and improve confidence in the finance journey.</li>
+                    <li><strong>Action:</strong> Proposed a discovery approach, three concept improvements (tooltips, comparison cards, a decision wizard), a prioritisation view and a validation plan, with concept visuals.</li>
+                    <li><strong>Result:</strong> A complete proposal covering discovery, concepts, prioritisation and validation. Nothing was built, tested or measured.</li>
+                    <li><strong>Status:</strong> Speculative interview exercise. No prototypes, user research or implementation.</li>
+                </ul>
             </div>
 
+            <!-- PROJECT DETAILS -->
             <div class="meta-sidebar-95">
                 <h3 style="margin-top: 0; color: #000080; font-size: 15px; border-bottom: 1px solid #808080; padding-bottom: 4px;">Project Details</h3>
-                <ul class="meta-list-95"><li><strong>My Role:</strong> Interview candidate: <span class="tag-95">UX Strategy</span> <span class="tag-95">Concept visuals</span></li><li><strong>Project Type:</strong> Speculative interview exercise. Not a client project.</li><li><strong>Constraints:</strong> Interview brief only · No access to customer data · Concepts not tested</li></ul>
+                <ul class="meta-list-95 meta-rows">
+                    <li>
+                        <strong class="meta-label">My Role:</strong>
+                        <span class="tag-group">
+                            <span class="tag-95">UX Strategy</span>
+                            <span class="tag-95">Concept Design</span>
+                            <span class="tag-95">Interview Exercise</span>
+                        </span>
+                    </li>
+                    <li>
+                        <strong class="meta-label">Project Type:</strong>
+                        <span class="meta-value">Speculative interview exercise for Mercedes-Benz Financial Services. Not a client project.</span>
+                    </li>
+                    <li>
+                        <strong class="meta-label">Constraints:</strong>
+                        <span class="meta-value">Interview brief only · No access to customer data · Concepts not tested</span>
+                    </li>
+                </ul>
             </div>
 
+            <!-- PROCESS INDEX -->
             <div class="process-index-bar">
                 <strong>Process Index:</strong>
-                <a href="#context">1. Context</a> |
-                <a href="#discovery">2. Discovery</a> |
-                <a href="#opportunities">3. Opportunities</a> |
-                <a href="#prioritisation">4. Prioritisation</a> |
-                <a href="#validation">5. Validation</a> |
-                <a href="#evidence">6. What Was Done</a> |
+                <a href="#context">1. Context</a>
+                <a href="#discovery">2. Discovery</a>
+                <a href="#opportunities">3. Opportunities</a>
+                <a href="#prioritisation">4. Prioritisation</a>
+                <a href="#validation">5. Validation</a>
+                <a href="#evidence">6. What Was Done</a>
                 <a href="#reflection">7. Reflection</a>
             </div>
 
@@ -724,6 +959,7 @@
                 <button type="button" class="win95-link-btn" id="collapse-all">Collapse all</button>
             </div>
 
+            <!-- FOLDERS -->
             <details class="folder-95" id="context" open>
                 <summary><span class="folder-title">📁 1. Context &amp; Brief</span></summary>
                 <div class="folder-body">
@@ -732,7 +968,7 @@
                     <p>Rather than jumping straight to interface changes, I treated it as a Digital Customer Experience problem: where does confidence break down, and how could it be restored?</p>
                     <div class="highlight-box-95"><strong>Core problem:</strong> Customers make one of their biggest purchases while navigating unfamiliar terminology and limited guidance.</div>
                     <div class="image-preview-frame" style="max-width:560px; margin-left:auto; margin-right:auto;">
-                        <img src="../new-website/properties/mercedes img/a.png" alt="Current Mercedes-Benz finance entry screen">
+                        <img loading="lazy" decoding="async" src="../new-website/properties/mercedes img/a.png" alt="Current Mercedes-Benz finance entry screen">
                         <p style="margin:0; font-size:13px;">The current finance entry screen, used as the baseline for how customers meet PCP, Hire Purchase and Leasing.</p>
                     </div>
                 </div>
@@ -746,7 +982,7 @@
                     <div class="meta-sidebar-95" style="margin-bottom:14px;"><h3 style="margin-top:0; color:#000080; font-size:1.05rem;">💬 Customer support insights</h3><p style="margin:0 0 8px 0;">Analytics shows where people struggle and support conversations show why: live chat transcripts, emails and call-centre questions.</p></div>
                     <div class="meta-sidebar-95" style="margin-bottom:0px;"><h3 style="margin-top:0; color:#000080; font-size:1.05rem;">👥 Usability sessions</h3><p style="margin:0 0 8px 0;">A small set of moderated sessions with realistic tasks, for example “Choose the finance option that best fits a £350 monthly budget.”</p></div>
                     <div class="image-preview-frame" style="max-width:560px; margin-left:auto; margin-right:auto;">
-                        <img src="../new-website/properties/mercedes img/b.png" alt="Finance calculator screen">
+                        <img loading="lazy" decoding="async" src="../new-website/properties/mercedes img/b.png" alt="Finance calculator screen">
                         <p style="margin:0; font-size:13px;">The finance calculator, where customers adjust deposit, term and mileage to estimate monthly payments.</p>
                     </div>
                     <div class="highlight-box-95"><strong>Key idea:</strong> Combine what people do (analytics) with why they do it (support and observation) rather than relying on either alone.</div>
@@ -761,20 +997,20 @@
                     <h3 style="color:#000080; margin-top:22px;">💡 1. Contextual finance tooltips</h3>
                     <p>Terms like PCP, APR and Hire Purchase are explained where they appear, in plain English, with hover or tap, so customers don’t have to leave the page to search for meanings.</p>
                     <div class="image-preview-frame" style="max-width:560px; margin-left:auto; margin-right:auto;">
-                        <img src="../new-website/properties/mercedes img/c.png" alt="Concept: finance tooltip explaining PCP">
+                        <img loading="lazy" decoding="async" src="../new-website/properties/mercedes img/c.png" alt="Concept: finance tooltip explaining PCP">
                         <p style="margin:0; font-size:13px;">Concept: a tooltip explaining PCP in place.</p>
                     </div>
                     <h3 style="color:#000080; margin-top:22px;">📊 2. Side-by-side comparison cards</h3>
                     <p>Comparing options mentally is a major barrier, so key differences sit next to each other:</p>
                     <div class="table-scroll"><table class="before-after-table"><thead><tr><th>Comparison</th><th>Intended customer benefit</th></tr></thead><tbody><tr><td>Monthly cost</td><td>Easier budgeting</td></tr><tr><td>Ownership</td><td>Clear expectations</td></tr><tr><td>Mileage</td><td>Better suitability</td></tr><tr><td>Flexibility</td><td>Faster decision-making</td></tr></tbody></table></div>
                     <div class="image-preview-frame" style="max-width:560px; margin-left:auto; margin-right:auto;">
-                        <img src="../new-website/properties/mercedes img/d.png" alt="Concept: comparison of PCP, Hire Purchase and Leasing">
+                        <img loading="lazy" decoding="async" src="../new-website/properties/mercedes img/d.png" alt="Concept: comparison of PCP, Hire Purchase and Leasing">
                         <p style="margin:0; font-size:13px;">Concept: PCP, Hire Purchase and Leasing compared side by side.</p>
                     </div>
                     <h3 style="color:#000080; margin-top:22px;">🧭 3. “Help me choose” decision wizard</h3>
                     <p>A guided three-step flow for people who don’t want to learn every product first: choose a monthly budget, estimate annual mileage, and decide whether ownership matters most. It ends with a recommended option and a short explanation of why it fits.</p>
                     <div class="image-preview-frame" style="max-width:560px; margin-left:auto; margin-right:auto;">
-                        <img src="../new-website/properties/mercedes img/e.png" alt="Concept: three-step finance decision wizard">
+                        <img loading="lazy" decoding="async" src="../new-website/properties/mercedes img/e.png" alt="Concept: three-step finance decision wizard">
                         <p style="margin:0; font-size:13px;">Concept: the three-step wizard.</p>
                     </div>
                 </div>
@@ -789,7 +1025,7 @@
                         <div class="meta-sidebar-95" style="margin-bottom:0px;"><h3 style="margin-top:0; color:#000080; font-size:1.05rem;">🚀 Strategic projects</h3><ul style="margin:0; font-size:14px;"><li>Comparison cards</li><li>Decision wizard</li><li>Personalised recommendations</li><li>Future account experiences</li></ul><p style="font-size:13px; margin:10px 0 0 0;">Higher investment, stronger long-term gains.</p></div>
                     </div>
                     <div class="image-preview-frame" style="max-width:560px; margin-left:auto; margin-right:auto;">
-                        <img src="../new-website/properties/mercedes img/f.png" alt="Impact versus effort matrix">
+                        <img loading="lazy" decoding="async" src="../new-website/properties/mercedes img/f.png" alt="Impact versus effort matrix">
                         <p style="margin:0; font-size:13px;">Impact vs effort matrix placing quick wins and strategic projects.</p>
                     </div>
                 </div>
@@ -801,7 +1037,7 @@
                     <p>The brief also asked how I would check that the ideas improved the experience. I proposed testing cheaply before building anything. None of these steps has been carried out.</p>
                     <ul><li><strong>Prototype before build:</strong> low-fidelity sketches, then clickable Figma prototypes, tested with realistic tasks and refined before development.</li><li><strong>Moderated usability testing:</strong> watch customers complete tasks such as “Find the finance option that best matches your monthly budget” instead of asking whether they like the design.</li><li><strong>A/B testing:</strong> once concepts look promising, compare the current journey (control) with the improved one (variant) before rolling out.</li></ul>
                     <div class="image-preview-frame" style="max-width:560px; margin-left:auto; margin-right:auto;">
-                        <img src="../new-website/properties/mercedes img/g.png" alt="Validation workflow diagram">
+                        <img loading="lazy" decoding="async" src="../new-website/properties/mercedes img/g.png" alt="Validation workflow diagram">
                         <p style="margin:0; font-size:13px;">The proposed cycle of prototyping, testing and refining before launch.</p>
                     </div>
                     <h3 style="color:#000080; margin-top:22px;">How success would be measured</h3>
@@ -847,18 +1083,6 @@
 <script src="../new-website/Jsscript.js"></script>
 
 <script>
-    function updateLocalClock() {
-        const clock = document.getElementById("win95-clock");
-        if (!clock) return;
-        const now = new Date();
-        const hours = now.getHours().toString().padStart(2, '0');
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        const ampm = now.getHours() >= 12 ? "PM" : "AM";
-        clock.textContent = `${hours}:${minutes} ${ampm}`;
-    }
-    setInterval(updateLocalClock, 1000);
-    updateLocalClock();
-
     // Expandable folders
     (function () {
         var folders = Array.prototype.slice.call(document.querySelectorAll('details.folder-95'));

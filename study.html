@@ -16,9 +16,13 @@
             overflow: hidden;
         }
 
+        .win95-taskbar {
+            z-index: 1000;
+        }
+
         .win95-maximized-workspace {
             position: fixed;
-            top: 40px;
+            top: 36px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -131,24 +135,53 @@
         }
 
         .process-index-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
             background: #e0e0e0;
             border: 2px inset #fff;
-            padding: 10px 14px;
+            padding: 12px 14px 14px 14px;
             margin-bottom: 25px;
             font-size: 13px;
             box-shadow: 1px 1px 0 #000;
-            line-height: 1.7;
         }
 
+        .process-index-bar strong {
+            flex: 0 0 100%;
+            font-size: 13px;
+        }
+
+        /* Buttons share each row equally, so the last row never looks ragged */
         .process-index-bar a {
-            color: #0000aa;
-            text-decoration: none;
+            flex: 1 1 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
+            padding: 6px 8px;
+            box-sizing: border-box;
+            background: #cbd0d4;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            color: #000;
+            font-size: 13px;
             font-weight: bold;
-            margin: 0 4px;
+            line-height: 1.2;
+            text-align: center;
+            text-decoration: none;
         }
 
         .process-index-bar a:hover {
-            text-decoration: underline;
+            background: #d8dce0;
+        }
+
+        .process-index-bar a:active {
+            border-color: #808080 #fff #fff #808080;
+        }
+
+        .process-index-bar a:focus-visible {
+            outline: 2px dotted #000080;
+            outline-offset: -5px;
         }
 
         .win95-link-btn {
@@ -455,7 +488,10 @@
         .win95-main-body {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
+            overflow-x: hidden;
         }
+
+        img, video { max-width: 100%; }
 
         .artifact-grid-95 {
             grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
@@ -483,11 +519,28 @@
 
         @media (max-width: 700px) {
             /* Taskbar and title bar: stop long file name pushing the layout wide */
+            .taskbar-tasks {
+                min-width: 0;
+                padding-left: 6px;
+                overflow: hidden;
+            }
+
             .win95-task-tab {
-                max-width: calc(100vw - 110px);
+                max-width: 100%;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+            }
+
+            .win95-system-tray {
+                flex-shrink: 0;
+                padding: 0 6px;
+                white-space: nowrap;
+            }
+
+            #darkModeButton {
+                margin-right: 6px;
+                white-space: nowrap;
             }
 
             .title-text {
@@ -534,29 +587,38 @@
                 padding: 12px 14px;
             }
 
-            /* Process index: bigger tap targets, one link per chip */
             .process-index-bar {
-                display: flex;
-                flex-wrap: wrap;
                 gap: 6px;
                 padding: 10px;
-                line-height: 1.2;
-            }
-
-            .process-index-bar strong {
-                flex: 0 0 100%;
             }
 
             .process-index-bar a {
-                margin: 0;
-                padding: 8px 10px;
-                background: #cbd0d4;
-                border-top: 2px solid #fff;
-                border-left: 2px solid #fff;
-                border-right: 2px solid #808080;
-                border-bottom: 2px solid #808080;
-                color: #000;
+                flex: 1 1 calc(50% - 6px);
+                min-height: 44px;
+                padding: 6px;
                 font-size: 12.5px;
+            }
+
+            .case-header {
+                padding: 18px 14px !important;
+                margin-bottom: 18px !important;
+            }
+
+            .image-preview-frame {
+                padding: 10px;
+                margin-top: 18px !important;
+                margin-bottom: 18px !important;
+            }
+
+            .image-preview-frame .win95-link-btn {
+                min-height: 44px;
+                padding: 10px 16px !important;
+                box-sizing: border-box;
+            }
+
+            .highlight-box-95,
+            .classic-quote-95 {
+                margin: 16px 0;
             }
 
             .folder-controls button {
@@ -633,8 +695,11 @@
             }
 
             .process-index-bar a {
-                padding: 8px 8px;
                 font-size: 12px;
+            }
+
+            .image-preview-frame {
+                padding: 8px;
             }
         }
     
@@ -645,6 +710,7 @@
             padding: 15px;
             margin: 25px 0;
             text-align: center;
+            box-sizing: border-box;
         }
 
         .image-preview-frame img,
@@ -670,15 +736,116 @@
 <div class="noise-overlay"></div>
 
 <!-- Taskbar -->
-<header class="win95-taskbar" style="position: fixed; top: 0; left: 0; right: 0; height: 40px; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4px; background: #cbd0d4; border-bottom: 2px solid #808080;">
-    <div class="taskbar-tasks" style="display: flex; align-items: center; flex: 1;">
-        <div class="win95-task-tab active" style="display: flex; align-items: center; background: #fff; border: 2px inset #fff; padding: 2px 12px; font-size: 12px; height: 24px; font-weight: bold; box-shadow: 1px 1px 0 #000;">
-            <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" style="width:14px; height:14px; margin-right:6px;" alt="icon">
-            Munich_Study.txt
+<!-- TASKBAR (same bar, Start menu, mode button and clock as the landing page) -->
+<header class="win95-taskbar">
+    <button id="win95StartBtn" class="win95-start-button">
+        <span class="win95-logo" style="font-size: 14px; margin-right: 6px; display: inline-flex; align-items: center;">🏠</span>
+        <strong>S<u>t</u>art</strong>
+    </button>
+
+    <div class="taskbar-tasks">
+        <div class="win95-task-tab active">
+            <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" style="width:14px; height:14px; margin-right:6px; image-rendering:pixelated;" alt="Sys">
+            System Interface
         </div>
     </div>
-    <div class="win95-system-tray" style="display: flex; align-items: center; background: #cbd0d4; border: 2px inset #fff; padding: 2px 8px; font-size: 12px; height: 24px; box-shadow: 1px 1px 0 #000;">
-        <span id="win95-clock">--:-- --</span>
+
+    <div class="win95-system-tray">
+        <button id="darkModeButton">Mode: Dark</button>
+        <span id="win95-clock">12:00 PM</span>
+    </div>
+
+    <div id="win95StartMenu" class="win95-start-menu hidden">
+        <div class="win95-sidebar">
+            <span><strong>System</strong>95</span>
+        </div>
+
+        <ul class="win95-menu-list">
+            <li>
+                <a href="index.html#state1">
+                    <img src="https://win98icons.alexmeub.com/icons/png/desktop-0.png" class="item-icon" alt="Hero">
+                    <span>Start (Hero)</span>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#about">
+                    <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" class="item-icon" alt="About">
+                    <span>About_Me.txt</span>
+                </a>
+            </li>
+            <li class="has-submenu">
+                <a href="index.html#projects">
+                    <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="item-icon" alt="Folder">
+                    <span>Programs (Case Studies)</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <ul class="win95-submenu">
+
+                    <li>
+                        <a href="study_newcity.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/html-1.png" class="item-icon" alt="Doc">
+                            <span>New City Church MK</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="studyvi.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/html-1.png" class="item-icon" alt="Doc">
+                            <span>Mercedes-Benz Finance</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-separator"></li>
+                    <!-- FIXED: Full Archive now links to projects.html -->
+                    <li>
+                        <a href="projects.html">
+                            <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" class="item-icon" alt="Folder">
+                            <span>Full Archive...</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="index.html#faith">
+                    <img src="https://win98icons.alexmeub.com/icons/png/world-0.png" class="item-icon" alt="Faith">
+                    <span>Faith Section</span>
+                </a>
+            </li>
+            <li class="menu-separator"></li>
+            <li>
+                <a href="properties/Marquis_CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <svg class="item-icon" viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d="M5.5 2.5H20.5L26.5 8.5V29.5H5.5Z" fill="#fff" stroke="#000"/><path d="M20.5 2.5V8.5H26.5" fill="#c0c0c0" stroke="#000"/><path d="M25.5 9.5V28.5H6.5" fill="none" stroke="#808080"/><rect x="7" y="5" width="12" height="8" fill="#c00000"/><path fill="#fff" d="M8 7h4v1H8zM8 8h1v3H8zM8 11h4v1H8zM13 7h1v2h-1zM17 7h1v2h-1zM14 9h1v2h-1zM16 9h1v2h-1zM15 11h1v1h-1z"/><rect x="8" y="16" width="16" height="1" fill="#000080"/><rect x="8" y="19" width="16" height="1" fill="#000080"/><rect x="8" y="22" width="16" height="1" fill="#000080"/><rect x="8" y="25" width="9" height="1" fill="#000080"/></svg>
+                    <span>Download CV</span>
+                </a>
+            </li>
+
+            <li class="has-submenu">
+                <a href="index.html#contact">
+                    <img src="https://win98icons.alexmeub.com/icons/png/address_book-0.png" class="item-icon" alt="Contact">
+                    <span>Contact Me</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <ul class="win95-submenu">
+                    <li>
+                        <a href="https://www.linkedin.com/in/marquis-orchard/" target="_blank" rel="noopener noreferrer">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x=".5" y=".5" width="15" height="15" fill="#000080" stroke="#000"/><path d="M3 5h2v2H3zM3 8h2v5H3zM7 8h2v5H7zM9 8h3v2H9zM11 10h2v3h-2z" fill="#fff"/></svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:marquisorchard95@yahoo.com">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x=".5" y="2.5" width="15" height="11" fill="#fff4b0" stroke="#000"/><path d="M1 3l7 6 7-6" fill="none" stroke="#000"/></svg>
+                            <span>Email Me</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:+447930733724">
+                            <svg class="item-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d="M2.5 1.5h3l1.5 3.5-2 1.5c1 2 2.5 3.500 4.500 4.500l1.500-2 3.500 1.500v3c0 1-1 1.500-2 1.500C6.500 14.500 1.500 9.500 1.500 3.500c0-1 .5-2 1-2z" fill="#000080" stroke="#000"/></svg>
+                            <span>Call Me</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </header>
 
@@ -704,7 +871,7 @@
         <div class="document-container">
 
             <!-- BLUE HEADER -->
-            <div style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 30px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
+            <div class="case-header" style="background: #000080; color: #fff; padding: 25px 20px; margin-bottom: 24px; border: 1px solid #000; box-shadow: 1px 1px 0 #808080;">
                 <h1 style="font-size: 2.1rem; margin: 0; font-family: 'Courier New', Courier, monospace; letter-spacing: 1px; color: #fff;">
                     Munich Travel Guide: A Web &amp; UX Case Study
                 </h1>
@@ -751,15 +918,15 @@
             <!-- PROCESS INDEX -->
             <div class="process-index-bar">
                 <strong>Process Index:</strong>
-                <a href="#background">1. Background</a> |
-                <a href="#research">2. Research</a> |
-                <a href="#decisions">3. Findings to Decisions</a> |
-                <a href="#personas">4. Personas</a> |
-                <a href="#methodology">5. Methodology</a> |
-                <a href="#process">6. Process</a> |
-                <a href="#artifacts">7. Artifacts</a> |
-                <a href="#final-design">8. Final Design</a> |
-                <a href="#evidence">9. Feedback</a> |
+                <a href="#background">1. Background</a>
+                <a href="#research">2. Research</a>
+                <a href="#decisions">3. Findings to Decisions</a>
+                <a href="#personas">4. Personas</a>
+                <a href="#methodology">5. Methodology</a>
+                <a href="#process">6. Process</a>
+                <a href="#artifacts">7. Artifacts</a>
+                <a href="#final-design">8. Final Design</a>
+                <a href="#evidence">9. Feedback</a>
                 <a href="#reflection">10. Reflection</a>
             </div>
 
@@ -788,7 +955,7 @@
                     </p>
 
                     <div class="image-preview-frame">
-                        <img src="../new-website/properties/img/munuch-link.png"
+                        <img loading="lazy" decoding="async" src="../new-website/properties/img/munuch-link.png"
                              alt="Munich Travel Guide website screenshot"
                              style="max-width: 750px; width: 100%; height: auto; border: 1px solid #808080;">
                         <div style="padding: 5px 0;">
@@ -1010,35 +1177,35 @@
                         <div class="artifact-card-95">
                             <h4 style="font-size: 14px; margin-bottom: 6px;">Early wireframe sketches</h4>
                             <a href="../new-website/properties/img/paper-wireframe.jpg" target="_blank" rel="noopener">
-                                <img src="../new-website/properties/img/paper-wireframe.jpg" alt="Early wireframe sketches on paper">
+                                <img loading="lazy" decoding="async" src="../new-website/properties/img/paper-wireframe.jpg" alt="Early wireframe sketches on paper">
                             </a>
                         </div>
 
                         <div class="artifact-card-95">
                             <h4 style="font-size: 14px; margin-bottom: 6px;">Early sitemap sketches</h4>
                             <a href="../new-website/properties/img/paper-sitemap.jpg" target="_blank" rel="noopener">
-                                <img src="../new-website/properties/img/paper-sitemap.jpg" alt="Early sitemap sketches on paper">
+                                <img loading="lazy" decoding="async" src="../new-website/properties/img/paper-sitemap.jpg" alt="Early sitemap sketches on paper">
                             </a>
                         </div>
 
                         <div class="artifact-card-95">
                             <h4 style="font-size: 14px; margin-bottom: 6px;">Low-fidelity wireframes</h4>
                             <a href="../new-website/properties/img/Munich city wireframes.jpg" target="_blank" rel="noopener">
-                                <img src="../new-website/properties/img/Munich city wireframes.jpg" alt="Low-fidelity digital wireframes for the Munich website">
+                                <img loading="lazy" decoding="async" src="../new-website/properties/img/Munich city wireframes.jpg" alt="Low-fidelity digital wireframes for the Munich website">
                             </a>
                         </div>
 
                         <div class="artifact-card-95">
                             <h4 style="font-size: 14px; margin-bottom: 6px;">Information flow (sitemap)</h4>
                             <a href="../new-website/properties/img/sitemap.png" target="_blank" rel="noopener">
-                                <img src="../new-website/properties/img/sitemap.png" alt="Final sitemap">
+                                <img loading="lazy" decoding="async" src="../new-website/properties/img/sitemap.png" alt="Final sitemap">
                             </a>
                         </div>
 
                         <div class="artifact-card-95">
                             <h4 style="font-size: 14px; margin-bottom: 6px;">Visual direction (mood board)</h4>
                             <a href="../new-website/properties/img/moodboard.png" target="_blank" rel="noopener">
-                                <img src="../new-website/properties/img/moodboard.png" alt="Mood board">
+                                <img loading="lazy" decoding="async" src="../new-website/properties/img/moodboard.png" alt="Mood board">
                             </a>
                         </div>
                     </div>
@@ -1163,18 +1330,6 @@
 <script src="../new-website/Jsscript.js"></script>
 
 <script>
-    function updateLocalClock() {
-        const clock = document.getElementById("win95-clock");
-        if (!clock) return;
-        const now = new Date();
-        const hours = now.getHours().toString().padStart(2, '0');
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        const ampm = now.getHours() >= 12 ? "PM" : "AM";
-        clock.textContent = `${hours}:${minutes} ${ampm}`;
-    }
-    setInterval(updateLocalClock, 1000);
-    updateLocalClock();
-
     // Expandable folders
     (function () {
         var folders = Array.prototype.slice.call(document.querySelectorAll('details.folder-95'));
