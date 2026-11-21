@@ -91,6 +91,32 @@
             grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
         }
     }
+
+    /* Maximize button: fills the whole screen from just below the taskbar */
+    .win95-window.archive-window.maximized {
+        position: fixed;
+        top: 36px !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box;
+    }
+
+    /* Keeps the Start menu on top of the maximized window */
+    body.archive-maximized .win95-taskbar {
+        z-index: 1000;
+    }
+
+    /* Button icon switches to "restore" while maximized */
+    .archive-window.maximized .window-controls .maximize-btn {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='8' viewBox='0 0 9 8'%3E%3Cpath fill='%23000000' d='M2 0h7v2H2zM8 2h1v3H8zM7 4h2v1H7zM2 2h1v1H2zM0 3h7v2H0zM0 5h1v3H0zM6 5h1v3H6zM0 7h7v1H0z'/%3E%3C/svg%3E") !important;
+    }
 </style>
 </head>
 <body>
@@ -222,6 +248,7 @@
         </div>
 
         <div class="window-controls">
+            <button class="win-btn maximize-btn" id="archive-max-btn" type="button" aria-label="Maximize window" title="Maximize"></button>
             <button class="win-btn close-btn" onclick="window.location.href='index.html'" aria-label="Close and go back"></button>
         </div>
     </div>
@@ -270,6 +297,23 @@
 
 <!-- Same script as the landing page: background animation and light/dark mode -->
 <script src="Jsscript.js"></script>
+
+<script>
+    // Maximize / restore the case studies window
+    (function () {
+        var win = document.getElementById('archive-win');
+        var btn = document.getElementById('archive-max-btn');
+        if (!win || !btn) return;
+
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var on = win.classList.toggle('maximized');
+            document.body.classList.toggle('archive-maximized', on);
+            btn.setAttribute('aria-label', on ? 'Restore window' : 'Maximize window');
+            btn.setAttribute('title', on ? 'Restore' : 'Maximize');
+        });
+    })();
+</script>
 
 </body>
 </html>
